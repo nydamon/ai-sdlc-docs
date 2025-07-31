@@ -1,0 +1,1837 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Central schematic, toolchain, and strategy for AI-augmented software development.">
+      
+      
+      
+      
+        <link rel="prev" href="../rollout_readiness_checklist/">
+      
+      
+        <link rel="next" href="../testing-qa-strategy-revised/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Semantic Release Setup - AI-Powered SDLC</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#semantic-release-automation-setup" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI-Powered SDLC" class="md-header__button md-logo" aria-label="AI-Powered SDLC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI-Powered SDLC
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Semantic Release Setup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nydamon/ai-sdlc-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI-Powered SDLC" class="md-nav__button md-logo" aria-label="AI-Powered SDLC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI-Powered SDLC
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nydamon/ai-sdlc-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai_dev_stack_blueprint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Dev Stack Blueprint
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI First Playbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-governance-safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Governance & Safety
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enhanced-config-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Config Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-hooks-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git Hooks Automation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring & Observability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Specification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react-best-practices-updated/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    React Best Practices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout_gantt_kanban/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Rollout Gantt & Kanban
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout_readiness_checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Readiness Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Semantic Release Setup
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Semantic Release Setup
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation &amp; Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation &amp; Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-install-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Install Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-semantic-release-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Semantic Release Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-multi-project-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Multi-Project Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-enhanced-commit-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI-Enhanced Commit Messages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI-Enhanced Commit Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ai-commit-message-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. AI Commit Message Generator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-enhanced-packagejson-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Enhanced Package.json Scripts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-actions-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Actions Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub Actions Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-release-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Release Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-version-update-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Version Update Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-enhanced-release-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI-Enhanced Release Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI-Enhanced Release Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-release-notes-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Release Notes Generator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-specific-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project-Specific Configurations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Project-Specific Configurations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laravel-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Laravel Backend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typescript-client-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      TypeScript Client Frontend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript-admin-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      JavaScript Admin Frontend
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-existing-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Existing Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Existing Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#posthog-release-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      PostHog Release Tracking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qase-test-run-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Qase Test Run Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits &amp; Results
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Benefits &amp; Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#immediate-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Immediate Benefits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-term-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Long-term Benefits
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emergency-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emergency Procedures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing-qa-strategy-revised/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    QA Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sdlc_architecture_diagram.png" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Diagram
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation &amp; Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation &amp; Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-install-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Install Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-semantic-release-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Semantic Release Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-multi-project-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Multi-Project Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-enhanced-commit-messages" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI-Enhanced Commit Messages
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI-Enhanced Commit Messages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ai-commit-message-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. AI Commit Message Generator
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-enhanced-packagejson-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Enhanced Package.json Scripts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-actions-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      GitHub Actions Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub Actions Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-release-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Release Workflow
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-version-update-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Version Update Script
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-enhanced-release-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI-Enhanced Release Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI-Enhanced Release Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-release-notes-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Release Notes Generator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-specific-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Project-Specific Configurations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Project-Specific Configurations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laravel-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Laravel Backend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typescript-client-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      TypeScript Client Frontend
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript-admin-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      JavaScript Admin Frontend
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-with-existing-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration with Existing Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration with Existing Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#posthog-release-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      PostHog Release Tracking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qase-test-run-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Qase Test Run Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits &amp; Results
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Benefits &amp; Results">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#immediate-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Immediate Benefits
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#long-term-benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Long-term Benefits
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emergency-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emergency Procedures
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="semantic-release-automation-setup">Semantic Release Automation Setup</h1>
+<h2 id="overview">Overview</h2>
+<p>Automate version management, changelog generation, and release publishing using conventional commits and semantic-release with AI-enhanced commit messages.</p>
+<h2 id="installation-configuration">Installation &amp; Configuration</h2>
+<h3 id="1-install-dependencies">1. Install Dependencies</h3>
+<pre><code class="language-bash"># Install semantic-release and plugins
+npm install --save-dev \
+  semantic-release \
+  @semantic-release/git \
+  @semantic-release/changelog \
+  @semantic-release/github \
+  @semantic-release/npm \
+  conventional-changelog-conventionalcommits
+
+# For multi-package projects (if using monorepo)
+npm install --save-dev @semantic-release/exec
+</code></pre>
+<h3 id="2-semantic-release-configuration">2. Semantic Release Configuration</h3>
+<pre><code class="language-json">// .releaserc.json
+{
+  &quot;branches&quot;: [
+    &quot;main&quot;,
+    {
+      &quot;name&quot;: &quot;beta&quot;,
+      &quot;prerelease&quot;: true
+    },
+    {
+      &quot;name&quot;: &quot;alpha&quot;,
+      &quot;prerelease&quot;: true
+    }
+  ],
+  &quot;plugins&quot;: [
+    [
+      &quot;@semantic-release/commit-analyzer&quot;,
+      {
+        &quot;preset&quot;: &quot;conventionalcommits&quot;,
+        &quot;releaseRules&quot;: [
+          { &quot;type&quot;: &quot;feat&quot;, &quot;release&quot;: &quot;minor&quot; },
+          { &quot;type&quot;: &quot;fix&quot;, &quot;release&quot;: &quot;patch&quot; },
+          { &quot;type&quot;: &quot;perf&quot;, &quot;release&quot;: &quot;patch&quot; },
+          { &quot;type&quot;: &quot;revert&quot;, &quot;release&quot;: &quot;patch&quot; },
+          { &quot;type&quot;: &quot;docs&quot;, &quot;release&quot;: false },
+          { &quot;type&quot;: &quot;style&quot;, &quot;release&quot;: false },
+          { &quot;type&quot;: &quot;chore&quot;, &quot;release&quot;: false },
+          { &quot;type&quot;: &quot;refactor&quot;, &quot;release&quot;: &quot;patch&quot; },
+          { &quot;type&quot;: &quot;test&quot;, &quot;release&quot;: false },
+          { &quot;type&quot;: &quot;build&quot;, &quot;release&quot;: false },
+          { &quot;type&quot;: &quot;ci&quot;, &quot;release&quot;: false },
+          { &quot;breaking&quot;: true, &quot;release&quot;: &quot;major&quot; }
+        ]
+      }
+    ],
+    [
+      &quot;@semantic-release/release-notes-generator&quot;,
+      {
+        &quot;preset&quot;: &quot;conventionalcommits&quot;,
+        &quot;presetConfig&quot;: {
+          &quot;types&quot;: [
+            { &quot;type&quot;: &quot;feat&quot;, &quot;section&quot;: &quot;✨ Features&quot; },
+            { &quot;type&quot;: &quot;fix&quot;, &quot;section&quot;: &quot;🐛 Bug Fixes&quot; },
+            { &quot;type&quot;: &quot;perf&quot;, &quot;section&quot;: &quot;⚡ Performance Improvements&quot; },
+            { &quot;type&quot;: &quot;revert&quot;, &quot;section&quot;: &quot;⏪ Reverts&quot; },
+            { &quot;type&quot;: &quot;refactor&quot;, &quot;section&quot;: &quot;♻️ Code Refactoring&quot; },
+            { &quot;type&quot;: &quot;docs&quot;, &quot;section&quot;: &quot;📚 Documentation&quot; },
+            { &quot;type&quot;: &quot;style&quot;, &quot;section&quot;: &quot;💎 Styles&quot; },
+            { &quot;type&quot;: &quot;test&quot;, &quot;section&quot;: &quot;🧪 Tests&quot; },
+            { &quot;type&quot;: &quot;build&quot;, &quot;section&quot;: &quot;🏗️ Build System&quot; },
+            { &quot;type&quot;: &quot;ci&quot;, &quot;section&quot;: &quot;👷 CI/CD&quot; },
+            { &quot;type&quot;: &quot;chore&quot;, &quot;section&quot;: &quot;🔧 Maintenance&quot; }
+          ]
+        }
+      }
+    ],
+    &quot;@semantic-release/changelog&quot;,
+    [
+      &quot;@semantic-release/npm&quot;,
+      {
+        &quot;npmPublish&quot;: false
+      }
+    ],
+    [
+      &quot;@semantic-release/git&quot;,
+      {
+        &quot;assets&quot;: [
+          &quot;CHANGELOG.md&quot;,
+          &quot;package.json&quot;,
+          &quot;composer.json&quot;,
+          &quot;client-frontend/package.json&quot;,
+          &quot;admin-frontend/package.json&quot;
+        ],
+        &quot;message&quot;: &quot;chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}&quot;
+      }
+    ],
+    [
+      &quot;@semantic-release/github&quot;,
+      {
+        &quot;successComment&quot;: false,
+        &quot;failComment&quot;: false,
+        &quot;releasedLabels&quot;: [&quot;released&quot;]
+      }
+    ]
+  ]
+}
+</code></pre>
+<h3 id="3-multi-project-configuration">3. Multi-Project Configuration</h3>
+<pre><code class="language-json">// For Laravel + Frontend projects
+{
+  &quot;branches&quot;: [&quot;main&quot;, &quot;beta&quot;],
+  &quot;plugins&quot;: [
+    &quot;@semantic-release/commit-analyzer&quot;,
+    &quot;@semantic-release/release-notes-generator&quot;,
+    &quot;@semantic-release/changelog&quot;,
+    [
+      &quot;@semantic-release/exec&quot;,
+      {
+        &quot;prepareCmd&quot;: &quot;npm run version:update ${nextRelease.version}&quot;,
+        &quot;publishCmd&quot;: &quot;npm run deploy:production&quot;
+      }
+    ],
+    [
+      &quot;@semantic-release/git&quot;,
+      {
+        &quot;assets&quot;: [
+          &quot;CHANGELOG.md&quot;,
+          &quot;package.json&quot;,
+          &quot;composer.json&quot;,
+          &quot;client-frontend/package.json&quot;, 
+          &quot;admin-frontend/package.json&quot;
+        ]
+      }
+    ],
+    &quot;@semantic-release/github&quot;
+  ]
+}
+</code></pre>
+<h2 id="ai-enhanced-commit-messages">AI-Enhanced Commit Messages</h2>
+<h3 id="1-ai-commit-message-generator">1. AI Commit Message Generator</h3>
+<pre><code class="language-bash">#!/bin/bash
+# scripts/ai-commit.sh
+
+echo &quot;🤖 Generating AI-enhanced commit message...&quot;
+
+# Get staged changes
+STAGED_FILES=$(git diff --cached --name-only)
+DIFF_OUTPUT=$(git diff --cached)
+
+if [ -z &quot;$STAGED_FILES&quot; ]; then
+    echo &quot;❌ No staged changes found. Please stage your changes first.&quot;
+    exit 1
+fi
+
+# Analyze changes and generate commit message
+generate_commit_message() {
+    local change_summary=&quot;&quot;
+    local change_type=&quot;&quot;
+    local scope=&quot;&quot;
+
+    # Determine change type based on files
+    if echo &quot;$STAGED_FILES&quot; | grep -q &quot;\.php$&quot;; then
+        scope=&quot;backend&quot;
+        if echo &quot;$DIFF_OUTPUT&quot; | grep -q &quot;function.*test\|test.*function&quot;; then
+            change_type=&quot;test&quot;
+        elif echo &quot;$DIFF_OUTPUT&quot; | grep -q &quot;class.*Controller\|Route::&quot;; then
+            change_type=&quot;feat&quot;
+        elif echo &quot;$DIFF_OUTPUT&quot; | grep -q &quot;fix\|bug\|error&quot;; then
+            change_type=&quot;fix&quot;
+        else
+            change_type=&quot;refactor&quot;
+        fi
+    elif echo &quot;$STAGED_FILES&quot; | grep -q &quot;client-frontend&quot;; then
+        scope=&quot;client&quot;
+        if echo &quot;$DIFF_OUTPUT&quot; | grep -q &quot;\.test\.\|\.spec\.&quot;; then
+            change_type=&quot;test&quot;
+        elif echo &quot;$DIFF_OUTPUT&quot; | grep -q &quot;new.*component\|export.*function&quot;; then
+            change_type=&quot;feat&quot;
+        else
+            change_type=&quot;refactor&quot;
+        fi
+    elif echo &quot;$STAGED_FILES&quot; | grep -q &quot;admin-frontend&quot;; then
+        scope=&quot;admin&quot;
+        change_type=&quot;feat&quot;
+    fi
+
+    # Use Cursor AI to generate description
+    if command -v cursor &gt;/dev/null 2&gt;&amp;1; then
+        echo &quot;🧠 Using AI to analyze changes...&quot;
+
+        # Create prompt for AI
+        local ai_prompt=&quot;Analyze these code changes and generate a concise, descriptive commit message body (max 50 chars):
+
+Files changed: $STAGED_FILES
+Change type: $change_type
+Scope: $scope
+
+Code diff:
+$DIFF_OUTPUT
+
+Generate only the description part (what was changed), not the type/scope prefix.&quot;
+
+        # Get AI suggestion (this would integrate with your AI tool)
+        change_summary=&quot;implement user authentication system&quot;
+        echo &quot;💡 AI suggested: $change_summary&quot;
+    else
+        echo &quot;⚠️ Cursor AI not available, using basic analysis...&quot;
+        change_summary=&quot;update $(echo $STAGED_FILES | head -1 | xargs basename)&quot;
+    fi
+
+    # Construct conventional commit message
+    if [ -n &quot;$scope&quot; ]; then
+        echo &quot;${change_type}(${scope}): ${change_summary}&quot;
+    else
+        echo &quot;${change_type}: ${change_summary}&quot;
+    fi
+}
+
+# Generate the commit message
+COMMIT_MSG=$(generate_commit_message)
+
+echo &quot;📝 Generated commit message:&quot;
+echo &quot;   $COMMIT_MSG&quot;
+echo
+
+# Ask for confirmation
+read -p &quot;Use this commit message? (y/n/e): &quot; choice
+case $choice in
+    y|Y)
+        git commit -m &quot;$COMMIT_MSG&quot;
+        echo &quot;✅ Committed with AI-generated message!&quot;
+        ;;
+    e|E)
+        echo &quot;✏️ Opening editor to customize message...&quot;
+        echo &quot;$COMMIT_MSG&quot; &gt; .git/COMMIT_EDITMSG
+        git commit --edit --file=.git/COMMIT_EDITMSG
+        ;;
+    *)
+        echo &quot;❌ Commit cancelled&quot;
+        exit 1
+        ;;
+esac
+</code></pre>
+<h3 id="2-enhanced-packagejson-scripts">2. Enhanced Package.json Scripts</h3>
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;commit&quot;: &quot;npm run ai:commit&quot;,
+    &quot;commit:conventional&quot;: &quot;git-cz&quot;,
+    &quot;ai:commit&quot;: &quot;./scripts/ai-commit.sh&quot;,
+    &quot;ai:commit-msg&quot;: &quot;cursor --ai-prompt 'Generate conventional commit message for staged changes'&quot;,
+    &quot;release&quot;: &quot;semantic-release&quot;,
+    &quot;release:dry-run&quot;: &quot;semantic-release --dry-run&quot;,
+    &quot;release:beta&quot;: &quot;semantic-release --branches beta&quot;,
+    &quot;version:update&quot;: &quot;node scripts/update-versions.js&quot;,
+    &quot;changelog:generate&quot;: &quot;conventional-changelog -p conventionalcommits -i CHANGELOG.md -s&quot;,
+    &quot;deploy:production&quot;: &quot;npm run deploy:backend &amp;&amp; npm run deploy:frontend&quot;,
+    &quot;deploy:backend&quot;: &quot;cd backend &amp;&amp; composer install --no-dev &amp;&amp; php artisan migrate --force&quot;,
+    &quot;deploy:frontend&quot;: &quot;npm run build:client &amp;&amp; npm run build:admin&quot;
+  }
+}
+</code></pre>
+<h2 id="github-actions-integration">GitHub Actions Integration</h2>
+<h3 id="1-release-workflow">1. Release Workflow</h3>
+<pre><code class="language-yaml"># .github/workflows/release.yml
+name: Release
+on:
+  push:
+    branches:
+      - main
+      - beta
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          composer install --no-dev --optimize-autoloader
+
+      - name: Run tests
+        run: |
+          npm run test:all
+          composer test
+
+      - name: Build applications
+        run: |
+          npm run build:client
+          npm run build:admin
+
+      - name: Generate AI-enhanced release notes
+        run: |
+          echo &quot;🤖 Generating AI-enhanced release notes...&quot;
+          # This would integrate with your AI tools to enhance release notes
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
+
+      - name: Deploy to production
+        if: github.ref == 'refs/heads/main'
+        run: npm run deploy:production
+        env:
+          DEPLOYMENT_KEY: ${{ secrets.DEPLOYMENT_KEY }}
+
+      - name: Notify team
+        if: success()
+        run: |
+          curl -X POST ${{ secrets.TEAMS_WEBHOOK_URL }} \
+            -H 'Content-Type: application/json' \
+            -d '{
+              &quot;text&quot;: &quot;🚀 New release deployed&quot;,
+              &quot;sections&quot;: [{
+                &quot;activityTitle&quot;: &quot;Version ${{ steps.semantic-release.outputs.new_release_version }}&quot;,
+                &quot;activitySubtitle&quot;: &quot;Successfully deployed to production&quot;
+              }]
+            }'
+</code></pre>
+<h3 id="2-version-update-script">2. Version Update Script</h3>
+<pre><code class="language-javascript">// scripts/update-versions.js
+const fs = require('fs');
+const path = require('path');
+
+const version = process.argv[2];
+if (!version) {
+  console.error('❌ Version number required');
+  process.exit(1);
+}
+
+console.log(`🔄 Updating version to ${version}...`);
+
+// Update package.json files
+const updatePackageJson = (filePath) =&gt; {
+  if (fs.existsSync(filePath)) {
+    const packageJson = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    packageJson.version = version;
+    fs.writeFileSync(filePath, JSON.stringify(packageJson, null, 2) + '\n');
+    console.log(`✅ Updated ${filePath}`);
+  }
+};
+
+// Update composer.json
+const updateComposerJson = () =&gt; {
+  const composerPath = 'composer.json';
+  if (fs.existsSync(composerPath)) {
+    const composer = JSON.parse(fs.readFileSync(composerPath, 'utf8'));
+    composer.version = version;
+    fs.writeFileSync(composerPath, JSON.stringify(composer, null, 2) + '\n');
+    console.log(`✅ Updated ${composerPath}`);
+  }
+};
+
+// Update Laravel config
+const updateLaravelConfig = () =&gt; {
+  const configPath = 'config/app.php';
+  if (fs.existsSync(configPath)) {
+    let config = fs.readFileSync(configPath, 'utf8');
+    config = config.replace(
+      /'version' =&gt; '.*'/,
+      `'version' =&gt; '${version}'`
+    );
+    fs.writeFileSync(configPath, config);
+    console.log(`✅ Updated ${configPath}`);
+  }
+};
+
+// Update all version files
+updatePackageJson('package.json');
+updatePackageJson('client-frontend/package.json');
+updatePackageJson('admin-frontend/package.json');
+updateComposerJson();
+updateLaravelConfig();
+
+console.log(`🎉 Version updated to ${version} across all projects`);
+</code></pre>
+<h2 id="ai-enhanced-release-notes">AI-Enhanced Release Notes</h2>
+<h3 id="1-release-notes-generator">1. Release Notes Generator</h3>
+<pre><code class="language-bash">#!/bin/bash
+# scripts/ai-release-notes.sh
+
+echo &quot;🤖 Generating AI-enhanced release notes...&quot;
+
+# Get commits since last release
+LAST_TAG=$(git describe --tags --abbrev=0 2&gt;/dev/null || echo &quot;&quot;)
+if [ -z &quot;$LAST_TAG&quot; ]; then
+    COMMITS=$(git log --oneline --pretty=format:&quot;%h %s&quot;)
+else
+    COMMITS=$(git log $LAST_TAG..HEAD --oneline --pretty=format:&quot;%h %s&quot;)
+fi
+
+# Categorize commits
+FEATURES=$(echo &quot;$COMMITS&quot; | grep &quot;^[a-f0-9]* feat&quot; || true)
+FIXES=$(echo &quot;$COMMITS&quot; | grep &quot;^[a-f0-9]* fix&quot; || true)
+IMPROVEMENTS=$(echo &quot;$COMMITS&quot; | grep &quot;^[a-f0-9]* perf\|^[a-f0-9]* refactor&quot; || true)
+
+# Generate AI-enhanced descriptions
+generate_ai_description() {
+    local commits=&quot;$1&quot;
+    local type=&quot;$2&quot;
+
+    if [ -z &quot;$commits&quot; ]; then
+        echo &quot;No $type in this release.&quot;
+        return
+    fi
+
+    echo &quot;## $type&quot;
+    echo
+
+    echo &quot;$commits&quot; | while read -r commit; do
+        local hash=$(echo &quot;$commit&quot; | cut -d' ' -f1)
+        local message=$(echo &quot;$commit&quot; | cut -d' ' -f2-)
+
+        # Use AI to enhance commit message (placeholder)
+        local enhanced_message=&quot;$message&quot;
+
+        echo &quot;- $enhanced_message ($hash)&quot;
+    done
+    echo
+}
+
+# Create release notes
+{
+    echo &quot;# Release Notes&quot;
+    echo
+    echo &quot;Generated on $(date)&quot;
+    echo
+
+    generate_ai_description &quot;$FEATURES&quot; &quot;✨ New Features&quot;
+    generate_ai_description &quot;$FIXES&quot; &quot;🐛 Bug Fixes&quot;
+    generate_ai_description &quot;$IMPROVEMENTS&quot; &quot;⚡ Improvements&quot;
+
+    echo &quot;## 📊 Statistics&quot;
+    echo
+    echo &quot;- Total commits: $(echo &quot;$COMMITS&quot; | wc -l)&quot;
+    echo &quot;- Features: $(echo &quot;$FEATURES&quot; | wc -l)&quot;
+    echo &quot;- Bug fixes: $(echo &quot;$FIXES&quot; | wc -l)&quot;
+    echo &quot;- Improvements: $(echo &quot;$IMPROVEMENTS&quot; | wc -l)&quot;
+} &gt; RELEASE_NOTES.md
+
+echo &quot;✅ Release notes generated in RELEASE_NOTES.md&quot;
+</code></pre>
+<h2 id="project-specific-configurations">Project-Specific Configurations</h2>
+<h3 id="laravel-backend">Laravel Backend</h3>
+<pre><code class="language-json">// composer.json additions
+{
+  &quot;scripts&quot;: {
+    &quot;release:prepare&quot;: [
+      &quot;php artisan config:cache&quot;,
+      &quot;php artisan route:cache&quot;,
+      &quot;php artisan view:cache&quot;
+    ],
+    &quot;release:rollback&quot;: [
+      &quot;php artisan config:clear&quot;,
+      &quot;php artisan route:clear&quot;, 
+      &quot;php artisan view:clear&quot;
+    ]
+  },
+  &quot;extra&quot;: {
+    &quot;semantic-release&quot;: {
+      &quot;version-file&quot;: &quot;config/app.php&quot;
+    }
+  }
+}
+</code></pre>
+<h3 id="typescript-client-frontend">TypeScript Client Frontend</h3>
+<pre><code class="language-json">// client-frontend/package.json
+{
+  &quot;scripts&quot;: {
+    &quot;build:release&quot;: &quot;vite build --mode production&quot;,
+    &quot;version:sync&quot;: &quot;node ../scripts/sync-version.js client&quot;,
+    &quot;release:prepare&quot;: &quot;npm run build:release &amp;&amp; npm run lighthouse:ci&quot;
+  }
+}
+</code></pre>
+<h3 id="javascript-admin-frontend">JavaScript Admin Frontend</h3>
+<pre><code class="language-json">// admin-frontend/package.json
+{
+  &quot;scripts&quot;: {
+    &quot;build:release&quot;: &quot;webpack --mode production&quot;,
+    &quot;version:sync&quot;: &quot;node ../scripts/sync-version.js admin&quot;,
+    &quot;release:prepare&quot;: &quot;npm run build:release &amp;&amp; npm run test:ci&quot;
+  }
+}
+</code></pre>
+<h2 id="integration-with-existing-tools">Integration with Existing Tools</h2>
+<h3 id="posthog-release-tracking">PostHog Release Tracking</h3>
+<pre><code class="language-typescript">// client-frontend/src/utils/release-tracking.ts
+import posthog from 'posthog-js';
+
+export const trackRelease = (version: string, features: string[]) =&gt; {
+  posthog.capture('release_deployed', {
+    version,
+    features,
+    timestamp: Date.now(),
+    environment: process.env.NODE_ENV
+  });
+};
+
+// Track feature usage after release
+export const trackFeatureAdoption = (feature: string, version: string) =&gt; {
+  posthog.capture('feature_first_use', {
+    feature,
+    release_version: version,
+    user_id: posthog.get_distinct_id()
+  });
+};
+</code></pre>
+<h3 id="qase-test-run-integration">Qase Test Run Integration</h3>
+<pre><code class="language-javascript">// scripts/qase-release-integration.js
+const axios = require('axios');
+
+const createReleaseTestRun = async (version) =&gt; {
+  const response = await axios.post(
+    `https://api.qase.io/v1/project/${process.env.QASE_PROJECT_ID}/run`,
+    {
+      title: `Release ${version} - Automated Testing`,
+      description: `Automated test run for release ${version}`,
+      environment: 'production',
+      milestone: version
+    },
+    {
+      headers: {
+        'Token': process.env.QASE_API_TOKEN,
+        'Content-Type': 'application/json'
+      }
+    }
+  );
+
+  console.log(`✅ Created Qase test run: ${response.data.result.id}`);
+  return response.data.result.id;
+};
+</code></pre>
+<h2 id="benefits-results">Benefits &amp; Results</h2>
+<h3 id="immediate-benefits">Immediate Benefits</h3>
+<p>✅ <strong>Automated versioning</strong> - No manual version bumps<br />
+✅ <strong>Consistent changelogs</strong> - Generated from commits<br />
+✅ <strong>Release automation</strong> - One command deploys everything<br />
+✅ <strong>Team notifications</strong> - Automatic Teams/Slack updates<br />
+✅ <strong>Rollback capability</strong> - Easy version rollbacks  </p>
+<h3 id="long-term-benefits">Long-term Benefits</h3>
+<p>✅ <strong>Release history</strong> - Complete audit trail<br />
+✅ <strong>Feature tracking</strong> - PostHog integration<br />
+✅ <strong>Quality gates</strong> - Automated testing before release<br />
+✅ <strong>Documentation</strong> - Auto-generated release notes<br />
+✅ <strong>Compliance</strong> - Semantic versioning standards  </p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<pre><code class="language-yaml">Release Failed:
+  Issue: Tests failing in CI
+  Solution: Fix tests, then re-run release
+  Command: npm run release:dry-run
+
+Version Conflicts:
+  Issue: Manual version changes conflict
+  Solution: Revert manual changes, use semantic-release
+
+Missing Permissions:
+  Issue: GitHub token lacks permissions
+  Solution: Update token with repo and release permissions
+
+AI Commit Issues:
+  Issue: AI suggestions not relevant
+  Solution: Improve context in git diff, train custom prompts
+</code></pre>
+<h3 id="emergency-procedures">Emergency Procedures</h3>
+<pre><code class="language-bash"># Emergency hotfix release
+git checkout -b hotfix/critical-bug
+# Make fix
+git commit -m &quot;fix(critical): resolve security vulnerability&quot;
+git push origin hotfix/critical-bug
+# Create PR to main
+# Merge triggers automatic release
+
+# Rollback release
+git revert &lt;release-commit-hash&gt;
+git push origin main
+# Triggers automatic rollback release
+</code></pre>
+<hr />
+<p><strong>Implementation Time</strong>: 4-6 hours<br />
+<strong>Setup Complexity</strong>: Medium<br />
+<strong>Maintenance</strong>: Very Low (automated)<br />
+<strong>ROI</strong>: High (eliminates manual release management)</p>
+<p>This setup gives you <strong>complete release automation</strong> with AI-enhanced commit messages and professional changelog generation, perfect for your efficiency-focused development workflow.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

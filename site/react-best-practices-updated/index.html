@@ -1,0 +1,1790 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Central schematic, toolchain, and strategy for AI-augmented software development.">
+      
+      
+      
+      
+        <link rel="prev" href="../project_specification/">
+      
+      
+        <link rel="next" href="../rollout_gantt_kanban/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>React Best Practices - AI-Powered SDLC</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#react-best-practices" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI-Powered SDLC" class="md-header__button md-logo" aria-label="AI-Powered SDLC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI-Powered SDLC
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              React Best Practices
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nydamon/ai-sdlc-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI-Powered SDLC" class="md-nav__button md-logo" aria-label="AI-Powered SDLC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI-Powered SDLC
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nydamon/ai-sdlc-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai_dev_stack_blueprint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Dev Stack Blueprint
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI First Playbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-governance-safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Governance & Safety
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enhanced-config-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Config Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-hooks-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git Hooks Automation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring & Observability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Specification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    React Best Practices
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    React Best Practices
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dual-frontend-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dual Frontend Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dual Frontend Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-facing-frontend-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client-Facing Frontend (TypeScript)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-panel-frontend-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Panel Frontend (JavaScript)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typescript-configuration-client-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      TypeScript Configuration (Client Frontend)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TypeScript Configuration (Client Frontend)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strict-type-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strict Type Safety
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type Definitions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#javascript-configuration-admin-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      JavaScript Configuration (Admin Frontend)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JavaScript Configuration (Admin Frontend)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modern-javascript-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modern JavaScript Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proptypes-for-runtime-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      PropTypes for Runtime Validation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-management-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      State Management Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State Management Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-frontend-zustand-tanstack-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Frontend - Zustand + TanStack Query
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-frontend-context-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Frontend - Context API
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Component Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Component Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-frontend-typescript-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Frontend - TypeScript Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-frontend-javascript-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Frontend - JavaScript Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-frontend-testing-vitest-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Frontend Testing (Vitest + TypeScript)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-frontend-testing-jest-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Frontend Testing (Jest + JavaScript)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-splitting-lazy-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Splitting &amp; Lazy Loading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bundle-analysis-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bundle Analysis &amp; Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Checklist
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-frontend-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Frontend (TypeScript)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-frontend-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Frontend (JavaScript)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shared Standards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout_gantt_kanban/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Rollout Gantt & Kanban
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout_readiness_checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Readiness Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semantic-release-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Semantic Release Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing-qa-strategy-revised/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    QA Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sdlc_architecture_diagram.png" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Diagram
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dual-frontend-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dual Frontend Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dual Frontend Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-facing-frontend-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client-Facing Frontend (TypeScript)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-panel-frontend-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Panel Frontend (JavaScript)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#typescript-configuration-client-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      TypeScript Configuration (Client Frontend)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="TypeScript Configuration (Client Frontend)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strict-type-safety" class="md-nav__link">
+    <span class="md-ellipsis">
+      Strict Type Safety
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type Definitions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#javascript-configuration-admin-frontend" class="md-nav__link">
+    <span class="md-ellipsis">
+      JavaScript Configuration (Admin Frontend)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="JavaScript Configuration (Admin Frontend)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#modern-javascript-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Modern JavaScript Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proptypes-for-runtime-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      PropTypes for Runtime Validation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-management-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      State Management Patterns
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="State Management Patterns">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-frontend-zustand-tanstack-query" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Frontend - Zustand + TanStack Query
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-frontend-context-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Frontend - Context API
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Component Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Component Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-frontend-typescript-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Frontend - TypeScript Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-frontend-javascript-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Frontend - JavaScript Components
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-frontend-testing-vitest-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Frontend Testing (Vitest + TypeScript)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-frontend-testing-jest-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Frontend Testing (Jest + JavaScript)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-splitting-lazy-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Splitting &amp; Lazy Loading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bundle-analysis-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bundle Analysis &amp; Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Checklist
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-frontend-typescript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Frontend (TypeScript)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-frontend-javascript" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Frontend (JavaScript)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shared-standards" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shared Standards
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="react-best-practices">React Best Practices</h1>
+<h2 id="dual-frontend-architecture">Dual Frontend Architecture</h2>
+<h3 id="client-facing-frontend-typescript">Client-Facing Frontend (TypeScript)</h3>
+<pre><code class="language-typescript">// Primary Technology Stack
+- React 18+ with TypeScript for type safety
+- Vite for fast development and building
+- TanStack Query for server state management
+- Zustand for client state management
+- Tailwind CSS for styling
+
+// Analytics &amp; Product Intelligence
+- PostHog for product analytics and user behavior
+- Feature flags and A/B testing capabilities
+- Conversion funnel tracking
+- Real-time user engagement metrics
+
+// Performance &amp; Monitoring
+- Web Vitals collection with PostHog integration
+- Sentry for error tracking
+- Custom performance metrics
+- User experience monitoring
+</code></pre>
+<h3 id="admin-panel-frontend-javascript">Admin Panel Frontend (JavaScript)</h3>
+<pre><code class="language-javascript">// Primary Technology Stack
+- React 18+ with JavaScript (ES6+)
+- Vite or Webpack for build tooling
+- Context API or Redux Toolkit for state management
+- Tailwind CSS for consistent styling
+
+// Internal Monitoring Only
+- Basic performance monitoring
+- Error tracking without external services
+- Admin action logging
+- Internal metrics collection
+</code></pre>
+<h2 id="typescript-configuration-client-frontend">TypeScript Configuration (Client Frontend)</h2>
+<h3 id="strict-type-safety">Strict Type Safety</h3>
+<pre><code class="language-typescript">// tsconfig.json - Client Frontend
+{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;ES2020&quot;,
+    &quot;lib&quot;: [&quot;ES2020&quot;, &quot;DOM&quot;, &quot;DOM.Iterable&quot;],
+    &quot;module&quot;: &quot;ESNext&quot;,
+    &quot;skipLibCheck&quot;: true,
+    &quot;moduleResolution&quot;: &quot;bundler&quot;,
+    &quot;allowImportingTsExtensions&quot;: true,
+    &quot;resolveJsonModule&quot;: true,
+    &quot;isolatedModules&quot;: true,
+    &quot;noEmit&quot;: true,
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+
+    // Strict type checking
+    &quot;strict&quot;: true,
+    &quot;noUnusedLocals&quot;: true,
+    &quot;noUnusedParameters&quot;: true,
+    &quot;noFallthroughCasesInSwitch&quot;: true,
+
+    // Path mapping
+    &quot;baseUrl&quot;: &quot;.&quot;,
+    &quot;paths&quot;: {
+      &quot;@/*&quot;: [&quot;./src/*&quot;],
+      &quot;@/components/*&quot;: [&quot;./src/components/*&quot;],
+      &quot;@/hooks/*&quot;: [&quot;./src/hooks/*&quot;],
+      &quot;@/utils/*&quot;: [&quot;./src/utils/*&quot;],
+      &quot;@/types/*&quot;: [&quot;./src/types/*&quot;]
+    }
+  },
+  &quot;include&quot;: [&quot;src&quot;],
+  &quot;references&quot;: [{ &quot;path&quot;: &quot;./tsconfig.node.json&quot; }]
+}
+</code></pre>
+<h3 id="type-definitions">Type Definitions</h3>
+<pre><code class="language-typescript">// src/types/api.ts
+export interface ApiResponse&lt;T&gt; {
+  data: T;
+  message: string;
+  status: 'success' | 'error';
+  errors?: Record&lt;string, string[]&gt;;
+}
+
+export interface PaginatedResponse&lt;T&gt; extends ApiResponse&lt;T[]&gt; {
+  meta: {
+    current_page: number;
+    last_page: number;
+    per_page: number;
+    total: number;
+  };
+}
+
+// src/types/user.ts
+export interface User {
+  id: string;
+  email: string;
+  name: string;
+  role: 'admin' | 'user' | 'premium';
+  created_at: string;
+  updated_at: string;
+}
+
+// src/types/analytics.ts
+export interface AnalyticsEvent {
+  event_name: string;
+  properties: Record&lt;string, any&gt;;
+  timestamp: number;
+  user_id?: string;
+}
+</code></pre>
+<h2 id="javascript-configuration-admin-frontend">JavaScript Configuration (Admin Frontend)</h2>
+<h3 id="modern-javascript-setup">Modern JavaScript Setup</h3>
+<pre><code class="language-javascript">// jsconfig.json - Admin Frontend
+{
+  &quot;compilerOptions&quot;: {
+    &quot;target&quot;: &quot;es2020&quot;,
+    &quot;lib&quot;: [&quot;es2020&quot;, &quot;dom&quot;, &quot;dom.iterable&quot;],
+    &quot;module&quot;: &quot;esnext&quot;,
+    &quot;moduleResolution&quot;: &quot;node&quot;,
+    &quot;jsx&quot;: &quot;react-jsx&quot;,
+    &quot;allowSyntheticDefaultImports&quot;: true,
+    &quot;esModuleInterop&quot;: true,
+    &quot;baseUrl&quot;: &quot;.&quot;,
+    &quot;paths&quot;: {
+      &quot;@/*&quot;: [&quot;./src/*&quot;],
+      &quot;@/components/*&quot;: [&quot;./src/components/*&quot;],
+      &quot;@/hooks/*&quot;: [&quot;./src/hooks/*&quot;],
+      &quot;@/utils/*&quot;: [&quot;./src/utils/*&quot;]
+    }
+  },
+  &quot;include&quot;: [&quot;src&quot;],
+  &quot;exclude&quot;: [&quot;node_modules&quot;]
+}
+</code></pre>
+<h3 id="proptypes-for-runtime-validation">PropTypes for Runtime Validation</h3>
+<pre><code class="language-javascript">// src/components/AdminDashboard.jsx
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const AdminDashboard = ({ user, metrics, onRefresh }) =&gt; {
+  return (
+    &lt;div className=&quot;admin-dashboard&quot;&gt;
+      &lt;h1&gt;Welcome, {user.name}&lt;/h1&gt;
+      &lt;MetricsPanel metrics={metrics} /&gt;
+      &lt;button onClick={onRefresh}&gt;Refresh Data&lt;/button&gt;
+    &lt;/div&gt;
+  );
+};
+
+AdminDashboard.propTypes = {
+  user: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    role: PropTypes.oneOf(['admin', 'super_admin']).isRequired
+  }).isRequired,
+  metrics: PropTypes.arrayOf(PropTypes.object),
+  onRefresh: PropTypes.func.isRequired
+};
+
+export default AdminDashboard;
+</code></pre>
+<h2 id="state-management-patterns">State Management Patterns</h2>
+<h3 id="client-frontend-zustand-tanstack-query">Client Frontend - Zustand + TanStack Query</h3>
+<pre><code class="language-typescript">// src/stores/userStore.ts
+import { create } from 'zustand';
+import { devtools, persist } from 'zustand/middleware';
+import type { User } from '@/types/user';
+
+interface UserState {
+  user: User | null;
+  isAuthenticated: boolean;
+  preferences: UserPreferences;
+  setUser: (user: User) =&gt; void;
+  logout: () =&gt; void;
+  updatePreferences: (preferences: Partial&lt;UserPreferences&gt;) =&gt; void;
+}
+
+export const useUserStore = create&lt;UserState&gt;()(
+  devtools(
+    persist(
+      (set) =&gt; ({
+        user: null,
+        isAuthenticated: false,
+        preferences: {
+          theme: 'light',
+          notifications: true,
+          language: 'en'
+        },
+        setUser: (user) =&gt; set({ user, isAuthenticated: true }),
+        logout: () =&gt; set({ user: null, isAuthenticated: false }),
+        updatePreferences: (newPreferences) =&gt;
+          set((state) =&gt; ({
+            preferences: { ...state.preferences, ...newPreferences }
+          }))
+      }),
+      { name: 'user-storage' }
+    )
+  )
+);
+
+// src/hooks/useUserQuery.ts
+import { useQuery } from '@tanstack/react-query';
+import { api } from '@/utils/api';
+
+export const useUserQuery = (userId: string) =&gt; {
+  return useQuery({
+    queryKey: ['user', userId],
+    queryFn: () =&gt; api.get&lt;User&gt;(`/users/${userId}`),
+    staleTime: 5 * 60 * 1000, // 5 minutes
+    retry: 3
+  });
+};
+</code></pre>
+<h3 id="admin-frontend-context-api">Admin Frontend - Context API</h3>
+<pre><code class="language-javascript">// src/context/AdminContext.jsx
+import React, { createContext, useContext, useReducer } from 'react';
+
+const AdminContext = createContext();
+
+const adminReducer = (state, action) =&gt; {
+  switch (action.type) {
+    case 'SET_LOADING':
+      return { ...state, loading: action.payload };
+    case 'SET_METRICS':
+      return { ...state, metrics: action.payload, loading: false };
+    case 'SET_ERROR':
+      return { ...state, error: action.payload, loading: false };
+    case 'CLEAR_ERROR':
+      return { ...state, error: null };
+    default:
+      return state;
+  }
+};
+
+export const AdminProvider = ({ children }) =&gt; {
+  const [state, dispatch] = useReducer(adminReducer, {
+    metrics: [],
+    loading: false,
+    error: null
+  });
+
+  const fetchMetrics = async () =&gt; {
+    dispatch({ type: 'SET_LOADING', payload: true });
+    try {
+      const response = await fetch('/api/admin/metrics');
+      const data = await response.json();
+      dispatch({ type: 'SET_METRICS', payload: data });
+    } catch (error) {
+      dispatch({ type: 'SET_ERROR', payload: error.message });
+    }
+  };
+
+  return (
+    &lt;AdminContext.Provider value={{ ...state, fetchMetrics, dispatch }}&gt;
+      {children}
+    &lt;/AdminContext.Provider&gt;
+  );
+};
+
+export const useAdmin = () =&gt; {
+  const context = useContext(AdminContext);
+  if (!context) {
+    throw new Error('useAdmin must be used within AdminProvider');
+  }
+  return context;
+};
+</code></pre>
+<h2 id="component-architecture">Component Architecture</h2>
+<h3 id="client-frontend-typescript-components">Client Frontend - TypeScript Components</h3>
+<pre><code class="language-typescript">// src/components/FeatureCard.tsx
+import React from 'react';
+import { useFeatureFlag } from '@/hooks/useFeatureFlag';
+import { FeatureFlagManager } from '@/utils/feature-flags';
+
+interface FeatureCardProps {
+  title: string;
+  description: string;
+  premium?: boolean;
+  onActivate: (featureId: string) =&gt; void;
+  className?: string;
+}
+
+export const FeatureCard: React.FC&lt;FeatureCardProps&gt; = ({
+  title,
+  description,
+  premium = false,
+  onActivate,
+  className = ''
+}) =&gt; {
+  const isPremiumEnabled = useFeatureFlag('premium-features');
+  const showCard = !premium || isPremiumEnabled;
+
+  const handleClick = () =&gt; {
+    // Track feature interaction with PostHog
+    FeatureFlagManager.trackFeatureUsage('feature-card-click', {
+      feature_title: title,
+      is_premium: premium
+    });
+
+    onActivate(title.toLowerCase());
+  };
+
+  if (!showCard) return null;
+
+  return (
+    &lt;div 
+      className={`feature-card ${className}`}
+      data-feature={title.toLowerCase()}
+      onClick={handleClick}
+    &gt;
+      &lt;h3 className=&quot;text-lg font-semibold&quot;&gt;{title}&lt;/h3&gt;
+      &lt;p className=&quot;text-gray-600&quot;&gt;{description}&lt;/p&gt;
+      {premium &amp;&amp; (
+        &lt;span className=&quot;premium-badge&quot;&gt;Premium&lt;/span&gt;
+      )}
+    &lt;/div&gt;
+  );
+};
+</code></pre>
+<h3 id="admin-frontend-javascript-components">Admin Frontend - JavaScript Components</h3>
+<pre><code class="language-javascript">// src/components/MetricsTable.jsx
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+
+const MetricsTable = ({ metrics, onSort, onFilter }) =&gt; {
+  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
+  const [filterText, setFilterText] = useState('');
+
+  useEffect(() =&gt; {
+    onFilter(filterText);
+  }, [filterText, onFilter]);
+
+  const handleSort = (key) =&gt; {
+    const direction = sortConfig.key === key &amp;&amp; sortConfig.direction === 'asc' 
+      ? 'desc' 
+      : 'asc';
+
+    setSortConfig({ key, direction });
+    onSort(key, direction);
+  };
+
+  return (
+    &lt;div className=&quot;metrics-table&quot;&gt;
+      &lt;div className=&quot;table-controls&quot;&gt;
+        &lt;input
+          type=&quot;text&quot;
+          placeholder=&quot;Filter metrics...&quot;
+          value={filterText}
+          onChange={(e) =&gt; setFilterText(e.target.value)}
+          className=&quot;filter-input&quot;
+        /&gt;
+      &lt;/div&gt;
+
+      &lt;table className=&quot;w-full border-collapse&quot;&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th onClick={() =&gt; handleSort('name')}&gt;
+              Metric Name
+              {sortConfig.key === 'name' &amp;&amp; (
+                &lt;span className={`sort-indicator ${sortConfig.direction}`}&gt;
+                  {sortConfig.direction === 'asc' ? '↑' : '↓'}
+                &lt;/span&gt;
+              )}
+            &lt;/th&gt;
+            &lt;th onClick={() =&gt; handleSort('value')}&gt;Value&lt;/th&gt;
+            &lt;th onClick={() =&gt; handleSort('timestamp')}&gt;Timestamp&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          {metrics.map((metric) =&gt; (
+            &lt;tr key={metric.id}&gt;
+              &lt;td&gt;{metric.name}&lt;/td&gt;
+              &lt;td&gt;{metric.value}&lt;/td&gt;
+              &lt;td&gt;{new Date(metric.timestamp).toLocaleString()}&lt;/td&gt;
+            &lt;/tr&gt;
+          ))}
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  );
+};
+
+MetricsTable.propTypes = {
+  metrics: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    timestamp: PropTypes.string.isRequired
+  })).isRequired,
+  onSort: PropTypes.func.isRequired,
+  onFilter: PropTypes.func.isRequired
+};
+
+export default MetricsTable;
+</code></pre>
+<h2 id="testing-strategies">Testing Strategies</h2>
+<h3 id="client-frontend-testing-vitest-typescript">Client Frontend Testing (Vitest + TypeScript)</h3>
+<pre><code class="language-typescript">// src/components/__tests__/FeatureCard.test.tsx
+import { describe, it, expect, vi } from 'vitest';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { FeatureCard } from '../FeatureCard';
+
+// Mock PostHog
+vi.mock('@/utils/feature-flags', () =&gt; ({
+  FeatureFlagManager: {
+    trackFeatureUsage: vi.fn()
+  }
+}));
+
+vi.mock('@/hooks/useFeatureFlag', () =&gt; ({
+  useFeatureFlag: vi.fn(() =&gt; true)
+}));
+
+describe('FeatureCard', () =&gt; {
+  const defaultProps = {
+    title: 'Test Feature',
+    description: 'Test description',
+    onActivate: vi.fn()
+  };
+
+  it('renders correctly with required props', () =&gt; {
+    render(&lt;FeatureCard {...defaultProps} /&gt;);
+
+    expect(screen.getByText('Test Feature')).toBeInTheDocument();
+    expect(screen.getByText('Test description')).toBeInTheDocument();
+  });
+
+  it('calls onActivate when clicked', () =&gt; {
+    const mockOnActivate = vi.fn();
+    render(&lt;FeatureCard {...defaultProps} onActivate={mockOnActivate} /&gt;);
+
+    fireEvent.click(screen.getByText('Test Feature'));
+
+    expect(mockOnActivate).toHaveBeenCalledWith('test feature');
+  });
+
+  it('shows premium badge for premium features', () =&gt; {
+    render(&lt;FeatureCard {...defaultProps} premium={true} /&gt;);
+
+    expect(screen.getByText('Premium')).toBeInTheDocument();
+  });
+});
+</code></pre>
+<h3 id="admin-frontend-testing-jest-javascript">Admin Frontend Testing (Jest + JavaScript)</h3>
+<pre><code class="language-javascript">// src/components/__tests__/MetricsTable.test.jsx
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import MetricsTable from '../MetricsTable';
+
+const mockMetrics = [
+  { id: '1', name: 'CPU Usage', value: '75%', timestamp: '2024-01-01T10:00:00Z' },
+  { id: '2', name: 'Memory Usage', value: '60%', timestamp: '2024-01-01T10:01:00Z' }
+];
+
+describe('MetricsTable', () =&gt; {
+  const defaultProps = {
+    metrics: mockMetrics,
+    onSort: jest.fn(),
+    onFilter: jest.fn()
+  };
+
+  beforeEach(() =&gt; {
+    jest.clearAllMocks();
+  });
+
+  it('renders metrics correctly', () =&gt; {
+    render(&lt;MetricsTable {...defaultProps} /&gt;);
+
+    expect(screen.getByText('CPU Usage')).toBeInTheDocument();
+    expect(screen.getByText('Memory Usage')).toBeInTheDocument();
+  });
+
+  it('calls onSort when column header is clicked', () =&gt; {
+    const mockOnSort = jest.fn();
+    render(&lt;MetricsTable {...defaultProps} onSort={mockOnSort} /&gt;);
+
+    fireEvent.click(screen.getByText('Metric Name'));
+
+    expect(mockOnSort).toHaveBeenCalledWith('name', 'asc');
+  });
+
+  it('filters metrics when filter input changes', () =&gt; {
+    const mockOnFilter = jest.fn();
+    render(&lt;MetricsTable {...defaultProps} onFilter={mockOnFilter} /&gt;);
+
+    const filterInput = screen.getByPlaceholderText('Filter metrics...');
+    fireEvent.change(filterInput, { target: { value: 'CPU' } });
+
+    expect(mockOnFilter).toHaveBeenCalledWith('CPU');
+  });
+});
+</code></pre>
+<h2 id="performance-optimization">Performance Optimization</h2>
+<h3 id="code-splitting-lazy-loading">Code Splitting &amp; Lazy Loading</h3>
+<pre><code class="language-typescript">// src/routes/index.tsx - Client Frontend
+import { lazy, Suspense } from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
+
+// Lazy load page components
+const Dashboard = lazy(() =&gt; import('@/pages/Dashboard'));
+const Profile = lazy(() =&gt; import('@/pages/Profile'));
+const Settings = lazy(() =&gt; import('@/pages/Settings'));
+
+export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+      &lt;Suspense fallback={&lt;LoadingSpinner /&gt;}&gt;
+        &lt;Dashboard /&gt;
+      &lt;/Suspense&gt;
+    )
+  },
+  {
+    path: '/profile',
+    element: (
+      &lt;Suspense fallback={&lt;LoadingSpinner /&gt;}&gt;
+        &lt;Profile /&gt;
+      &lt;/Suspense&gt;
+    )
+  }
+]);
+</code></pre>
+<h3 id="bundle-analysis-optimization">Bundle Analysis &amp; Optimization</h3>
+<pre><code class="language-typescript">// vite.config.ts - Client Frontend
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src')
+    }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          analytics: ['posthog-js'],
+          ui: ['@headlessui/react', '@heroicons/react']
+        }
+      }
+    }
+  },
+  optimizeDeps: {
+    include: ['posthog-js']
+  }
+});
+</code></pre>
+<hr />
+<h2 id="implementation-checklist">Implementation Checklist</h2>
+<h3 id="client-frontend-typescript">Client Frontend (TypeScript)</h3>
+<ul>
+<li>[ ] Set up Vite with TypeScript configuration</li>
+<li>[ ] Configure Zustand + TanStack Query</li>
+<li>[ ] Integrate PostHog for analytics and feature flags</li>
+<li>[ ] Set up comprehensive type definitions</li>
+<li>[ ] Implement component testing with Vitest</li>
+<li>[ ] Configure code splitting and lazy loading</li>
+</ul>
+<h3 id="admin-frontend-javascript">Admin Frontend (JavaScript)</h3>
+<ul>
+<li>[ ] Set up build tooling (Vite/Webpack)</li>
+<li>[ ] Configure Context API for state management</li>
+<li>[ ] Set up PropTypes for runtime validation</li>
+<li>[ ] Implement component testing with Jest</li>
+<li>[ ] Configure internal monitoring only</li>
+<li>[ ] Set up admin-specific routing</li>
+</ul>
+<h3 id="shared-standards">Shared Standards</h3>
+<ul>
+<li>[ ] Implement consistent ESLint rules for both frontends</li>
+<li>[ ] Set up shared Prettier configuration</li>
+<li>[ ] Create component library standards</li>
+<li>[ ] Establish testing patterns and utilities</li>
+<li>[ ] Configure CI/CD for both frontend builds</li>
+</ul>
+<p><em>This dual frontend approach provides optimal user experience for customers while maintaining internal admin efficiency with appropriate monitoring and analytics for each use case.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

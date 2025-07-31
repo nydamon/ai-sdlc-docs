@@ -1,0 +1,1942 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Central schematic, toolchain, and strategy for AI-augmented software development.">
+      
+      
+      
+      
+        <link rel="prev" href="../ai_dev_stack_blueprint/">
+      
+      
+        <link rel="next" href="../ai-governance-safety/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>AI First Playbook - AI-Powered SDLC</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai-first-development-playbook" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI-Powered SDLC" class="md-header__button md-logo" aria-label="AI-Powered SDLC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI-Powered SDLC
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AI First Playbook
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nydamon/ai-sdlc-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI-Powered SDLC" class="md-nav__button md-logo" aria-label="AI-Powered SDLC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI-Powered SDLC
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nydamon/ai-sdlc-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai_dev_stack_blueprint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Dev Stack Blueprint
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    AI First Playbook
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI First Playbook
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-tools-in-our-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Tools in Our Stack
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Tools in Our Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primary-ai-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primary AI Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specialized-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specialized Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use AI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="When to Use AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-trust-scenarios-minimal-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ High-Trust Scenarios (Minimal Review)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium-trust-scenarios-peer-review-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ Medium-Trust Scenarios (Peer Review Required)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-trust-scenarios-senior-security-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚨 Low-Trust Scenarios (Senior + Security Review)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-usage-guidelines-by-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Usage Guidelines by Role
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Usage Guidelines by Role">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#junior-developer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Junior Developer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mid-level-developer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mid-Level Developer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#senior-developer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Senior Developer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tech-leadarchitect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tech Lead/Architect
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technology-specific-ai-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technology-Specific AI Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technology-Specific AI Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laravel-backend-ai-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Laravel Backend AI Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typescript-client-frontend-ai-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      TypeScript Client Frontend AI Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript-admin-frontend-ai-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      JavaScript Admin Frontend AI Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-templates-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Templates Library
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prompt Templates Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-generation-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Generation Prompts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-review-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Review Prompts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-quality-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Quality Gates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Quality Gates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-commit-ai-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Commit AI Checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd-ai-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI/CD AI Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-governance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Governance Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Governance Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Tracking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Thresholds
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-tool-failure-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Tool Failure Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Tool Failure Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fallback-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fallback Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emergency-contacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emergency Contacts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-certification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training &amp; Certification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Training &amp; Certification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onboarding-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Onboarding Checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ongoing-education" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ongoing Education
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Success Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Success Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#developer-productivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Developer Productivity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Quality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-posture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Posture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-adoption" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Adoption
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-governance-safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Governance & Safety
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enhanced-config-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Config Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-hooks-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git Hooks Automation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring & Observability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Specification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react-best-practices-updated/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    React Best Practices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout_gantt_kanban/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Rollout Gantt & Kanban
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout_readiness_checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Readiness Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semantic-release-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Semantic Release Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing-qa-strategy-revised/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    QA Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sdlc_architecture_diagram.png" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Diagram
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-tools-in-our-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Tools in Our Stack
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Tools in Our Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primary-ai-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primary AI Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specialized-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specialized Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use AI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="When to Use AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-trust-scenarios-minimal-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ High-Trust Scenarios (Minimal Review)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium-trust-scenarios-peer-review-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ Medium-Trust Scenarios (Peer Review Required)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-trust-scenarios-senior-security-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚨 Low-Trust Scenarios (Senior + Security Review)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-usage-guidelines-by-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Usage Guidelines by Role
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Usage Guidelines by Role">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#junior-developer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Junior Developer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mid-level-developer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mid-Level Developer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#senior-developer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Senior Developer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tech-leadarchitect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tech Lead/Architect
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technology-specific-ai-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technology-Specific AI Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technology-Specific AI Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laravel-backend-ai-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Laravel Backend AI Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typescript-client-frontend-ai-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      TypeScript Client Frontend AI Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript-admin-frontend-ai-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      JavaScript Admin Frontend AI Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-templates-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Templates Library
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prompt Templates Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-generation-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Generation Prompts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-review-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Review Prompts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-quality-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Quality Gates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Quality Gates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-commit-ai-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Commit AI Checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd-ai-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI/CD AI Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-governance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Governance Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Governance Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Tracking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Thresholds
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-tool-failure-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Tool Failure Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Tool Failure Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fallback-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fallback Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emergency-contacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emergency Contacts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-certification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training &amp; Certification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Training &amp; Certification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onboarding-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Onboarding Checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ongoing-education" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ongoing Education
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Success Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Success Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#developer-productivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Developer Productivity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Quality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-posture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Posture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-adoption" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Adoption
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ai-first-development-playbook">AI-First Development Playbook</h1>
+<h2 id="overview">Overview</h2>
+<p>This playbook defines when, how, and why to use AI tools in our development workflow. It ensures consistent AI adoption while maintaining code quality and security standards.</p>
+<h2 id="ai-tools-in-our-stack">AI Tools in Our Stack</h2>
+<h3 id="primary-ai-tools">Primary AI Tools</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Use Case</th>
+<th>Trust Level</th>
+<th>Human Review Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cursor IDE</strong></td>
+<td>Code generation, refactoring</td>
+<td>High</td>
+<td>For security components</td>
+</tr>
+<tr>
+<td><strong>CodiumAI</strong></td>
+<td>Test generation, code review</td>
+<td>High</td>
+<td>For critical paths</td>
+</tr>
+<tr>
+<td><strong>GitHub Copilot</strong></td>
+<td>Code completion, suggestions</td>
+<td>Medium</td>
+<td>For complex logic</td>
+</tr>
+<tr>
+<td><strong>v0.dev</strong></td>
+<td>Component scaffolding</td>
+<td>Medium</td>
+<td>Always</td>
+</tr>
+<tr>
+<td><strong>ChatGPT/Claude</strong></td>
+<td>Architecture planning, debugging</td>
+<td>Low</td>
+<td>Always</td>
+</tr>
+</tbody>
+</table>
+<h3 id="specialized-tools">Specialized Tools</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Use Case</th>
+<th>Integration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PostHog AI</strong></td>
+<td>User behavior analysis</td>
+<td>Client frontend only</td>
+</tr>
+<tr>
+<td><strong>SonarQube AI</strong></td>
+<td>Code quality insights</td>
+<td>Automated in CI/CD</td>
+</tr>
+<tr>
+<td><strong>Qase AI</strong></td>
+<td>Test case generation</td>
+<td>Test management</td>
+</tr>
+</tbody>
+</table>
+<h2 id="when-to-use-ai">When to Use AI</h2>
+<h3 id="high-trust-scenarios-minimal-review">✅ <strong>High-Trust Scenarios (Minimal Review)</strong></h3>
+<pre><code class="language-yaml">Code Generation:
+  - CRUD operations and basic controllers
+  - Standard React components (non-critical)
+  - Utility functions and helpers
+  - API endpoint boilerplate
+  - Database migrations (simple)
+  - Unit test generation
+  - Documentation and comments
+
+Refactoring:
+  - Code formatting and style improvements
+  - Simple performance optimizations
+  - Type safety improvements
+  - Dependency updates
+</code></pre>
+<h3 id="medium-trust-scenarios-peer-review-required">⚠️ <strong>Medium-Trust Scenarios (Peer Review Required)</strong></h3>
+<pre><code class="language-yaml">Business Logic:
+  - Complex algorithms
+  - Data validation logic
+  - API integrations
+  - State management
+  - Error handling patterns
+  - Performance-critical code
+
+Frontend Components:
+  - User interaction handling
+  - Form validations
+  - Routing logic
+  - Component lifecycle management
+</code></pre>
+<h3 id="low-trust-scenarios-senior-security-review">🚨 <strong>Low-Trust Scenarios (Senior + Security Review)</strong></h3>
+<pre><code class="language-yaml">Security-Critical:
+  - Authentication and authorization
+  - Payment processing
+  - Data encryption/decryption
+  - API security middleware
+  - User permission systems
+  - Session management
+
+Infrastructure:
+  - Database schema changes
+  - Environment configurations
+  - Deployment scripts
+  - Security configurations
+  - CI/CD pipeline modifications
+</code></pre>
+<h2 id="ai-usage-guidelines-by-role">AI Usage Guidelines by Role</h2>
+<h3 id="junior-developer">Junior Developer</h3>
+<pre><code class="language-yaml">Allowed AI Usage: 60% max per feature
+Mandatory Review: All AI-generated code
+AI Tools Access: Cursor, CodiumAI (supervised)
+Restrictions:
+  - No security-related code generation
+  - No database schema modifications
+  - No production configuration changes
+Required Training: 8 hours AI best practices
+</code></pre>
+<h3 id="mid-level-developer">Mid-Level Developer</h3>
+<pre><code class="language-yaml">Allowed AI Usage: 75% max per feature
+Mandatory Review: Security and business logic only
+AI Tools Access: Full stack except admin tools
+Restrictions:
+  - No authentication system changes
+  - No payment processing modifications
+Can Review: Junior developer AI code
+Required Training: 4 hours advanced AI usage
+</code></pre>
+<h3 id="senior-developer">Senior Developer</h3>
+<pre><code class="language-yaml">Allowed AI Usage: 85% max per feature
+Mandatory Review: Security-critical components only
+AI Tools Access: Full access including admin tools
+Responsibilities:
+  - Review all AI-generated security code
+  - Approve AI usage exceptions
+  - Train junior developers
+Can Override: AI governance rules (with justification)
+</code></pre>
+<h3 id="tech-leadarchitect">Tech Lead/Architect</h3>
+<pre><code class="language-yaml">Allowed AI Usage: No limits
+Mandatory Review: None (trusted judgment)
+Responsibilities:
+  - Set AI usage policies
+  - Approve architectural AI decisions
+  - Review AI governance metrics
+  - Handle AI tool failures/incidents
+</code></pre>
+<h2 id="technology-specific-ai-guidelines">Technology-Specific AI Guidelines</h2>
+<h3 id="laravel-backend-ai-usage">Laravel Backend AI Usage</h3>
+<pre><code class="language-php">// ✅ High-Trust: Basic CRUD Controller
+class PostController extends Controller
+{
+    // AI Prompt: &quot;Generate a Laravel resource controller for Post model with validation&quot;
+    public function store(StorePostRequest $request)
+    {
+        $post = Post::create($request-&gt;validated());
+        return new PostResource($post);
+    }
+}
+
+// ⚠️ Medium-Trust: Business Logic (Needs Review)
+class PaymentProcessor 
+{
+    // AI Prompt: &quot;Generate payment processing logic with error handling&quot;
+    // ❗ Requires senior developer review
+    public function processPayment(PaymentRequest $request) {
+        // Complex business logic here
+    }
+}
+
+// 🚨 Low-Trust: Authentication (Security Review Required)
+class AuthController extends Controller
+{
+    // AI Prompt: &quot;Generate secure authentication controller&quot;
+    // ❗ Requires security engineer review
+    public function login(LoginRequest $request) {
+        // Authentication logic - MUST be manually reviewed
+    }
+}
+</code></pre>
+<h3 id="typescript-client-frontend-ai-usage">TypeScript Client Frontend AI Usage</h3>
+<pre><code class="language-typescript">// ✅ High-Trust: Basic Component
+// AI Prompt: &quot;Generate a TypeScript React component with PostHog tracking&quot;
+interface FeatureCardProps {
+  title: string;
+  description: string;
+  onActivate: () =&gt; void;
+}
+
+export const FeatureCard: React.FC&lt;FeatureCardProps&gt; = ({ 
+  title, 
+  description, 
+  onActivate 
+}) =&gt; {
+  const handleClick = () =&gt; {
+    posthog.capture('feature_activated', { feature: title });
+    onActivate();
+  };
+
+  return (
+    &lt;div onClick={handleClick} data-feature={title}&gt;
+      &lt;h3&gt;{title}&lt;/h3&gt;
+      &lt;p&gt;{description}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+};
+
+// ⚠️ Medium-Trust: Complex Hook (Needs Review)
+// AI Prompt: &quot;Generate a custom hook for API data fetching with error handling&quot;
+export const useApiData = (endpoint: string) =&gt; {
+  // Complex state management logic
+  // ❗ Requires peer review for error handling
+};
+
+// 🚨 Low-Trust: Payment Component (Security Review)
+// AI Prompt: &quot;Generate secure payment form component&quot;
+export const PaymentForm: React.FC = () =&gt; {
+  // Payment handling logic
+  // ❗ Requires security review before deployment
+};
+</code></pre>
+<h3 id="javascript-admin-frontend-ai-usage">JavaScript Admin Frontend AI Usage</h3>
+<pre><code class="language-javascript">// ✅ High-Trust: Admin Component
+// AI Prompt: &quot;Generate admin dashboard component with PropTypes&quot;
+const AdminDashboard = ({ metrics, users, onRefresh }) =&gt; {
+  return (
+    &lt;div className=&quot;admin-dashboard&quot;&gt;
+      &lt;MetricsPanel metrics={metrics} /&gt;
+      &lt;UsersList users={users} /&gt;
+      &lt;button onClick={onRefresh}&gt;Refresh&lt;/button&gt;
+    &lt;/div&gt;
+  );
+};
+
+AdminDashboard.propTypes = {
+  metrics: PropTypes.array.isRequired,
+  users: PropTypes.array.isRequired,
+  onRefresh: PropTypes.func.isRequired
+};
+
+// ⚠️ Medium-Trust: Data Processing (Needs Review)
+// AI Prompt: &quot;Generate admin data processing utilities&quot;
+const processAdminData = (rawData) =&gt; {
+  // Data transformation logic
+  // ❗ Requires review for data integrity
+};
+</code></pre>
+<h2 id="prompt-templates-library">Prompt Templates Library</h2>
+<h3 id="code-generation-prompts">Code Generation Prompts</h3>
+<pre><code class="language-markdown">### Laravel Controller Prompt
+Generate a Laravel resource controller with the following requirements:
+- Use Form Request validation
+- Include proper error handling
+- Add OpenAPI documentation
+- Follow Laravel best practices
+- Generate corresponding Pest tests
+
+Model: {model_name}
+Relationships: {relationships}
+Business Rules: {business_rules}
+
+### React Component Prompt
+Create a React TypeScript component with:
+- Proper TypeScript interfaces
+- Accessibility attributes (ARIA)
+- Error boundaries
+- PostHog event tracking (client only)
+- Comprehensive tests
+- Storybook documentation
+
+Component: {component_name}
+Props: {props_interface}
+Behavior: {component_behavior}
+
+### Test Generation Prompt
+Generate comprehensive tests for this code:
+- Cover all public methods/functions
+- Include edge cases and error scenarios
+- Mock external dependencies
+- Test user interactions
+- Ensure accessibility compliance
+
+Framework: {test_framework}
+Coverage Target: 90%+
+</code></pre>
+<h3 id="code-review-prompts">Code Review Prompts</h3>
+<pre><code class="language-markdown">### Security Review Prompt
+Perform a security audit of this code:
+- Check for authentication/authorization issues
+- Identify potential injection vulnerabilities
+- Review data validation and sanitization
+- Check for exposed sensitive information
+- Validate encryption usage
+- Review API security
+
+Code Type: {backend|frontend|full-stack}
+Security Level: {low|medium|high|critical}
+
+### Performance Review Prompt
+Analyze this code for performance issues:
+- Identify potential bottlenecks
+- Review database query optimization
+- Check for unnecessary computations
+- Analyze bundle size impact (frontend)
+- Review caching opportunities
+- Suggest optimizations
+
+Target: {web|mobile|api}
+Performance Budget: {constraints}
+</code></pre>
+<h2 id="ai-quality-gates">AI Quality Gates</h2>
+<h3 id="pre-commit-ai-checks">Pre-Commit AI Checks</h3>
+<pre><code class="language-yaml">Automated Checks:
+  - AI-generated code formatting
+  - Basic security pattern detection
+  - Test generation for new functions
+  - Documentation generation
+  - Import organization
+
+Manual Checks Required:
+  - Security-critical code review
+  - Business logic validation
+  - API contract changes
+  - Database schema modifications
+</code></pre>
+<h3 id="cicd-ai-integration">CI/CD AI Integration</h3>
+<pre><code class="language-yaml">Pipeline Stages:
+  1. AI Code Quality Scan (SonarQube + AI)
+  2. AI-Generated Test Execution
+  3. AI Security Review (GitGuardian + Custom)
+  4. AI Performance Analysis
+  5. AI Documentation Validation
+
+Failure Triggers:
+  - Security vulnerabilities detected
+  - Test coverage below 85%
+  - Performance regression &gt; 10%
+  - Documentation completeness &lt; 90%
+</code></pre>
+<h2 id="ai-governance-metrics">AI Governance Metrics</h2>
+<h3 id="usage-tracking">Usage Tracking</h3>
+<pre><code class="language-typescript">interface AIUsageMetrics {
+  developer: string;
+  tool: string;
+  codeGenerated: number; // lines
+  timesSaved: number; // minutes
+  reviewTime: number; // minutes
+  issuesFound: number;
+  securityFlags: number;
+}
+
+// Weekly AI Governance Report
+const generateAIReport = () =&gt; ({
+  totalAICode: calculateAICodePercentage(),
+  qualityMetrics: getAICodeQualityScores(),
+  securityIncidents: getAISecurityIssues(),
+  developerProductivity: getProductivityGains(),
+  recommendations: generateRecommendations()
+});
+</code></pre>
+<h3 id="quality-thresholds">Quality Thresholds</h3>
+<pre><code class="language-yaml">Code Quality Gates:
+  AI Code Coverage: &lt; 80% per feature
+  Human Review Rate: &gt; 95% for security code
+  Bug Rate: AI code bug rate &lt; 2x manual code
+  Performance: No regression &gt; 5%
+
+Alert Triggers:
+  Security Pattern Detected: Immediate review
+  High AI Usage: &gt; 90% in single feature
+  Quality Degradation: Bug rate increase
+  Policy Violation: Unauthorized AI tool usage
+</code></pre>
+<h2 id="ai-tool-failure-procedures">AI Tool Failure Procedures</h2>
+<h3 id="fallback-strategies">Fallback Strategies</h3>
+<pre><code class="language-yaml">Cursor/CodiumAI Unavailable:
+  1. Switch to GitHub Copilot
+  2. Use manual development (time estimates x2)
+  3. Prioritize critical features only
+  4. Document technical debt created
+
+PostHog AI Down:
+  1. Use manual analytics review
+  2. Switch to basic event tracking
+  3. Schedule enhanced analysis post-recovery
+
+Complete AI Tool Failure:
+  1. Activate manual development procedures
+  2. Extend sprint timelines by 40%
+  3. Focus on bug fixes and critical features
+  4. Document lessons learned
+</code></pre>
+<h3 id="emergency-contacts">Emergency Contacts</h3>
+<pre><code class="language-yaml">AI Tool Issues:
+  - CodiumAI: Support ticket + Slack escalation
+  - Cursor: GitHub issue + Twitter DM
+  - PostHog: In-app support + email
+
+Internal Escalation:
+  - Tech Lead: Immediate notification
+  - DevOps: Infrastructure-related AI issues  
+  - Security: AI security concerns
+  - Management: Productivity impact &gt; 25%
+</code></pre>
+<h2 id="training-certification">Training &amp; Certification</h2>
+<h3 id="onboarding-checklist">Onboarding Checklist</h3>
+<pre><code class="language-yaml">Week 1 - AI Tool Familiarization:
+  - [ ] Cursor IDE setup and basic usage
+  - [ ] CodiumAI integration training
+  - [ ] Prompt engineering basics
+  - [ ] Security awareness training
+
+Week 2 - Framework-Specific Training:
+  - [ ] Laravel AI best practices
+  - [ ] React AI development patterns
+  - [ ] Testing with AI assistance
+  - [ ] Code review standards
+
+Week 3 - Advanced Usage:
+  - [ ] Custom prompt creation
+  - [ ] AI debugging techniques
+  - [ ] Performance optimization with AI
+  - [ ] Security review processes
+
+Assessment:
+  - [ ] Complete AI development task
+  - [ ] Pass security quiz (90%+)
+  - [ ] Demonstrate code review skills
+  - [ ] Show prompt engineering competency
+</code></pre>
+<h3 id="ongoing-education">Ongoing Education</h3>
+<pre><code class="language-yaml">Monthly Requirements:
+  - AI tool updates and new features
+  - Security best practices review
+  - New prompt template training
+  - AI governance policy updates
+
+Quarterly Reviews:
+  - Individual AI usage analysis
+  - Team productivity assessment
+  - Tool effectiveness evaluation
+  - Policy adjustment recommendations
+</code></pre>
+<h2 id="success-metrics">Success Metrics</h2>
+<h3 id="developer-productivity">Developer Productivity</h3>
+<ul>
+<li><strong>Target</strong>: 50% reduction in development time for routine tasks</li>
+<li><strong>Measurement</strong>: Story point velocity with/without AI</li>
+<li><strong>Review</strong>: Weekly team retrospectives</li>
+</ul>
+<h3 id="code-quality">Code Quality</h3>
+<ul>
+<li><strong>Target</strong>: Maintain 85%+ test coverage with AI-generated tests</li>
+<li><strong>Measurement</strong>: SonarQube quality gates + manual review</li>
+<li><strong>Review</strong>: Monthly quality reports</li>
+</ul>
+<h3 id="security-posture">Security Posture</h3>
+<ul>
+<li><strong>Target</strong>: Zero security incidents from AI-generated code</li>
+<li><strong>Measurement</strong>: GitGuardian scans + security reviews</li>
+<li><strong>Review</strong>: Quarterly security assessments</li>
+</ul>
+<h3 id="ai-adoption">AI Adoption</h3>
+<ul>
+<li><strong>Target</strong>: 80% of development tasks use AI assistance</li>
+<li><strong>Measurement</strong>: Git commit analysis + developer surveys  </li>
+<li><strong>Review</strong>: Monthly adoption tracking</li>
+</ul>
+<hr />
+<p><strong>This playbook should be reviewed and updated monthly based on team feedback and AI tool evolution.</strong></p>
+<p><strong>Next Steps:</strong>
+1. <strong>Week 1</strong>: Team training on AI guidelines
+2. <strong>Week 2</strong>: Implement usage tracking
+3. <strong>Week 3</strong>: Deploy quality gates
+4. <strong>Week 4</strong>: First governance review</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

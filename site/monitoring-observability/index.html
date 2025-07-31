@@ -1,0 +1,2513 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Central schematic, toolchain, and strategy for AI-augmented software development.">
+      
+      
+      
+      
+        <link rel="prev" href="../git-hooks-automation/">
+      
+      
+        <link rel="next" href="../project_specification/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Monitoring & Observability - AI-Powered SDLC</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#custom-performance-metrics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI-Powered SDLC" class="md-header__button md-logo" aria-label="AI-Powered SDLC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI-Powered SDLC
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Monitoring & Observability
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nydamon/ai-sdlc-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI-Powered SDLC" class="md-nav__button md-logo" aria-label="AI-Powered SDLC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI-Powered SDLC
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nydamon/ai-sdlc-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai_dev_stack_blueprint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Dev Stack Blueprint
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI First Playbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-governance-safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Governance & Safety
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enhanced-config-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Config Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-hooks-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git Hooks Automation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Monitoring & Observability
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring & Observability
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#custom-performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Performance Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-tracking-alerting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Tracking &amp; Alerting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Tracking &amp; Alerting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sentry-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentry Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frontend-performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontend Performance Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Frontend Performance Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-frontend-typescript-web-vitals-posthog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Frontend (TypeScript) - Web Vitals + PostHog
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-frontend-javascript-basic-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Frontend (JavaScript) - Basic Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-experience-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Experience Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#business-intelligence-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Business Intelligence &amp; Analytics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Business Intelligence &amp; Analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-metrics-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Metrics Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Infrastructure Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-performance-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server Performance Tracking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue Performance Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alerting-notification-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alerting &amp; Notification System
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alerting &amp; Notification System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-channel-alert-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Channel Alert Manager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smart-alert-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Smart Alert Filtering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization Insights
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization Insights">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-performance-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Performance Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-time-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-Time Dashboard
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Real-Time Dashboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metrics-dashboard-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics Dashboard API
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Checklist
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-core-monitoring-week-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1: Core Monitoring (Week 1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-advanced-metrics-week-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2: Advanced Metrics (Week 2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-intelligence-optimization-week-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 3: Intelligence &amp; Optimization (Week 3)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring Targets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Specification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react-best-practices-updated/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    React Best Practices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout_gantt_kanban/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Rollout Gantt & Kanban
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout_readiness_checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Readiness Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semantic-release-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Semantic Release Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing-qa-strategy-revised/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    QA Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sdlc_architecture_diagram.png" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Diagram
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#custom-performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Performance Metrics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-tracking-alerting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Error Tracking &amp; Alerting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Error Tracking &amp; Alerting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sentry-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sentry Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#custom-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Error Handling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#frontend-performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontend Performance Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Frontend Performance Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#client-frontend-typescript-web-vitals-posthog" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client Frontend (TypeScript) - Web Vitals + PostHog
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#admin-frontend-javascript-basic-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Admin Frontend (JavaScript) - Basic Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-experience-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Experience Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#business-intelligence-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Business Intelligence &amp; Analytics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Business Intelligence &amp; Analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-metrics-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom Metrics Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#infrastructure-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Infrastructure Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#server-performance-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server Performance Tracking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#queue-performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Queue Performance Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alerting-notification-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alerting &amp; Notification System
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Alerting &amp; Notification System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-channel-alert-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multi-Channel Alert Manager
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smart-alert-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Smart Alert Filtering
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-optimization-insights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization Insights
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization Insights">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-performance-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Performance Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#real-time-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Real-Time Dashboard
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Real-Time Dashboard">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#metrics-dashboard-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metrics Dashboard API
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Checklist
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Checklist">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-core-monitoring-week-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1: Core Monitoring (Week 1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-advanced-metrics-week-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2: Advanced Metrics (Week 2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-intelligence-optimization-week-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 3: Intelligence &amp; Optimization (Week 3)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#monitoring-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Monitoring Targets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Monitoring & Observability</h1>
+
+<pre><code>public function businessMetrics(): JsonResponse
+{
+    // Combine Laravel Pulse data with PostHog insights for client frontend
+    $metrics = [
+        'client_frontend' =&gt; [
+            'web_vitals' =&gt; $this-&gt;getClientWebVitals(),
+            'user_engagement' =&gt; $this-&gt;getClientEngagementMetrics(),
+            'conversion_funnel' =&gt; $this-&gt;getConversionMetrics(),
+            'feature_adoption' =&gt; $this-&gt;getFeatureAdoptionMetrics(),
+        ],
+        'admin_frontend' =&gt; [
+            'performance' =&gt; $this-&gt;getAdminPerformanceMetrics(),
+            'usage' =&gt; $this-&gt;getAdminUsageMetrics(),
+            'errors' =&gt; $this-&gt;getAdminErrorMetrics(),
+        ],
+        'backend' =&gt; [
+            'api_performance' =&gt; $this-&gt;getAPIPerformanceMetrics(),
+            'database_health' =&gt; $this-&gt;getDatabaseMetrics(),
+            'queue_status' =&gt; $this-&gt;getQueueMetrics(),
+        ]
+    ];
+
+    return response()-&gt;json($metrics);
+}
+
+private function getClientWebVitals(): array
+{
+    return [
+        'lcp' =&gt; Pulse::values('client_web_vitals')
+            -&gt;where('key', 'LCP')
+            -&gt;whereBetween('timestamp', [now()-&gt;subDay(), now()])
+            -&gt;avg('value'),
+        'fid' =&gt; Pulse::values('client_web_vitals')
+            -&gt;where('key', 'FID')
+            -&gt;whereBetween('timestamp', [now()-&gt;subDay(), now()])
+            -&gt;avg('value'),
+        'cls' =&gt; Pulse::values('client_web_vitals')
+            -&gt;where('key', 'CLS')
+            -&gt;whereBetween('timestamp', [now()-&gt;subDay(), now()])
+            -&gt;avg('value'),
+    ];
+}
+
+private function getAdminPerformanceMetrics(): array
+{
+    return [
+        'avg_page_load' =&gt; Pulse::values('admin_metrics')
+            -&gt;where('key', 'page_load')
+            -&gt;whereBetween('timestamp', [now()-&gt;subDay(), now()])
+            -&gt;avg('value'),
+        'error_count' =&gt; Pulse::values('admin_metrics')
+            -&gt;where('key', 'javascript_error')
+            -&gt;whereBetween('timestamp', [now()-&gt;subDay(), now()])
+            -&gt;count(),
+        'daily_active_admins' =&gt; Pulse::values('admin_metrics')
+            -&gt;whereBetween('timestamp', [now()-&gt;subDay(), now()])
+            -&gt;distinct('key_hash')
+            -&gt;count(),
+    ];
+}
+</code></pre>
+<p>}</p>
+<pre><code>
+### PostHog Feature Flags Integration
+```typescript
+// resources/js/client/utils/feature-flags.ts
+import posthog from 'posthog-js';
+
+export class FeatureFlagManager {
+  static isFeatureEnabled(flagKey: string): boolean {
+    return posthog.isFeatureEnabled(flagKey) || false;
+  }
+
+  static getFeatureFlag(flagKey: string): string | boolean | undefined {
+    return posthog.getFeatureFlag(flagKey);
+  }
+
+  static trackFeatureUsage(flagKey: string, value: any): void {
+    posthog.capture('feature_flag_used', {
+      flag_key: flagKey,
+      flag_value: value,
+      timestamp: Date.now()
+    });
+  }
+
+  // A/B testing helpers
+  static getVariant(experimentKey: string): string {
+    const variant = posthog.getFeatureFlag(experimentKey);
+
+    // Track experiment participation
+    posthog.capture('experiment_participated', {
+      experiment_key: experimentKey,
+      variant: variant,
+      timestamp: Date.now()
+    });
+
+    return variant as string || 'control';
+  }
+
+  // Progressive rollout tracking
+  static trackRolloutMetric(feature: string, metric: string, value: number): void {
+    posthog.capture('rollout_metric', {
+      feature_name: feature,
+      metric_name: metric,
+      metric_value: value,
+      timestamp: Date.now()
+    });
+  }
+}
+
+// Usage in React components
+export const useFeatureFlag = (flagKey: string) =&gt; {
+  const [isEnabled, setIsEnabled] = useState(false);
+
+  useEffect(() =&gt; {
+    const checkFlag = () =&gt; {
+      const enabled = FeatureFlagManager.isFeatureEnabled(flagKey);
+      setIsEnabled(enabled);
+
+      if (enabled) {
+        FeatureFlagManager.trackFeatureUsage(flagKey, enabled);
+      }
+    };
+
+    checkFlag();
+
+    // Listen for PostHog feature flag updates
+    posthog.onFeatureFlags(checkFlag);
+
+    return () =&gt; {
+      posthog.offFeatureFlags(checkFlag);
+    };
+  }, [flagKey]);
+
+  return isEnabled;
+};
+```# Monitoring &amp; Observability Strategy
+
+## Overview
+Comprehensive monitoring and observability framework leveraging Laravel's native tools and enterprise-grade solutions to ensure optimal performance, rapid issue detection, and data-driven optimization.
+
+## Application Performance Monitoring
+
+### Laravel Pulse Integration
+```php
+// config/pulse.php
+&lt;?php
+
+return [
+    'domain' =&gt; env('PULSE_DOMAIN'),
+    'path' =&gt; env('PULSE_PATH', 'pulse'),
+    'enabled' =&gt; env('PULSE_ENABLED', true),
+
+    'storage' =&gt; [
+        'driver' =&gt; env('PULSE_STORAGE_DRIVER', 'database'),
+        'database' =&gt; [
+            'connection' =&gt; env('PULSE_DB_CONNECTION', 'mysql'),
+            'chunk' =&gt; 1000,
+        ],
+    ],
+
+    'cache' =&gt; env('PULSE_CACHE_DRIVER', 'redis'),
+
+    'recorders' =&gt; [
+        // Application Performance
+        Recorders\Servers::class =&gt; [
+            'server_name' =&gt; env('PULSE_SERVER_NAME', gethostname()),
+            'directories' =&gt; explode(':', env('PULSE_SERVER_DIRECTORIES', '/')),
+        ],
+
+        // Database Performance
+        Recorders\SlowQueries::class =&gt; [
+            'threshold' =&gt; env('PULSE_SLOW_QUERIES_THRESHOLD', 1000),
+            'sample_rate' =&gt; env('PULSE_SLOW_QUERIES_SAMPLE_RATE', 0.1),
+            'location' =&gt; env('PULSE_SLOW_QUERIES_LOCATION', true),
+        ],
+
+        // Cache Performance
+        Recorders\CacheInteractions::class =&gt; [
+            'sample_rate' =&gt; env('PULSE_CACHE_SAMPLE_RATE', 0.1),
+        ],
+
+        // Queue Monitoring
+        Recorders\Queues::class =&gt; [
+            'sample_rate' =&gt; env('PULSE_QUEUES_SAMPLE_RATE', 1),
+        ],
+
+        // User Requests
+        Recorders\UserRequests::class =&gt; [
+            'sample_rate' =&gt; env('PULSE_USER_REQUESTS_SAMPLE_RATE', 0.1),
+            'ignore' =&gt; [
+                '#^/pulse#',
+                '#^/telescope#',
+                '#^/health#',
+            ],
+        ],
+
+        // Exceptions
+        Recorders\Exceptions::class =&gt; [
+            'sample_rate' =&gt; env('PULSE_EXCEPTIONS_SAMPLE_RATE', 1),
+            'location' =&gt; env('PULSE_EXCEPTIONS_LOCATION', true),
+            'ignore' =&gt; [
+                // Ignore validation exceptions in forms
+                ValidationException::class,
+            ],
+        ],
+    ],
+];
+</code></pre>
+<h3 id="custom-performance-metrics">Custom Performance Metrics</h3>
+<pre><code class="language-php">// app/Services/PerformanceMonitor.php
+&lt;?php
+
+namespace App\Services;
+
+use Laravel\Pulse\Facades\Pulse;
+use Illuminate\Support\Facades\DB;
+
+class PerformanceMonitor
+{
+    public function recordBusinessMetric(string $metric, float $value, array $tags = []): void
+    {
+        Pulse::record('business_metric', $metric, $value, $tags);
+    }
+
+    public function recordFeatureUsage(string $feature, string $userId = null): void
+    {
+        Pulse::record('feature_usage', $feature, 1, [
+            'user_id' =&gt; $userId,
+            'timestamp' =&gt; now()-&gt;toISOString(),
+        ]);
+    }
+
+    public function recordAPIPerformance(string $endpoint, float $duration, int $statusCode): void
+    {
+        Pulse::record('api_performance', $endpoint, $duration, [
+            'status_code' =&gt; $statusCode,
+            'response_time_ms' =&gt; round($duration * 1000, 2),
+        ]);
+    }
+
+    public function recordDatabasePerformance(): array
+    {
+        $connectionCounts = [];
+
+        foreach (config('database.connections') as $name =&gt; $config) {
+            if ($config['driver'] === 'mysql') {
+                $count = DB::connection($name)
+                    -&gt;select(&quot;SHOW STATUS LIKE 'Threads_connected'&quot;)[0]-&gt;Value;
+
+                $connectionCounts[$name] = (int) $count;
+
+                Pulse::record('db_connections', $name, $count);
+            }
+        }
+
+        return $connectionCounts;
+    }
+}
+</code></pre>
+<h2 id="error-tracking-alerting">Error Tracking &amp; Alerting</h2>
+<h3 id="sentry-integration">Sentry Integration</h3>
+<pre><code class="language-php">// config/sentry.php
+&lt;?php
+
+return [
+    'dsn' =&gt; env('SENTRY_LARAVEL_DSN', env('SENTRY_DSN')),
+    'release' =&gt; env('SENTRY_RELEASE'),
+    'environment' =&gt; env('SENTRY_ENVIRONMENT', env('APP_ENV', 'production')),
+
+    'breadcrumbs' =&gt; [
+        'logs' =&gt; true,
+        'cache' =&gt; true,
+        'livewire' =&gt; true,
+        'sql_queries' =&gt; env('SENTRY_TRACE_SQL_QUERIES', false),
+        'redis' =&gt; true,
+        'http_client_requests' =&gt; true,
+    ],
+
+    'tracing' =&gt; [
+        'enabled' =&gt; env('SENTRY_TRACING_ENABLED', false),
+        'sample_rate' =&gt; env('SENTRY_TRACING_SAMPLE_RATE', 0.1),
+        'missing_routes' =&gt; true,
+        'redis' =&gt; true,
+        'http_client_requests' =&gt; true,
+        'queue_jobs' =&gt; true,
+        'sql_queries' =&gt; true,
+    ],
+
+    'profiles_sample_rate' =&gt; env('SENTRY_PROFILES_SAMPLE_RATE', 0.1),
+
+    'send_default_pii' =&gt; env('SENTRY_SEND_DEFAULT_PII', false),
+
+    'before_send_transaction' =&gt; function (\Sentry\Event $event): ?\Sentry\Event {
+        // Filter out health check transactions
+        if (str_contains($event-&gt;getTransaction() ?? '', '/health')) {
+            return null;
+        }
+
+        return $event;
+    },
+];
+</code></pre>
+<h3 id="custom-error-handling">Custom Error Handling</h3>
+<pre><code class="language-php">// app/Exceptions/Handler.php
+&lt;?php
+
+namespace App\Exceptions;
+
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Sentry\Laravel\Integration;
+
+class Handler extends ExceptionHandler
+{
+    protected $dontReport = [
+        \Illuminate\Auth\AuthenticationException::class,
+        \Illuminate\Auth\Access\AuthorizationException::class,
+        \Symfony\Component\HttpKernel\Exception\HttpException::class,
+        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+        \Illuminate\Validation\ValidationException::class,
+    ];
+
+    public function register(): void
+    {
+        $this-&gt;reportable(function (Throwable $e) {
+            if (app()-&gt;bound('sentry')) {
+                Integration::captureUnhandledException($e);
+            }
+
+            // Custom business logic error tracking
+            if ($e instanceof \App\Exceptions\BusinessLogicException) {
+                $this-&gt;recordBusinessError($e);
+            }
+        });
+    }
+
+    private function recordBusinessError(\App\Exceptions\BusinessLogicException $exception): void
+    {
+        Pulse::record('business_error', $exception-&gt;getErrorCode(), 1, [
+            'message' =&gt; $exception-&gt;getMessage(),
+            'context' =&gt; $exception-&gt;getContext(),
+            'user_id' =&gt; auth()-&gt;id(),
+        ]);
+
+        // Alert for critical business errors
+        if ($exception-&gt;isCritical()) {
+            \Illuminate\Support\Facades\Notification::route('slack', config('alerts.slack_webhook'))
+                -&gt;notify(new \App\Notifications\CriticalBusinessError($exception));
+        }
+    }
+}
+</code></pre>
+<h2 id="frontend-performance-monitoring">Frontend Performance Monitoring</h2>
+<h3 id="client-frontend-typescript-web-vitals-posthog">Client Frontend (TypeScript) - Web Vitals + PostHog</h3>
+<pre><code class="language-typescript">// resources/js/client/monitoring/performance-monitor.ts
+import { getCLS, getFID, getFCP, getLCP, getTTFB, Metric } from 'web-vitals';
+import posthog from 'posthog-js';
+
+interface PerformanceData {
+  metric: string;
+  value: number;
+  rating: 'good' | 'needs-improvement' | 'poor';
+  url: string;
+  timestamp: number;
+}
+
+class ClientPerformanceMonitor {
+  private apiEndpoint = '/api/metrics/web-vitals';
+
+  init(): void {
+    // Initialize PostHog if not already done
+    if (!posthog.__loaded) {
+      posthog.init(process.env.VITE_POSTHOG_KEY!, {
+        api_host: process.env.VITE_POSTHOG_HOST || 'https://app.posthog.com',
+        loaded: () =&gt; {
+          // Track performance metrics once PostHog is loaded
+          this.initWebVitals();
+        }
+      });
+    } else {
+      this.initWebVitals();
+    }
+
+    this.monitorRouteChanges();
+    this.setupCustomMetrics();
+  }
+
+  private initWebVitals(): void {
+    // Collect all Core Web Vitals
+    getCLS(this.sendMetric.bind(this));
+    getFID(this.sendMetric.bind(this));
+    getFCP(this.sendMetric.bind(this));
+    getLCP(this.sendMetric.bind(this));
+    getTTFB(this.sendMetric.bind(this));
+  }
+
+  private sendMetric(metric: Metric): void {
+    const data: PerformanceData = {
+      metric: metric.name,
+      value: metric.value,
+      rating: metric.rating!,
+      url: window.location.pathname,
+      timestamp: Date.now()
+    };
+
+    // Send to Laravel backend for internal monitoring
+    navigator.sendBeacon(this.apiEndpoint, JSON.stringify(data));
+
+    // Send to PostHog for product analytics
+    posthog.capture('web_vital_measured', {
+      metric_name: metric.name,
+      metric_value: metric.value,
+      metric_rating: metric.rating,
+      page_url: window.location.pathname,
+      user_agent: navigator.userAgent
+    });
+
+    // Also send to Sentry for correlation
+    if (window.Sentry) {
+      window.Sentry.addBreadcrumb({
+        category: 'performance',
+        message: `${metric.name}: ${metric.value}`,
+        level: 'info',
+        data: data
+      });
+    }
+  }
+
+  private setupCustomMetrics(): void {
+    // Track feature usage with PostHog
+    this.trackFeatureUsage();
+
+    // Monitor conversion funnels
+    this.setupConversionTracking();
+
+    // Track user engagement metrics
+    this.trackEngagementMetrics();
+  }
+
+  private trackFeatureUsage(): void {
+    // Track button clicks and feature interactions
+    document.addEventListener('click', (event) =&gt; {
+      const target = event.target as HTMLElement;
+      const featureName = target.dataset.feature || target.getAttribute('aria-label');
+
+      if (featureName) {
+        posthog.capture('feature_used', {
+          feature_name: featureName,
+          element_type: target.tagName,
+          page_url: window.location.pathname
+        });
+      }
+    });
+  }
+
+  private setupConversionTracking(): void {
+    // Track key conversion events
+    const conversionEvents = [
+      'signup_completed',
+      'purchase_completed',
+      'trial_started',
+      'subscription_upgraded'
+    ];
+
+    conversionEvents.forEach(event =&gt; {
+      document.addEventListener(event, (customEvent: any) =&gt; {
+        posthog.capture(event, {
+          ...customEvent.detail,
+          timestamp: Date.now()
+        });
+      });
+    });
+  }
+
+  recordCustomMetric(name: string, value: number, context?: Record&lt;string, any&gt;): void {
+    const data = {
+      metric: `custom.${name}`,
+      value,
+      rating: 'good' as const,
+      url: window.location.pathname,
+      timestamp: Date.now(),
+      context
+    };
+
+    // Send to Laravel
+    navigator.sendBeacon(this.apiEndpoint, JSON.stringify(data));
+
+    // Send to PostHog
+    posthog.capture('custom_metric', {
+      metric_name: name,
+      metric_value: value,
+      ...context
+    });
+  }
+}
+
+export default new ClientPerformanceMonitor();
+</code></pre>
+<h3 id="admin-frontend-javascript-basic-monitoring">Admin Frontend (JavaScript) - Basic Monitoring</h3>
+<pre><code class="language-javascript">// resources/js/admin/monitoring/performance-monitor.js
+class AdminPerformanceMonitor {
+  constructor() {
+    this.apiEndpoint = '/api/metrics/admin-performance';
+    this.init();
+  }
+
+  init() {
+    this.monitorPageLoads();
+    this.monitorUserInteractions();
+    this.monitorErrors();
+  }
+
+  monitorPageLoads() {
+    window.addEventListener('load', () =&gt; {
+      const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+
+      this.sendMetric({
+        type: 'page_load',
+        value: loadTime,
+        url: window.location.pathname,
+        timestamp: Date.now()
+      });
+    });
+  }
+
+  monitorUserInteractions() {
+    // Track admin actions
+    document.addEventListener('click', (event) =&gt; {
+      const target = event.target;
+      const action = target.dataset.action;
+
+      if (action) {
+        this.sendMetric({
+          type: 'admin_action',
+          action: action,
+          element: target.tagName,
+          url: window.location.pathname,
+          timestamp: Date.now()
+        });
+      }
+    });
+  }
+
+  monitorErrors() {
+    window.addEventListener('error', (event) =&gt; {
+      this.sendMetric({
+        type: 'javascript_error',
+        message: event.message,
+        filename: event.filename,
+        lineno: event.lineno,
+        url: window.location.pathname,
+        timestamp: Date.now()
+      });
+    });
+  }
+
+  sendMetric(data) {
+    // Send to Laravel backend only (no external analytics for admin)
+    fetch(this.apiEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).catch(error =&gt; {
+      console.warn('Failed to send admin metric:', error);
+    });
+  }
+}
+
+// Initialize admin monitoring
+new AdminPerformanceMonitor();
+</code></pre>
+<h3 id="user-experience-monitoring">User Experience Monitoring</h3>
+<pre><code class="language-typescript">// resources/js/monitoring/user-experience.ts
+class UserExperienceMonitor {
+  private interactionStartTime: number = 0;
+
+  init(): void {
+    this.monitorUserInteractions();
+    this.monitorErrorBoundaries();
+    this.monitorNetworkConditions();
+  }
+
+  private monitorUserInteractions(): void {
+    // Track click-to-interaction delays
+    document.addEventListener('click', (event) =&gt; {
+      this.interactionStartTime = performance.now();
+
+      // Track which elements users interact with most
+      const target = event.target as HTMLElement;
+      const elementInfo = {
+        tagName: target.tagName,
+        className: target.className,
+        id: target.id,
+        textContent: target.textContent?.slice(0, 50)
+      };
+
+      this.recordInteraction('click', elementInfo);
+    });
+
+    // Track form interactions
+    document.addEventListener('submit', (event) =&gt; {
+      const form = event.target as HTMLFormElement;
+      const interactionTime = performance.now() - this.interactionStartTime;
+
+      this.recordFormSubmission(form.id || form.className, interactionTime);
+    });
+  }
+
+  private monitorErrorBoundaries(): void {
+    window.addEventListener('error', (event) =&gt; {
+      this.recordJavaScriptError({
+        message: event.message,
+        filename: event.filename,
+        lineno: event.lineno,
+        colno: event.colno,
+        url: window.location.href
+      });
+    });
+
+    window.addEventListener('unhandledrejection', (event) =&gt; {
+      this.recordPromiseRejection({
+        reason: event.reason?.toString(),
+        url: window.location.href
+      });
+    });
+  }
+
+  private recordInteraction(type: string, elementInfo: any): void {
+    fetch('/api/metrics/user-interaction', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        type,
+        element: elementInfo,
+        url: window.location.pathname,
+        timestamp: Date.now()
+      })
+    });
+  }
+}
+</code></pre>
+<h2 id="business-intelligence-analytics">Business Intelligence &amp; Analytics</h2>
+<h3 id="custom-metrics-dashboard">Custom Metrics Dashboard</h3>
+<pre><code class="language-php">// app/Http/Controllers/MetricsDashboardController.php
+&lt;?php
+
+namespace App\Http\Controllers;
+
+use Laravel\Pulse\Facades\Pulse;
+use Illuminate\Http\JsonResponse;
+
+class MetricsDashboardController extends Controller
+{
+    public function businessMetrics(): JsonResponse
+    {
+        $metrics = [
+            'user_engagement' =&gt; $this-&gt;getUserEngagementMetrics(),
+            'feature_adoption' =&gt; $this-&gt;getFeatureAdoptionMetrics(),
+            'performance_trends' =&gt; $this-&gt;getPerformanceTrends(),
+            'error_trends' =&gt; $this-&gt;getErrorTrends(),
+        ];
+
+        return response()-&gt;json($metrics);
+    }
+
+    private function getUserEngagementMetrics(): array
+    {
+        return [
+            'daily_active_users' =&gt; Pulse::values('feature_usage')
+                -&gt;where('type', 'login')
+                -&gt;whereBetween('timestamp', [now()-&gt;subDay(), now()])
+                -&gt;distinct('key_hash')
+                -&gt;count(),
+
+            'session_duration' =&gt; Pulse::values('user_session')
+                -&gt;whereBetween('timestamp', [now()-&gt;subWeek(), now()])
+                -&gt;avg('value'),
+
+            'page_views' =&gt; Pulse::values('user_requests')
+                -&gt;whereBetween('timestamp', [now()-&gt;subDay(), now()])
+                -&gt;count(),
+        ];
+    }
+
+    private function getFeatureAdoptionMetrics(): array
+    {
+        $features = Pulse::values('feature_usage')
+            -&gt;whereBetween('timestamp', [now()-&gt;subMonth(), now()])
+            -&gt;groupBy('key')
+            -&gt;selectRaw('key as feature, COUNT(*) as usage_count, COUNT(DISTINCT key_hash) as unique_users')
+            -&gt;orderByDesc('usage_count')
+            -&gt;get();
+
+        return [
+            'top_features' =&gt; $features-&gt;take(10),
+            'adoption_rate' =&gt; $this-&gt;calculateAdoptionRate($features),
+            'feature_retention' =&gt; $this-&gt;calculateFeatureRetention($features),
+        ];
+    }
+
+    private function getPerformanceTrends(): array
+    {
+        return [
+            'response_times' =&gt; Pulse::values('api_performance')
+                -&gt;whereBetween('timestamp', [now()-&gt;subWeek(), now()])
+                -&gt;groupBy(DB::raw('DATE(timestamp)'))
+                -&gt;selectRaw('DATE(timestamp) as date, AVG(value) as avg_response_time')
+                -&gt;get(),
+
+            'database_performance' =&gt; Pulse::values('slow_queries')
+                -&gt;whereBetween('timestamp', [now()-&gt;subWeek(), now()])
+                -&gt;groupBy(DB::raw('DATE(timestamp)'))
+                -&gt;selectRaw('DATE(timestamp) as date, COUNT(*) as slow_query_count')
+                -&gt;get(),
+
+            'cache_hit_rate' =&gt; $this-&gt;calculateCacheHitRate(),
+        ];
+    }
+
+    private function getErrorTrends(): array
+    {
+        return [
+            'error_rate' =&gt; Pulse::values('exceptions')
+                -&gt;whereBetween('timestamp', [now()-&gt;subWeek(), now()])
+                -&gt;groupBy(DB::raw('DATE(timestamp)'))
+                -&gt;selectRaw('DATE(timestamp) as date, COUNT(*) as error_count')
+                -&gt;get(),
+
+            'top_errors' =&gt; Pulse::values('exceptions')
+                -&gt;whereBetween('timestamp', [now()-&gt;subDay(), now()])
+                -&gt;groupBy('key')
+                -&gt;selectRaw('key as error_type, COUNT(*) as occurrence_count')
+                -&gt;orderByDesc('occurrence_count')
+                -&gt;take(10)
+                -&gt;get(),
+        ];
+    }
+}
+</code></pre>
+<h2 id="infrastructure-monitoring">Infrastructure Monitoring</h2>
+<h3 id="server-performance-tracking">Server Performance Tracking</h3>
+<pre><code class="language-php">// app/Console/Commands/MonitorServerHealth.php
+&lt;?php
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+use Laravel\Pulse\Facades\Pulse;
+
+class MonitorServerHealth extends Command
+{
+    protected $signature = 'monitor:server-health';
+    protected $description = 'Monitor server health metrics';
+
+    public function handle(): void
+    {
+        $this-&gt;recordCPUUsage();
+        $this-&gt;recordMemoryUsage();
+        $this-&gt;recordDiskUsage();
+        $this-&gt;recordNetworkStats();
+        $this-&gt;checkDatabaseConnections();
+        $this-&gt;checkRedisConnection();
+    }
+
+    private function recordCPUUsage(): void
+    {
+        $cpuUsage = $this-&gt;getCPUUsage();
+        Pulse::record('server_cpu', gethostname(), $cpuUsage);
+
+        if ($cpuUsage &gt; 80) {
+            $this-&gt;alert(&quot;High CPU usage detected: {$cpuUsage}%&quot;);
+        }
+    }
+
+    private function recordMemoryUsage(): void
+    {
+        $memoryStats = $this-&gt;getMemoryStats();
+        $usagePercent = ($memoryStats['used'] / $memoryStats['total']) * 100;
+
+        Pulse::record('server_memory', gethostname(), $usagePercent);
+
+        if ($usagePercent &gt; 85) {
+            $this-&gt;alert(&quot;High memory usage detected: {$usagePercent}%&quot;);
+        }
+    }
+
+    private function recordDiskUsage(): void
+    {
+        $diskStats = $this-&gt;getDiskStats();
+
+        foreach ($diskStats as $mount =&gt; $stats) {
+            $usagePercent = ($stats['used'] / $stats['total']) * 100;
+            Pulse::record('server_disk', &quot;{$mount}@&quot; . gethostname(), $usagePercent);
+
+            if ($usagePercent &gt; 90) {
+                $this-&gt;alert(&quot;High disk usage detected on {$mount}: {$usagePercent}%&quot;);
+            }
+        }
+    }
+
+    private function checkDatabaseConnections(): void
+    {
+        try {
+            $connectionCount = DB::select(&quot;SHOW STATUS LIKE 'Threads_connected'&quot;)[0]-&gt;Value;
+            $maxConnections = DB::select(&quot;SHOW VARIABLES LIKE 'max_connections'&quot;)[0]-&gt;Value;
+
+            $usagePercent = ($connectionCount / $maxConnections) * 100;
+            Pulse::record('db_connection_usage', 'mysql', $usagePercent);
+
+            if ($usagePercent &gt; 80) {
+                $this-&gt;alert(&quot;High database connection usage: {$usagePercent}%&quot;);
+            }
+        } catch (\Exception $e) {
+            $this-&gt;error(&quot;Failed to check database connections: &quot; . $e-&gt;getMessage());
+            Pulse::record('db_connection_error', 'mysql', 1);
+        }
+    }
+
+    private function alert(string $message): void
+    {
+        \Illuminate\Support\Facades\Notification::route('slack', config('alerts.slack_webhook'))
+            -&gt;notify(new \App\Notifications\ServerAlert($message));
+    }
+}
+</code></pre>
+<h3 id="queue-performance-monitoring">Queue Performance Monitoring</h3>
+<pre><code class="language-php">// app/Services/QueueMonitor.php
+&lt;?php
+
+namespace App\Services;
+
+use Laravel\Pulse\Facades\Pulse;
+use Illuminate\Support\Facades\Redis;
+
+class QueueMonitor
+{
+    public function recordQueueMetrics(): void
+    {
+        $queues = config('queue.connections.redis.queues', ['default']);
+
+        foreach ($queues as $queue) {
+            $this-&gt;recordQueueDepth($queue);
+            $this-&gt;recordQueueThroughput($queue);
+            $this-&gt;recordFailedJobs($queue);
+        }
+    }
+
+    private function recordQueueDepth(string $queue): void
+    {
+        $depth = Redis::llen(&quot;queues:{$queue}&quot;);
+        Pulse::record('queue_depth', $queue, $depth);
+
+        // Alert on queue backup
+        if ($depth &gt; 1000) {
+            \Illuminate\Support\Facades\Notification::route('slack', config('alerts.slack_webhook'))
+                -&gt;notify(new \App\Notifications\QueueBackupAlert($queue, $depth));
+        }
+    }
+
+    private function recordQueueThroughput(string $queue): void
+    {
+        // Calculate jobs processed in last minute
+        $processedJobs = Pulse::values('queue_processed')
+            -&gt;where('key', $queue)
+            -&gt;whereBetween('timestamp', [now()-&gt;subMinute(), now()])
+            -&gt;count();
+
+        Pulse::record('queue_throughput', $queue, $processedJobs);
+    }
+
+    private function recordFailedJobs(string $queue): void
+    {
+        $failedCount = \Illuminate\Support\Facades\DB::table('failed_jobs')
+            -&gt;where('queue', $queue)
+            -&gt;where('failed_at', '&gt;', now()-&gt;subHour())
+            -&gt;count();
+
+        Pulse::record('queue_failures', $queue, $failedCount);
+
+        if ($failedCount &gt; 10) {
+            \Illuminate\Support\Facades\Notification::route('slack', config('alerts.slack_webhook'))
+                -&gt;notify(new \App\Notifications\QueueFailureAlert($queue, $failedCount));
+        }
+    }
+}
+</code></pre>
+<h2 id="alerting-notification-system">Alerting &amp; Notification System</h2>
+<h3 id="multi-channel-alert-manager">Multi-Channel Alert Manager</h3>
+<pre><code class="language-php">// app/Services/AlertManager.php
+&lt;?php
+
+namespace App\Services;
+
+use Illuminate\Notifications\Notification;
+
+class AlertManager
+{
+    private array $channels = [];
+
+    public function __construct()
+    {
+        $this-&gt;channels = [
+            'critical' =&gt; ['slack', 'email', 'sms'],
+            'warning' =&gt; ['slack', 'email'],
+            'info' =&gt; ['slack'],
+        ];
+    }
+
+    public function sendAlert(string $severity, string $title, string $message, array $context = []): void
+    {
+        $channels = $this-&gt;channels[$severity] ?? ['slack'];
+
+        $alert = new \App\Notifications\SystemAlert($severity, $title, $message, $context);
+
+        foreach ($channels as $channel) {
+            $this-&gt;sendToChannel($channel, $alert);
+        }
+
+        // Log alert for audit trail
+        \Illuminate\Support\Facades\Log::channel('alerts')-&gt;info(&quot;Alert sent&quot;, [
+            'severity' =&gt; $severity,
+            'title' =&gt; $title,
+            'message' =&gt; $message,
+            'context' =&gt; $context,
+            'channels' =&gt; $channels,
+        ]);
+    }
+
+    private function sendToChannel(string $channel, Notification $alert): void
+    {
+        switch ($channel) {
+            case 'slack':
+                \Illuminate\Support\Facades\Notification::route('slack', config('alerts.slack_webhook'))
+                    -&gt;notify($alert);
+                break;
+
+            case 'email':
+                \Illuminate\Support\Facades\Notification::route('mail', config('alerts.email'))
+                    -&gt;notify($alert);
+                break;
+
+            case 'sms':
+                \Illuminate\Support\Facades\Notification::route('vonage', config('alerts.phone'))
+                    -&gt;notify($alert);
+                break;
+        }
+    }
+
+    public function createIncident(string $title, string $description, array $metadata = []): void
+    {
+        // Integration with incident management tools
+        $incident = [
+            'title' =&gt; $title,
+            'description' =&gt; $description,
+            'severity' =&gt; $metadata['severity'] ?? 'medium',
+            'service' =&gt; $metadata['service'] ?? 'unknown',
+            'created_at' =&gt; now()-&gt;toISOString(),
+            'metadata' =&gt; $metadata,
+        ];
+
+        // Send to incident management platform (PagerDuty, Opsgenie, etc.)
+        $this-&gt;sendToIncidentManagement($incident);
+    }
+}
+</code></pre>
+<h3 id="smart-alert-filtering">Smart Alert Filtering</h3>
+<pre><code class="language-php">// app/Services/AlertFilter.php
+&lt;?php
+
+namespace App\Services;
+
+class AlertFilter
+{
+    private array $suppressionRules = [];
+    private array $escalationRules = [];
+
+    public function shouldSendAlert(array $alert): bool
+    {
+        // Check suppression rules
+        if ($this-&gt;isAlertSuppressed($alert)) {
+            return false;
+        }
+
+        // Check rate limiting
+        if ($this-&gt;isRateLimited($alert)) {
+            return false;
+        }
+
+        // Check maintenance windows
+        if ($this-&gt;isInMaintenanceWindow()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private function isAlertSuppressed(array $alert): bool
+    {
+        foreach ($this-&gt;suppressionRules as $rule) {
+            if ($this-&gt;matchesRule($alert, $rule)) {
+                \Illuminate\Support\Facades\Log::info(&quot;Alert suppressed by rule&quot;, [
+                    'alert' =&gt; $alert,
+                    'rule' =&gt; $rule,
+                ]);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private function isRateLimited(array $alert): bool
+    {
+        $key = &quot;alert_rate_limit:&quot; . md5(serialize($alert));
+        $count = \Illuminate\Support\Facades\Cache::get($key, 0);
+
+        if ($count &gt;= config('alerts.rate_limit', 5)) {
+            return true;
+        }
+
+        \Illuminate\Support\Facades\Cache::put($key, $count + 1, now()-&gt;addMinutes(15));
+        return false;
+    }
+
+    public function escalateAlert(array $alert): bool
+    {
+        foreach ($this-&gt;escalationRules as $rule) {
+            if ($this-&gt;shouldEscalate($alert, $rule)) {
+                $this-&gt;performEscalation($alert, $rule);
+                return true;
+            }
+        }
+
+        return false;
+    }
+}
+</code></pre>
+<h2 id="performance-optimization-insights">Performance Optimization Insights</h2>
+<h3 id="automated-performance-analysis">Automated Performance Analysis</h3>
+<pre><code class="language-php">// app/Services/PerformanceAnalyzer.php
+&lt;?php
+
+namespace App\Services;
+
+use Laravel\Pulse\Facades\Pulse;
+
+class PerformanceAnalyzer
+{
+    public function generateOptimizationRecommendations(): array
+    {
+        return [
+            'database' =&gt; $this-&gt;analyzeDatabasePerformance(),
+            'cache' =&gt; $this-&gt;analyzeCachePerformance(),
+            'queries' =&gt; $this-&gt;analyzeSlowQueries(),
+            'endpoints' =&gt; $this-&gt;analyzeSlowEndpoints(),
+            'frontend' =&gt; $this-&gt;analyzeFrontendPerformance(),
+        ];
+    }
+
+    private function analyzeDatabasePerformance(): array
+    {
+        $slowQueries = Pulse::values('slow_queries')
+            -&gt;whereBetween('timestamp', [now()-&gt;subDay(), now()])
+            -&gt;orderByDesc('value')
+            -&gt;take(10)
+            -&gt;get();
+
+        $recommendations = [];
+
+        foreach ($slowQueries as $query) {
+            $analysis = $this-&gt;analyzeQuery($query-&gt;key);
+
+            if ($analysis['missing_indexes']) {
+                $recommendations[] = [
+                    'type' =&gt; 'add_index',
+                    'query' =&gt; $query-&gt;key,
+                    'suggested_indexes' =&gt; $analysis['suggested_indexes'],
+                    'estimated_improvement' =&gt; $analysis['estimated_improvement'],
+                ];
+            }
+
+            if ($analysis['n_plus_one']) {
+                $recommendations[] = [
+                    'type' =&gt; 'fix_n_plus_one',
+                    'query' =&gt; $query-&gt;key,
+                    'suggested_eager_loading' =&gt; $analysis['eager_loading_suggestions'],
+                ];
+            }
+        }
+
+        return $recommendations;
+    }
+
+    private function analyzeCachePerformance(): array
+    {
+        $cacheStats = Pulse::values('cache_interactions')
+            -&gt;whereBetween('timestamp', [now()-&gt;subDay(), now()])
+            -&gt;get();
+
+        $hitRate = $this-&gt;calculateCacheHitRate($cacheStats);
+        $recommendations = [];
+
+        if ($hitRate &lt; 0.8) {
+            $recommendations[] = [
+                'type' =&gt; 'improve_cache_strategy',
+                'current_hit_rate' =&gt; $hitRate,
+                'target_hit_rate' =&gt; 0.9,
+                'suggestions' =&gt; [
+                    'Implement query result caching for frequently accessed data',
+                    'Add cache warming for critical application data',
+                    'Optimize cache key strategies to reduce conflicts',
+                ],
+            ];
+        }
+
+        return [
+            'hit_rate' =&gt; $hitRate,
+            'recommendations' =&gt; $recommendations,
+        ];
+    }
+
+    private function analyzeSlowEndpoints(): array
+    {
+        $slowEndpoints = Pulse::values('api_performance')
+            -&gt;whereBetween('timestamp', [now()-&gt;subDay(), now()])
+            -&gt;where('value', '&gt;', 1) // Slower than 1 second
+            -&gt;groupBy('key')
+            -&gt;selectRaw('key as endpoint, AVG(value) as avg_response_time, COUNT(*) as request_count')
+            -&gt;orderByDesc('avg_response_time')
+            -&gt;take(10)
+            -&gt;get();
+
+        return $slowEndpoints-&gt;map(function ($endpoint) {
+            return [
+                'endpoint' =&gt; $endpoint-&gt;endpoint,
+                'avg_response_time' =&gt; round($endpoint-&gt;avg_response_time, 3),
+                'request_count' =&gt; $endpoint-&gt;request_count,
+                'suggestions' =&gt; $this-&gt;generateEndpointOptimizations($endpoint),
+            ];
+        })-&gt;toArray();
+    }
+
+    private function generateEndpointOptimizations($endpoint): array
+    {
+        $suggestions = [];
+
+        if ($endpoint-&gt;avg_response_time &gt; 2) {
+            $suggestions[] = 'Consider implementing response caching';
+            $suggestions[] = 'Review database queries for optimization opportunities';
+        }
+
+        if ($endpoint-&gt;request_count &gt; 1000) {
+            $suggestions[] = 'High traffic endpoint - consider rate limiting';
+            $suggestions[] = 'Implement CDN caching if possible';
+        }
+
+        return $suggestions;
+    }
+}
+</code></pre>
+<h2 id="real-time-dashboard">Real-Time Dashboard</h2>
+<h3 id="metrics-dashboard-api">Metrics Dashboard API</h3>
+<pre><code class="language-php">// app/Http/Controllers/Api/DashboardController.php
+&lt;?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use Laravel\Pulse\Facades\Pulse;
+
+class DashboardController extends Controller
+{
+    public function realTimeMetrics()
+    {
+        return response()-&gt;json([
+            'system_health' =&gt; $this-&gt;getSystemHealth(),
+            'application_metrics' =&gt; $this-&gt;getApplicationMetrics(),
+            'user_activity' =&gt; $this-&gt;getUserActivity(),
+            'alerts' =&gt; $this-&gt;getActiveAlerts(),
+            'performance_summary' =&gt; $this-&gt;getPerformanceSummary(),
+        ]);
+    }
+
+    private function getSystemHealth(): array
+    {
+        return [
+            'status' =&gt; $this-&gt;calculateOverallHealth(),
+            'uptime' =&gt; $this-&gt;getSystemUptime(),
+            'cpu_usage' =&gt; $this-&gt;getLatestMetric('server_cpu'),
+            'memory_usage' =&gt; $this-&gt;getLatestMetric('server_memory'),
+            'disk_usage' =&gt; $this-&gt;getLatestMetric('server_disk'),
+            'database_status' =&gt; $this-&gt;getDatabaseStatus(),
+            'cache_status' =&gt; $this-&gt;getCacheStatus(),
+        ];
+    }
+
+    private function getApplicationMetrics(): array
+    {
+        return [
+            'active_users' =&gt; $this-&gt;getActiveUserCount(),
+            'requests_per_minute' =&gt; $this-&gt;getRequestsPerMinute(),
+            'average_response_time' =&gt; $this-&gt;getAverageResponseTime(),
+            'error_rate' =&gt; $this-&gt;getErrorRate(),
+            'queue_depth' =&gt; $this-&gt;getTotalQueueDepth(),
+        ];
+    }
+
+    private function getPerformanceSummary(): array
+    {
+        $now = now();
+        $oneHourAgo = $now-&gt;copy()-&gt;subHour();
+
+        return [
+            'web_vitals' =&gt; [
+                'lcp' =&gt; $this-&gt;getAverageWebVital('LCP', $oneHourAgo, $now),
+                'fid' =&gt; $this-&gt;getAverageWebVital('FID', $oneHourAgo, $now),
+                'cls' =&gt; $this-&gt;getAverageWebVital('CLS', $oneHourAgo, $now),
+            ],
+            'api_performance' =&gt; [
+                'p50' =&gt; $this-&gt;getPercentileResponseTime(50, $oneHourAgo, $now),
+                'p95' =&gt; $this-&gt;getPercentileResponseTime(95, $oneHourAgo, $now),
+                'p99' =&gt; $this-&gt;getPercentileResponseTime(99, $oneHourAgo, $now),
+            ],
+            'trends' =&gt; [
+                'response_time_trend' =&gt; $this-&gt;getResponseTimeTrend(),
+                'error_rate_trend' =&gt; $this-&gt;getErrorRateTrend(),
+                'throughput_trend' =&gt; $this-&gt;getThroughputTrend(),
+            ],
+        ];
+    }
+}
+</code></pre>
+<hr />
+<h2 id="implementation-checklist">Implementation Checklist</h2>
+<h3 id="phase-1-core-monitoring-week-1">Phase 1: Core Monitoring (Week 1)</h3>
+<ul>
+<li>[ ] Configure Laravel Pulse with all recorders</li>
+<li>[ ] Set up Sentry for error tracking and performance</li>
+<li>[ ] Implement basic server health monitoring</li>
+<li>[ ] Configure Slack/Teams alerting</li>
+</ul>
+<h3 id="phase-2-advanced-metrics-week-2">Phase 2: Advanced Metrics (Week 2)</h3>
+<ul>
+<li>[ ] Deploy web vitals collection on frontend</li>
+<li>[ ] Set up business metrics tracking</li>
+<li>[ ] Implement queue performance monitoring</li>
+<li>[ ] Create real-time dashboard API</li>
+</ul>
+<h3 id="phase-3-intelligence-optimization-week-3">Phase 3: Intelligence &amp; Optimization (Week 3)</h3>
+<ul>
+<li>[ ] Deploy automated performance analysis</li>
+<li>[ ] Set up smart alert filtering and escalation</li>
+<li>[ ] Implement optimization recommendations</li>
+<li>[ ] Create comprehensive reporting</li>
+</ul>
+<h3 id="monitoring-targets">Monitoring Targets</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Target</th>
+<th>Alert Threshold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>API Response Time</td>
+<td>&lt; 200ms avg</td>
+<td>&gt; 500ms</td>
+</tr>
+<tr>
+<td>Error Rate</td>
+<td>&lt; 0.1%</td>
+<td>&gt; 1%</td>
+</tr>
+<tr>
+<td>Database Query Time</td>
+<td>&lt; 100ms avg</td>
+<td>&gt; 1000ms</td>
+</tr>
+<tr>
+<td>Cache Hit Rate</td>
+<td>&gt; 90%</td>
+<td>&lt; 80%</td>
+</tr>
+<tr>
+<td>Queue Processing</td>
+<td>&lt; 5min avg</td>
+<td>&gt; 15min</td>
+</tr>
+<tr>
+<td>Server CPU</td>
+<td>&lt; 70% avg</td>
+<td>&gt; 85%</td>
+</tr>
+<tr>
+<td>Memory Usage</td>
+<td>&lt; 80% avg</td>
+<td>&gt; 90%</td>
+</tr>
+</tbody>
+</table>
+<p><em>This monitoring strategy provides comprehensive visibility into application performance, user experience, and system health with intelligent alerting and optimization recommendations.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

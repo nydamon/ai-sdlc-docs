@@ -1,0 +1,1478 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Central schematic, toolchain, and strategy for AI-augmented software development.">
+      
+      
+      
+      
+        <link rel="prev" href="../enhanced-config-management/">
+      
+      
+        <link rel="next" href="../monitoring-observability/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Git Hooks Automation - AI-Powered SDLC</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#git-hooks-automation-with-husky" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI-Powered SDLC" class="md-header__button md-logo" aria-label="AI-Powered SDLC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI-Powered SDLC
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Git Hooks Automation
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nydamon/ai-sdlc-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI-Powered SDLC" class="md-nav__button md-logo" aria-label="AI-Powered SDLC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI-Powered SDLC
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nydamon/ai-sdlc-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai_dev_stack_blueprint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Dev Stack Blueprint
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI First Playbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-governance-safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Governance & Safety
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enhanced-config-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Config Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Git Hooks Automation
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git Hooks Automation
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation &amp; Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation &amp; Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-install-husky-root-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Install Husky (Root Project)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-project-structure-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Project Structure Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-hook-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git Hook Configurations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Git Hook Configurations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-commit-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Commit Hook
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit-message-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commit Message Hook
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-push-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Push Hook
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-integration-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Integration Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Integration Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cursor-ai-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cursor AI Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automated-test-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Test Generation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commitlint-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CommitLint Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhanced-packagejson-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced Package.json Scripts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-quick-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Quick Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-team-onboarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Team Onboarding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cicd-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. CI/CD Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skip-hooks-emergency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skip Hooks (Emergency)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-hook-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debug Hook Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring & Observability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Specification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react-best-practices-updated/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    React Best Practices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout_gantt_kanban/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Rollout Gantt & Kanban
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout_readiness_checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Readiness Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semantic-release-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Semantic Release Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing-qa-strategy-revised/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    QA Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sdlc_architecture_diagram.png" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Diagram
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation &amp; Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation &amp; Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-install-husky-root-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Install Husky (Root Project)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-project-structure-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Project Structure Setup
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-hook-configurations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Git Hook Configurations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Git Hook Configurations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-commit-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Commit Hook
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commit-message-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commit Message Hook
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-push-hook" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Push Hook
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-integration-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Integration Features
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Integration Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cursor-ai-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cursor AI Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automated-test-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Test Generation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration Files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuration Files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#commitlint-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CommitLint Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enhanced-packagejson-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enhanced Package.json Scripts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-quick-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Quick Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-team-onboarding" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Team Onboarding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-cicd-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. CI/CD Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#skip-hooks-emergency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skip Hooks (Emergency)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debug-hook-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Debug Hook Issues
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="git-hooks-automation-with-husky">Git Hooks Automation with Husky</h1>
+<h2 id="overview">Overview</h2>
+<p>Automate code quality checks, AI formatting, and testing before code reaches the repository using Husky git hooks.</p>
+<h2 id="installation-setup">Installation &amp; Setup</h2>
+<h3 id="1-install-husky-root-project">1. Install Husky (Root Project)</h3>
+<pre><code class="language-bash"># Install Husky and lint-staged
+npm install --save-dev husky lint-staged
+
+# Initialize Husky
+npx husky install
+
+# Add install script to package.json
+npm pkg set scripts.prepare=&quot;husky install&quot;
+</code></pre>
+<h3 id="2-project-structure-setup">2. Project Structure Setup</h3>
+<pre><code class="language-json">// package.json - Root level configuration
+{
+  &quot;scripts&quot;: {
+    &quot;prepare&quot;: &quot;husky install&quot;,
+    &quot;lint:all&quot;: &quot;npm run lint:laravel &amp;&amp; npm run lint:client &amp;&amp; npm run lint:admin&quot;,
+    &quot;lint:laravel&quot;: &quot;cd backend &amp;&amp; ./vendor/bin/pint &amp;&amp; ./vendor/bin/phpstan&quot;,
+    &quot;lint:client&quot;: &quot;cd client-frontend &amp;&amp; npm run lint &amp;&amp; npm run type-check&quot;,
+    &quot;lint:admin&quot;: &quot;cd admin-frontend &amp;&amp; npm run lint&quot;,
+    &quot;test:all&quot;: &quot;npm run test:laravel &amp;&amp; npm run test:client &amp;&amp; npm run test:admin&quot;,
+    &quot;test:laravel&quot;: &quot;cd backend &amp;&amp; ./vendor/bin/pest --parallel&quot;,
+    &quot;test:client&quot;: &quot;cd client-frontend &amp;&amp; npm run test:ci&quot;,
+    &quot;test:admin&quot;: &quot;cd admin-frontend &amp;&amp; npm run test:ci&quot;
+  },
+  &quot;lint-staged&quot;: {
+    &quot;backend/**/*.php&quot;: [
+      &quot;./backend/vendor/bin/pint&quot;,
+      &quot;git add&quot;
+    ],
+    &quot;client-frontend/**/*.{ts,tsx}&quot;: [
+      &quot;cd client-frontend &amp;&amp; npm run lint:fix&quot;,
+      &quot;cd client-frontend &amp;&amp; npm run format&quot;,
+      &quot;git add&quot;
+    ],
+    &quot;admin-frontend/**/*.{js,jsx}&quot;: [
+      &quot;cd admin-frontend &amp;&amp; npm run lint:fix&quot;, 
+      &quot;cd admin-frontend &amp;&amp; npm run format&quot;,
+      &quot;git add&quot;
+    ]
+  }
+}
+</code></pre>
+<h2 id="git-hook-configurations">Git Hook Configurations</h2>
+<h3 id="pre-commit-hook">Pre-Commit Hook</h3>
+<pre><code class="language-bash">#!/usr/bin/env sh
+# .husky/pre-commit
+
+. &quot;$(dirname -- &quot;$0&quot;)/_/husky.sh&quot;
+
+echo &quot;🔍 Running pre-commit checks...&quot;
+
+# Run lint-staged for automated fixes
+npx lint-staged
+
+# AI-powered code review
+if command -v cursor &gt;/dev/null 2&gt;&amp;1; then
+    echo &quot;🤖 Running AI code review...&quot;
+    # Trigger Cursor AI to review staged changes
+    cursor --ai-review-staged 2&gt;/dev/null || echo &quot;AI review skipped&quot;
+fi
+
+# GitGuardian secrets scan
+if command -v ggshield &gt;/dev/null 2&gt;&amp;1; then
+    echo &quot;🛡️ Scanning for secrets...&quot;
+    ggshield secret scan pre-commit
+fi
+
+# Run tests on affected areas
+echo &quot;🧪 Running focused tests...&quot;
+
+# Laravel tests (if PHP files changed)
+if git diff --cached --name-only | grep -q &quot;\.php$&quot;; then
+    echo &quot;Testing Laravel backend...&quot;
+    cd backend &amp;&amp; ./vendor/bin/pest --parallel --group=unit || exit 1
+    cd ..
+fi
+
+# Client frontend tests (if TS files changed)
+if git diff --cached --name-only | grep -q &quot;client-frontend.*\.\(ts\|tsx\)$&quot;; then
+    echo &quot;Testing TypeScript client...&quot;
+    cd client-frontend &amp;&amp; npm run test:changed || exit 1
+    cd ..
+fi
+
+# Admin frontend tests (if JS files changed)
+if git diff --cached --name-only | grep -q &quot;admin-frontend.*\.\(js\|jsx\)$&quot;; then
+    echo &quot;Testing JavaScript admin...&quot;
+    cd admin-frontend &amp;&amp; npm run test:changed || exit 1
+    cd ..
+fi
+
+echo &quot;✅ Pre-commit checks passed!&quot;
+</code></pre>
+<h3 id="commit-message-hook">Commit Message Hook</h3>
+<pre><code class="language-bash">#!/usr/bin/env sh
+# .husky/commit-msg
+
+. &quot;$(dirname -- &quot;$0&quot;)/_/husky.sh&quot;
+
+# Conventional commit enforcement
+npx --no -- commitlint --edit $1
+
+# AI-suggested commit message improvement
+if command -v cursor &gt;/dev/null 2&gt;&amp;1; then
+    echo &quot;🤖 AI commit message suggestions available in Cursor&quot;
+fi
+</code></pre>
+<h3 id="pre-push-hook">Pre-Push Hook</h3>
+<pre><code class="language-bash">#!/usr/bin/env sh
+# .husky/pre-push
+
+. &quot;$(dirname -- &quot;$0&quot;)/_/husky.sh&quot;
+
+echo &quot;🚀 Running pre-push validations...&quot;
+
+# Comprehensive test suite
+echo &quot;🧪 Running full test suite...&quot;
+npm run test:all || exit 1
+
+# SonarQube analysis trigger
+if [ -f &quot;sonar-project.properties&quot; ]; then
+    echo &quot;📊 Triggering SonarQube analysis...&quot;
+    # This would integrate with your SonarQube setup
+    curl -X POST &quot;$SONAR_WEBHOOK_URL&quot; \
+        -H &quot;Authorization: Bearer $SONAR_TOKEN&quot; \
+        -d &quot;project=current-branch&quot; 2&gt;/dev/null || echo &quot;SonarQube trigger skipped&quot;
+fi
+
+# Performance regression check
+echo &quot;⚡ Checking for performance regressions...&quot;
+if [ -d &quot;client-frontend&quot; ]; then
+    cd client-frontend &amp;&amp; npm run build &amp;&amp; npm run lighthouse:ci || echo &quot;Performance check skipped&quot;
+    cd ..
+fi
+
+echo &quot;✅ Pre-push validations passed!&quot;
+</code></pre>
+<h2 id="ai-integration-features">AI Integration Features</h2>
+<h3 id="cursor-ai-integration">Cursor AI Integration</h3>
+<pre><code class="language-bash">#!/bin/bash
+# scripts/ai-review.sh
+
+echo &quot;🤖 Running AI-powered code review...&quot;
+
+# Get staged files
+STAGED_FILES=$(git diff --cached --name-only)
+
+if [ -z &quot;$STAGED_FILES&quot; ]; then
+    echo &quot;No staged files for review&quot;
+    exit 0
+fi
+
+# AI review for each file type
+for file in $STAGED_FILES; do
+    case $file in
+        *.php)
+            echo &quot;🔍 AI reviewing PHP file: $file&quot;
+            # Use AI prompt for Laravel code review
+            cursor --ai-prompt &quot;Review this Laravel code for security, performance, and best practices&quot; &quot;$file&quot;
+            ;;
+        *.ts|*.tsx)
+            echo &quot;🔍 AI reviewing TypeScript file: $file&quot;
+            # Use AI prompt for TypeScript review
+            cursor --ai-prompt &quot;Review this TypeScript React code for type safety, performance, and accessibility&quot; &quot;$file&quot;
+            ;;
+        *.js|*.jsx)
+            echo &quot;🔍 AI reviewing JavaScript file: $file&quot;
+            # Use AI prompt for JavaScript review
+            cursor --ai-prompt &quot;Review this JavaScript React code for best practices and potential issues&quot; &quot;$file&quot;
+            ;;
+    esac
+done
+</code></pre>
+<h3 id="automated-test-generation">Automated Test Generation</h3>
+<pre><code class="language-bash">#!/bin/bash
+# scripts/ai-test-generation.sh
+
+echo &quot;🧪 Generating tests with AI...&quot;
+
+# Find files without corresponding tests
+find_untested_files() {
+    local src_dir=$1
+    local test_dir=$2
+    local extension=$3
+
+    find &quot;$src_dir&quot; -name &quot;*.$extension&quot; | while read -r file; do
+        # Convert source file path to test file path
+        test_file=$(echo &quot;$file&quot; | sed &quot;s|$src_dir|$test_dir|&quot; | sed &quot;s|\.$extension|.test.$extension|&quot;)
+
+        if [ ! -f &quot;$test_file&quot; ]; then
+            echo &quot;$file&quot;
+        fi
+    done
+}
+
+# Generate tests for Laravel
+if [ -d &quot;backend&quot; ]; then
+    echo &quot;Generating Pest PHP tests...&quot;
+    find_untested_files &quot;backend/app&quot; &quot;backend/tests&quot; &quot;php&quot; | while read -r file; do
+        cursor --ai-prompt &quot;Generate comprehensive Pest PHP tests for this Laravel code&quot; &quot;$file&quot;
+    done
+fi
+
+# Generate tests for TypeScript client
+if [ -d &quot;client-frontend/src&quot; ]; then
+    echo &quot;Generating Vitest tests...&quot;
+    find_untested_files &quot;client-frontend/src&quot; &quot;client-frontend/src&quot; &quot;ts&quot; | while read -r file; do
+        cursor --ai-prompt &quot;Generate Vitest tests for this TypeScript React component with PostHog tracking&quot; &quot;$file&quot;
+    done
+fi
+
+# Generate tests for JavaScript admin
+if [ -d &quot;admin-frontend/src&quot; ]; then
+    echo &quot;Generating Jest tests...&quot;
+    find_untested_files &quot;admin-frontend/src&quot; &quot;admin-frontend/src&quot; &quot;js&quot; | while read -r file; do
+        cursor --ai-prompt &quot;Generate Jest tests for this JavaScript React component&quot; &quot;$file&quot;
+    done
+fi
+</code></pre>
+<h2 id="configuration-files">Configuration Files</h2>
+<h3 id="commitlint-configuration">CommitLint Configuration</h3>
+<pre><code class="language-javascript">// commitlint.config.js
+module.exports = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [
+      2,
+      'always',
+      [
+        'feat',     // New feature
+        'fix',      // Bug fix
+        'docs',     // Documentation
+        'style',    // Code style changes
+        'refactor', // Code refactoring
+        'test',     // Adding tests
+        'chore',    // Maintenance
+        'perf',     // Performance improvements
+        'ci',       // CI/CD changes
+        'build',    // Build system changes
+        'revert'    // Revert previous commit
+      ]
+    ],
+    'scope-enum': [
+      2,
+      'always',
+      [
+        'backend',
+        'client',
+        'admin', 
+        'config',
+        'deps',
+        'ai',
+        'security'
+      ]
+    ],
+    'subject-max-length': [2, 'always', 72],
+    'body-max-line-length': [2, 'always', 100]
+  }
+};
+</code></pre>
+<h3 id="enhanced-packagejson-scripts">Enhanced Package.json Scripts</h3>
+<pre><code class="language-json">{
+  &quot;scripts&quot;: {
+    &quot;commit&quot;: &quot;git-cz&quot;,
+    &quot;commit:ai&quot;: &quot;cursor --ai-commit&quot;,
+    &quot;lint:fix:all&quot;: &quot;npm run lint:fix:laravel &amp;&amp; npm run lint:fix:client &amp;&amp; npm run lint:fix:admin&quot;,
+    &quot;lint:fix:laravel&quot;: &quot;cd backend &amp;&amp; ./vendor/bin/pint&quot;,
+    &quot;lint:fix:client&quot;: &quot;cd client-frontend &amp;&amp; npm run lint:fix &amp;&amp; npm run format&quot;,
+    &quot;lint:fix:admin&quot;: &quot;cd admin-frontend &amp;&amp; npm run lint:fix &amp;&amp; npm run format&quot;,
+    &quot;ai:review&quot;: &quot;./scripts/ai-review.sh&quot;,
+    &quot;ai:tests&quot;: &quot;./scripts/ai-test-generation.sh&quot;,
+    &quot;ai:commit-msg&quot;: &quot;cursor --ai-prompt 'Generate a conventional commit message for these changes'&quot;,
+    &quot;validate:all&quot;: &quot;npm run lint:all &amp;&amp; npm run test:all&quot;,
+    &quot;hooks:install&quot;: &quot;husky install &amp;&amp; npm run hooks:setup&quot;,
+    &quot;hooks:setup&quot;: &quot;npx husky add .husky/pre-commit 'npm run pre-commit' &amp;&amp; npx husky add .husky/commit-msg 'npx commitlint --edit $1' &amp;&amp; npx husky add .husky/pre-push 'npm run pre-push'&quot;
+  }
+}
+</code></pre>
+<h2 id="setup-instructions">Setup Instructions</h2>
+<h3 id="1-quick-setup">1. Quick Setup</h3>
+<pre><code class="language-bash"># Run this in your project root
+npm install --save-dev husky lint-staged @commitlint/cli @commitlint/config-conventional
+
+# Setup hooks
+npm run hooks:install
+
+# Test the setup
+git add . &amp;&amp; git commit -m &quot;test: validate git hooks setup&quot;
+</code></pre>
+<h3 id="2-team-onboarding">2. Team Onboarding</h3>
+<pre><code class="language-bash"># Add to your README.md
+echo &quot;## Git Hooks Setup
+Run \`npm install\` to automatically install git hooks.
+All commits must follow conventional commit format.
+AI code review and testing run automatically on commit.&quot; &gt;&gt; README.md
+</code></pre>
+<h3 id="3-cicd-integration">3. CI/CD Integration</h3>
+<pre><code class="language-yaml"># .github/workflows/validate-hooks.yml
+name: Validate Git Hooks
+on: [push, pull_request]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npm ci
+      - run: npm run validate:all
+      - name: Validate commit message
+        if: github.event_name == 'push'
+        run: npx commitlint --from=HEAD~1 --to=HEAD
+</code></pre>
+<h2 id="benefits">Benefits</h2>
+<p>✅ <strong>Immediate Quality Gates</strong>: No bad code reaches the repository<br />
+✅ <strong>AI-Powered Reviews</strong>: Automatic code review suggestions<br />
+✅ <strong>Automated Formatting</strong>: Consistent code style without thinking<br />
+✅ <strong>Focused Testing</strong>: Only test what changed, saving time<br />
+✅ <strong>Conventional Commits</strong>: Clean, searchable commit history<br />
+✅ <strong>Security Scanning</strong>: Automatic secrets detection<br />
+✅ <strong>Zero Configuration</strong>: Works automatically after setup  </p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="skip-hooks-emergency">Skip Hooks (Emergency)</h3>
+<pre><code class="language-bash"># Skip pre-commit (use sparingly)
+git commit --no-verify -m &quot;emergency: critical hotfix&quot;
+
+# Skip pre-push
+git push --no-verify
+</code></pre>
+<h3 id="debug-hook-issues">Debug Hook Issues</h3>
+<pre><code class="language-bash"># Test individual hooks
+.husky/pre-commit
+.husky/commit-msg &quot;feat: test commit message&quot;
+.husky/pre-push
+</code></pre>
+<hr />
+<p><strong>Implementation Time</strong>: 2-3 hours<br />
+<strong>Team Training</strong>: 30 minutes<br />
+<strong>Maintenance</strong>: Near zero (self-managing)  </p>
+<p>This gives you <strong>instant automation wins</strong> with your existing tooling while setting the foundation for more advanced AI integrations.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>
