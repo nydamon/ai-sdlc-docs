@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Enhanced AI-Powered SDLC Setup Script
+# Supports Laravel + TypeScript React projects
+
+set -e
+
+### COLORS
+GREEN="\033[0;32m"
+RED="\033[0;31m"
+NC="\033[0m"
+
+echo_color() {
+  echo -e "${1}${2}${NC}"
+}
+
+### PREREQUISITES CHECK
+check_prerequisites() {
+  echo_color $GREEN "🔍 Checking prerequisites..."
+  command -v node >/dev/null 2>&1 || { echo_color $RED "❌ Node.js is required."; exit 1; }
+  command -v npm >/dev/null 2>&1 || { echo_color $RED "❌ npm is required."; exit 1; }
+  command -v composer >/dev/null 2>&1 || { echo_color $RED "❌ Composer is required."; exit 1; }
+  command -v jq >/dev/null 2>&1 || { echo_color $RED "❌ jq is required for JSON manipulation."; exit 1; }
+}
+
+### INSTALL SHARED PACKAGES & HOOKS
+install_common_dependencies() {
+  echo_color $GREEN "📦 Installing shared developer dependencies..."
+  npm install --save-dev eslint prettier husky lint-staged commitlint @commitlint/config-conventional
+  npx husky install
+  npx husky add .husky/pre-commit "npx lint-staged"
+}
+
+### TYPESCRIPT CLIENT SETUP
+setup_typescript_client() {
+  echo_color $GREEN "🛠️ Configuring TypeScript client..."
+  npm install --save-dev vitest playwright msw
+  echo_color $GREEN "✔️ Installed Vitest, Playwright, and MSW for test coverage."
+}
+
+### LARAVEL BACKEND SETUP
+setup_laravel_backend() {
+  echo_color $GREEN "🛠️ Configuring Laravel backend..."
+  composer require pestphp/pest laravel/pulse laravel/pennant --dev
+  echo_color $GREEN "✔️ Installed Pest, Pulse, and Pennant for backend quality and monitoring."
+}
+
+### VALIDATE & REPORT
+validate_configuration() {
+  echo_color $GREEN "✅ Validating setup..."
+  [[ -f .eslintrc.js ]] || echo_color $RED "⚠️ ESLint config missing"
+  [[ -f .prettierrc ]] || echo_color $RED "⚠️ Prettier config missing"
+  [[ -f vitest.config.ts ]] || echo_color $RED "⚠️ Vitest config missing"
+  [[ -d tests ]] || echo_color $RED "⚠️ Laravel tests folder missing"
+  echo_color $GREEN "🎉 Setup complete. See documentation for full details."
+}
+
+main() {
+  check_prerequisites
+  install_common_dependencies
+  [[ -f artisan ]] && setup_laravel_backend
+  [[ -f vite.config.ts ]] && setup_typescript_client
+  validate_configuration
+}
+
+main
