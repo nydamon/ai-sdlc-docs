@@ -23,6 +23,9 @@ nav:
       - Quick Start Guide: quick-start.md
       - Implementation Roadmap: implementation-roadmap.md
       - Success Metrics: success-metrics.md
+      - Migration Guide: migration-guide.md
+      - Team Onboarding: team-onboarding-checklist.md
+      - Cost Analysis: cost-analysis.md
   - Architecture:
       - AI-SDLC Architecture: sdlc-architecture-diagram.md
       - Tool Integration Matrix: tool-integration-matrix.md
@@ -42,6 +45,9 @@ nav:
   - QA & Monitoring:
       - QA Strategy: testing-qa-strategy-revised.md
       - Monitoring & Observability: monitoring-observability.md
+  - Support & Resources:
+      - Troubleshooting Guide: troubleshooting-guide.md
+      - Enhanced Setup Script: enhanced-setup-script.txt
 
 markdown_extensions:
   - admonition
