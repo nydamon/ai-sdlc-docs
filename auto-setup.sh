@@ -22,7 +22,14 @@ check_prerequisites() {
   echo_color $YELLOW "🔍 Checking prerequisites..."
   command -v node >/dev/null 2>&1 || { echo_color $RED "❌ Node.js is required."; exit 1; }
   command -v npm >/dev/null 2>&1 || { echo_color $RED "❌ npm is required."; exit 1; }
-  command -v jq >/dev/null 2>&1 || { echo_color $RED "❌ jq is required for JSON manipulation."; exit 1; }
+  command -v git >/dev/null 2>&1 || { echo_color $RED "❌ Git is required."; exit 1; }
+  
+  # Check if we're in a git repository
+  if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    echo_color $RED "❌ This script must be run inside a Git repository."
+    echo_color $YELLOW "💡 Run 'git init' first to initialize a Git repository."
+    exit 1
+  fi
 
   # Check for project-specific tools only if directories exist
   if [[ -d "backend" ]] || [[ -f "artisan" ]]; then
@@ -34,8 +41,16 @@ check_prerequisites() {
 install_common_dependencies() {
   echo_color $YELLOW "📦 Installing shared developer dependencies..."
   npm install --save-dev eslint prettier husky lint-staged commitlint @commitlint/config-conventional
-  npx husky install
-  npx husky add .husky/pre-commit "npx lint-staged"
+  
+  # Modern Husky v8+ initialization
+  echo_color $YELLOW "🪝 Setting up Git hooks with Husky..."
+  npx husky init
+  
+  # Create pre-commit hook
+  echo "npx lint-staged" > .husky/pre-commit
+  chmod +x .husky/pre-commit
+  
+  echo_color $GREEN "✔️ Git hooks configured successfully."
 }
 
 ### DETECT AND SETUP PROJECT TYPE
