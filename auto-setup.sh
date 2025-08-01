@@ -102,23 +102,44 @@ detect_and_setup_project() {
   fi
 }
 
-### INSTALL GLOBAL TOOLS
-install_global_tools() {
-  echo_color $YELLOW "🌍 Installing global development tools..."
+### SETUP BASIC CONFIGURATION
+setup_basic_configuration() {
+  echo_color $YELLOW "⚙️ Setting up basic configuration files..."
 
-  # Playwright for E2E testing
-  npm install -g @playwright/test
-  npx playwright install --with-deps chromium firefox webkit
-
-  # Semantic Release for automated deployments
-  npm install -g semantic-release @semantic-release/git @semantic-release/github
-
-  # AI Tools (if not already installed)
-  if ! command -v codium >/dev/null 2>&1; then
-    echo_color $YELLOW "⚠️  CodiumAI CLI not found. Please install manually from https://codium.ai"
+  # Create basic ESLint config if none exists
+  if [[ ! -f ".eslintrc.js" ]] && [[ ! -f ".eslintrc.json" ]]; then
+    cat > .eslintrc.js << 'EOF'
+module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+    node: true,
+  },
+  extends: ['eslint:recommended'],
+  parserOptions: {
+    ecmaVersion: 12,
+    sourceType: 'module',
+  },
+  rules: {},
+};
+EOF
+    echo_color $GREEN "✔️ Created basic ESLint configuration."
   fi
 
-  echo_color $GREEN "✔️ Global tools installed."
+  # Create basic Prettier config if none exists
+  if [[ ! -f ".prettierrc" ]]; then
+    cat > .prettierrc << 'EOF'
+{
+  "semi": true,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5"
+}
+EOF
+    echo_color $GREEN "✔️ Created basic Prettier configuration."
+  fi
+
+  echo_color $GREEN "✔️ Basic configuration setup complete."
 }
 
 ### VALIDATE & REPORT
@@ -225,7 +246,7 @@ main() {
   check_prerequisites
   install_common_dependencies
   detect_and_setup_project
-  install_global_tools
+  setup_basic_configuration
   create_validation_script
   validate_configuration
 }
