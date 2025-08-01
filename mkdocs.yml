@@ -1,20 +1,61 @@
 site_name: AI-Powered SDLC
-site_description: Central schematic, toolchain, and strategy for AI-augmented software development.
+site_description: Unified architecture, toolchain, and strategic workflows for AI-augmented software development.
 repo_url: https://github.com/nydamon/ai-sdlc-docs
+
 theme:
   name: material
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotate
+    - content.code.copy
+
 nav:
   - Home: README.md
-  - AI Dev Stack Blueprint: ai_dev_stack_blueprint.md
-  - AI First Playbook: ai-first-playbook.md
-  - Governance & Safety: ai-governance-safety.md
-  - Config Management: enhanced-config-management.md
-  - Git Hooks Automation: git-hooks-automation.md
-  - Monitoring & Observability: monitoring-observability.md
-  - Project Specification: project_specification.md
-  - React Best Practices: react-best-practices-updated.md
-  - Rollout Gantt & Kanban: rollout_gantt_kanban.md
-  - Readiness Checklist: rollout_readiness_checklist.md
-  - Semantic Release Setup: semantic-release-setup.md
-  - QA Strategy: testing-qa-strategy-revised.md
-  - Architecture Diagram: sdlc_architecture_diagram.png
+  - Getting Started:
+      - Quick Start Guide: quick-start.md
+      - Implementation Roadmap: implementation-roadmap.md
+      - Success Metrics: success-metrics.md
+  - Architecture:
+      - AI-SDLC Architecture: sdlc-architecture-diagram.md
+      - Tool Integration Matrix: tool-integration-matrix.md
+      - AI Dev Stack Blueprint: ai_dev_stack_blueprint.md
+  - Strategy & Planning:
+      - AI-First Playbook: ai-first-playbook.md
+      - Governance & Safety: ai-governance-safety.md
+      - Project Specification: project_specification.md
+      - Readiness Checklist: rollout_readiness_checklist.md
+      - Rollout Gantt & Kanban: rollout_gantt_kanban.md
+  - Development Workflow:
+      - Config Management: enhanced-config-management.md
+      - Git Hooks Automation: git-hooks-automation.md
+      - Semantic Release Setup: semantic-release-setup.md
+      - React Best Practices: react-best-practices-updated.md
+      - Enhanced Cursor Guidelines: enhanced-cursor-guidelines.md
+  - QA & Monitoring:
+      - QA Strategy: testing-qa-strategy-revised.md
+      - Monitoring & Observability: monitoring-observability.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+  - meta
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde

@@ -1,0 +1,2200 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Unified architecture, toolchain, and strategic workflows for AI-augmented software development.">
+      
+      
+      
+      
+        <link rel="prev" href="../enhanced-cursor-guidelines/">
+      
+      
+        <link rel="next" href="../monitoring-observability/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>QA Strategy - AI-Powered SDLC</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#comprehensive-testing-qa-strategy" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI-Powered SDLC" class="md-header__button md-logo" aria-label="AI-Powered SDLC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI-Powered SDLC
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              QA Strategy
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nydamon/ai-sdlc-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../quick-start/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../sdlc-architecture-diagram/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../ai-first-playbook/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Strategy & Planning
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../enhanced-config-management/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development Workflow
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  QA & Monitoring
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI-Powered SDLC" class="md-nav__button md-logo" aria-label="AI-Powered SDLC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI-Powered SDLC
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nydamon/ai-sdlc-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../implementation-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Implementation Roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../success-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Success Metrics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sdlc-architecture-diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI-SDLC Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tool-integration-matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tool Integration Matrix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai_dev_stack_blueprint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Dev Stack Blueprint
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Strategy & Planning
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Strategy & Planning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-first-playbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI-First Playbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-governance-safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Governance & Safety
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Specification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout_readiness_checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Readiness Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout_gantt_kanban/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Rollout Gantt & Kanban
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Development Workflow
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Development Workflow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enhanced-config-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Config Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-hooks-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git Hooks Automation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semantic-release-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Semantic Release Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react-best-practices-updated/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    React Best Practices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enhanced-cursor-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Enhanced Cursor Guidelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    QA & Monitoring
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            QA & Monitoring
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    QA Strategy
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    QA Strategy
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-stack-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing Stack Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing Stack Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-testing-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Testing Layer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-testing-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Testing Layer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#end-to-end-testing-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      End-to-End Testing Layer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-assisted-test-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI-Assisted Test Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI-Assisted Test Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#codiumai-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CodiumAI Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automated-test-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Test Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-management-traceability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Management &amp; Traceability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Management &amp; Traceability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qase-integration-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Qase Integration Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#requirement-traceability-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirement Traceability Matrix
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quality-gates-automation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Gates &amp; Automation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quality Gates &amp; Automation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cicd-pipeline-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI/CD Pipeline Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-testing-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Testing Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-testing-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Testing Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Testing Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#risk-based-testing-prioritization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Risk-Based Testing Prioritization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mutation-testing-for-quality-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mutation Testing for Quality Validation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-data-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Data Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Data Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-data-factory-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Data Factory Strategy
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database-seeding-for-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database Seeding for Tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reporting-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reporting &amp; Analytics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reporting &amp; Analytics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprehensive-test-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comprehensive Test Reporting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Roadmap
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation Roadmap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-1-foundation-weeks-1-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 1: Foundation (Weeks 1-2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-2-ai-integration-weeks-3-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 2: AI Integration (Weeks 3-4)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#phase-3-advanced-features-weeks-5-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase 3: Advanced Features (Weeks 5-6)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-targets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Targets
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring & Observability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="comprehensive-testing-qa-strategy">Comprehensive Testing &amp; QA Strategy<a class="headerlink" href="#comprehensive-testing-qa-strategy" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>Multi-layer testing strategy leveraging AI-assisted test generation, automated quality gates, and comprehensive traceability to maintain 85%+ code coverage with minimal manual effort.</p>
+<h2 id="testing-stack-architecture">Testing Stack Architecture<a class="headerlink" href="#testing-stack-architecture" title="Permanent link">&para;</a></h2>
+<h3 id="unit-testing-layer">Unit Testing Layer<a class="headerlink" href="#unit-testing-layer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Laravel Backend</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Framework</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pest PHP</span>
+<span class="w">  </span><span class="nt">Features</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Elegant syntax with higher-order tests</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parallel execution for speed</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Built-in Laravel integration</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AI-powered test generation via CodiumAI</span>
+
+<span class="w">  </span><span class="nt">Coverage Targets</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Models</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">95%</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Controllers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90%</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Services</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">95%</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Utilities</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">100%</span>
+
+<span class="nt">Client Frontend (TypeScript)</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Framework</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Vitest</span>
+<span class="w">  </span><span class="nt">Benefits</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10x faster than Jest with Vite</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Native ES modules support</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Better TypeScript integration</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hot module replacement for tests</span>
+
+<span class="w">  </span><span class="nt">Testing Tools</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">React Testing Library for component tests</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MSW for API mocking</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">User-event for interaction testing</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PostHog test utilities for analytics testing</span>
+
+<span class="w">  </span><span class="nt">Coverage Targets</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Components</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">85%</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Hooks</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90%</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Utils</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">95%</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Services</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90%</span>
+
+<span class="nt">Admin Frontend (JavaScript)</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Framework</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Jest</span>
+<span class="w">  </span><span class="nt">Rationale</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mature ecosystem for JavaScript</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Extensive plugin support</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Familiar to most developers</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Stable configuration</span>
+
+<span class="w">  </span><span class="nt">Testing Tools</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">React Testing Library for component tests</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Jest DOM for DOM testing utilities</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MSW for API mocking</span>
+
+<span class="w">  </span><span class="nt">Coverage Targets</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Components</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80%</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Utils</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90%</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Services</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">85%</span>
+</code></pre></div>
+<h3 id="integration-testing-layer">Integration Testing Layer<a class="headerlink" href="#integration-testing-layer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">API Testing</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Laravel Feature Tests</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Full HTTP request/response testing</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Database transaction rollback</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authentication testing</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API contract validation</span>
+
+<span class="w">  </span><span class="nt">Frontend Integration</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Component integration tests</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API integration testing</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">State management testing</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Router testing</span>
+
+<span class="nt">Database Testing</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Migration Testing</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Forward and rollback testing</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Schema validation</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Data integrity checks</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Performance impact assessment</span>
+
+<span class="w">  </span><span class="nt">Repository Testing</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Database query testing</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Relationship testing</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Transaction testing</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Optimization validation</span>
+</code></pre></div>
+<h3 id="end-to-end-testing-layer">End-to-End Testing Layer<a class="headerlink" href="#end-to-end-testing-layer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Playwright Configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Benefits</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Faster and more reliable than Cypress</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Better debugging capabilities</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Multi-browser support</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Auto-waiting and retry logic</span>
+
+<span class="w">  </span><span class="nt">Test Categories</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Critical user journeys</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cross-browser compatibility</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mobile responsiveness</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Performance testing</span>
+
+<span class="w">  </span><span class="nt">Visual Testing</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Applitools integration for visual regression</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Automated screenshot comparison</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cross-browser visual validation</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Responsive design testing</span>
+</code></pre></div>
+<h2 id="ai-assisted-test-generation">AI-Assisted Test Generation<a class="headerlink" href="#ai-assisted-test-generation" title="Permanent link">&para;</a></h2>
+<h3 id="codiumai-integration">CodiumAI Integration<a class="headerlink" href="#codiumai-integration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// tools/testing/src/codium-integration.ts</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">CodiumTestGenerator</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">generateUnitTests</span><span class="p">(</span><span class="nx">sourceFile</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">TestSuite</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">analysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeCode</span><span class="p">(</span><span class="nx">sourceFile</span><span class="p">);</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">testCases</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callCodiumAPI</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;generate_tests&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">source_code</span><span class="o">:</span><span class="w"> </span><span class="kt">sourceFile</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">test_framework</span><span class="o">:</span><span class="w"> </span><span class="kt">this.detectFramework</span><span class="p">(</span><span class="nx">sourceFile</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">coverage_target</span><span class="o">:</span><span class="w"> </span><span class="kt">90</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">include_edge_cases</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">security_focused</span><span class="o">:</span><span class="w"> </span><span class="kt">this.isSecurityCritical</span><span class="p">(</span><span class="nx">sourceFile</span><span class="p">)</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">tests</span><span class="o">:</span><span class="w"> </span><span class="kt">testCases</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">coverage</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">estimateCoverage</span><span class="p">(</span><span class="nx">testCases</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">suggestions</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getImprovementSuggestions</span><span class="p">(</span><span class="nx">testCases</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">generateE2ETests</span><span class="p">(</span><span class="nx">userStory</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">PlaywrightTest</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">testPlan</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">callCodiumAPI</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;generate_e2e_tests&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">user_story</span><span class="o">:</span><span class="w"> </span><span class="kt">userStory</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">framework</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;playwright&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">include_accessibility</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">include_performance</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">convertToPlaywrightFormat</span><span class="p">(</span><span class="nx">testPlan</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="automated-test-maintenance">Automated Test Maintenance<a class="headerlink" href="#automated-test-maintenance" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// tools/testing/src/test-maintenance.ts</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">TestMaintenanceBot</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">repairFailingTests</span><span class="p">(</span><span class="nx">failedTests</span><span class="o">:</span><span class="w"> </span><span class="kt">TestResult</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">RepairResult</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">repairs</span><span class="o">:</span><span class="w"> </span><span class="kt">RepairResult</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">test</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">failedTests</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">analysis</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeFailure</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">analysis</span><span class="p">.</span><span class="nx">isEnvironmentalIssue</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Auto-fix environmental issues</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">fix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">generateEnvironmentFix</span><span class="p">(</span><span class="nx">test</span><span class="p">);</span>
+<span class="w">        </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">applyFix</span><span class="p">(</span><span class="nx">fix</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">repairs</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="w"> </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="kt">test.name</span><span class="p">,</span><span class="w"> </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;auto_fixed&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">fix</span><span class="w"> </span><span class="p">});</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">analysis</span><span class="p">.</span><span class="nx">isCodeChange</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Generate updated test for code changes</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">updatedTest</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">updateTestForCodeChange</span><span class="p">(</span><span class="nx">test</span><span class="p">,</span><span class="w"> </span><span class="nx">analysis</span><span class="p">);</span>
+<span class="w">        </span><span class="nx">repairs</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="w"> </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="kt">test.name</span><span class="p">,</span><span class="w"> </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;updated&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">updatedTest</span><span class="w"> </span><span class="p">});</span>
+<span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// Flag for manual review</span>
+<span class="w">        </span><span class="nx">repairs</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span><span class="w"> </span><span class="nx">test</span><span class="o">:</span><span class="w"> </span><span class="kt">test.name</span><span class="p">,</span><span class="w"> </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;manual_review_required&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">analysis</span><span class="w"> </span><span class="p">});</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">repairs</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="test-management-traceability">Test Management &amp; Traceability<a class="headerlink" href="#test-management-traceability" title="Permanent link">&para;</a></h2>
+<h3 id="qase-integration-strategy">Qase Integration Strategy<a class="headerlink" href="#qase-integration-strategy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// tools/testing/src/qase-integration.ts</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">QaseTestManager</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">syncTestsWithRequirements</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Get all test cases from codebase</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">testCases</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">scanTestFiles</span><span class="p">();</span>
+
+<span class="w">    </span><span class="c1">// Sync with Qase test management</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">testCase</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">testCases</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">requirement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">findLinkedRequirement</span><span class="p">(</span><span class="nx">testCase</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">updateQaseTestCase</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="kt">testCase.qaseId</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="kt">testCase.name</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="kt">testCase.description</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">requirement_id</span><span class="o">:</span><span class="w"> </span><span class="kt">requirement?.id</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">automated</span><span class="o">:</span><span class="w"> </span><span class="kt">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">framework</span><span class="o">:</span><span class="w"> </span><span class="kt">testCase.framework</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">last_updated</span><span class="o">:</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">()</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">createTestRunFromCI</span><span class="p">(</span><span class="nx">gitCommit</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">string</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">testRun</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">qaseAPI</span><span class="p">.</span><span class="nx">createTestRun</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="sb">`Automated Run - </span><span class="si">${</span><span class="nx">gitCommit</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">8</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="sb">`CI/CD automated test execution`</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">environment</span><span class="o">:</span><span class="w"> </span><span class="kt">process.env.TEST_ENVIRONMENT</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">cases</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getAllAutomatedTestIds</span><span class="p">()</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">testRun</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">reportTestResults</span><span class="p">(</span><span class="nx">runId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">results</span><span class="o">:</span><span class="w"> </span><span class="kt">TestResult</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="ow">void</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">results</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">qaseAPI</span><span class="p">.</span><span class="nx">addTestResult</span><span class="p">(</span><span class="nx">runId</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">case_id</span><span class="o">:</span><span class="w"> </span><span class="kt">result.qaseId</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">status</span><span class="o">:</span><span class="w"> </span><span class="kt">result.passed</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s1">&#39;passed&#39;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;failed&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">time_ms</span><span class="o">:</span><span class="w"> </span><span class="kt">result.duration</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">comment</span><span class="o">:</span><span class="w"> </span><span class="kt">result.errorMessage</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s1">&#39;Test passed successfully&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">attachments</span><span class="o">:</span><span class="w"> </span><span class="kt">result.screenshots</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="requirement-traceability-matrix">Requirement Traceability Matrix<a class="headerlink" href="#requirement-traceability-matrix" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Traceability Requirements</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Business Requirement → Test Case</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Every requirement must have corresponding tests</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Automated mapping via Qase integration</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Coverage reporting by requirement</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gap analysis for missing tests</span>
+
+<span class="w">  </span><span class="nt">Test Case → Code Coverage</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Direct mapping of tests to source code</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Real-time coverage reporting</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Coverage gap identification</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Automated test generation for gaps</span>
+
+<span class="w">  </span><span class="nt">Bug Report → Regression Test</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Automatic test creation for bug fixes</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Regression test suite maintenance</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bug reproduction test cases</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prevention test generation</span>
+</code></pre></div>
+<h2 id="quality-gates-automation">Quality Gates &amp; Automation<a class="headerlink" href="#quality-gates-automation" title="Permanent link">&para;</a></h2>
+<h3 id="cicd-pipeline-integration">CI/CD Pipeline Integration<a class="headerlink" href="#cicd-pipeline-integration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># .github/workflows/comprehensive-testing.yml</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Comprehensive Testing Pipeline</span>
+<span class="nt">on</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">push</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pull_request</span><span class="p p-Indicator">]</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">security-scan</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GitGuardian Security Scan</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GitGuardian/ggshield-action@v1</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">GITGUARDIAN_API_KEY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITGUARDIAN_API_KEY }}</span>
+
+<span class="w">  </span><span class="nt">unit-tests</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">matrix</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">php</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">8.3</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">node</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">20</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">      </span><span class="c1"># Laravel/PHP Testing</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup PHP</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shivammathur/setup-php@v2</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">php-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.php }}</span>
+<span class="w">          </span><span class="nt">extensions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Laravel Dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composer install --no-progress --no-interaction</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Generate Laravel Key</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">php artisan key:generate</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run Pest PHP Tests</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">./vendor/bin/pest --parallel --coverage --min=85</span>
+<span class="w">          </span><span class="no">./vendor/bin/pest --coverage-html=coverage-html</span>
+
+<span class="w">      </span><span class="c1"># React/Frontend Testing  </span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup Node.js</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ matrix.node }}</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Frontend Dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm ci</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run Vitest Tests</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">npm run test:coverage</span>
+<span class="w">          </span><span class="no">npm run test:ci</span>
+
+<span class="w">      </span><span class="c1"># Upload Coverage Reports</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload Coverage to SonarQube</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sonarqube-quality-gate-action@master</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">SONAR_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.SONAR_TOKEN }}</span>
+
+<span class="w">  </span><span class="nt">integration-tests</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit-tests</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">services</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">mysql</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mysql:8.0</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">MYSQL_ROOT_PASSWORD</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">password</span>
+<span class="w">          </span><span class="nt">MYSQL_DATABASE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">testing</span>
+<span class="w">        </span><span class="nt">options</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--health-cmd=&quot;mysqladmin ping&quot; --health-interval=10s --health-timeout=5s --health-retries=3</span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup Test Environment</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">cp .env.testing .env</span>
+<span class="w">          </span><span class="no">php artisan migrate:fresh --seed</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run Laravel Feature Tests</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./vendor/bin/pest --group=feature --parallel</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run API Integration Tests</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./vendor/bin/pest --group=api --parallel</span>
+
+<span class="w">  </span><span class="nt">e2e-tests</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integration-tests</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Setup Node.js</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;20&#39;</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Dependencies</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npm ci</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Playwright</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npx playwright install --with-deps</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Start Application</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">npm run build</span>
+<span class="w">          </span><span class="no">npm run preview &amp;</span>
+<span class="w">          </span><span class="no">sleep 10</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Run Playwright Tests</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npx playwright test --reporter=html,json</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Upload Playwright Results</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/upload-artifact@v3</span>
+<span class="w">        </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always()</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">playwright-report</span>
+<span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">playwright-report/</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Visual Testing with Applitools</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">npx playwright test --grep=&quot;@visual&quot;</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">APPLITOOLS_API_KEY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.APPLITOOLS_API_KEY }}</span>
+
+<span class="w">  </span><span class="nt">quality-gates</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">needs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">security-scan</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">unit-tests</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">integration-tests</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">e2e-tests</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SonarQube Quality Gate Check</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sonarqube-quality-gate-action@master</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">SONAR_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.SONAR_TOKEN }}</span>
+
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Update Qase Test Run</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">curl -X POST &quot;https://api.qase.io/v1/project/PROJ/run/${{ env.QASE_RUN_ID }}/complete&quot; \</span>
+<span class="w">            </span><span class="no">-H &quot;Token: ${{ secrets.QASE_API_TOKEN }}&quot; \</span>
+<span class="w">            </span><span class="no">-H &quot;Content-Type: application/json&quot;</span>
+</code></pre></div>
+<h3 id="performance-testing-integration">Performance Testing Integration<a class="headerlink" href="#performance-testing-integration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// tools/testing/src/performance-testing.ts</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">PerformanceTestRunner</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">runLoadTests</span><span class="p">(</span><span class="nx">endpoints</span><span class="o">:</span><span class="w"> </span><span class="kt">APIEndpoint</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">PerformanceReport</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">results</span><span class="o">:</span><span class="w"> </span><span class="kt">PerformanceResult</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">endpoint</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">endpoints</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">loadTestEndpoint</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">url</span><span class="o">:</span><span class="w"> </span><span class="kt">endpoint.url</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">method</span><span class="o">:</span><span class="w"> </span><span class="kt">endpoint.method</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">concurrency</span><span class="o">:</span><span class="w"> </span><span class="kt">50</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">duration</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;2m&#39;</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">rampUp</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;30s&#39;</span>
+<span class="w">      </span><span class="p">});</span>
+
+<span class="w">      </span><span class="nx">results</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">endpoint</span><span class="o">:</span><span class="w"> </span><span class="kt">endpoint.url</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">averageResponseTime</span><span class="o">:</span><span class="w"> </span><span class="kt">result.avg_response_time</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">throughput</span><span class="o">:</span><span class="w"> </span><span class="kt">result.requests_per_second</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">errorRate</span><span class="o">:</span><span class="w"> </span><span class="kt">result.error_rate</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">p95ResponseTime</span><span class="o">:</span><span class="w"> </span><span class="kt">result.p95_response_time</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">results</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">passed</span><span class="o">:</span><span class="w"> </span><span class="kt">results.every</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span>
+<span class="w">        </span><span class="nx">r</span><span class="p">.</span><span class="nx">averageResponseTime</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">200</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>
+<span class="w">        </span><span class="nx">r</span><span class="p">.</span><span class="nx">errorRate</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">0.01</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">        </span><span class="nx">r</span><span class="p">.</span><span class="nx">p95ResponseTime</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mf">500</span>
+<span class="w">      </span><span class="p">),</span>
+<span class="w">      </span><span class="nx">recommendations</span><span class="o">:</span><span class="w"> </span><span class="kt">this.generateOptimizations</span><span class="p">(</span><span class="nx">results</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">runFrontendPerformanceTests</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">WebVitalsReport</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">metrics</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">measureWebVitals</span><span class="p">([</span>
+<span class="w">      </span><span class="s1">&#39;largest-contentful-paint&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;first-input-delay&#39;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">      </span><span class="s1">&#39;cumulative-layout-shift&#39;</span><span class="p">,</span>
+<span class="w">      </span><span class="s1">&#39;time-to-first-byte&#39;</span>
+<span class="w">    </span><span class="p">]);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">lcp</span><span class="o">:</span><span class="w"> </span><span class="kt">metrics.lcp</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">fid</span><span class="o">:</span><span class="w"> </span><span class="kt">metrics.fid</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">cls</span><span class="o">:</span><span class="w"> </span><span class="kt">metrics.cls</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">ttfb</span><span class="o">:</span><span class="w"> </span><span class="kt">metrics.ttfb</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">passed</span><span class="o">:</span><span class="w"> </span><span class="kt">this.validateWebVitals</span><span class="p">(</span><span class="nx">metrics</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">suggestions</span><span class="o">:</span><span class="w"> </span><span class="kt">this.generatePerformanceSuggestions</span><span class="p">(</span><span class="nx">metrics</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="advanced-testing-strategies">Advanced Testing Strategies<a class="headerlink" href="#advanced-testing-strategies" title="Permanent link">&para;</a></h2>
+<h3 id="risk-based-testing-prioritization">Risk-Based Testing Prioritization<a class="headerlink" href="#risk-based-testing-prioritization" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// tools/testing/src/risk-assessment.ts</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">TestRiskAssessor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">prioritizeTests</span><span class="p">(</span><span class="nx">codeChanges</span><span class="o">:</span><span class="w"> </span><span class="kt">CodeChange</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">TestPriority</span><span class="p">[]</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">priorities</span><span class="o">:</span><span class="w"> </span><span class="kt">TestPriority</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">change</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">codeChanges</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">riskScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">calculateRiskScore</span><span class="p">(</span><span class="nx">change</span><span class="p">);</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">affectedTests</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">findAffectedTests</span><span class="p">(</span><span class="nx">change</span><span class="p">);</span>
+
+<span class="w">      </span><span class="nx">priorities</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">        </span><span class="nx">change</span><span class="o">:</span><span class="w"> </span><span class="kt">change.file</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">riskScore</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">priority</span><span class="o">:</span><span class="w"> </span><span class="kt">this.mapRiskToPriority</span><span class="p">(</span><span class="nx">riskScore</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">recommendedTests</span><span class="o">:</span><span class="w"> </span><span class="kt">affectedTests</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">estimatedDuration</span><span class="o">:</span><span class="w"> </span><span class="kt">this.estimateTestDuration</span><span class="p">(</span><span class="nx">affectedTests</span><span class="p">)</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">priorities</span><span class="p">.</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">b</span><span class="p">.</span><span class="nx">riskScore</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">a</span><span class="p">.</span><span class="nx">riskScore</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="nx">calculateRiskScore</span><span class="p">(</span><span class="nx">change</span><span class="o">:</span><span class="w"> </span><span class="kt">CodeChange</span><span class="p">)</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="kt">number</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">let</span><span class="w"> </span><span class="nx">score</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// File criticality</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">change</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;auth&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">change</span><span class="p">.</span><span class="nx">file</span><span class="p">.</span><span class="nx">includes</span><span class="p">(</span><span class="s1">&#39;payment&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">50</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// Change complexity  </span>
+<span class="w">    </span><span class="nx">score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="nx">change</span><span class="p">.</span><span class="nx">linesChanged</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"> </span><span class="mf">30</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Historical bug density</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">bugHistory</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getBugHistory</span><span class="p">(</span><span class="nx">change</span><span class="p">.</span><span class="nx">file</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">bugHistory</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">5</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Dependencies</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">analyzeDependencies</span><span class="p">(</span><span class="nx">change</span><span class="p">.</span><span class="nx">file</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">score</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="nx">dependencies</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">2</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">Math</span><span class="p">.</span><span class="nx">min</span><span class="p">(</span><span class="nx">score</span><span class="p">,</span><span class="w"> </span><span class="mf">100</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="mutation-testing-for-quality-validation">Mutation Testing for Quality Validation<a class="headerlink" href="#mutation-testing-for-quality-validation" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// tools/testing/src/mutation-testing.ts</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">MutationTestRunner</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">runMutationTests</span><span class="p">(</span><span class="nx">sourceFiles</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">[])</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">MutationReport</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">mutations</span><span class="o">:</span><span class="w"> </span><span class="kt">MutationResult</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[];</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">file</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">sourceFiles</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">mutants</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">generateMutants</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">const</span><span class="w"> </span><span class="nx">mutant</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="nx">mutants</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">testResult</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">runTestsAgainstMutant</span><span class="p">(</span><span class="nx">mutant</span><span class="p">);</span>
+
+<span class="w">        </span><span class="nx">mutations</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+<span class="w">          </span><span class="nx">file</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">mutation</span><span class="o">:</span><span class="w"> </span><span class="kt">mutant.description</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">killed</span><span class="o">:</span><span class="w"> </span><span class="kt">testResult.failed</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">line</span><span class="o">:</span><span class="w"> </span><span class="kt">mutant.line</span><span class="p">,</span>
+<span class="w">          </span><span class="nx">operator</span><span class="o">:</span><span class="w"> </span><span class="kt">mutant.operator</span>
+<span class="w">        </span><span class="p">});</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">mutationScore</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">calculateMutationScore</span><span class="p">(</span><span class="nx">mutations</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">totalMutants</span><span class="o">:</span><span class="w"> </span><span class="kt">mutations.length</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">killedMutants</span><span class="o">:</span><span class="w"> </span><span class="kt">mutations.filter</span><span class="p">(</span><span class="nx">m</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">m</span><span class="p">.</span><span class="nx">killed</span><span class="p">).</span><span class="nx">length</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">mutationScore</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">weakAreas</span><span class="o">:</span><span class="w"> </span><span class="kt">this.identifyWeakTestAreas</span><span class="p">(</span><span class="nx">mutations</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">recommendations</span><span class="o">:</span><span class="w"> </span><span class="kt">this.generateTestImprovements</span><span class="p">(</span><span class="nx">mutations</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="test-data-management">Test Data Management<a class="headerlink" href="#test-data-management" title="Permanent link">&para;</a></h2>
+<h3 id="test-data-factory-strategy">Test Data Factory Strategy<a class="headerlink" href="#test-data-factory-strategy" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="x">// tests/Factories/UserFactory.php</span>
+<span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Eloquent\Factories\Factory</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">App\Models\User</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UserFactory</span> <span class="k">extends</span> <span class="nx">Factory</span>
+<span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$model</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">class</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">definition</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">faker</span><span class="o">-&gt;</span><span class="na">name</span><span class="p">(),</span>
+            <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">faker</span><span class="o">-&gt;</span><span class="na">unique</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">safeEmail</span><span class="p">(),</span>
+            <span class="s1">&#39;email_verified_at&#39;</span> <span class="o">=&gt;</span> <span class="nx">now</span><span class="p">(),</span>
+            <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="nx">bcrypt</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">),</span>
+            <span class="s1">&#39;role&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">admin</span><span class="p">()</span><span class="o">:</span> <span class="k">static</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">state</span><span class="p">(</span><span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;role&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;admin&#39;</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">withProfile</span><span class="p">()</span><span class="o">:</span> <span class="k">static</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">afterCreating</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="nx">User</span> <span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">profile</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">([</span>
+                <span class="s1">&#39;bio&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">faker</span><span class="o">-&gt;</span><span class="na">paragraph</span><span class="p">(),</span>
+                <span class="s1">&#39;avatar&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">faker</span><span class="o">-&gt;</span><span class="na">imageUrl</span><span class="p">(),</span>
+            <span class="p">]);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="database-seeding-for-tests">Database Seeding for Tests<a class="headerlink" href="#database-seeding-for-tests" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="x">// database/seeders/TestSeeder.php</span>
+<span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">Illuminate\Database\Seeder</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">TestSeeder</span> <span class="k">extends</span> <span class="nx">Seeder</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// Create consistent test data</span>
+        <span class="nv">$admin</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">admin</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">([</span>
+            <span class="s1">&#39;email&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;admin@test.com&#39;</span>
+        <span class="p">]);</span>
+
+        <span class="nv">$users</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">count</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">withProfile</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span>
+
+        <span class="c1">// Create test projects with known IDs</span>
+        <span class="nx">Project</span><span class="o">::</span><span class="na">factory</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">count</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">for</span><span class="p">(</span><span class="nv">$admin</span><span class="p">,</span> <span class="s1">&#39;owner&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">hasTasks</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">create</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="reporting-analytics">Reporting &amp; Analytics<a class="headerlink" href="#reporting-analytics" title="Permanent link">&para;</a></h2>
+<h3 id="comprehensive-test-reporting">Comprehensive Test Reporting<a class="headerlink" href="#comprehensive-test-reporting" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// tools/testing/src/test-reporter.ts</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">TestReporter</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">generateDailyReport</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">TestReport</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">today</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">testRuns</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getTestRuns</span><span class="p">(</span><span class="nx">today</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">date</span><span class="o">:</span><span class="w"> </span><span class="kt">today</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">summary</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">totalTests</span><span class="o">:</span><span class="w"> </span><span class="kt">testRuns.reduce</span><span class="p">((</span><span class="nx">sum</span><span class="p">,</span><span class="w"> </span><span class="nx">run</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">run</span><span class="p">.</span><span class="nx">testCount</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">passRate</span><span class="o">:</span><span class="w"> </span><span class="kt">this.calculatePassRate</span><span class="p">(</span><span class="nx">testRuns</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">avgDuration</span><span class="o">:</span><span class="w"> </span><span class="kt">this.calculateAvgDuration</span><span class="p">(</span><span class="nx">testRuns</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">coverage</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getCurrentCoverage</span><span class="p">()</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">trends</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">passRateTrend</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getPassRateTrend</span><span class="p">(</span><span class="mf">7</span><span class="p">),</span><span class="w"> </span><span class="c1">// 7 days</span>
+<span class="w">        </span><span class="nx">coverageTrend</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getCoverageTrend</span><span class="p">(</span><span class="mf">7</span><span class="p">),</span>
+<span class="w">        </span><span class="nx">durationTrend</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getDurationTrend</span><span class="p">(</span><span class="mf">7</span><span class="p">)</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">issues</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">failingTests</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getFailingTests</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">flakyTests</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getFlakyTests</span><span class="p">(),</span>
+<span class="w">        </span><span class="nx">slowTests</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getSlowTests</span><span class="p">()</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">recommendations</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">generateRecommendations</span><span class="p">(</span><span class="nx">testRuns</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">async</span><span class="w"> </span><span class="nx">generateWeeklyQualityReport</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="nb">Promise</span><span class="o">&lt;</span><span class="nx">QualityReport</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">weekData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">getWeekData</span><span class="p">();</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">qualityScore</span><span class="o">:</span><span class="w"> </span><span class="kt">this.calculateQualityScore</span><span class="p">(</span><span class="nx">weekData</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">testMetrics</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">coverage</span><span class="o">:</span><span class="w"> </span><span class="kt">weekData.coverage</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">mutationScore</span><span class="o">:</span><span class="w"> </span><span class="kt">weekData.mutationScore</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">testMaintainability</span><span class="o">:</span><span class="w"> </span><span class="kt">weekData.maintainability</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nx">riskAreas</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">identifyRiskAreas</span><span class="p">(</span><span class="nx">weekData</span><span class="p">),</span>
+<span class="w">      </span><span class="nx">improvements</span><span class="o">:</span><span class="w"> </span><span class="kt">await</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">suggestImprovements</span><span class="p">(</span><span class="nx">weekData</span><span class="p">)</span>
+<span class="w">    </span><span class="p">};</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="implementation-roadmap">Implementation Roadmap<a class="headerlink" href="#implementation-roadmap" title="Permanent link">&para;</a></h2>
+<h3 id="phase-1-foundation-weeks-1-2">Phase 1: Foundation (Weeks 1-2)<a class="headerlink" href="#phase-1-foundation-weeks-1-2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Set up Pest PHP with parallel execution</li>
+<li>[ ] Configure Vitest with React Testing Library  </li>
+<li>[ ] Implement basic Playwright E2E tests</li>
+<li>[ ] Integrate Qase for test management</li>
+</ul>
+<h3 id="phase-2-ai-integration-weeks-3-4">Phase 2: AI Integration (Weeks 3-4)<a class="headerlink" href="#phase-2-ai-integration-weeks-3-4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Deploy CodiumAI for test generation</li>
+<li>[ ] Set up automated test maintenance</li>
+<li>[ ] Configure risk-based test prioritization</li>
+<li>[ ] Implement performance testing automation</li>
+</ul>
+<h3 id="phase-3-advanced-features-weeks-5-6">Phase 3: Advanced Features (Weeks 5-6)<a class="headerlink" href="#phase-3-advanced-features-weeks-5-6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>[ ] Add mutation testing for quality validation</li>
+<li>[ ] Deploy visual testing with Applitools</li>
+<li>[ ] Set up comprehensive reporting dashboard</li>
+<li>[ ] Implement predictive test failure analysis</li>
+</ul>
+<h3 id="quality-targets">Quality Targets<a class="headerlink" href="#quality-targets" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Current</th>
+<th>3 Months</th>
+<th>6 Months</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code Coverage</td>
+<td>TBD</td>
+<td>85%</td>
+<td>90%</td>
+</tr>
+<tr>
+<td>Test Automation</td>
+<td>TBD</td>
+<td>90%</td>
+<td>95%</td>
+</tr>
+<tr>
+<td>E2E Test Coverage</td>
+<td>TBD</td>
+<td>80%</td>
+<td>85%</td>
+</tr>
+<tr>
+<td>Test Maintenance Effort</td>
+<td>TBD</td>
+<td>-60%</td>
+<td>-80%</td>
+</tr>
+</tbody>
+</table>
+<p><em>This comprehensive testing strategy ensures high-quality software delivery with minimal manual effort through intelligent automation and AI assistance.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>

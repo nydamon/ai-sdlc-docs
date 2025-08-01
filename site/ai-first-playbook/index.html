@@ -1,0 +1,2106 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Unified architecture, toolchain, and strategic workflows for AI-augmented software development.">
+      
+      
+      
+      
+        <link rel="prev" href="../ai_dev_stack_blueprint/">
+      
+      
+        <link rel="next" href="../ai-governance-safety/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>AI-First Playbook - AI-Powered SDLC</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ai-first-development-playbook" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AI-Powered SDLC" class="md-header__button md-logo" aria-label="AI-Powered SDLC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI-Powered SDLC
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AI-First Playbook
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/nydamon/ai-sdlc-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../quick-start/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../sdlc-architecture-diagram/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Strategy & Planning
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../enhanced-config-management/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development Workflow
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../testing-qa-strategy-revised/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  QA & Monitoring
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AI-Powered SDLC" class="md-nav__button md-logo" aria-label="AI-Powered SDLC" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    AI-Powered SDLC
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/nydamon/ai-sdlc-docs" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../implementation-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Implementation Roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../success-metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Success Metrics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sdlc-architecture-diagram/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI-SDLC Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tool-integration-matrix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Tool Integration Matrix
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai_dev_stack_blueprint/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI Dev Stack Blueprint
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Strategy & Planning
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Strategy & Planning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    AI-First Playbook
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    AI-First Playbook
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-tools-in-our-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Tools in Our Stack
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Tools in Our Stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#primary-ai-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Primary AI Tools
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specialized-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specialized Tools
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-to-use-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      When to Use AI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="When to Use AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#high-trust-scenarios-minimal-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ High-Trust Scenarios (Minimal Review)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#medium-trust-scenarios-peer-review-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ Medium-Trust Scenarios (Peer Review Required)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#low-trust-scenarios-senior-security-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚨 Low-Trust Scenarios (Senior + Security Review)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-usage-guidelines-by-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Usage Guidelines by Role
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Usage Guidelines by Role">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#junior-developer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Junior Developer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mid-level-developer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mid-Level Developer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#senior-developer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Senior Developer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tech-leadarchitect" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tech Lead/Architect
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#technology-specific-ai-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Technology-Specific AI Guidelines
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Technology-Specific AI Guidelines">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#laravel-backend-ai-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Laravel Backend AI Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#typescript-client-frontend-ai-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      TypeScript Client Frontend AI Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#javascript-admin-frontend-ai-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      JavaScript Admin Frontend AI Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-templates-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt Templates Library
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prompt Templates Library">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-generation-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Generation Prompts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-review-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Review Prompts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-quality-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Quality Gates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Quality Gates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-commit-ai-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Commit AI Checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cicd-ai-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      CI/CD AI Integration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-governance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Governance Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Governance Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#usage-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage Tracking
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quality-thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quality Thresholds
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-tool-failure-procedures" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Tool Failure Procedures
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AI Tool Failure Procedures">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fallback-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fallback Strategies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emergency-contacts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emergency Contacts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#training-certification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training &amp; Certification
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Training &amp; Certification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#onboarding-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Onboarding Checklist
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ongoing-education" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ongoing Education
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#success-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Success Metrics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Success Metrics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#developer-productivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Developer Productivity
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#code-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Quality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security-posture" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Posture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai-adoption" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Adoption
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ai-governance-safety/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Governance & Safety
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project_specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Specification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout_readiness_checklist/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Readiness Checklist
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rollout_gantt_kanban/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Rollout Gantt & Kanban
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Development Workflow
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Development Workflow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enhanced-config-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Config Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git-hooks-automation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Git Hooks Automation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../semantic-release-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Semantic Release Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../react-best-practices-updated/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    React Best Practices
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../enhanced-cursor-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Enhanced Cursor Guidelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    QA & Monitoring
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            QA & Monitoring
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing-qa-strategy-revised/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    QA Strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monitoring-observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring & Observability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ai-first-development-playbook">AI-First Development Playbook<a class="headerlink" href="#ai-first-development-playbook" title="Permanent link">&para;</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This playbook defines when, how, and why to use AI tools in our development workflow. It ensures consistent AI adoption while maintaining code quality and security standards.</p>
+<h2 id="ai-tools-in-our-stack">AI Tools in Our Stack<a class="headerlink" href="#ai-tools-in-our-stack" title="Permanent link">&para;</a></h2>
+<h3 id="primary-ai-tools">Primary AI Tools<a class="headerlink" href="#primary-ai-tools" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Use Case</th>
+<th>Trust Level</th>
+<th>Human Review Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cursor IDE</strong></td>
+<td>Code generation, refactoring</td>
+<td>High</td>
+<td>For security components</td>
+</tr>
+<tr>
+<td><strong>CodiumAI</strong></td>
+<td>Test generation, code review</td>
+<td>High</td>
+<td>For critical paths</td>
+</tr>
+<tr>
+<td><strong>GitHub Copilot</strong></td>
+<td>Code completion, suggestions</td>
+<td>Medium</td>
+<td>For complex logic</td>
+</tr>
+<tr>
+<td><strong>v0.dev</strong></td>
+<td>Component scaffolding</td>
+<td>Medium</td>
+<td>Always</td>
+</tr>
+<tr>
+<td><strong>ChatGPT/Claude</strong></td>
+<td>Architecture planning, debugging</td>
+<td>Low</td>
+<td>Always</td>
+</tr>
+</tbody>
+</table>
+<h3 id="specialized-tools">Specialized Tools<a class="headerlink" href="#specialized-tools" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Use Case</th>
+<th>Integration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PostHog AI</strong></td>
+<td>User behavior analysis</td>
+<td>Client frontend only</td>
+</tr>
+<tr>
+<td><strong>SonarQube AI</strong></td>
+<td>Code quality insights</td>
+<td>Automated in CI/CD</td>
+</tr>
+<tr>
+<td><strong>Qase AI</strong></td>
+<td>Test case generation</td>
+<td>Test management</td>
+</tr>
+</tbody>
+</table>
+<h2 id="when-to-use-ai">When to Use AI<a class="headerlink" href="#when-to-use-ai" title="Permanent link">&para;</a></h2>
+<h3 id="high-trust-scenarios-minimal-review">✅ <strong>High-Trust Scenarios (Minimal Review)</strong><a class="headerlink" href="#high-trust-scenarios-minimal-review" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Code Generation</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CRUD operations and basic controllers</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Standard React components (non-critical)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Utility functions and helpers</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API endpoint boilerplate</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Database migrations (simple)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unit test generation</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Documentation and comments</span>
+
+<span class="nt">Refactoring</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Code formatting and style improvements</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Simple performance optimizations</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Type safety improvements</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dependency updates</span>
+</code></pre></div>
+<h3 id="medium-trust-scenarios-peer-review-required">⚠️ <strong>Medium-Trust Scenarios (Peer Review Required)</strong><a class="headerlink" href="#medium-trust-scenarios-peer-review-required" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Business Logic</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Complex algorithms</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Data validation logic</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API integrations</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">State management</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Error handling patterns</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Performance-critical code</span>
+
+<span class="nt">Frontend Components</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">User interaction handling</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Form validations</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Routing logic</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Component lifecycle management</span>
+</code></pre></div>
+<h3 id="low-trust-scenarios-senior-security-review">🚨 <strong>Low-Trust Scenarios (Senior + Security Review)</strong><a class="headerlink" href="#low-trust-scenarios-senior-security-review" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Security-Critical</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authentication and authorization</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Payment processing</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Data encryption/decryption</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API security middleware</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">User permission systems</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Session management</span>
+
+<span class="nt">Infrastructure</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Database schema changes</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Environment configurations</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment scripts</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Security configurations</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI/CD pipeline modifications</span>
+</code></pre></div>
+<h2 id="ai-usage-guidelines-by-role">AI Usage Guidelines by Role<a class="headerlink" href="#ai-usage-guidelines-by-role" title="Permanent link">&para;</a></h2>
+<h3 id="junior-developer">Junior Developer<a class="headerlink" href="#junior-developer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Allowed AI Usage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">60% max per feature</span>
+<span class="nt">Mandatory Review</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">All AI-generated code</span>
+<span class="nt">AI Tools Access</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cursor, CodiumAI (supervised)</span>
+<span class="nt">Restrictions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">No security-related code generation</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">No database schema modifications</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">No production configuration changes</span>
+<span class="nt">Required Training</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8 hours AI best practices</span>
+</code></pre></div>
+<h3 id="mid-level-developer">Mid-Level Developer<a class="headerlink" href="#mid-level-developer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Allowed AI Usage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">75% max per feature</span>
+<span class="nt">Mandatory Review</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Security and business logic only</span>
+<span class="nt">AI Tools Access</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Full stack except admin tools</span>
+<span class="nt">Restrictions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">No authentication system changes</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">No payment processing modifications</span>
+<span class="nt">Can Review</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Junior developer AI code</span>
+<span class="nt">Required Training</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4 hours advanced AI usage</span>
+</code></pre></div>
+<h3 id="senior-developer">Senior Developer<a class="headerlink" href="#senior-developer" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Allowed AI Usage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">85% max per feature</span>
+<span class="nt">Mandatory Review</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Security-critical components only</span>
+<span class="nt">AI Tools Access</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Full access including admin tools</span>
+<span class="nt">Responsibilities</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Review all AI-generated security code</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Approve AI usage exceptions</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Train junior developers</span>
+<span class="nt">Can Override</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AI governance rules (with justification)</span>
+</code></pre></div>
+<h3 id="tech-leadarchitect">Tech Lead/Architect<a class="headerlink" href="#tech-leadarchitect" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Allowed AI Usage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">No limits</span>
+<span class="nt">Mandatory Review</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">None (trusted judgment)</span>
+<span class="nt">Responsibilities</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set AI usage policies</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Approve architectural AI decisions</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Review AI governance metrics</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Handle AI tool failures/incidents</span>
+</code></pre></div>
+<h2 id="technology-specific-ai-guidelines">Technology-Specific AI Guidelines<a class="headerlink" href="#technology-specific-ai-guidelines" title="Permanent link">&para;</a></h2>
+<h3 id="laravel-backend-ai-usage">Laravel Backend AI Usage<a class="headerlink" href="#laravel-backend-ai-usage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="x">// ✅ High-Trust: Basic CRUD Controller</span>
+<span class="x">class PostController extends Controller</span>
+<span class="x">{</span>
+<span class="x">    // AI Prompt: &quot;Generate a Laravel resource controller for Post model with validation&quot;</span>
+<span class="x">    public function store(StorePostRequest $request)</span>
+<span class="x">    {</span>
+<span class="x">        $post = Post::create($request-&gt;validated());</span>
+<span class="x">        return new PostResource($post);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+
+<span class="x">// ⚠️ Medium-Trust: Business Logic (Needs Review)</span>
+<span class="x">class PaymentProcessor </span>
+<span class="x">{</span>
+<span class="x">    // AI Prompt: &quot;Generate payment processing logic with error handling&quot;</span>
+<span class="x">    // ❗ Requires senior developer review</span>
+<span class="x">    public function processPayment(PaymentRequest $request) {</span>
+<span class="x">        // Complex business logic here</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+
+<span class="x">// 🚨 Low-Trust: Authentication (Security Review Required)</span>
+<span class="x">class AuthController extends Controller</span>
+<span class="x">{</span>
+<span class="x">    // AI Prompt: &quot;Generate secure authentication controller&quot;</span>
+<span class="x">    // ❗ Requires security engineer review</span>
+<span class="x">    public function login(LoginRequest $request) {</span>
+<span class="x">        // Authentication logic - MUST be manually reviewed</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</code></pre></div>
+<h3 id="typescript-client-frontend-ai-usage">TypeScript Client Frontend AI Usage<a class="headerlink" href="#typescript-client-frontend-ai-usage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ High-Trust: Basic Component</span>
+<span class="c1">// AI Prompt: &quot;Generate a TypeScript React component with PostHog tracking&quot;</span>
+<span class="kd">interface</span><span class="w"> </span><span class="nx">FeatureCardProps</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">title</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">description</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">onActivate</span><span class="o">:</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="ow">void</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">FeatureCard</span><span class="o">:</span><span class="w"> </span><span class="kt">React.FC</span><span class="o">&lt;</span><span class="nx">FeatureCardProps</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">title</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">description</span><span class="p">,</span><span class="w"> </span>
+<span class="w">  </span><span class="nx">onActivate</span><span class="w"> </span>
+<span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">handleClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">posthog</span><span class="p">.</span><span class="nx">capture</span><span class="p">(</span><span class="s1">&#39;feature_activated&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">feature</span><span class="o">:</span><span class="w"> </span><span class="kt">title</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">onActivate</span><span class="p">();</span>
+<span class="w">  </span><span class="p">};</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">handleClick</span><span class="p">}</span><span class="w"> </span><span class="nx">data</span><span class="o">-</span><span class="nx">feature</span><span class="o">=</span><span class="p">{</span><span class="nx">title</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">title</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/h3&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">description</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/p&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="c1">// ⚠️ Medium-Trust: Complex Hook (Needs Review)</span>
+<span class="c1">// AI Prompt: &quot;Generate a custom hook for API data fetching with error handling&quot;</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">useApiData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">endpoint</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Complex state management logic</span>
+<span class="w">  </span><span class="c1">// ❗ Requires peer review for error handling</span>
+<span class="p">};</span>
+
+<span class="c1">// 🚨 Low-Trust: Payment Component (Security Review)</span>
+<span class="c1">// AI Prompt: &quot;Generate secure payment form component&quot;</span>
+<span class="k">export</span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="nx">PaymentForm</span><span class="o">:</span><span class="w"> </span><span class="kt">React.FC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Payment handling logic</span>
+<span class="w">  </span><span class="c1">// ❗ Requires security review before deployment</span>
+<span class="p">};</span>
+</code></pre></div>
+<h3 id="javascript-admin-frontend-ai-usage">JavaScript Admin Frontend AI Usage<a class="headerlink" href="#javascript-admin-frontend-ai-usage" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="c1">// ✅ High-Trust: Admin Component</span>
+<span class="c1">// AI Prompt: &quot;Generate admin dashboard component with PropTypes&quot;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">AdminDashboard</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">metrics</span><span class="p">,</span><span class="w"> </span><span class="nx">users</span><span class="p">,</span><span class="w"> </span><span class="nx">onRefresh</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">div</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="s2">&quot;admin-dashboard&quot;</span><span class="o">&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">MetricsPanel</span><span class="w"> </span><span class="nx">metrics</span><span class="o">=</span><span class="p">{</span><span class="nx">metrics</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">UsersList</span><span class="w"> </span><span class="nx">users</span><span class="o">=</span><span class="p">{</span><span class="nx">users</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">button</span><span class="w"> </span><span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onRefresh</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Refresh</span><span class="o">&lt;</span><span class="err">/button&gt;</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">  </span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="nx">AdminDashboard</span><span class="p">.</span><span class="nx">propTypes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">metrics</span><span class="o">:</span><span class="w"> </span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">array</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">users</span><span class="o">:</span><span class="w"> </span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">array</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">onRefresh</span><span class="o">:</span><span class="w"> </span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">func</span><span class="p">.</span><span class="nx">isRequired</span>
+<span class="p">};</span>
+
+<span class="c1">// ⚠️ Medium-Trust: Data Processing (Needs Review)</span>
+<span class="c1">// AI Prompt: &quot;Generate admin data processing utilities&quot;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">processAdminData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">rawData</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Data transformation logic</span>
+<span class="w">  </span><span class="c1">// ❗ Requires review for data integrity</span>
+<span class="p">};</span>
+</code></pre></div>
+<h2 id="prompt-templates-library">Prompt Templates Library<a class="headerlink" href="#prompt-templates-library" title="Permanent link">&para;</a></h2>
+<h3 id="code-generation-prompts">Code Generation Prompts<a class="headerlink" href="#code-generation-prompts" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gu">### Laravel Controller Prompt</span>
+Generate a Laravel resource controller with the following requirements:
+<span class="k">-</span><span class="w"> </span>Use Form Request validation
+<span class="k">-</span><span class="w"> </span>Include proper error handling
+<span class="k">-</span><span class="w"> </span>Add OpenAPI documentation
+<span class="k">-</span><span class="w"> </span>Follow Laravel best practices
+<span class="k">-</span><span class="w"> </span>Generate corresponding Pest tests
+
+Model: {model_name}
+Relationships: {relationships}
+Business Rules: {business_rules}
+
+<span class="gu">### React Component Prompt</span>
+Create a React TypeScript component with:
+<span class="k">-</span><span class="w"> </span>Proper TypeScript interfaces
+<span class="k">-</span><span class="w"> </span>Accessibility attributes (ARIA)
+<span class="k">-</span><span class="w"> </span>Error boundaries
+<span class="k">-</span><span class="w"> </span>PostHog event tracking (client only)
+<span class="k">-</span><span class="w"> </span>Comprehensive tests
+<span class="k">-</span><span class="w"> </span>Storybook documentation
+
+Component: {component_name}
+Props: {props_interface}
+Behavior: {component_behavior}
+
+<span class="gu">### Test Generation Prompt</span>
+Generate comprehensive tests for this code:
+<span class="k">-</span><span class="w"> </span>Cover all public methods/functions
+<span class="k">-</span><span class="w"> </span>Include edge cases and error scenarios
+<span class="k">-</span><span class="w"> </span>Mock external dependencies
+<span class="k">-</span><span class="w"> </span>Test user interactions
+<span class="k">-</span><span class="w"> </span>Ensure accessibility compliance
+
+Framework: {test_framework}
+Coverage Target: 90%+
+</code></pre></div>
+<h3 id="code-review-prompts">Code Review Prompts<a class="headerlink" href="#code-review-prompts" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gu">### Security Review Prompt</span>
+Perform a security audit of this code:
+<span class="k">-</span><span class="w"> </span>Check for authentication/authorization issues
+<span class="k">-</span><span class="w"> </span>Identify potential injection vulnerabilities
+<span class="k">-</span><span class="w"> </span>Review data validation and sanitization
+<span class="k">-</span><span class="w"> </span>Check for exposed sensitive information
+<span class="k">-</span><span class="w"> </span>Validate encryption usage
+<span class="k">-</span><span class="w"> </span>Review API security
+
+Code Type: {backend|frontend|full-stack}
+Security Level: {low|medium|high|critical}
+
+<span class="gu">### Performance Review Prompt</span>
+Analyze this code for performance issues:
+<span class="k">-</span><span class="w"> </span>Identify potential bottlenecks
+<span class="k">-</span><span class="w"> </span>Review database query optimization
+<span class="k">-</span><span class="w"> </span>Check for unnecessary computations
+<span class="k">-</span><span class="w"> </span>Analyze bundle size impact (frontend)
+<span class="k">-</span><span class="w"> </span>Review caching opportunities
+<span class="k">-</span><span class="w"> </span>Suggest optimizations
+
+Target: {web|mobile|api}
+Performance Budget: {constraints}
+</code></pre></div>
+<h2 id="ai-quality-gates">AI Quality Gates<a class="headerlink" href="#ai-quality-gates" title="Permanent link">&para;</a></h2>
+<h3 id="pre-commit-ai-checks">Pre-Commit AI Checks<a class="headerlink" href="#pre-commit-ai-checks" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Automated Checks</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AI-generated code formatting</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic security pattern detection</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test generation for new functions</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Documentation generation</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Import organization</span>
+
+<span class="nt">Manual Checks Required</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Security-critical code review</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Business logic validation</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API contract changes</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Database schema modifications</span>
+</code></pre></div>
+<h3 id="cicd-ai-integration">CI/CD AI Integration<a class="headerlink" href="#cicd-ai-integration" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Pipeline Stages</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">1. AI Code Quality Scan (SonarQube + AI)</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">2. AI-Generated Test Execution</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">3. AI Security Review (GitGuardian + Custom)</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">4. AI Performance Analysis</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">5. AI Documentation Validation</span>
+
+<span class="nt">Failure Triggers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Security vulnerabilities detected</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test coverage below 85%</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Performance regression &gt; 10%</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Documentation completeness &lt; 90%</span>
+</code></pre></div>
+<h2 id="ai-governance-metrics">AI Governance Metrics<a class="headerlink" href="#ai-governance-metrics" title="Permanent link">&para;</a></h2>
+<h3 id="usage-tracking">Usage Tracking<a class="headerlink" href="#usage-tracking" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span><span class="w"> </span><span class="nx">AIUsageMetrics</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">developer</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">tool</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">codeGenerated</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="c1">// lines</span>
+<span class="w">  </span><span class="nx">timesSaved</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="c1">// minutes</span>
+<span class="w">  </span><span class="nx">reviewTime</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span><span class="w"> </span><span class="c1">// minutes</span>
+<span class="w">  </span><span class="nx">issuesFound</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">securityFlags</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// Weekly AI Governance Report</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">generateAIReport</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">({</span>
+<span class="w">  </span><span class="nx">totalAICode</span><span class="o">:</span><span class="w"> </span><span class="kt">calculateAICodePercentage</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">qualityMetrics</span><span class="o">:</span><span class="w"> </span><span class="kt">getAICodeQualityScores</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">securityIncidents</span><span class="o">:</span><span class="w"> </span><span class="kt">getAISecurityIssues</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">developerProductivity</span><span class="o">:</span><span class="w"> </span><span class="kt">getProductivityGains</span><span class="p">(),</span>
+<span class="w">  </span><span class="nx">recommendations</span><span class="o">:</span><span class="w"> </span><span class="kt">generateRecommendations</span><span class="p">()</span>
+<span class="p">});</span>
+</code></pre></div>
+<h3 id="quality-thresholds">Quality Thresholds<a class="headerlink" href="#quality-thresholds" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Code Quality Gates</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AI Code Coverage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt; 80% per feature</span>
+<span class="w">  </span><span class="nt">Human Review Rate</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="err"> 95% for security code</span>
+<span class="w">  </span><span class="nt">Bug Rate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AI code bug rate &lt; 2x manual code</span>
+<span class="w">  </span><span class="nt">Performance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">No regression &gt; 5%</span>
+
+<span class="nt">Alert Triggers</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Security Pattern Detected</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Immediate review</span>
+<span class="w">  </span><span class="nt">High AI Usage</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span><span class="err"> 90% in single feature</span>
+<span class="w">  </span><span class="nt">Quality Degradation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bug rate increase</span>
+<span class="w">  </span><span class="nt">Policy Violation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unauthorized AI tool usage</span>
+</code></pre></div>
+<h2 id="ai-tool-failure-procedures">AI Tool Failure Procedures<a class="headerlink" href="#ai-tool-failure-procedures" title="Permanent link">&para;</a></h2>
+<h3 id="fallback-strategies">Fallback Strategies<a class="headerlink" href="#fallback-strategies" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Cursor/CodiumAI Unavailable</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">1. Switch to GitHub Copilot</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">2. Use manual development (time estimates x2)</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">3. Prioritize critical features only</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">4. Document technical debt created</span>
+
+<span class="nt">PostHog AI Down</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">1. Use manual analytics review</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">2. Switch to basic event tracking</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">3. Schedule enhanced analysis post-recovery</span>
+
+<span class="nt">Complete AI Tool Failure</span><span class="p">:</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">1. Activate manual development procedures</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">2. Extend sprint timelines by 40%</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">3. Focus on bug fixes and critical features</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">4. Document lessons learned</span>
+</code></pre></div>
+<h3 id="emergency-contacts">Emergency Contacts<a class="headerlink" href="#emergency-contacts" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">AI Tool Issues</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">CodiumAI</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Support ticket + Slack escalation</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Cursor</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GitHub issue + Twitter DM</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">PostHog</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In-app support + email</span>
+
+<span class="nt">Internal Escalation</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Tech Lead</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Immediate notification</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">DevOps</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Infrastructure-related AI issues</span><span class="w">  </span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Security</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AI security concerns</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">Management</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Productivity impact &gt; 25%</span>
+</code></pre></div>
+<h2 id="training-certification">Training &amp; Certification<a class="headerlink" href="#training-certification" title="Permanent link">&para;</a></h2>
+<h3 id="onboarding-checklist">Onboarding Checklist<a class="headerlink" href="#onboarding-checklist" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Week 1 - AI Tool Familiarization</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Cursor IDE setup and basic usage</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CodiumAI integration training</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Prompt engineering basics</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Security awareness training</span>
+
+<span class="nt">Week 2 - Framework-Specific Training</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Laravel AI best practices</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">React AI development patterns</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Testing with AI assistance</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Code review standards</span>
+
+<span class="nt">Week 3 - Advanced Usage</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Custom prompt creation</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AI debugging techniques</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Performance optimization with AI</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Security review processes</span>
+
+<span class="nt">Assessment</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Complete AI development task</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pass security quiz (90%+)</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Demonstrate code review skills</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Show prompt engineering competency</span>
+</code></pre></div>
+<h3 id="ongoing-education">Ongoing Education<a class="headerlink" href="#ongoing-education" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nt">Monthly Requirements</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AI tool updates and new features</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Security best practices review</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">New prompt template training</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AI governance policy updates</span>
+
+<span class="nt">Quarterly Reviews</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Individual AI usage analysis</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Team productivity assessment</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tool effectiveness evaluation</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Policy adjustment recommendations</span>
+</code></pre></div>
+<h2 id="success-metrics">Success Metrics<a class="headerlink" href="#success-metrics" title="Permanent link">&para;</a></h2>
+<h3 id="developer-productivity">Developer Productivity<a class="headerlink" href="#developer-productivity" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Target</strong>: 50% reduction in development time for routine tasks</li>
+<li><strong>Measurement</strong>: Story point velocity with/without AI</li>
+<li><strong>Review</strong>: Weekly team retrospectives</li>
+</ul>
+<h3 id="code-quality">Code Quality<a class="headerlink" href="#code-quality" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Target</strong>: Maintain 85%+ test coverage with AI-generated tests</li>
+<li><strong>Measurement</strong>: SonarQube quality gates + manual review</li>
+<li><strong>Review</strong>: Monthly quality reports</li>
+</ul>
+<h3 id="security-posture">Security Posture<a class="headerlink" href="#security-posture" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Target</strong>: Zero security incidents from AI-generated code</li>
+<li><strong>Measurement</strong>: GitGuardian scans + security reviews</li>
+<li><strong>Review</strong>: Quarterly security assessments</li>
+</ul>
+<h3 id="ai-adoption">AI Adoption<a class="headerlink" href="#ai-adoption" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Target</strong>: 80% of development tasks use AI assistance</li>
+<li><strong>Measurement</strong>: Git commit analysis + developer surveys  </li>
+<li><strong>Review</strong>: Monthly adoption tracking</li>
+</ul>
+<hr />
+<p><strong>This playbook should be reviewed and updated monthly based on team feedback and AI tool evolution.</strong></p>
+<p><strong>Next Steps:</strong>
+1. <strong>Week 1</strong>: Team training on AI guidelines
+2. <strong>Week 2</strong>: Implement usage tracking
+3. <strong>Week 3</strong>: Deploy quality gates
+4. <strong>Week 4</strong>: First governance review</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotate", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+    
+  </body>
+</html>
