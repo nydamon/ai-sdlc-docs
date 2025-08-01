@@ -1,0 +1,26 @@
+# MkDocs generated site
+site/
+
+# Temporary files
+*.tmp
+*.bak
+*~
+.DS_Store
+.deployment-trigger
+
+# Node modules
+node_modules/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+Thumbs.db
