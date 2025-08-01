@@ -21,6 +21,7 @@ nav:
   - Home: README.md
   - Getting Started:
       - Quick Start Guide: quick-start.md
+      - Team Size Quick Starts: team-size-quickstarts.md
       - Implementation Roadmap: implementation-roadmap.md
       - Success Metrics: success-metrics.md
       - Migration Guide: migration-guide.md
@@ -30,8 +31,10 @@ nav:
       - AI-SDLC Architecture: sdlc-architecture-diagram.md
       - Tool Integration Matrix: tool-integration-matrix.md
       - AI Dev Stack Blueprint: ai_dev_stack_blueprint.md
+      - Frontend Decision Tree: frontend-decision-tree.md
   - Strategy & Planning:
       - AI-First Playbook: ai-first-playbook.md
+      - AI Integration Phases: ai-integration-phases.md
       - Governance & Safety: ai-governance-safety.md
       - Project Specification: project_specification.md
       - Readiness Checklist: rollout_readiness_checklist.md
@@ -43,11 +46,11 @@ nav:
       - React Best Practices: react-best-practices-updated.md
       - Enhanced Cursor Guidelines: enhanced-cursor-guidelines.md
   - QA & Monitoring:
+      - Smart Testing Strategy: smart-testing.md
       - QA Strategy: testing-qa-strategy-revised.md
       - Monitoring & Observability: monitoring-observability.md
   - Support & Resources:
       - Troubleshooting Guide: troubleshooting-guide.md
-      - Enhanced Setup Script: enhanced-setup-script.txt
 
 markdown_extensions:
   - admonition
