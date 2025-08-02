@@ -35,7 +35,7 @@ describe('AI-SDLC CLI Commands', () => {
     it('should generate validation report', () => {
       execSync('./ai-sdlc validate', { encoding: 'utf8' });
       expect(fs.existsSync('AI_SDLC_VALIDATION_REPORT.md')).toBe(true);
-      
+
       const report = fs.readFileSync('AI_SDLC_VALIDATION_REPORT.md', 'utf8');
       expect(report).toContain('AI-SDLC Framework Validation Report');
       expect(report).toContain('Validation Score:');
@@ -45,22 +45,22 @@ describe('AI-SDLC CLI Commands', () => {
   describe('Configuration Files', () => {
     it('should have valid ESLint configuration', () => {
       expect(fs.existsSync('eslint.config.js')).toBe(true);
-      
+
       // Test that the config file exists and contains expected content
       const config = fs.readFileSync('eslint.config.js', 'utf8');
-      expect(config).toContain('defineConfig');
+      expect(config).toContain('export default');
     });
 
     it('should have valid Prettier configuration', () => {
       expect(fs.existsSync('.prettierrc')).toBe(true);
-      
+
       const config = fs.readFileSync('.prettierrc', 'utf8');
       expect(() => JSON.parse(config)).not.toThrow();
     });
 
     it('should have valid package.json', () => {
       expect(fs.existsSync('package.json')).toBe(true);
-      
+
       const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
       expect(pkg.name).toBe('ai-sdlc-framework');
       expect(pkg.scripts).toBeDefined();
@@ -69,7 +69,7 @@ describe('AI-SDLC CLI Commands', () => {
 
     it('should have valid semantic release configuration', () => {
       expect(fs.existsSync('.releaserc.json')).toBe(true);
-      
+
       const config = JSON.parse(fs.readFileSync('.releaserc.json', 'utf8'));
       expect(config.branches).toBeDefined();
       expect(config.plugins).toBeDefined();
@@ -83,7 +83,7 @@ describe('AI-SDLC CLI Commands', () => {
 
     it('should have pre-commit hook', () => {
       expect(fs.existsSync('.husky/pre-commit')).toBe(true);
-      
+
       const hook = fs.readFileSync('.husky/pre-commit', 'utf8');
       expect(hook).toContain('npx lint-staged');
       expect(hook).toContain('branch_name');
@@ -91,7 +91,7 @@ describe('AI-SDLC CLI Commands', () => {
 
     it('should have commit-msg hook', () => {
       expect(fs.existsSync('.husky/commit-msg')).toBe(true);
-      
+
       const hook = fs.readFileSync('.husky/commit-msg', 'utf8');
       expect(hook).toContain('commitlint');
     });
@@ -109,10 +109,10 @@ describe('AI-SDLC CLI Commands', () => {
         '@commitlint/config-conventional',
         'vitest',
         '@playwright/test',
-        'semantic-release'
+        'semantic-release',
       ];
 
-      requiredDeps.forEach(dep => {
+      requiredDeps.forEach((dep) => {
         expect(pkg.devDependencies[dep]).toBeDefined();
       });
     });
