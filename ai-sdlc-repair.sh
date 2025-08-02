@@ -75,27 +75,79 @@ repair_git_hooks() {
 repair_eslint() {
     log_info "Checking ESLint configuration..."
     
-    if [[ ! -f ".eslintrc.js" ]] && [[ ! -f ".eslintrc.json" ]] && [[ ! -f "eslint.config.js" ]]; then
-        apply_fix "Create ESLint configuration" "cat > .eslintrc.js << 'EOF'
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
-  },
-  extends: ['eslint:recommended'],
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-  },
-  rules: {},
-};
+    # Remove legacy .eslintrc.js if exists and create modern eslint.config.js
+    if [[ -f ".eslintrc.js" ]] && [[ ! -f "eslint.config.js" ]]; then
+        apply_fix "Migrate ESLint to v9 format" "rm .eslintrc.js && cat > eslint.config.js << 'EOF'
+import js from '@eslint/js';
+
+export default [
+  js.configs.recommended,
+  {
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+        Buffer: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        global: 'readonly',
+        require: 'readonly',
+        module: 'readonly',
+        exports: 'readonly',
+      }
+    },
+    rules: {
+      'no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }],
+      'no-console': 'off',
+      'prefer-const': 'error',
+      'no-var': 'error'
+    }
+  }
+];
+EOF"
+    elif [[ ! -f "eslint.config.js" ]] && [[ ! -f ".eslintrc.js" ]] && [[ ! -f ".eslintrc.json" ]]; then
+        apply_fix "Create ESLint v9 configuration" "cat > eslint.config.js << 'EOF'
+import js from '@eslint/js';
+
+export default [
+  js.configs.recommended,
+  {
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+        Buffer: 'readonly',
+        __dirname: 'readonly',
+        __filename: 'readonly',
+        global: 'readonly',
+        require: 'readonly',
+        module: 'readonly',
+        exports: 'readonly',
+      }
+    },
+    rules: {
+      'no-unused-vars': ['error', { 'argsIgnorePattern': '^_' }],
+      'no-console': 'off',
+      'prefer-const': 'error',
+      'no-var': 'error'
+    }
+  }
+];
 EOF"
     fi
     
-    # Check if ESLint is installed
+    # Install ESLint and required dependencies
     if ! npm list eslint >/dev/null 2>&1; then
         apply_fix "Install ESLint" "npm install --save-dev eslint"
+    fi
+    
+    # Install @eslint/js for v9 compatibility
+    if ! npm list @eslint/js >/dev/null 2>&1; then
+        apply_fix "Install @eslint/js" "npm install --save-dev @eslint/js"
     fi
 }
 
