@@ -15,24 +15,21 @@ This guide helps teams transition from traditional development workflows to the 
 
 ---
 
-## 🚀 Quick Migration Path (15 Minutes)
+## 🚀 Quick Migration Path (5 Minutes)
 
-### Immediate Wins Setup
+### Automated Migration Setup
 ```bash
-# 1. Install core automation (5 minutes)
-npm install husky lint-staged --save-dev
-npx husky install
-npx husky add .husky/pre-commit "npx lint-staged"
+# 1. Complete automated setup with intelligent project detection (5 minutes)
+./ai-sdlc init
 
-# 2. Configure basic AI tools (5 minutes)
-# Install Cursor IDE
-# Add company prompt templates
+# 2. Validate migration success (1 minute)
+./ai-sdlc validate
 
-# 3. Validate setup (5 minutes)
+# 3. Test automated workflow (1 minute)
 echo "console.log('test');" > test.js
 git add test.js
 git commit -m "test: migration validation"
-# Should see automated formatting and checks
+# Should see automated formatting, linting, and checks
 ```
 
 **Immediate Benefits**:
@@ -76,8 +73,8 @@ Developer Workflow:
    - Measure current cycle times
    - Identify pain points
 
-2. **Install Git Hooks** (Day 2)
-   - Configure Husky with existing linters
+2. **Automated Environment Setup** (Day 2)
+   - Run `./ai-sdlc init` for complete automated setup
    - Set up security scanning
    - Implement commit message validation
 

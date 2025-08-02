@@ -9,19 +9,17 @@ Common issues and solutions for the AI-SDLC framework implementation.
 ### Git Hooks Issues
 ```bash
 # Problem: Commits bypass pre-commit hooks
-# Solution: Reinstall hooks
-rm -rf .git/hooks
-npx husky install
+# Solution: Auto-repair git hooks
+./ai-sdlc repair
 
 # Problem: Hooks fail with permission errors
-# Solution: Fix permissions
-chmod +x .husky/pre-commit
-chmod +x .husky/commit-msg
-chmod +x .husky/pre-push
+# Solution: Auto-repair fixes permissions automatically
+./ai-sdlc repair
 
 # Problem: Specific hook failing
-# Solution: Test individual hook
-.husky/pre-commit
+# Solution: Validate and repair hooks
+./ai-sdlc validate
+./ai-sdlc repair
 ```
 
 ### AI Tool Issues
@@ -44,15 +42,18 @@ npx codium --version
 ### Semantic Release Issues
 ```bash
 # Problem: Version bumping not working
-# Solution: Check configuration
-npx semantic-release --dry-run
+# Solution: Validate and repair semantic release setup
+./ai-sdlc validate
+./ai-sdlc repair
 
 # Problem: GitHub releases failing
-# Solution: Verify GitHub token permissions
+# Solution: Check with validation and repair
+./ai-sdlc validate
 echo $GITHUB_TOKEN | cut -c1-10
 
 # Problem: Changelog not generating
-# Solution: Check commit message format
+# Solution: Auto-repair configuration
+./ai-sdlc repair
 git log --oneline -5
 ```
 
@@ -71,21 +72,18 @@ git log --oneline -5
 
 **Solutions**:
 ```bash
-# 1. Verify dependencies
-npm list husky lint-staged
-npm install --save-dev husky lint-staged
+# 1. Run comprehensive validation
+./ai-sdlc validate
 
-# 2. Check permissions
+# 2. Auto-repair all issues found
+./ai-sdlc repair
+
+# 3. Test hook functionality
+./ai-sdlc doctor
+
+# 4. Manual verification (if needed)
 ls -la .husky/
-chmod +x .husky/pre-commit
-
-# 3. Test hook manually
 .husky/pre-commit
-
-# 4. Reset hooks if needed
-npx husky uninstall
-npx husky install
-npx husky add .husky/pre-commit "npx lint-staged"
 ```
 
 #### Commit Message Hook Issues
@@ -96,14 +94,17 @@ npx husky add .husky/pre-commit "npx lint-staged"
 
 **Solutions**:
 ```bash
-# 1. Verify commitlint configuration
-cat commitlint.config.js
+# 1. Validate commitlint setup
+./ai-sdlc validate
 
-# 2. Test commit message format
+# 2. Auto-repair commit hooks
+./ai-sdlc repair
+
+# 3. Test commit message format
 echo "fix: test message" | npx commitlint
 
-# 3. Reinstall commit hook
-npx husky add .husky/commit-msg "npx commitlint --edit $1"
+# 4. Verify configuration (if needed)
+cat commitlint.config.js
 ```
 
 ### 2. AI Tool Troubleshooting
@@ -164,17 +165,20 @@ npx codium --context="path/to/related/files"
 
 **Solutions**:
 ```bash
-# 1. Test commit analysis
+# 1. Validate semantic release setup
+./ai-sdlc validate
+
+# 2. Auto-repair configuration issues
+./ai-sdlc repair
+
+# 3. Test release process
 npx semantic-release --dry-run --debug
 
-# 2. Verify commit message format
+# 4. Verify commit message format
 git log --oneline -10 | head -5
 
-# 3. Check branch configuration
+# 5. Check configuration files (if needed)
 cat .releaserc.json | jq '.branches'
-
-# 4. Validate plugin configuration
-npm list @semantic-release/git @semantic-release/github
 ```
 
 #### GitHub Release Issues
@@ -278,17 +282,16 @@ gh auth status
 
 ### Regular Maintenance
 ```bash
-# Weekly: Update dependencies
+# Weekly: Run health check
+./ai-sdlc doctor
+
+# Monthly: Comprehensive validation
+./ai-sdlc validate
+
+# Quarterly: Full system check
+./ai-sdlc doctor
+# Update dependencies as recommended
 npm outdated
-npm update husky lint-staged commitlint
-
-# Monthly: Test hooks
-.husky/pre-commit
-.husky/commit-msg "test: validation"
-
-# Quarterly: Review configurations
-# Update .releaserc.json
-# Review AI tool configurations
 ```
 
 ### Monitoring & Alerts

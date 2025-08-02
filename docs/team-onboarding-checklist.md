@@ -61,19 +61,20 @@ This checklist ensures new team members are properly set up with all AI-SDLC too
   - [ ] Configure IDE settings from team template
 
 ### Tool Installation & Configuration
-- [ ] **Core Development Tools**
-  - [ ] Run enhanced setup script:
+- [ ] **Automated Development Environment Setup**
+  - [ ] Run AI-SDLC automated setup:
     ```bash
-    curl -O https://raw.githubusercontent.com/nydamon/ai-sdlc-docs/main/enhanced-setup-script.txt
-    chmod +x enhanced-setup-script.txt
-    ./enhanced-setup-script.txt
+    # Clone the AI-SDLC framework
+    git clone [repository-url]
+    cd ai_sdlc
+    
+    # Run complete automated setup (5 minutes)
+    ./ai-sdlc init
     ```
-  - [ ] Verify installations:
+  - [ ] Verify setup completed successfully:
     ```bash
-    node --version
-    npm --version
-    composer --version
-    cursor --version
+    ./ai-sdlc validate
+    ./ai-sdlc status
     ```
 
 - [ ] **Git Configuration**

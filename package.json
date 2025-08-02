@@ -1,0 +1,59 @@
+{
+  "name": "ai-sdlc-framework",
+  "version": "1.0.0",
+  "description": "AI-Powered SDLC Framework for The Credit Pros",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest",
+    "prepare": "husky",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "format": "prettier --write .",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "test:e2e": "playwright test",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "ai",
+    "sdlc",
+    "automation",
+    "laravel",
+    "react",
+    "typescript"
+  ],
+  "author": "Damon DeCrescenzo <damon@thecreditpros.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@playwright/test": "^1.54.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@testing-library/jest-dom": "^6.6.4",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "eslint": "^9.32.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.6.2",
+    "semantic-release": "^24.2.7",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.php": [
+      "./vendor/bin/pint"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "dependencies": {
+    "posthog-js": "^1.258.5"
+  }
+}
