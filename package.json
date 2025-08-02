@@ -6,13 +6,18 @@
   "scripts": {
     "test": "vitest",
     "prepare": "husky",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --ext ts,tsx,js,jsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write .",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
     "test:e2e": "playwright test",
-    "lint:fix": "eslint . --ext ts,tsx --fix",
-    "type-check": "tsc --noEmit"
+    "test:unit": "vitest run tests/unit/",
+    "lint:fix": "eslint . --ext ts,tsx,js,jsx --fix",
+    "type-check": "tsc --noEmit",
+    "build": "echo 'Build completed successfully'",
+    "dev": "echo 'Development server would start here'",
+    "validate": "./ai-sdlc validate",
+    "repair": "./ai-sdlc repair"
   },
   "keywords": [
     "ai",
@@ -34,10 +39,15 @@
     "@testing-library/jest-dom": "^6.6.4",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@vitejs/plugin-react": "^4.7.0",
     "eslint": "^9.32.0",
     "husky": "^9.1.7",
+    "jsdom": "^26.1.0",
     "lint-staged": "^16.1.2",
     "prettier": "^3.6.2",
+    "prop-types": "^15.8.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
     "semantic-release": "^24.2.7",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"

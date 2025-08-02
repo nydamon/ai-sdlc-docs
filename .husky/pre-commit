@@ -1,1 +1,29 @@
+#!/bin/bash
+
+# Branch naming enforcement
+branch_name=$(git symbolic-ref --short HEAD)
+valid_pattern="^(feature|fix|hotfix|release|chore|docs|test)\/[a-z0-9-]+$|^(main|master|develop)$"
+
+if [[ ! $branch_name =~ $valid_pattern ]]; then
+  echo "❌ Branch name '$branch_name' does not follow naming convention."
+  echo "✅ Valid formats:"
+  echo "   - feature/description-here"
+  echo "   - fix/bug-description"
+  echo "   - hotfix/critical-issue"
+  echo "   - release/version-number"
+  echo "   - chore/maintenance-task"
+  echo "   - docs/documentation-update"
+  echo "   - test/test-improvements"
+  exit 1
+fi
+
+# Security auditing
+echo "🔍 Running security audit..."
+npm audit --audit-level=high
+if [ $? -ne 0 ]; then
+  echo "❌ High/critical security vulnerabilities found. Please fix before committing."
+  exit 1
+fi
+
+# Run lint-staged
 npx lint-staged
