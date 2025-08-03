@@ -10,65 +10,57 @@ The AI-SDLC framework now operates on a progressive 3-level architecture, design
 graph TD
     A[Developer Commits Code] --> B{AI-SDLC Framework}
 
-    subgraph "Level 1: Basic Code Quality (FREE)"
-        B --> C[setup.sh - One Command Setup]
-        C --> D[Git Hooks Installation]
-        D --> E[ESLint Configuration]
-        D --> F[Prettier Configuration]
-        D --> G[Commitlint Setup]
-        E --> H[Pre-commit Validation]
-        F --> H
-        G --> H
-        H --> I[✅ Clean Code Committed]
-    end
+    B --> L1[Level 1: Basic Code Quality FREE]
+    B --> L2[Level 2: AI-Powered Testing $20-50/mo]
+    B --> L3[Level 3: Enterprise QA $50-100/mo]
 
-    subgraph "Level 2: AI-Powered Testing (PREMIUM)"
-        B --> J[AI Test Generator]
-        J --> K[OpenAI GPT-4 Analysis]
-        K --> L[Vitest/Jest Test Generation]
-        L --> M[Qase Integration]
-        M --> N[Test Case Management]
-        N --> O[✅ 60%+ Test Coverage]
-    end
+    L1 --> C[setup.sh - One Command Setup]
+    C --> D[Git Hooks + ESLint + Prettier]
+    D --> E[Pre-commit Validation]
+    E --> R1[✅ 75% Code Review Time Saved]
 
-    subgraph "Level 3: Enterprise QA (ENTERPRISE)"
-        B --> P[Full QA Automation]
-        P --> Q[E2E Test Generation]
-        P --> R[Security Compliance Testing]
-        P --> S[Credit Repair Domain Rules]
-        Q --> T[Playwright/Cypress Tests]
-        R --> U[FCRA/FACTA Validation]
-        S --> U
-        T --> V[✅ Production-Ready Quality]
-        U --> V
-    end
+    L2 --> F[AI Test Generator]
+    F --> G[OpenAI GPT-4 Analysis]
+    G --> H[Vitest/Jest + Qase Integration]
+    H --> R2[✅ 60%+ Test Coverage]
 
-    subgraph "AI QA Process Flow"
-        W[Code Analysis] --> X[Test Strategy Generation]
-        X --> Y[Test Code Creation]
-        Y --> Z[Qase Sync & Reporting]
-        Z --> AA[Automated Execution]
-        AA --> BB[Quality Metrics]
-    end
-
-    subgraph "Commands Interface"
-        CC[ai-sdlc setup] --> Level1[Level 1 Setup]
-        DD[ai-sdlc test-init] --> Level2[Level 2 Setup]
-        EE[ai-sdlc test-gen all] --> Level2
-        FF[ai-sdlc validate] --> AllLevels[All Levels]
-    end
-
-    I --> Stats1[75% Code Review Time Saved]
-    O --> Stats2[40% Development Speed Increase]
-    V --> Stats3[80% Manual QA Reduction]
+    L3 --> I[Full QA Automation]
+    I --> J[E2E Tests + Security Compliance]
+    J --> K[FCRA/FACTA + Credit Domain Rules]
+    K --> R3[✅ 80% Manual QA Reduction]
 
     style A fill:#e1f5fe
-    style Level1 fill:#c8e6c9
-    style Level2 fill:#fff3e0
-    style Level3 fill:#fce4ec
-    style Stats1 fill:#e8f5e8
-    style Stats2 fill:#fff8e1
-    style Stats3 fill:#f3e5f5
+    style L1 fill:#c8e6c9
+    style L2 fill:#fff3e0
+    style L3 fill:#fce4ec
+    style R1 fill:#e8f5e8
+    style R2 fill:#fff8e1
+    style R3 fill:#f3e5f5
+```
+
+### Progressive Implementation Flow
+
+```mermaid
+flowchart LR
+    Start([New Project]) --> Setup[Run ./setup.sh]
+    Setup --> Level1{Level 1 Active}
+    Level1 -->|5 minutes| Benefits1[75% Review Time Saved]
+
+    Benefits1 --> Upgrade1{Need AI Tests?}
+    Upgrade1 -->|Yes| Level2[Add API Keys]
+    Upgrade1 -->|No| Stay1[Stay Level 1]
+
+    Level2 --> Benefits2[60%+ Test Coverage]
+    Benefits2 --> Upgrade2{Enterprise Features?}
+    Upgrade2 -->|Yes| Level3[Full QA Automation]
+    Upgrade2 -->|No| Stay2[Stay Level 2]
+
+    Level3 --> Benefits3[80% QA Reduction]
+
+    style Start fill:#e3f2fd
+    style Benefits1 fill:#e8f5e8
+    style Benefits2 fill:#fff8e1
+    style Benefits3 fill:#f3e5f5
 ```
 
 ## Level Progression

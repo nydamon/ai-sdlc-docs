@@ -53,6 +53,9 @@ extra:
           note: >-
             Thanks for your feedback! Help us improve by creating an issue on GitHub.
 
+extra_javascript:
+  - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
+
 copyright: |
   &copy; 2025 The Credit Pros. All rights reserved.<br>
   <strong>Simplified AI-SDLC by Damon DeCrescenzo, CTO</strong><br>
@@ -75,7 +78,11 @@ nav:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
   - toc:
