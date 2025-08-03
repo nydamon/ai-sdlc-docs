@@ -38,6 +38,11 @@ show_help() {
     echo "  status      Show current setup status"
     echo "  clean       Clean up temporary files and caches"
     echo "  doctor      Run full health check and diagnostics"
+    echo "  serve       Start AI-SDLC development dashboard"
+    echo "  docker      Manage Docker development environment"
+    echo "  teams       Manage MS Teams webhook notifications"
+    echo "  performance Monitor and optimize performance"
+    echo "  dev         Development utilities and tools"
     echo "  --help      Show this help message"
     echo "  --version   Show version information"
     echo
@@ -46,6 +51,10 @@ show_help() {
     echo "  ai-sdlc validate      # Check if setup is working correctly"
     echo "  ai-sdlc repair        # Fix any configuration issues"
     echo "  ai-sdlc doctor        # Run full diagnostics"
+    echo "  ai-sdlc serve         # Start development dashboard"
+    echo "  ai-sdlc docker up     # Start Docker development environment"
+    echo "  ai-sdlc teams test    # Test MS Teams webhook"
+    echo "  ai-sdlc perf monitor  # Monitor performance metrics"
     echo
     echo "For more information, visit: https://nydamon.github.io/ai-sdlc-docs/"
 }
@@ -363,6 +372,85 @@ main() {
             shift
             cmd_repair "$@"
             ;;
+        "teams")
+            echo "🔔 Managing MS Teams notifications..."
+            case "${2:-help}" in
+                "setup")
+                    shift 2
+                    if [[ -f "scripts/setup-ms-teams.sh" ]]; then
+                        ./scripts/setup-ms-teams.sh --webhook-url "$@"
+                    else
+                        echo "❌ MS Teams setup script not found"
+                        exit 1
+                    fi
+                    ;;
+                "test")
+                    if [[ -f "scripts/webhook-manager.js" ]]; then
+                        node scripts/webhook-manager.js test
+                    else
+                        echo "❌ Webhook manager not found"
+                        exit 1
+                    fi
+                    ;;
+                "validate")
+                    if [[ -f "scripts/webhook-manager.js" ]]; then
+                        node scripts/webhook-manager.js validation
+                    else
+                        echo "❌ Webhook manager not found"
+                        exit 1
+                    fi
+                    ;;
+                *)
+                    echo "Usage: ./ai-sdlc teams [setup|test|validate]"
+                    echo ""
+                    echo "Commands:"
+                    echo "  setup <webhook-url>  - Setup MS Teams webhook"
+                    echo "  test                 - Test webhook connectivity"
+                    echo "  validate             - Send validation report to Teams"
+                    ;;
+            esac
+            ;;
+        "performance"|"perf")
+            echo "📊 Managing performance monitoring..."
+            case "${2:-help}" in
+                "monitor")
+                    if [[ -f "scripts/performance-monitor.js" ]]; then
+                        node scripts/performance-monitor.js monitor
+                    else
+                        echo "❌ Performance monitor not found"
+                        exit 1
+                    fi
+                    ;;
+                "optimize")
+                    if [[ -f "scripts/optimize-workspace.sh" ]]; then
+                        ./scripts/optimize-workspace.sh
+                    else
+                        echo "❌ Workspace optimizer not found"
+                        exit 1
+                    fi
+                    ;;
+                "report")
+                    if [[ -f "performance-metrics.json" ]]; then
+                        echo "📊 Latest Performance Metrics:"
+                        if command -v jq >/dev/null 2>&1; then
+                            jq '.summary' performance-metrics.json
+                        else
+                            cat performance-metrics.json
+                        fi
+                    else
+                        echo "❌ No performance data found. Run './ai-sdlc perf monitor' first."
+                    fi
+                    ;;
+                *)
+                    echo "Usage: ./ai-sdlc performance [monitor|optimize|report]"
+                    echo ""
+                    echo "Commands:"
+                    echo "  monitor   - Run comprehensive performance monitoring"
+                    echo "  optimize  - Optimize workspace for better performance"
+                    echo "  report    - Show latest performance metrics"
+                    ;;
+            esac
+            ;;
         "update")
             shift
             cmd_update "$@"
@@ -375,9 +463,89 @@ main() {
             shift
             cmd_clean "$@"
             ;;
+        "dev")
+            echo "🛠️ Development utilities..."
+            case "${2:-help}" in
+                "report")
+                    if [[ -f "scripts/dev-utils.js" ]]; then
+                        node scripts/dev-utils.js report
+                    else
+                        echo "❌ Dev utils not found"
+                        exit 1
+                    fi
+                    ;;
+                "clean")
+                    if [[ -f "scripts/dev-utils.js" ]]; then
+                        node scripts/dev-utils.js clean
+                    else
+                        echo "❌ Dev utils not found"
+                        exit 1
+                    fi
+                    ;;
+                "updates")
+                    if [[ -f "scripts/dev-utils.js" ]]; then
+                        node scripts/dev-utils.js updates
+                    else
+                        echo "❌ Dev utils not found"
+                        exit 1
+                    fi
+                    ;;
+                *)
+                    echo "Usage: ./ai-sdlc dev [report|clean|updates]"
+                    echo ""
+                    echo "Commands:"
+                    echo "  report   - Generate development environment report"
+                    echo "  clean    - Clean development artifacts"
+                    echo "  updates  - Check for package updates"
+                    ;;
+            esac
+            ;;
         "doctor")
             shift
             cmd_doctor "$@"
+            ;;
+        "serve")
+            echo "🚀 Starting AI-SDLC development server..."
+            if [[ -f "docker/dashboard-server.js" ]]; then
+                node docker/dashboard-server.js
+            else
+                echo "❌ Dashboard server not found. Run './ai-sdlc init' first."
+                exit 1
+            fi
+            ;;
+        "docker")
+            echo "🐳 Managing AI-SDLC Docker environment..."
+            case "${2:-help}" in
+                "up")
+                    echo "Starting AI-SDLC Docker environment..."
+                    docker-compose -f docker-compose.dev.yml up -d
+                    echo "✅ AI-SDLC development environment started!"
+                    echo "📊 Dashboard: http://localhost:3001"
+                    echo "📈 Grafana: http://localhost:3000 (admin/admin123)"
+                    echo "🔍 SonarQube: http://localhost:9000"
+                    echo "📊 Prometheus: http://localhost:9090"
+                    ;;
+                "down")
+                    echo "Stopping AI-SDLC Docker environment..."
+                    docker-compose -f docker-compose.dev.yml down
+                    echo "✅ AI-SDLC development environment stopped."
+                    ;;
+                "logs")
+                    docker-compose -f docker-compose.dev.yml logs -f "${3:-ai-sdlc-tools}"
+                    ;;
+                "status")
+                    docker-compose -f docker-compose.dev.yml ps
+                    ;;
+                *)
+                    echo "Usage: ./ai-sdlc docker [up|down|logs|status]"
+                    echo ""
+                    echo "Commands:"
+                    echo "  up      - Start AI-SDLC Docker environment"
+                    echo "  down    - Stop AI-SDLC Docker environment"
+                    echo "  logs    - Show logs for services"
+                    echo "  status  - Show container status"
+                    ;;
+            esac
             ;;
         "--help"|"-h"|"help")
             show_help

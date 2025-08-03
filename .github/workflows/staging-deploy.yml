@@ -134,14 +134,14 @@ jobs:
           echo "🚀 Deploying to staging environment..."
           echo "This would typically deploy to your staging server"
           echo "For now, we're simulating the deployment process"
-          
+
           # Simulate deployment steps
           echo "1. ✅ Connecting to staging server"
           echo "2. ✅ Uploading application files"
           echo "3. ✅ Running database migrations"
           echo "4. ✅ Clearing caches"
           echo "5. ✅ Starting services"
-          
+
           echo "🎉 Staging deployment complete!"
 
       - name: Run smoke tests on staging
@@ -211,7 +211,7 @@ jobs:
             });
           }
           EOF
-          
+
           k6 run performance-test.js
 
   security-tests:
@@ -235,16 +235,48 @@ jobs:
     needs: [deploy-staging, performance-tests, security-tests]
     if: always()
     steps:
-      - name: Notify Slack
+      - name: Notify MS Teams
         if: always()
-        run: |
-          if [ "${{ needs.deploy-staging.result }}" == "success" ]; then
-            echo "✅ Would send success notification to Slack"
-            echo "Message: Staging deployment successful for ${{ github.ref_name }}"
-          else
-            echo "❌ Would send failure notification to Slack"
-            echo "Message: Staging deployment failed for ${{ github.ref_name }}"
-          fi
+        uses: aliencube/microsoft-teams-actions@v0.8.0
+        with:
+          webhook_uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          title: '🚀 AI-SDLC Staging Deployment'
+          summary: 'Deployment status for ${{ github.ref_name }}'
+          theme_color: ${{ needs.deploy-staging.result == 'success' && '00ff00' || 'ff0000' }}
+          sections: |
+            [
+              {
+                "activityTitle": "Deployment Results",
+                "activitySubtitle": "Branch: ${{ github.ref_name }} | Commit: ${{ github.sha }}",
+                "facts": [
+                  {
+                    "name": "Security Scan",
+                    "value": "${{ needs.security-scan.result }}"
+                  },
+                  {
+                    "name": "Tests",
+                    "value": "${{ needs.test-suite.result }}"
+                  },
+                  {
+                    "name": "Build",
+                    "value": "${{ needs.build-and-validate.result }}"
+                  },
+                  {
+                    "name": "Deployment",
+                    "value": "${{ needs.deploy-staging.result }}"
+                  },
+                  {
+                    "name": "Performance Tests",
+                    "value": "${{ needs.performance-tests.result }}"
+                  },
+                  {
+                    "name": "Security Tests",
+                    "value": "${{ needs.security-tests.result }}"
+                  }
+                ],
+                "markdown": true
+              }
+            ]
 
       - name: Create deployment summary
         if: always()
@@ -257,11 +289,11 @@ jobs:
           echo "- **Tests:** ${{ needs.test-suite.result }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Build:** ${{ needs.build-and-validate.result }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Deployment:** ${{ needs.deploy-staging.result }}" >> $GITHUB_STEP_SUMMARY
-          
+
           if [ "${{ needs.performance-tests.result }}" != "skipped" ]; then
             echo "- **Performance Tests:** ${{ needs.performance-tests.result }}" >> $GITHUB_STEP_SUMMARY
           fi
-          
+
           if [ "${{ needs.security-tests.result }}" != "skipped" ]; then
             echo "- **Security Tests:** ${{ needs.security-tests.result }}" >> $GITHUB_STEP_SUMMARY
           fi

@@ -1,0 +1,194 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "AI-SDLC Framework Overview",
+    "tags": ["ai-sdlc", "the-credit-pros"],
+    "style": "dark",
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Validation Success Rate",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "SELECT AVG(overall_score) FROM validation_results WHERE validation_date >= NOW() - INTERVAL '24 hours'",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100,
+            "thresholds": {
+              "steps": [
+                { "color": "red", "value": 0 },
+                { "color": "yellow", "value": 80 },
+                { "color": "green", "value": 90 }
+              ]
+            }
+          }
+        },
+        "gridPos": { "h": 8, "w": 6, "x": 0, "y": 0 }
+      },
+      {
+        "id": 2,
+        "title": "Test Pass Rate (24h)",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "SELECT (SUM(passed_tests) * 100.0 / SUM(total_tests)) as pass_rate FROM test_results WHERE test_date >= NOW() - INTERVAL '24 hours'",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100,
+            "thresholds": {
+              "steps": [
+                { "color": "red", "value": 0 },
+                { "color": "yellow", "value": 80 },
+                { "color": "green", "value": 95 }
+              ]
+            }
+          }
+        },
+        "gridPos": { "h": 8, "w": 6, "x": 6, "y": 0 }
+      },
+      {
+        "id": 3,
+        "title": "Code Coverage",
+        "type": "gauge",
+        "targets": [
+          {
+            "expr": "SELECT AVG(coverage_percentage) FROM test_results WHERE test_type = 'coverage' AND test_date >= NOW() - INTERVAL '7 days'",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100,
+            "thresholds": {
+              "steps": [
+                { "color": "red", "value": 0 },
+                { "color": "yellow", "value": 70 },
+                { "color": "green", "value": 80 }
+              ]
+            }
+          }
+        },
+        "gridPos": { "h": 8, "w": 6, "x": 12, "y": 0 }
+      },
+      {
+        "id": 4,
+        "title": "Automation Events (Today)",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "SELECT COUNT(*) FROM automation_events WHERE event_date >= CURRENT_DATE",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "short",
+            "color": { "mode": "palette-classic" }
+          }
+        },
+        "gridPos": { "h": 8, "w": 6, "x": 18, "y": 0 }
+      },
+      {
+        "id": 5,
+        "title": "Validation Score Trend",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "SELECT validation_date as time, overall_score as value FROM validation_results ORDER BY validation_date",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100,
+            "color": { "mode": "palette-classic" }
+          }
+        },
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 }
+      },
+      {
+        "id": 6,
+        "title": "Test Execution Time",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "SELECT test_date as time, execution_time_ms as value, test_type as metric FROM test_results ORDER BY test_date",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "ms",
+            "color": { "mode": "palette-classic" }
+          }
+        },
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 }
+      },
+      {
+        "id": 7,
+        "title": "Recent Automation Events",
+        "type": "table",
+        "targets": [
+          {
+            "expr": "SELECT event_date, event_type, event_status, description FROM automation_events ORDER BY event_date DESC LIMIT 10",
+            "refId": "A"
+          }
+        ],
+        "gridPos": { "h": 8, "w": 24, "x": 0, "y": 16 }
+      },
+      {
+        "id": 8,
+        "title": "Performance Metrics",
+        "type": "timeseries",
+        "targets": [
+          {
+            "expr": "SELECT metric_date as time, response_time_ms as value, test_name as metric FROM performance_metrics ORDER BY metric_date",
+            "refId": "A"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "ms",
+            "color": { "mode": "palette-classic" }
+          }
+        },
+        "gridPos": { "h": 8, "w": 12, "x": 0, "y": 24 }
+      },
+      {
+        "id": 9,
+        "title": "Project Health Score",
+        "type": "piechart",
+        "targets": [
+          {
+            "expr": "SELECT CASE WHEN overall_score >= 90 THEN 'Excellent' WHEN overall_score >= 80 THEN 'Good' WHEN overall_score >= 70 THEN 'Fair' ELSE 'Needs Attention' END as status, COUNT(*) as count FROM validation_results WHERE validation_date >= NOW() - INTERVAL '7 days' GROUP BY status",
+            "refId": "A"
+          }
+        ],
+        "gridPos": { "h": 8, "w": 12, "x": 12, "y": 24 }
+      }
+    ],
+    "time": {
+      "from": "now-24h",
+      "to": "now"
+    },
+    "refresh": "30s",
+    "schemaVersion": 27,
+    "version": 1
+  }
+}

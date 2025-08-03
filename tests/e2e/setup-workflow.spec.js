@@ -1,7 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { execSync } from 'child_process';
 import fs from 'fs';
-import path from 'path';
 
 test.describe('AI-SDLC Setup Workflow', () => {
   const testProjectDir = './test-e2e-project';
@@ -41,13 +40,15 @@ test.describe('AI-SDLC Setup Workflow', () => {
     expect(fs.existsSync('commitlint.config.js')).toBe(true);
 
     // Test validation
-    const validateResult = execSync('../ai-sdlc validate', { encoding: 'utf8' });
+    const validateResult = execSync('../ai-sdlc validate', {
+      encoding: 'utf8',
+    });
     expect(validateResult).toContain('All validations passed');
 
     // Test git hooks by creating a commit
     fs.writeFileSync('test.js', 'console.log("test");');
     execSync('git add test.js', { encoding: 'utf8' });
-    
+
     try {
       execSync('git commit -m "test: add test file"', { encoding: 'utf8' });
     } catch (error) {
@@ -70,7 +71,9 @@ test.describe('AI-SDLC Setup Workflow', () => {
     fs.unlinkSync('eslint.config.js');
 
     // Verify validation fails
-    const validateResult = execSync('../ai-sdlc validate', { encoding: 'utf8' });
+    const validateResult = execSync('../ai-sdlc validate', {
+      encoding: 'utf8',
+    });
     expect(validateResult).toContain('ESLint');
 
     // Run repair

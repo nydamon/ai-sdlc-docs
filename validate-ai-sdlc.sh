@@ -547,6 +547,16 @@ main() {
     else
         echo -e "\n${YELLOW}⚠️  Some validations failed. Please review and fix issues above.${NC}"
     fi
+    
+    # Send MS Teams notification if webhook is configured
+    if [[ -n "${MS_TEAMS_WEBHOOK_URI:-}" ]] && [[ -f "scripts/webhook-manager.js" ]]; then
+        echo -e "\n${BLUE}📢 Sending validation results to MS Teams...${NC}"
+        if node scripts/webhook-manager.js validation > /dev/null 2>&1; then
+            echo -e "${GREEN}✅ MS Teams notification sent successfully${NC}"
+        else
+            echo -e "${YELLOW}⚠️  Failed to send MS Teams notification${NC}"
+        fi
+    fi
 }
 
 main "$@"

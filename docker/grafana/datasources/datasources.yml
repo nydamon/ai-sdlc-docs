@@ -1,0 +1,34 @@
+apiVersion: 1
+
+datasources:
+  # Prometheus data source
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    url: http://prometheus:9090
+    isDefault: true
+    editable: true
+
+  # PostgreSQL data source for AI-SDLC metrics
+  - name: AI-SDLC Database
+    type: postgres
+    access: proxy
+    url: postgres:5432
+    database: ai_sdlc_metrics
+    user: ai_sdlc
+    secureJsonData:
+      password: secure_password_here
+    jsonData:
+      sslmode: disable
+      postgresVersion: 15
+      timescaledb: false
+    editable: true
+
+  # Redis data source (if redis datasource plugin is installed)
+  - name: Redis
+    type: redis-datasource
+    access: proxy
+    url: redis:6379
+    editable: true
+    jsonData:
+      client: 'standalone'
