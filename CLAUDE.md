@@ -153,6 +153,44 @@ This framework has been **extensively tested** with real API credentials and wor
 - **Documentation updates** - Keep guides current with validated capabilities
 - **User feedback integration** - Continuous improvement based on real usage
 
+## ⚠️ CRITICAL: Script Accessibility Requirements
+
+**LESSON LEARNED (August 2025)**: Documentation sites must include actual working scripts for implementation manager review.
+
+### **Documentation Repository Requirements:**
+
+- ✅ **All working scripts MUST be copied to docs/ directory**
+- ✅ **MkDocs navigation MUST include direct script access**
+- ✅ **Scripts download page MUST provide implementation guidance**
+- ✅ **Both repositories (main + docs) MUST stay synchronized**
+
+### **Implementation Manager Access Checklist:**
+
+- [ ] `auto-setup.sh` accessible via documentation site
+- [ ] `ai-sdlc` CLI accessible via documentation site
+- [ ] `scripts-complex/` directory accessible via documentation site
+- [ ] Scripts download page with implementation instructions
+- [ ] Direct download links working from documentation site
+
+### **Synchronization Process:**
+
+```bash
+# Keep docs repository synchronized with main repository
+cp auto-setup.sh ai-sdlc docs/
+cp -r scripts-complex docs/
+git add docs/
+git commit -m "sync: update scripts in documentation"
+```
+
+**Why This Matters**: Implementation managers need to review actual script content before approving team rollouts. Without script access, the framework appears to be "documentation only" rather than a working solution.
+
+### **Validation Tools Created:**
+
+- ✅ **DOCUMENTATION_DEPLOYMENT_CHECKLIST.md** - Comprehensive pre-deployment checklist
+- ✅ **validate-documentation-deployment.sh** - Automated validation script
+
+**Usage**: Run `./validate-documentation-deployment.sh` before any documentation deployment to prevent script accessibility issues.
+
 ## Production Deployment Status
 
 **Status**: ✅ PRODUCTION READY  
