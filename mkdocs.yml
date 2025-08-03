@@ -74,6 +74,10 @@ nav:
       - Configuration Management: enhanced-config-management.md
       - Cursor IDE Guidelines: enhanced-cursor-guidelines.md
       - 📄 Scripts & Configuration Reference: scripts-reference.md
+  - 📦 Download Scripts:
+      - 📋 Scripts Download & Implementation: scripts-download.md
+      - auto-setup.sh: auto-setup.sh
+      - ai-sdlc CLI: ai-sdlc
 
 markdown_extensions:
   - admonition
