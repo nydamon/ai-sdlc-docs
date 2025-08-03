@@ -1,61 +1,196 @@
-# 🛠️ Troubleshooting Guide
+# 🛠️ Updated Troubleshooting Guide - 90% Implementation
 
-Common issues and solutions for the AI-SDLC framework implementation.
+Common issues and solutions for the enhanced AI-SDLC framework with Docker, MS Teams, and Performance monitoring.
 
 ---
 
-## 🎯 Quick Problem Solver
+## 🎯 Enhanced Quick Problem Solver - NEW FEATURES
 
-### Git Hooks Issues
+### ✅ **Git Hooks Issues - ENHANCED AUTO-REPAIR**
+
 ```bash
 # Problem: Commits bypass pre-commit hooks
-# Solution: Auto-repair git hooks
+# Solution: Enhanced auto-repair with drift detection
 ./ai-sdlc repair
 
 # Problem: Hooks fail with permission errors
 # Solution: Auto-repair fixes permissions automatically
 ./ai-sdlc repair
 
-# Problem: Specific hook failing
-# Solution: Validate and repair hooks
+# Problem: Security scanning fails in hooks
+# Solution: Enhanced validation checks security integration
 ./ai-sdlc validate
 ./ai-sdlc repair
+
+# Problem: Specific hook failing
+# Solution: Comprehensive diagnostics and repair
+./ai-sdlc doctor    # Detailed diagnostics
+./ai-sdlc validate  # 28+ automated checks
+./ai-sdlc repair    # Auto-fix with drift detection
 ```
 
-### AI Tool Issues
+### 🚧 **AI Tool Issues - ENHANCED DIAGNOSTICS**
+
 ```bash
-# Problem: Cursor AI suggestions not appearing
-# Solution: Check API keys and restart IDE
-echo $CURSOR_API_KEY
-# Restart Cursor IDE
+# Problem: IDE configuration issues
+# Solution: Auto-repair IDE settings and extensions
+./ai-sdlc repair
+./ai-sdlc doctor    # Comprehensive IDE diagnostics
 
-# Problem: CodiumAI test generation fails
-# Solution: Check installation and configuration
-npx codium --version
-# Verify package.json scripts
+# Problem: Development environment inconsistencies
+# Solution: Docker environment ensures consistency
+./ai-sdlc docker up     # Start consistent environment
+./ai-sdlc docker status # Check container health
 
-# Problem: AI-generated code quality issues
-# Solution: Review trust levels in AI playbook
-# Adjust review requirements for code types
+# Problem: AI tool integration issues
+# Solution: Enhanced validation checks all integrations
+./ai-sdlc validate      # Check all AI tool configurations
+./ai-sdlc dev report    # Generate detailed environment report
 ```
 
-### Semantic Release Issues
+### ✅ **Semantic Release Issues - PRODUCTION READY**
+
 ```bash
 # Problem: Version bumping not working
-# Solution: Validate and repair semantic release setup
-./ai-sdlc validate
-./ai-sdlc repair
+# Solution: Enhanced validation and repair for semantic release
+./ai-sdlc validate  # Comprehensive semantic release checks
+./ai-sdlc repair    # Auto-fix semantic release configuration
 
 # Problem: GitHub releases failing
-# Solution: Check with validation and repair
-./ai-sdlc validate
-echo $GITHUB_TOKEN | cut -c1-10
+# Solution: MS Teams notifications show detailed release status
+./ai-sdlc teams test    # Test MS Teams integration
+./ai-sdlc validate      # Validate GitHub Actions configuration
 
-# Problem: Changelog not generating
-# Solution: Auto-repair configuration
+# Problem: Release notifications not working
+# Solution: MS Teams integration provides real-time notifications
+./ai-sdlc teams deploy staging success  # Test deployment notifications
+```
+
+---
+
+## 🆕 **NEW FEATURES TROUBLESHOOTING**
+
+### 🐳 **Docker Environment Issues - NEW**
+
+```bash
+# Problem: Docker containers not starting
+# Solution: Check Docker daemon and restart services
+docker ps                    # Check running containers
+./ai-sdlc docker status      # Check AI-SDLC container health
+./ai-sdlc docker down        # Stop all services
+./ai-sdlc docker up          # Restart complete environment
+
+# Problem: Port conflicts with existing services
+# Solution: Docker compose handles port management automatically
+./ai-sdlc docker logs        # Check service logs for conflicts
+./ai-sdlc doctor             # Comprehensive environment diagnostics
+
+# Problem: Performance monitoring not showing data
+# Solution: Verify Grafana/Prometheus containers are running
+./ai-sdlc docker status      # Check monitoring stack health
+# Access Grafana at http://localhost:3000
+# Access Prometheus at http://localhost:9090
+```
+
+### 📱 **MS Teams Integration Issues - NEW**
+
+```bash
+# Problem: MS Teams notifications not sending
+# Solution: Test webhook connectivity and configuration
+./ai-sdlc teams test         # Test webhook connectivity
+echo $MS_TEAMS_WEBHOOK_URI   # Verify webhook URL is set
+
+# Problem: Deployment notifications not working
+# Solution: Test deployment notification system
+./ai-sdlc teams deploy staging success    # Test deployment notification
+./ai-sdlc teams validation                # Test validation report notification
+
+# Problem: Webhook URL not configured
+# Solution: Set up MS Teams webhook integration
+# Follow docs/ms-teams-integration.md for setup instructions
+export MS_TEAMS_WEBHOOK_URI="your-webhook-url"
+./ai-sdlc teams test         # Verify connectivity
+```
+
+### 📊 **Performance Monitoring Issues - NEW**
+
+```bash
+# Problem: Monitoring dashboards not accessible
+# Solution: Verify Docker containers and port configuration
+./ai-sdlc docker status      # Check monitoring containers
+./ai-sdlc perf monitor       # Test performance monitoring
+# Grafana: http://localhost:3000 (admin/admin)
+# Prometheus: http://localhost:9090
+
+# Problem: Performance metrics not updating
+# Solution: Check service connectivity and data collection
+./ai-sdlc perf optimize      # Run performance optimization
+./ai-sdlc docker logs grafana    # Check Grafana logs
+./ai-sdlc docker logs prometheus # Check Prometheus logs
+
+# Problem: SonarQube analysis not running
+# Solution: Verify SonarQube container and configuration
+./ai-sdlc docker logs sonarqube  # Check SonarQube logs
+# Access SonarQube at http://localhost:9000 (admin/admin)
+```
+
+### 🔧 **Enhanced CLI Issues - NEW**
+
+```bash
+# Problem: New CLI commands not recognized
+# Solution: Verify AI-SDLC CLI installation and permissions
+ls -la ./ai-sdlc            # Check CLI file exists and is executable
+./ai-sdlc --help            # List all available commands
+chmod +x ./ai-sdlc          # Make executable if needed
+
+# Problem: Development utilities not working
+# Solution: Test development utilities and diagnostics
+./ai-sdlc dev report        # Generate development environment report
+./ai-sdlc dev clean         # Clean development artifacts
+./ai-sdlc doctor            # Comprehensive diagnostics
+
+# Problem: Auto-repair not fixing issues
+# Solution: Run comprehensive diagnostics and manual repair
+./ai-sdlc doctor            # Detailed diagnostics with recommendations
+./ai-sdlc validate          # 28+ automated checks with detailed output
+./ai-sdlc repair            # Enhanced auto-repair with drift detection
+```
+
+---
+
+## 🎯 **QUICK DIAGNOSTIC COMMANDS**
+
+### **One-Command Problem Solver**
+
+```bash
+# Universal problem solver - runs comprehensive diagnostics
+./ai-sdlc doctor
+
+# Expected output:
+# ✅ Git hooks: Working
+# ✅ Docker environment: Running (8 containers)
+# ✅ MS Teams integration: Connected
+# ✅ Performance monitoring: Active
+# ✅ CLI commands: All 13+ commands functional
+# ✅ Auto-repair system: Active
+# ⚠️  Issues found: 0
+# 📊 Overall health: 98% (Excellent)
+```
+
+### **Emergency Reset (Nuclear Option)**
+
+```bash
+# If everything is broken, full reset and reinstall
+./ai-sdlc clean             # Clean all artifacts
+./ai-sdlc docker down       # Stop all containers
+./ai-sdlc init              # Complete fresh setup
+./ai-sdlc validate          # Verify everything works
+```
+
 ./ai-sdlc repair
 git log --oneline -5
-```
+
+````
 
 ---
 
@@ -84,15 +219,18 @@ git log --oneline -5
 # 4. Manual verification (if needed)
 ls -la .husky/
 .husky/pre-commit
-```
+````
 
 #### Commit Message Hook Issues
+
 **Symptom**: Invalid commit messages are accepted
 **Common Causes**:
+
 - Commitlint not properly configured
 - Hook not installed correctly
 
 **Solutions**:
+
 ```bash
 # 1. Validate commitlint setup
 ./ai-sdlc validate
@@ -110,13 +248,16 @@ cat commitlint.config.js
 ### 2. AI Tool Troubleshooting
 
 #### Cursor IDE Issues
+
 **Symptom**: AI suggestions not working or slow
 **Common Causes**:
+
 - Invalid or missing API keys
 - Network connectivity issues
 - IDE configuration problems
 
 **Solutions**:
+
 ```bash
 # 1. Verify API key
 echo $CURSOR_API_KEY
@@ -133,13 +274,16 @@ curl -I https://api.cursor.sh
 ```
 
 #### CodiumAI Issues
+
 **Symptom**: Test generation fails or produces poor quality
 **Common Causes**:
+
 - Insufficient context provided
 - Framework-specific configuration missing
 - Rate limiting
 
 **Solutions**:
+
 ```bash
 # 1. Check CodiumAI installation
 npx codium --version
@@ -157,13 +301,16 @@ npx codium --context="path/to/related/files"
 ### 3. Semantic Release Troubleshooting
 
 #### Version Bumping Issues
+
 **Symptom**: Versions not incrementing correctly
 **Common Causes**:
+
 - Incorrect commit message format
 - Branch configuration issues
 - Plugin configuration problems
 
 **Solutions**:
+
 ```bash
 # 1. Validate semantic release setup
 ./ai-sdlc validate
@@ -182,13 +329,16 @@ cat .releaserc.json | jq '.branches'
 ```
 
 #### GitHub Release Issues
+
 **Symptom**: Releases not published to GitHub
 **Common Causes**:
+
 - Invalid GitHub token
 - Insufficient permissions
 - Repository configuration issues
 
 **Solutions**:
+
 ```bash
 # 1. Verify GitHub token
 echo $GITHUB_TOKEN | cut -c1-10
@@ -210,6 +360,7 @@ cat .releaserc.json | jq '.plugins'
 ## 🚨 Critical Issues & Emergency Procedures
 
 ### Emergency Bypass Procedures
+
 ```bash
 # Bypass pre-commit hooks (use sparingly)
 git commit --no-verify -m "emergency: critical hotfix"
@@ -222,6 +373,7 @@ git push --no-verify
 ```
 
 ### Rollback Procedures
+
 ```bash
 # Rollback a failed release
 git revert <release-commit-hash>
@@ -237,6 +389,7 @@ git checkout HEAD~1 -- package.json
 ## 📊 Diagnostic Commands
 
 ### Git Hooks Diagnostics
+
 ```bash
 # Check hook installation
 ls -la .git/hooks/
@@ -250,6 +403,7 @@ echo "invalid message" | npx commitlint
 ```
 
 ### AI Tool Diagnostics
+
 ```bash
 # Check AI tool installations
 which cursor
@@ -264,6 +418,7 @@ printenv | grep -E "(CURSOR|OPENAI|GITHUB)"
 ```
 
 ### Release Diagnostics
+
 ```bash
 # Check semantic-release configuration
 npx semantic-release --dry-run --no-ci
@@ -281,6 +436,7 @@ gh auth status
 ## 🎯 Prevention Best Practices
 
 ### Regular Maintenance
+
 ```bash
 # Weekly: Run health check
 ./ai-sdlc doctor
@@ -295,6 +451,7 @@ npm outdated
 ```
 
 ### Monitoring & Alerts
+
 ```bash
 # Set up monitoring for:
 # - Hook failure rates
@@ -308,16 +465,19 @@ npm outdated
 ## 📞 Support Resources
 
 ### Documentation
+
 - [Git Hooks Automation](git-hooks-automation.md)
 - [AI-First Playbook](ai-first-playbook.md)
 - [Semantic Release Setup](semantic-release-setup.md)
 
 ### External Support
+
 - **Cursor Support**: https://cursor.sh/support
 - **CodiumAI Support**: https://codium.ai/support
 - **GitHub Support**: https://support.github.com
 
 ### Community Resources
+
 - **Stack Overflow**: Tag questions with relevant tools
 - **GitHub Discussions**: Framework-specific discussions
 - **Slack/Discord**: Developer communities
@@ -327,4 +487,4 @@ npm outdated
 **Last Updated**: Regular maintenance recommended
 **Next Review**: Monthly configuration validation
 
-*Need help with a specific issue? Check the [Success Metrics](success-metrics.md) to track incident patterns and resolution times.*
+_Need help with a specific issue? Check the [Success Metrics](success-metrics.md) to track incident patterns and resolution times._
