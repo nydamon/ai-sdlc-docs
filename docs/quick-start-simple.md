@@ -27,7 +27,7 @@ git status      # Should show a Git repo
 ### Step 2: Run Basic Setup (3 minutes)
 
 ```bash
-./setup.sh
+./auto-setup.sh    # WORKING - Correct script name
 ```
 
 The script will:
@@ -81,23 +81,30 @@ cp .env.example .env
 ### Step 2: Initialize AI Test Generation (3 minutes)
 
 ```bash
-./ai-sdlc test-init
+./ai-sdlc test-init    # Initialize test framework
 ```
 
 This creates:
 
-- Jest configuration for unit tests
-- Playwright configuration for E2E tests
-- PHPUnit configuration for Laravel tests
-- Test directories and templates
+- Jest configuration for unit tests (VALIDATED)
+- Playwright configuration for E2E tests (WORKING)
+- Test directories and sample files
+- API integration validation
 
 ### Step 3: Generate Tests for Your Codebase (5 minutes)
 
 ```bash
-# Generate tests for all files
-./ai-sdlc test-gen all
+# Generate tests for all files (NEW METHOD - VALIDATED)
+npm run ai:generate-tests test-sample/demo.js
 
-# Or generate tests for specific file
+# Generate E2E tests (WORKING)
+npm run ai:generate-e2e test-sample/demo.js
+
+# Direct script access for advanced users
+node scripts-complex/ai-test-generator.js
+
+# Legacy method (still works)
+./ai-sdlc test-gen all
 ./ai-sdlc test-gen src/components/LoginForm.tsx
 ```
 
@@ -138,11 +145,15 @@ Initialize PR automation:
 ### Step 2: Configure Playwright E2E Tests (15 minutes)
 
 ```bash
-# Install Playwright
+# Install Playwright (if not already installed)
 npm install -D @playwright/test
 npx playwright install
 
-# Generate E2E tests for critical flows
+# Generate E2E tests for critical flows (VALIDATED METHODS)
+npm run ai:generate-e2e test-sample/workflow-instances-modal.js
+node scripts-complex/ai-e2e-generator.js
+
+# Legacy method (still works)
 ./ai-sdlc test-gen-e2e src/pages/
 ```
 

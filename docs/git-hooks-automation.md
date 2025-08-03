@@ -10,13 +10,14 @@ Complete git hooks automation is now handled by the AI-SDLC framework with intel
 
 ```bash
 # Complete automated setup with intelligent project detection
-./ai-sdlc init
+./auto-setup.sh    # WORKING - Actual script name
 
 # This automatically configures:
-# ✅ Husky v8+ with modern initialization
-# ✅ lint-staged for changed files only
-# ✅ Pre-commit hooks for quality checks
-# ✅ Commit message validation with commitlint
+# ✅ Husky v8+ with modern initialization (VALIDATED)
+# ✅ lint-staged for changed files only (WORKING)
+# ✅ Pre-commit hooks with security auditing (ENHANCED)
+# ✅ Branch naming enforcement (ADDED)
+# ✅ Commit message validation with commitlint (WORKING)
 # ✅ Project-specific linting rules (Laravel, React, TypeScript)
 ```
 
@@ -24,7 +25,7 @@ Complete git hooks automation is now handled by the AI-SDLC framework with intel
 
 ### Intelligent Project Detection Results
 
-After running `./ai-sdlc init`, the system automatically configures:
+After running `./auto-setup.sh`, the system automatically configures:
 
 #### For Laravel Projects:
 
@@ -64,7 +65,9 @@ After running `./ai-sdlc init`, the system automatically configures:
 {
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
-    "*.php": ["./vendor/bin/pint"],
+    "*.php": [
+      "bash -c 'if [ -f ./vendor/bin/pint ] && [[ \"$0\" != *\".template.php\" ]]; then ./vendor/bin/pint \"$0\"; fi'"
+    ],
     "*.{json,md,yml,yaml}": ["prettier --write"]
   }
 }
@@ -72,20 +75,46 @@ After running `./ai-sdlc init`, the system automatically configures:
 
 ## 🔧 **Automatically Generated Git Hooks**
 
-### Pre-Commit Hook (Automatically Created)
+### Pre-Commit Hook (Enhanced - Automatically Created)
 
 ```bash
-# .husky/pre-commit (generated automatically)
+# .husky/pre-commit (ENHANCED version with security)
+#!/bin/bash
+
+# Branch naming enforcement
+branch_name=$(git symbolic-ref --short HEAD)
+valid_pattern="^(feature|fix|hotfix|release|chore|docs|test)\/[a-z0-9-]+$|^(main|master|develop)$"
+
+if [[ ! $branch_name =~ $valid_pattern ]]; then
+  echo "❌ Branch name '$branch_name' does not follow naming convention."
+  echo "✅ Valid formats:"
+  echo "   - feature/description-here"
+  echo "   - fix/bug-description"
+  echo "   - hotfix/critical-issue"
+  exit 1
+fi
+
+# Security auditing
+echo "🔍 Running security audit..."
+npm audit --audit-level=high
+if [ $? -ne 0 ]; then
+  echo "❌ High/critical security vulnerabilities found. Please fix before committing."
+  exit 1
+fi
+
+# Run lint-staged for code quality
 npx lint-staged
 ```
 
-**What this automatically does:**
+**What this enhanced hook automatically does:**
 
-- ✅ Runs ESLint with auto-fix for JavaScript/TypeScript files
-- ✅ Formats code with Prettier automatically
-- ✅ Runs Laravel Pint for PHP code formatting
-- ✅ Only processes changed files (super fast)
-- ✅ Prevents commits if unfixable errors exist
+- ✅ **Branch naming enforcement** - Ensures consistent Git workflow
+- ✅ **Security auditing** - Prevents commits with high/critical vulnerabilities
+- ✅ **Runs ESLint with auto-fix** for JavaScript/TypeScript files
+- ✅ **Formats code with Prettier** automatically
+- ✅ **Runs Laravel Pint for PHP** (excludes template files)
+- ✅ **Only processes changed files** (super fast)
+- ✅ **Prevents commits if unfixable errors exist**
 
 ### Commit Message Hook (Automatically Created)
 

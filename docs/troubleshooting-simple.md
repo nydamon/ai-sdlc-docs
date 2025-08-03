@@ -15,7 +15,7 @@ node --version  # Should show 18+
 
 ```bash
 git init
-./setup.sh
+./auto-setup.sh    # WORKING - Correct script name
 ```
 
 **Error: "npm install fails"**
@@ -24,7 +24,7 @@ git init
 # Clear npm cache and try again
 npm cache clean --force
 rm -rf node_modules package-lock.json
-./setup.sh
+./auto-setup.sh
 ```
 
 ### Git Hooks Not Working
@@ -53,7 +53,7 @@ npx husky init
 # Check if config exists
 ls -la .eslintrc*
 # If missing, run setup again
-./setup.sh
+./auto-setup.sh
 ```
 
 **Too many linting errors**
@@ -70,8 +70,51 @@ npm run format
 **Check what's wrong:**
 
 ```bash
-ai-sdlc status     # Shows current status
-ai-sdlc validate   # Detailed validation
+./ai-sdlc status     # Shows current status
+./ai-sdlc validate   # Detailed validation
+```
+
+## AI Testing Issues (Level 2+)
+
+### Jest Environment Error
+
+**Error: "jest-environment-jsdom cannot be found"**
+
+```bash
+# Install the missing Jest environment
+npm install --save-dev jest-environment-jsdom
+# Update jest.config.js to use 'node' environment
+```
+
+### API Key Issues
+
+**Error: "OpenAI API key not found"**
+
+```bash
+# Check .env file exists and has correct keys
+ls -la .env
+# Verify API key format (starts with sk-)
+cat .env | grep OPENAI_API_KEY
+```
+
+### Credit Calculation Test Failures
+
+**Tests fail with credit score > 850**
+
+```bash
+# This is expected - AI found a real bug!
+# Credit scores should be capped at 850
+# Update your credit calculation function:
+# return Math.min(calculatedScore, 850);
+```
+
+### PHP Pint Errors During Commit
+
+**Error: "PHP Pint failed on template files"**
+
+```bash
+# Update lint-staged in package.json to exclude template files
+# This fix is already included in the latest version
 ```
 
 **Reset everything:**
@@ -81,7 +124,7 @@ ai-sdlc validate   # Detailed validation
 rm -rf .husky .eslintrc* .prettierrc commitlint.config.js
 
 # Run setup again
-./setup.sh
+./auto-setup.sh
 ```
 
 ## Getting Help
