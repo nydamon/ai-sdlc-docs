@@ -1,0 +1,95 @@
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	deleted:    .devcontainer/devcontainer.json
+	modified:   .env.example
+	deleted:    .eslintcache/.cache_g43kqi
+	modified:   .gitignore
+	deleted:    AI_SDLC_REPAIR_REPORT.md
+	deleted:    AI_SDLC_SETUP_REPORT.md
+	deleted:    AI_SDLC_VALIDATION_REPORT.md
+	modified:   CLAUDE.md
+	deleted:    COMPREHENSIVE_AUDIT_REPORT.md
+	deleted:    DEVELOPMENT_REPORT.md
+	modified:   PHASE_2_DEPLOYMENT_SUMMARY.md
+	deleted:    STRATEGY_AUDIT_REPORT.md
+	modified:   ai-sdlc
+	deleted:    devcontainer.json
+	deleted:    docker-compose.dev.yml
+	deleted:    docker/ai-sdlc.Dockerfile
+	deleted:    docker/dashboard-server.js
+	deleted:    docker/grafana/dashboards/ai-sdlc-overview.json
+	deleted:    docker/grafana/dashboards/dashboards.yml
+	deleted:    docker/grafana/datasources/datasources.yml
+	deleted:    docker/init-db.sql
+	deleted:    docker/prometheus/prometheus.yml
+	modified:   docs/README.md
+	deleted:    docs/ai-automation-roadmap.md
+	deleted:    docs/ai-first-playbook.md
+	deleted:    docs/ai-governance-safety.md
+	deleted:    docs/ai-integration-phases.md
+	deleted:    docs/ai_dev_stack_blueprint.md
+	deleted:    docs/cli-reference.md
+	deleted:    docs/cost-analysis.md
+	deleted:    docs/docker-setup.md
+	modified:   docs/enhanced-cursor-guidelines.md
+	deleted:    docs/framework-overview.md
+	deleted:    docs/frontend-decision-tree.md
+	modified:   docs/git-hooks-automation.md
+	deleted:    docs/implementation-gaps.md
+	deleted:    docs/implementation-roadmap.md
+	deleted:    docs/migration-guide.md
+	deleted:    docs/monitoring-observability.md
+	deleted:    docs/ms-teams-integration.md
+	deleted:    docs/project_specification.md
+	deleted:    docs/quick-start.md
+	deleted:    docs/rollout_gantt_kanban.md
+	deleted:    docs/rollout_readiness_checklist.md
+	deleted:    docs/sdlc-architecture-diagram.md
+	deleted:    docs/semantic-release-setup.md
+	deleted:    docs/smart-testing.md
+	deleted:    docs/success-metrics.md
+	deleted:    docs/team-onboarding-checklist.md
+	deleted:    docs/team-size-quickstarts.md
+	deleted:    docs/testing-qa-strategy-revised.md
+	deleted:    docs/tool-integration-matrix.md
+	deleted:    docs/troubleshooting-guide.md
+	modified:   mkdocs.yml
+	deleted:    overrides/assets/stylesheets/custom.css
+	modified:   scripts/ai-test-generator.js
+	deleted:    scripts/dev-utils.js
+	deleted:    scripts/optimize-workspace.sh
+	deleted:    scripts/performance-monitor.js
+	deleted:    scripts/security-scanner.js
+	deleted:    scripts/setup-ms-teams.sh
+	deleted:    scripts/sonarqube-integration.js
+	deleted:    scripts/webhook-manager.js
+	deleted:    src/components/Button.jsx
+	deleted:    test-project/package-lock.json
+	deleted:    test-project/package.json
+	deleted:    tests/components/Button.test.jsx
+	modified:   tests/e2e/setup-workflow.spec.js
+	deleted:    tests/setup.js
+	deleted:    tests/setup.test.js
+	deleted:    tests/unit/cli-commands.test.js
+	deleted:    tests/unit/file-validation.test.js
+	deleted:    tests/validation.test.js
+	modified:   validate-ai-sdlc.sh
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	SIMPLIFICATION_SUMMARY.md
+	ai-sdlc-complex
+	docs/implementation-guide-managers.md
+	docs/quick-start-simple.md
+	docs/troubleshooting-simple.md
+	mkdocs-complex.yml
+	scripts-complex/
+	secure-test-setup.sh
+	setup.sh
+	test-env-setup.sh
+	tests/simple-cli.test.js
+	validation-results-20250803-044939/
+
+no changes added to commit (use "git add" and/or "git commit -a")

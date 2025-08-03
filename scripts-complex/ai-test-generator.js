@@ -10,38 +10,9 @@
 const fs = require('fs');
 const path = require('path');
 
-// Load environment variables from .env file
-function loadEnvFile() {
-  const envPath = path.join(process.cwd(), '.env');
-  if (fs.existsSync(envPath)) {
-    const envContent = fs.readFileSync(envPath, 'utf8');
-    const envLines = envContent
-      .split('\n')
-      .filter((line) => line.trim() && !line.startsWith('#'));
-
-    for (const line of envLines) {
-      const [key, ...valueParts] = line.split('=');
-      if (key && valueParts.length > 0) {
-        const value = valueParts.join('=').trim();
-        // Only set if not already set (respect existing env vars)
-        if (!process.env[key]) {
-          process.env[key] = value;
-        }
-      }
-    }
-    console.log('🔧 Loaded environment variables from .env file');
-  }
-}
-
-// Load .env file at startup
-loadEnvFile();
-
 class AITestGenerator {
   constructor() {
     this.openaiApiKey = process.env.OPENAI_API_KEY;
-    this.qaseApiKey = process.env.QASE_API_KEY;
-    this.qaseProjectCode = process.env.QASE_PROJECT_CODE;
-    this.codiumApiKey = process.env.CODIUM_API_KEY;
     this.projectRoot = process.cwd();
     this.testPatterns = {
       javascript: {
@@ -65,31 +36,11 @@ class AITestGenerator {
       },
     };
 
-    // Platform status logging
     if (!this.openaiApiKey) {
       console.warn(
         '⚠️  OPENAI_API_KEY not configured. Using template-based generation.'
       );
     }
-    if (!this.qaseApiKey) {
-      console.warn(
-        '⚠️  QASE_API_KEY not configured. Test management integration disabled.'
-      );
-    }
-    if (!this.codiumApiKey) {
-      console.warn(
-        '⚠️  CODIUM_API_KEY not configured. Advanced AI test generation disabled.'
-      );
-    }
-
-    console.log('🔧 Platform Status:');
-    console.log(
-      `   OpenAI: ${this.openaiApiKey ? '✅ Connected' : '❌ Disabled'}`
-    );
-    console.log(`   Qase: ${this.qaseApiKey ? '✅ Connected' : '❌ Disabled'}`);
-    console.log(
-      `   Codium: ${this.codiumApiKey ? '✅ Connected' : '❌ Disabled'}`
-    );
   }
 
   /**
@@ -874,185 +825,12 @@ class {{CLASS_NAME}}Test extends TestCase
   }
 
   /**
-   * Generate test with AI (OpenAI or Codium)
+   * Generate test with AI (placeholder - would use OpenAI API)
    */
   async generateTestWithAI(analysis, testType) {
-    if (this.codiumApiKey) {
-      return await this.generateTestWithCodium(analysis, testType);
-    } else if (this.openaiApiKey) {
-      return await this.generateTestWithOpenAI(analysis, testType);
-    } else {
-      return this.generateTestWithTemplate(analysis, testType);
-    }
-  }
-
-  /**
-   * Generate test with Codium AI (premium)
-   */
-  async generateTestWithCodium(analysis, testType) {
-    const https = require('https');
-
-    return new Promise((resolve, _reject) => {
-      const prompt = this.buildCodiumPrompt(analysis, testType);
-
-      const data = JSON.stringify({
-        source_code: fs.readFileSync(analysis.filePath, 'utf8'),
-        test_type: testType,
-        framework: analysis.framework || 'generic',
-        instructions: prompt,
-      });
-
-      const options = {
-        hostname: 'api.codium.ai',
-        path: '/v1/generate-tests',
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${this.codiumApiKey}`,
-          'Content-Type': 'application/json',
-          'Content-Length': data.length,
-        },
-      };
-
-      const req = https.request(options, (res) => {
-        let responseData = '';
-        res.on('data', (chunk) => (responseData += chunk));
-        res.on('end', () => {
-          try {
-            const result = JSON.parse(responseData);
-            resolve(
-              result.generated_tests ||
-                this.generateTestWithTemplate(analysis, testType)
-            );
-          } catch {
-            console.warn('⚠️  Codium API failed, falling back to template');
-            resolve(this.generateTestWithTemplate(analysis, testType));
-          }
-        });
-      });
-
-      req.on('error', (error) => {
-        console.warn(
-          '⚠️  Codium API error, falling back to template:',
-          error.message
-        );
-        resolve(this.generateTestWithTemplate(analysis, testType));
-      });
-
-      req.write(data);
-      req.end();
-    });
-  }
-
-  /**
-   * Generate test with OpenAI
-   */
-  async generateTestWithOpenAI(analysis, testType) {
-    const https = require('https');
-
-    return new Promise((resolve, _reject) => {
-      const prompt = this.buildOpenAIPrompt(analysis, testType);
-
-      const data = JSON.stringify({
-        model: 'gpt-4',
-        messages: [
-          {
-            role: 'system',
-            content:
-              'You are an expert software tester specializing in credit repair and financial applications. Generate comprehensive, production-ready tests.',
-          },
-          {
-            role: 'user',
-            content: prompt,
-          },
-        ],
-        max_tokens: 2000,
-        temperature: 0.3,
-      });
-
-      const options = {
-        hostname: 'api.openai.com',
-        path: '/v1/chat/completions',
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${this.openaiApiKey}`,
-          'Content-Type': 'application/json',
-          'Content-Length': data.length,
-        },
-      };
-
-      const req = https.request(options, (res) => {
-        let responseData = '';
-        res.on('data', (chunk) => (responseData += chunk));
-        res.on('end', () => {
-          try {
-            const result = JSON.parse(responseData);
-            const generatedTest = result.choices?.[0]?.message?.content;
-            resolve(
-              generatedTest || this.generateTestWithTemplate(analysis, testType)
-            );
-          } catch {
-            console.warn('⚠️  OpenAI API failed, falling back to template');
-            resolve(this.generateTestWithTemplate(analysis, testType));
-          }
-        });
-      });
-
-      req.on('error', (error) => {
-        console.warn(
-          '⚠️  OpenAI API error, falling back to template:',
-          error.message
-        );
-        resolve(this.generateTestWithTemplate(analysis, testType));
-      });
-
-      req.write(data);
-      req.end();
-    });
-  }
-
-  /**
-   * Build Codium-specific prompt
-   */
-  buildCodiumPrompt(analysis, testType) {
-    return `Generate comprehensive ${testType} tests for a credit repair application component.
-
-Focus on:
-- FCRA/FACTA compliance testing
-- PII data handling validation
-- Credit score calculation accuracy
-- Customer data security
-- Database performance
-- React component behavior (if applicable)
-- Laravel API endpoints (if applicable)
-
-File: ${analysis.fileName}
-Framework: ${analysis.framework}
-Complexity: ${analysis.complexity}`;
-  }
-
-  /**
-   * Build OpenAI-specific prompt
-   */
-  buildOpenAIPrompt(analysis, testType) {
-    const sourceCode = fs.readFileSync(analysis.filePath, 'utf8');
-
-    return `Generate comprehensive ${testType} tests for this ${analysis.framework} code in a credit repair application.
-
-Source Code:
-\`\`\`${analysis.fileType.slice(1)}
-${sourceCode}
-\`\`\`
-
-Requirements:
-1. Test all exported functions/components
-2. Include edge cases and error handling
-3. Focus on financial data accuracy
-4. Test PII data protection
-5. Include performance considerations
-6. Use appropriate testing framework (Jest/Playwright/PHPUnit)
-7. Follow credit repair industry best practices
-
-Generate complete, runnable test code with proper imports and setup.`;
+    // This would integrate with OpenAI API
+    // For now, return template-based generation
+    return this.generateTestWithTemplate(analysis, testType);
   }
 
   /**
@@ -1194,203 +972,15 @@ class ${className}Test extends TestCase
         console.log(`⚠️  Failed to generate tests for ${results.failed} files`);
       }
 
-      const finalResults = {
+      return {
         status: 'success',
         results,
         coverage: this.calculateCurrentTestCoverage(),
       };
-
-      // Sync with Qase if configured
-      const qaseSync = await this.syncWithQase({
-        generated: results.generated,
-        failed: results.failed,
-        files: results.files,
-        coverage: finalResults.coverage,
-      });
-
-      finalResults.qaseSync = qaseSync;
-      return finalResults;
     } catch (error) {
       console.error('❌ Failed to generate full test suite:', error.message);
       return { status: 'failed', error: error.message };
     }
-  }
-
-  /**
-   * Sync tests with Qase test management
-   */
-  async syncWithQase(testResults) {
-    if (!this.qaseApiKey || !this.qaseProjectCode) {
-      console.log('⚠️  Qase integration not configured, skipping sync');
-      return { status: 'skipped', reason: 'not_configured' };
-    }
-
-    console.log('📊 Syncing test results with Qase...');
-
-    try {
-      // const https = require('https'); // TODO: Implement HTTPS requests for Qase
-
-      // Create test run in Qase
-      const runData = await this.createQaseTestRun(testResults);
-
-      // Upload test results
-      for (const result of testResults.files) {
-        if (result.status === 'success') {
-          await this.createQaseTestCase(result, runData.id);
-        }
-      }
-
-      console.log(
-        `✅ Synced ${testResults.files.length} tests with Qase run #${runData.id}`
-      );
-      return { status: 'success', runId: runData.id };
-    } catch (error) {
-      console.warn('⚠️  Qase sync failed:', error.message);
-      return { status: 'failed', error: error.message };
-    }
-  }
-
-  /**
-   * Create test run in Qase
-   */
-  async createQaseTestRun(testResults) {
-    const https = require('https');
-
-    return new Promise((resolve, reject) => {
-      const runData = JSON.stringify({
-        title: `AI-Generated Tests - ${new Date().toISOString().split('T')[0]}`,
-        description: `Automated test generation results:\n- Generated: ${testResults.generated}\n- Failed: ${testResults.failed}\n- Coverage: ${testResults.coverage}%`,
-        include_all_cases: false,
-        is_autotest: true,
-      });
-
-      const options = {
-        hostname: 'api.qase.io',
-        path: `/v1/run/${this.qaseProjectCode}`,
-        method: 'POST',
-        headers: {
-          Token: this.qaseApiKey,
-          'Content-Type': 'application/json',
-          'Content-Length': runData.length,
-        },
-      };
-
-      const req = https.request(options, (res) => {
-        let data = '';
-        res.on('data', (chunk) => (data += chunk));
-        res.on('end', () => {
-          try {
-            const result = JSON.parse(data);
-            resolve(result.result);
-          } catch (error) {
-            reject(error);
-          }
-        });
-      });
-
-      req.on('error', reject);
-      req.write(runData);
-      req.end();
-    });
-  }
-
-  /**
-   * Create test case in Qase
-   */
-  async createQaseTestCase(testResult, _runId) {
-    const https = require('https');
-
-    return new Promise((resolve, reject) => {
-      const testCaseData = JSON.stringify({
-        title: `${testResult.analysis.fileName} - ${testResult.testType} tests`,
-        description: `Generated test for ${testResult.sourceFile}`,
-        severity: this.mapComplexityToSeverity(testResult.analysis.complexity),
-        priority: this.mapFrameworkToPriority(testResult.analysis.framework),
-        type: this.mapTestTypeToQaseType(testResult.testType),
-        layer: this.mapFrameworkToLayer(testResult.analysis.framework),
-        is_flaky: 0,
-        automation: 2, // Automated
-        status: 1, // Active
-      });
-
-      const options = {
-        hostname: 'api.qase.io',
-        path: `/v1/case/${this.qaseProjectCode}`,
-        method: 'POST',
-        headers: {
-          Token: this.qaseApiKey,
-          'Content-Type': 'application/json',
-          'Content-Length': testCaseData.length,
-        },
-      };
-
-      const req = https.request(options, (res) => {
-        let data = '';
-        res.on('data', (chunk) => (data += chunk));
-        res.on('end', () => {
-          try {
-            const result = JSON.parse(data);
-            resolve(result.result);
-          } catch (error) {
-            reject(error);
-          }
-        });
-      });
-
-      req.on('error', reject);
-      req.write(testCaseData);
-      req.end();
-    });
-  }
-
-  /**
-   * Map complexity to Qase severity
-   */
-  mapComplexityToSeverity(complexity) {
-    const map = {
-      low: 'trivial',
-      medium: 'normal',
-      high: 'critical',
-    };
-    return map[complexity] || 'normal';
-  }
-
-  /**
-   * Map framework to Qase priority
-   */
-  mapFrameworkToPriority(framework) {
-    const map = {
-      react: 'high', // Frontend critical
-      laravel: 'high', // Backend critical
-      express: 'medium', // API medium
-      php: 'medium', // Server-side medium
-    };
-    return map[framework] || 'medium';
-  }
-
-  /**
-   * Map test type to Qase type
-   */
-  mapTestTypeToQaseType(testType) {
-    const map = {
-      unit: 'functional',
-      integration: 'integration',
-      e2e: 'e2e',
-    };
-    return map[testType] || 'functional';
-  }
-
-  /**
-   * Map framework to Qase layer
-   */
-  mapFrameworkToLayer(framework) {
-    const map = {
-      react: 'ui',
-      laravel: 'api',
-      express: 'api',
-      php: 'api',
-    };
-    return map[framework] || 'unit';
   }
 
   /**
@@ -1455,38 +1045,13 @@ async function main() {
       console.log(
         '  OPENAI_API_KEY - OpenAI API key for AI-powered test generation'
       );
-      console.log(
-        '  CODIUM_API_KEY - Codium AI API key for premium test generation'
-      );
-      console.log(
-        '  QASE_API_KEY - Qase API key for test management integration'
-      );
-      console.log('  QASE_PROJECT_CODE - Qase project code for test syncing');
       console.log('');
-      console.log('Premium Features:');
-      console.log(
-        '  🤖 AI-powered test generation (OpenAI GPT-4 or Codium AI)'
-      );
-      console.log('  📊 Qase test management integration');
-      console.log('  🏦 Credit repair domain-specific test patterns');
-      console.log('  🔒 FCRA/FACTA compliance testing');
-      console.log('  📈 Test coverage tracking and reporting');
-      console.log('');
-      console.log('Free Features:');
-      console.log('  • Template-based test generation (no API keys required)');
+      console.log('Features:');
+      console.log('  • AI-powered test case generation');
       console.log('  • Multi-framework support (React, Laravel, Node.js)');
-      console.log('  • Professional test configurations');
-      console.log('  • Comprehensive test scaffolding');
-      console.log('');
-      console.log('ROI Analysis:');
-      console.log('  💰 Estimated cost: $50-100/month for premium APIs');
-      console.log(
-        '  ⏱️  Time savings: 15-20 hours/week in manual test writing'
-      );
-      console.log('  🚀 Development velocity: 40-60% faster test coverage');
-      console.log(
-        '  🛡️  Risk reduction: Automated compliance and security testing'
-      );
+      console.log('  • Comprehensive test configuration');
+      console.log('  • Template-based fallback generation');
+      console.log('  • Credit repair domain-specific test patterns');
       break;
   }
 }

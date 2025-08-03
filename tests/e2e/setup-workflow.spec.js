@@ -29,13 +29,13 @@ test.describe('AI-SDLC Setup Workflow', () => {
     execSync('git config user.name "Test User"', { encoding: 'utf8' });
 
     // Run AI-SDLC setup
-    const setupResult = execSync('../ai-sdlc init', { encoding: 'utf8' });
-    expect(setupResult).toContain('setup complete');
+    const setupResult = execSync('../ai-sdlc setup', { encoding: 'utf8' });
+    expect(setupResult).toContain('Setup complete');
 
     // Verify files were created
     expect(fs.existsSync('.husky/pre-commit')).toBe(true);
     expect(fs.existsSync('.husky/commit-msg')).toBe(true);
-    expect(fs.existsSync('eslint.config.js')).toBe(true);
+    expect(fs.existsSync('.eslintrc.js')).toBe(true);
     expect(fs.existsSync('.prettierrc')).toBe(true);
     expect(fs.existsSync('commitlint.config.js')).toBe(true);
 
@@ -43,7 +43,7 @@ test.describe('AI-SDLC Setup Workflow', () => {
     const validateResult = execSync('../ai-sdlc validate', {
       encoding: 'utf8',
     });
-    expect(validateResult).toContain('All validations passed');
+    expect(validateResult).toContain('All validation checks passed');
 
     // Test git hooks by creating a commit
     fs.writeFileSync('test.js', 'console.log("test");');
@@ -59,16 +59,16 @@ test.describe('AI-SDLC Setup Workflow', () => {
     process.chdir('..');
   });
 
-  test('repair workflow fixes broken configuration', async () => {
+  test('re-setup fixes broken configuration', async () => {
     process.chdir(testProjectDir);
     execSync('npm init -y', { encoding: 'utf8' });
     execSync('git init', { encoding: 'utf8' });
 
     // Run initial setup
-    execSync('../ai-sdlc init', { encoding: 'utf8' });
+    execSync('../ai-sdlc setup', { encoding: 'utf8' });
 
     // Break configuration by removing ESLint config
-    fs.unlinkSync('eslint.config.js');
+    fs.unlinkSync('.eslintrc.js');
 
     // Verify validation fails
     const validateResult = execSync('../ai-sdlc validate', {
@@ -76,12 +76,12 @@ test.describe('AI-SDLC Setup Workflow', () => {
     });
     expect(validateResult).toContain('ESLint');
 
-    // Run repair
-    const repairResult = execSync('../ai-sdlc repair', { encoding: 'utf8' });
-    expect(repairResult).toContain('repair');
+    // Run setup again to fix issues (simplified CLI doesn't have repair)
+    const setupResult = execSync('../ai-sdlc setup', { encoding: 'utf8' });
+    expect(setupResult).toContain('Setup complete');
 
     // Verify configuration is fixed
-    expect(fs.existsSync('eslint.config.js')).toBe(true);
+    expect(fs.existsSync('.eslintrc.js')).toBe(true);
 
     process.chdir('..');
   });
@@ -92,27 +92,25 @@ test.describe('AI-SDLC Setup Workflow', () => {
     execSync('git init', { encoding: 'utf8' });
 
     // Run setup
-    execSync('../ai-sdlc init', { encoding: 'utf8' });
+    execSync('../ai-sdlc setup', { encoding: 'utf8' });
 
     // Check status
     const statusResult = execSync('../ai-sdlc status', { encoding: 'utf8' });
     expect(statusResult).toContain('Status:');
-    expect(statusResult).toContain('Setup looks good');
+    expect(statusResult).toContain('AI-SDLC is working perfectly');
 
     process.chdir('..');
   });
 
-  test('doctor command provides comprehensive diagnostics', async () => {
+  test('help command shows available commands', async () => {
     process.chdir(testProjectDir);
-    execSync('npm init -y', { encoding: 'utf8' });
-    execSync('git init', { encoding: 'utf8' });
 
-    // Run setup
-    execSync('../ai-sdlc init', { encoding: 'utf8' });
-
-    // Run doctor
-    const doctorResult = execSync('../ai-sdlc doctor', { encoding: 'utf8' });
-    expect(doctorResult).toContain('health check');
+    // Run help
+    const helpResult = execSync('../ai-sdlc help', { encoding: 'utf8' });
+    expect(helpResult).toContain('AI-SDLC Simple CLI');
+    expect(helpResult).toContain('setup');
+    expect(helpResult).toContain('status');
+    expect(helpResult).toContain('validate');
 
     process.chdir('..');
   });

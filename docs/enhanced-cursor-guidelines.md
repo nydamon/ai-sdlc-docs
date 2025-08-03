@@ -17,7 +17,7 @@
 
 ```
 Refactor this method to improve readability and reduce complexity.
-Add Vitest unit tests with 80%+ coverage for this component.
+Add Vitest unit tests with 85%+ coverage for this component.
 Generate a Laravel controller with validation for the following fields...
 ```
 

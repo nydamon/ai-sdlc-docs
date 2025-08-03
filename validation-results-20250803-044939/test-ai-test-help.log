@@ -1,0 +1,38 @@
+⚠️  OPENAI_API_KEY not configured. Using template-based generation.
+⚠️  QASE_API_KEY not configured. Test management integration disabled.
+⚠️  CODIUM_API_KEY not configured. Advanced AI test generation disabled.
+🔧 Platform Status:
+   OpenAI: ❌ Disabled
+   Qase: ❌ Disabled
+   Codium: ❌ Disabled
+AI Test Generator for AI-SDLC Framework
+
+Usage:
+  ai-test-generator.js init              - Initialize test generation
+  ai-test-generator.js generate <file>   - Generate tests for specific file
+  ai-test-generator.js generate all     - Generate tests for entire project
+
+Environment Variables:
+  OPENAI_API_KEY - OpenAI API key for AI-powered test generation
+  CODIUM_API_KEY - Codium AI API key for premium test generation
+  QASE_API_KEY - Qase API key for test management integration
+  QASE_PROJECT_CODE - Qase project code for test syncing
+
+Premium Features:
+  🤖 AI-powered test generation (OpenAI GPT-4 or Codium AI)
+  📊 Qase test management integration
+  🏦 Credit repair domain-specific test patterns
+  🔒 FCRA/FACTA compliance testing
+  📈 Test coverage tracking and reporting
+
+Free Features:
+  • Template-based test generation (no API keys required)
+  • Multi-framework support (React, Laravel, Node.js)
+  • Professional test configurations
+  • Comprehensive test scaffolding
+
+ROI Analysis:
+  💰 Estimated cost: $50-100/month for premium APIs
+  ⏱️  Time savings: 15-20 hours/week in manual test writing
+  🚀 Development velocity: 40-60% faster test coverage
+  🛡️  Risk reduction: Automated compliance and security testing

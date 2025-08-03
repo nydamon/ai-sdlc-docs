@@ -1,0 +1,103 @@
+site_name: The Credit Pros - AI-Powered SDLC Framework
+site_description: Enterprise development automation framework designed specifically for The Credit Pros technology stack and business requirements.
+repo_url: https://github.com/nydamon/ai-sdlc-docs
+site_author: Damon DeCrescenzo
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+  logo: https://thecreditpros.com/wp-content/uploads/2025/04/logo-1.svg
+  favicon: https://thecreditpros.com/wp-content/uploads/2025/04/logo-1.svg
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotate
+    - content.code.copy
+  custom_dir: overrides
+
+extra_css:
+  - assets/stylesheets/custom.css
+
+extra:
+  social:
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/thecreditpros
+    - icon: fontawesome/solid/globe
+      link: https://thecreditpros.com
+
+copyright: |
+  &copy; 2025 The Credit Pros. All rights reserved.<br>
+  <strong>Framework designed and developed by Damon DeCrescenzo</strong><br>
+  <em>Chief Technology Officer, The Credit Pros</em>
+
+nav:
+  - Home: README.md
+  - Getting Started:
+      - Quick Start Guide: quick-start.md
+      - Team Size Quick Starts: team-size-quickstarts.md
+      - Implementation Roadmap: implementation-roadmap.md
+      - Success Metrics: success-metrics.md
+      - Migration Guide: migration-guide.md
+      - Team Onboarding: team-onboarding-checklist.md
+      - Cost Analysis: cost-analysis.md
+      - Framework Overview: framework-overview.md
+  - Architecture:
+      - AI-SDLC Architecture: sdlc-architecture-diagram.md
+      - Tool Integration Matrix: tool-integration-matrix.md
+      - AI Dev Stack Blueprint: ai_dev_stack_blueprint.md
+      - Frontend Decision Tree: frontend-decision-tree.md
+  - Strategy & Planning:
+      - AI-First Playbook: ai-first-playbook.md
+      - AI Integration Phases: ai-integration-phases.md
+      - AI Automation Roadmap: ai-automation-roadmap.md
+      - Governance & Safety: ai-governance-safety.md
+      - Project Specification: project_specification.md
+      - Implementation Status: implementation-gaps.md
+      - Management Guide: management-implementation-guide.md
+      - Executive Communications: executive-communication-templates.md
+      - Change Management: organizational-change-management.md
+      - Project Methodology: project-management-methodology.md
+      - Readiness Checklist: rollout_readiness_checklist.md
+      - Rollout Gantt & Kanban: rollout_gantt_kanban.md
+  - Development Workflow:
+      - Config Management: enhanced-config-management.md
+      - Git Hooks Automation: git-hooks-automation.md
+      - Semantic Release Setup: semantic-release-setup.md
+      - React Best Practices: react-best-practices-updated.md
+      - Enhanced Cursor Guidelines: enhanced-cursor-guidelines.md
+  - QA & Monitoring:
+      - Smart Testing Strategy: smart-testing.md
+      - QA Strategy: testing-qa-strategy-revised.md
+      - Monitoring & Observability: monitoring-observability.md
+  - Support & Resources:
+      - CLI Reference: cli-reference.md
+      - Docker Setup: docker-setup.md
+      - MS Teams Integration: ms-teams-integration.md
+      - Troubleshooting Guide: troubleshooting-guide.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+  - meta
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde

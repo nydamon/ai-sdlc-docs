@@ -1,0 +1,619 @@
+#!/bin/bash
+# ai-sdlc - Quick command utility for AI-SDLC framework
+
+set -e
+
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m'
+
+# Version
+VERSION="1.0.0"
+
+# Logging functions
+log_info() { echo -e "${BLUE}ℹ️  $1${NC}"; }
+log_success() { echo -e "${GREEN}✅ $1${NC}"; }
+log_warning() { echo -e "${YELLOW}⚠️  $1${NC}"; }
+log_error() { echo -e "${RED}❌ $1${NC}"; }
+
+# Show help
+show_help() {
+    echo -e "${BLUE}"
+    echo "╔════════════════════════════════════════════════════════════════╗"
+    echo "║                    AI-SDLC Command Utility                    ║"
+    echo "║                       Version $VERSION                              ║"
+    echo "╚════════════════════════════════════════════════════════════════╝"
+    echo -e "${NC}"
+    echo
+    echo "Usage: ai-sdlc <command> [options]"
+    echo
+    echo "Commands:"
+    echo "  init        Initialize AI-SDLC framework in current project"
+    echo "  validate    Run comprehensive validation checks"
+    echo "  repair      Auto-repair configuration drift and issues"
+    echo "  update      Update AI-SDLC framework to latest version"
+    echo "  status      Show current setup status"
+    echo "  clean       Clean up temporary files and caches"
+    echo "  doctor      Run full health check and diagnostics"
+    echo "  serve       Start AI-SDLC development dashboard"
+    echo "  docker      Manage Docker development environment"
+    echo "  teams       Manage MS Teams webhook notifications"
+    echo "  performance Monitor and optimize performance"
+    echo "  dev         Development utilities and tools"
+    echo "  security    Run security scans and analysis"
+    echo "  ai-review   AI-powered code review and PR analysis"
+    echo "  ai-test     AI-powered test generation"
+    echo "  sonar       SonarQube code quality analysis"
+    echo "  --help      Show this help message"
+    echo "  --version   Show version information"
+    echo
+    echo "Examples:"
+    echo "  ai-sdlc init          # Setup AI-SDLC in current project"
+    echo "  ai-sdlc validate      # Check if setup is working correctly"
+    echo "  ai-sdlc repair        # Fix any configuration issues"
+    echo "  ai-sdlc doctor        # Run full diagnostics"
+    echo "  ai-sdlc serve         # Start development dashboard"
+    echo "  ai-sdlc docker up     # Start Docker development environment"
+    echo "  ai-sdlc teams test    # Test MS Teams webhook"
+    echo "  ai-sdlc perf monitor  # Monitor performance metrics"
+    echo "  ai-sdlc security scan # Run comprehensive security scan"
+    echo "  ai-review init        # Initialize AI code review"
+    echo "  ai-test generate all  # Generate tests for entire project"
+    echo "  sonar analyze         # Run SonarQube analysis"
+    echo
+    echo "For more information, visit: https://nydamon.github.io/ai-sdlc-docs/"
+}
+
+# Show version
+show_version() {
+    echo "AI-SDLC Framework v$VERSION"
+    echo "The Credit Pros - AI-Powered SDLC Framework"
+    echo "Created by Damon DeCrescenzo, CTO"
+}
+
+# Initialize project
+cmd_init() {
+    log_info "Initializing AI-SDLC framework..."
+    
+    if [[ -f "./ai-sdlc-setup.sh" ]]; then
+        log_info "Running enhanced setup script..."
+        if ! ./ai-sdlc-setup.sh "$@"; then
+            log_error "Setup failed. Check the output above for details."
+            exit 1
+        fi
+    elif [[ -f "./auto-setup.sh" ]]; then
+        log_info "Running basic setup script..."
+        if ! ./auto-setup.sh "$@"; then
+            log_error "Setup failed. Check the output above for details."
+            exit 1
+        fi
+    else
+        log_error "Setup script not found in current directory"
+        log_info "Please ensure you're in the AI-SDLC framework directory"
+        exit 1
+    fi
+}
+
+# Validate setup
+cmd_validate() {
+    log_info "Running validation checks..."
+    
+    if [[ -f "./validate-ai-sdlc.sh" ]]; then
+        ./validate-ai-sdlc.sh "$@"
+    else
+        log_error "Validation script not found"
+        log_info "Please run 'ai-sdlc init' first or ensure you're in the correct directory"
+        exit 1
+    fi
+}
+
+# Repair configuration
+cmd_repair() {
+    log_info "Running auto-repair..."
+    
+    if [[ -f "./ai-sdlc-repair.sh" ]]; then
+        ./ai-sdlc-repair.sh "$@"
+    else
+        log_error "Repair script not found"
+        log_info "Please run 'ai-sdlc init' first or ensure you're in the correct directory"
+        exit 1
+    fi
+}
+
+# Update framework
+cmd_update() {
+    log_info "Updating AI-SDLC framework..."
+    
+    # Check if we're in a git repository with the framework
+    if [[ -d ".git" ]] && git remote -v | grep -q "ai-sdlc"; then
+        log_info "Pulling latest changes from repository..."
+        git pull origin main
+        log_success "Framework updated successfully"
+    else
+        log_warning "Not in AI-SDLC git repository"
+        log_info "Please manually update by downloading the latest version"
+        log_info "Visit: https://github.com/nydamon/ai-sdlc-docs"
+    fi
+}
+
+# Show status
+cmd_status() {
+    log_info "Checking AI-SDLC setup status..."
+    
+    local status_checks=0
+    local status_passed=0
+    
+    echo -e "\n${BLUE}📊 Quick Status Check${NC}"
+    
+    # Check essential files
+    if [[ -f "package.json" ]]; then
+        echo -e "${GREEN}✅ package.json found${NC}"
+        status_passed=$((status_passed + 1))
+    else
+        echo -e "${RED}❌ package.json missing${NC}"
+    fi
+    status_checks=$((status_checks + 1))
+    
+    if [[ -d ".husky" ]]; then
+        echo -e "${GREEN}✅ Git hooks configured${NC}"
+        status_passed=$((status_passed + 1))
+    else
+        echo -e "${RED}❌ Git hooks not configured${NC}"
+    fi
+    status_checks=$((status_checks + 1))
+    
+    if [[ -f ".eslintrc.js" ]] || [[ -f ".eslintrc.json" ]]; then
+        echo -e "${GREEN}✅ ESLint configured${NC}"
+        status_passed=$((status_passed + 1))
+    else
+        echo -e "${RED}❌ ESLint not configured${NC}"
+    fi
+    status_checks=$((status_checks + 1))
+    
+    if [[ -f ".prettierrc" ]] || [[ -f ".prettierrc.json" ]]; then
+        echo -e "${GREEN}✅ Prettier configured${NC}"
+        status_passed=$((status_passed + 1))
+    else
+        echo -e "${RED}❌ Prettier not configured${NC}"
+    fi
+    status_checks=$((status_checks + 1))
+    
+    if [[ -d ".vscode" ]]; then
+        echo -e "${GREEN}✅ VS Code configured${NC}"
+        status_passed=$((status_passed + 1))
+    else
+        echo -e "${YELLOW}⚠️  VS Code not configured${NC}"
+    fi
+    status_checks=$((status_checks + 1))
+    
+    local success_rate=$((status_passed * 100 / status_checks))
+    echo -e "\n${BLUE}Status: $success_rate% ($status_passed/$status_checks checks passed)${NC}"
+    
+    if [[ $success_rate -ge 80 ]]; then
+        echo -e "${GREEN}🎉 Setup looks good!${NC}"
+    elif [[ $success_rate -ge 50 ]]; then
+        echo -e "${YELLOW}⚠️  Some issues detected. Run 'ai-sdlc repair' to fix.${NC}"
+    else
+        echo -e "${RED}❌ Major issues detected. Run 'ai-sdlc init' to setup.${NC}"
+    fi
+}
+
+# Clean up
+cmd_clean() {
+    log_info "Cleaning up temporary files..."
+    
+    local cleaned=0
+    
+    # Remove common temporary files
+    if [[ -f "AI_SDLC_SETUP_REPORT.md" ]]; then
+        rm -f AI_SDLC_SETUP_REPORT.md
+        cleaned=$((cleaned + 1))
+    fi
+    
+    if [[ -f "AI_SDLC_VALIDATION_REPORT.md" ]]; then
+        rm -f AI_SDLC_VALIDATION_REPORT.md
+        cleaned=$((cleaned + 1))
+    fi
+    
+    if [[ -f "AI_SDLC_REPAIR_REPORT.md" ]]; then
+        rm -f AI_SDLC_REPAIR_REPORT.md
+        cleaned=$((cleaned + 1))
+    fi
+    
+    # Clean npm cache if needed
+    if command -v npm >/dev/null 2>&1; then
+        npm cache clean --force >/dev/null 2>&1 || true
+        log_info "npm cache cleaned"
+    fi
+    
+    # Clean node_modules if requested
+    if [[ "$1" == "--deep" ]] && [[ -d "node_modules" ]]; then
+        log_warning "Removing node_modules directory..."
+        rm -rf node_modules
+        cleaned=$((cleaned + 1))
+        log_info "Run 'npm install' to reinstall dependencies"
+    fi
+    
+    log_success "Cleaned $cleaned temporary files"
+}
+
+# Doctor - comprehensive health check
+cmd_doctor() {
+    log_info "Running comprehensive health check..."
+    
+    echo -e "\n${BLUE}🏥 AI-SDLC Doctor Report${NC}"
+    echo "==============================="
+    
+    # System prerequisites
+    echo -e "\n${BLUE}📋 System Prerequisites${NC}"
+    
+    if command -v node >/dev/null 2>&1; then
+        local node_version=$(node --version | cut -d'v' -f2 | cut -d'.' -f1)
+        if [[ $node_version -ge 18 ]]; then
+            echo -e "${GREEN}✅ Node.js v$(node --version | cut -d'v' -f2) (Good)${NC}"
+        else
+            echo -e "${RED}❌ Node.js v$(node --version | cut -d'v' -f2) - Upgrade to v18+ required${NC}"
+        fi
+    else
+        echo -e "${RED}❌ Node.js not installed${NC}"
+    fi
+    
+    if command -v npm >/dev/null 2>&1; then
+        echo -e "${GREEN}✅ npm v$(npm --version) (Good)${NC}"
+    else
+        echo -e "${RED}❌ npm not installed${NC}"
+    fi
+    
+    if command -v git >/dev/null 2>&1; then
+        echo -e "${GREEN}✅ Git v$(git --version | cut -d' ' -f3) (Good)${NC}"
+    else
+        echo -e "${RED}❌ Git not installed${NC}"
+    fi
+    
+    # Project structure
+    echo -e "\n${BLUE}🏗️  Project Structure${NC}"
+    
+    if [[ -d ".git" ]]; then
+        echo -e "${GREEN}✅ Git repository initialized${NC}"
+        
+        # Check if we have commits
+        if git log --oneline -1 >/dev/null 2>&1; then
+            echo -e "${GREEN}✅ Has commit history${NC}"
+        else
+            echo -e "${YELLOW}⚠️  No commits yet${NC}"
+        fi
+        
+        # Check for remote
+        if git remote -v | grep -q origin; then
+            echo -e "${GREEN}✅ Remote repository configured${NC}"
+        else
+            echo -e "${YELLOW}⚠️  No remote repository configured${NC}"
+        fi
+    else
+        echo -e "${RED}❌ Not a Git repository${NC}"
+    fi
+    
+    # Dependencies check
+    echo -e "\n${BLUE}📦 Dependencies${NC}"
+    
+    if [[ -f "package.json" ]]; then
+        echo -e "${GREEN}✅ package.json exists${NC}"
+        
+        # Check critical dependencies
+        local deps=("husky" "lint-staged" "eslint" "prettier" "@commitlint/cli")
+        for dep in "${deps[@]}"; do
+            if npm list "$dep" >/dev/null 2>&1; then
+                echo -e "${GREEN}✅ $dep installed${NC}"
+            else
+                echo -e "${RED}❌ $dep missing${NC}"
+            fi
+        done
+    else
+        echo -e "${RED}❌ package.json missing${NC}"
+    fi
+    
+    # Git hooks
+    echo -e "\n${BLUE}🪝 Git Hooks${NC}"
+    
+    if [[ -d ".husky" ]]; then
+        echo -e "${GREEN}✅ Husky initialized${NC}"
+        
+        if [[ -f ".husky/pre-commit" ]]; then
+            echo -e "${GREEN}✅ Pre-commit hook exists${NC}"
+            if [[ -x ".husky/pre-commit" ]]; then
+                echo -e "${GREEN}✅ Pre-commit hook executable${NC}"
+            else
+                echo -e "${RED}❌ Pre-commit hook not executable${NC}"
+            fi
+        else
+            echo -e "${RED}❌ Pre-commit hook missing${NC}"
+        fi
+        
+        if [[ -f ".husky/commit-msg" ]]; then
+            echo -e "${GREEN}✅ Commit-msg hook exists${NC}"
+        else
+            echo -e "${RED}❌ Commit-msg hook missing${NC}"
+        fi
+    else
+        echo -e "${RED}❌ Husky not initialized${NC}"
+    fi
+    
+    # Recommendations
+    echo -e "\n${BLUE}💡 Recommendations${NC}"
+    
+    local recommendations=0
+    
+    if [[ ! -f ".vscode/settings.json" ]]; then
+        echo -e "${YELLOW}⚠️  Consider adding VS Code settings for better DX${NC}"
+        recommendations=$((recommendations + 1))
+    fi
+    
+    if [[ ! -f ".editorconfig" ]]; then
+        echo -e "${YELLOW}⚠️  Consider adding EditorConfig for consistent formatting${NC}"
+        recommendations=$((recommendations + 1))
+    fi
+    
+    if [[ ! -d ".github/workflows" ]]; then
+        echo -e "${YELLOW}⚠️  Consider adding GitHub Actions for CI/CD${NC}"
+        recommendations=$((recommendations + 1))
+    fi
+    
+    if [[ $recommendations -eq 0 ]]; then
+        echo -e "${GREEN}✅ No additional recommendations${NC}"
+    fi
+    
+    echo -e "\n${BLUE}📋 Next Steps${NC}"
+    echo "1. Address any ❌ issues above"
+    echo "2. Run 'ai-sdlc repair' to auto-fix common problems"
+    echo "3. Run 'ai-sdlc validate' for detailed validation"
+}
+
+# Main command router
+main() {
+    case "${1:-}" in
+        "init")
+            shift
+            cmd_init "$@"
+            ;;
+        "validate")
+            shift
+            cmd_validate "$@"
+            ;;
+        "repair")
+            shift
+            cmd_repair "$@"
+            ;;
+        "teams")
+            echo "🔔 Managing MS Teams notifications..."
+            case "${2:-help}" in
+                "setup")
+                    shift 2
+                    if [[ -f "scripts/setup-ms-teams.sh" ]]; then
+                        ./scripts/setup-ms-teams.sh --webhook-url "$@"
+                    else
+                        echo "❌ MS Teams setup script not found"
+                        exit 1
+                    fi
+                    ;;
+                "test")
+                    if [[ -f "scripts/webhook-manager.js" ]]; then
+                        node scripts/webhook-manager.js test
+                    else
+                        echo "❌ Webhook manager not found"
+                        exit 1
+                    fi
+                    ;;
+                "validate")
+                    if [[ -f "scripts/webhook-manager.js" ]]; then
+                        node scripts/webhook-manager.js validation
+                    else
+                        echo "❌ Webhook manager not found"
+                        exit 1
+                    fi
+                    ;;
+                *)
+                    echo "Usage: ./ai-sdlc teams [setup|test|validate]"
+                    echo ""
+                    echo "Commands:"
+                    echo "  setup <webhook-url>  - Setup MS Teams webhook"
+                    echo "  test                 - Test webhook connectivity"
+                    echo "  validate             - Send validation report to Teams"
+                    ;;
+            esac
+            ;;
+        "performance"|"perf")
+            echo "📊 Managing performance monitoring..."
+            case "${2:-help}" in
+                "monitor")
+                    if [[ -f "scripts/performance-monitor.js" ]]; then
+                        node scripts/performance-monitor.js monitor
+                    else
+                        echo "❌ Performance monitor not found"
+                        exit 1
+                    fi
+                    ;;
+                "optimize")
+                    if [[ -f "scripts/optimize-workspace.sh" ]]; then
+                        ./scripts/optimize-workspace.sh
+                    else
+                        echo "❌ Workspace optimizer not found"
+                        exit 1
+                    fi
+                    ;;
+                "report")
+                    if [[ -f "performance-metrics.json" ]]; then
+                        echo "📊 Latest Performance Metrics:"
+                        if command -v jq >/dev/null 2>&1; then
+                            jq '.summary' performance-metrics.json
+                        else
+                            cat performance-metrics.json
+                        fi
+                    else
+                        echo "❌ No performance data found. Run './ai-sdlc perf monitor' first."
+                    fi
+                    ;;
+                *)
+                    echo "Usage: ./ai-sdlc performance [monitor|optimize|report]"
+                    echo ""
+                    echo "Commands:"
+                    echo "  monitor   - Run comprehensive performance monitoring"
+                    echo "  optimize  - Optimize workspace for better performance"
+                    echo "  report    - Show latest performance metrics"
+                    ;;
+            esac
+            ;;
+        "update")
+            shift
+            cmd_update "$@"
+            ;;
+        "status")
+            shift
+            cmd_status "$@"
+            ;;
+        "clean")
+            shift
+            cmd_clean "$@"
+            ;;
+        "dev")
+            echo "🛠️ Development utilities..."
+            case "${2:-help}" in
+                "report")
+                    if [[ -f "scripts/dev-utils.js" ]]; then
+                        node scripts/dev-utils.js report
+                    else
+                        echo "❌ Dev utils not found"
+                        exit 1
+                    fi
+                    ;;
+                "clean")
+                    if [[ -f "scripts/dev-utils.js" ]]; then
+                        node scripts/dev-utils.js clean
+                    else
+                        echo "❌ Dev utils not found"
+                        exit 1
+                    fi
+                    ;;
+                "updates")
+                    if [[ -f "scripts/dev-utils.js" ]]; then
+                        node scripts/dev-utils.js updates
+                    else
+                        echo "❌ Dev utils not found"
+                        exit 1
+                    fi
+                    ;;
+                *)
+                    echo "Usage: ./ai-sdlc dev [report|clean|updates]"
+                    echo ""
+                    echo "Commands:"
+                    echo "  report   - Generate development environment report"
+                    echo "  clean    - Clean development artifacts"
+                    echo "  updates  - Check for package updates"
+                    ;;
+            esac
+            ;;
+        "doctor")
+            shift
+            cmd_doctor "$@"
+            ;;
+        "serve")
+            echo "🚀 Starting AI-SDLC development server..."
+            if [[ -f "docker/dashboard-server.js" ]]; then
+                node docker/dashboard-server.js
+            else
+                echo "❌ Dashboard server not found. Run './ai-sdlc init' first."
+                exit 1
+            fi
+            ;;
+        "security")
+            log_info "Running security analysis..."
+            if [[ -f "./scripts/security-scanner.js" ]]; then
+                node ./scripts/security-scanner.js "${2:-scan}"
+            else
+                log_error "Security scanner not found. Please ensure Phase 2 is installed."
+                exit 1
+            fi
+            ;;
+        "ai-review")
+            log_info "Running AI code review..."
+            if [[ -f "./scripts/qodo-pr-agent.js" ]]; then
+                node ./scripts/qodo-pr-agent.js "$2" "$3"
+            else
+                log_error "Qodo PR Agent not found. Please ensure Phase 2 is installed."
+                exit 1
+            fi
+            ;;
+        "ai-test")
+            log_info "Running AI test generation..."
+            if [[ -f "./scripts/ai-test-generator.js" ]]; then
+                node ./scripts/ai-test-generator.js "$2" "$3"
+            else
+                log_error "AI Test Generator not found. Please ensure Phase 2 is installed."
+                exit 1
+            fi
+            ;;
+        "sonar")
+            log_info "Running SonarQube analysis..."
+            if [[ -f "./scripts/sonarqube-integration.js" ]]; then
+                node ./scripts/sonarqube-integration.js "$2" "$3"
+            else
+                log_error "SonarQube integration not found. Please ensure Phase 2 is installed."
+                exit 1
+            fi
+            ;;
+        "docker")
+            echo "🐳 Managing AI-SDLC Docker environment..."
+            case "${2:-help}" in
+                "up")
+                    echo "Starting AI-SDLC Docker environment..."
+                    docker-compose -f docker-compose.dev.yml up -d
+                    echo "✅ AI-SDLC development environment started!"
+                    echo "📊 Dashboard: http://localhost:3001"
+                    echo "📈 Grafana: http://localhost:3000 (admin/admin123)"
+                    echo "🔍 SonarQube: http://localhost:9000"
+                    echo "📊 Prometheus: http://localhost:9090"
+                    ;;
+                "down")
+                    echo "Stopping AI-SDLC Docker environment..."
+                    docker-compose -f docker-compose.dev.yml down
+                    echo "✅ AI-SDLC development environment stopped."
+                    ;;
+                "logs")
+                    docker-compose -f docker-compose.dev.yml logs -f "${3:-ai-sdlc-tools}"
+                    ;;
+                "status")
+                    docker-compose -f docker-compose.dev.yml ps
+                    ;;
+                *)
+                    echo "Usage: ./ai-sdlc docker [up|down|logs|status]"
+                    echo ""
+                    echo "Commands:"
+                    echo "  up      - Start AI-SDLC Docker environment"
+                    echo "  down    - Stop AI-SDLC Docker environment"
+                    echo "  logs    - Show logs for services"
+                    echo "  status  - Show container status"
+                    ;;
+            esac
+            ;;
+        "--help"|"-h"|"help")
+            show_help
+            ;;
+        "--version"|"-v"|"version")
+            show_version
+            ;;
+        "")
+            log_error "No command specified"
+            echo "Run 'ai-sdlc --help' for usage information"
+            exit 1
+            ;;
+        *)
+            log_error "Unknown command: $1"
+            echo "Run 'ai-sdlc --help' for available commands"
+            exit 1
+            ;;
+    esac
+}
+
+main "$@"

@@ -1,5 +1,5 @@
-site_name: The Credit Pros - AI-Powered SDLC Framework
-site_description: Enterprise development automation framework designed specifically for The Credit Pros technology stack and business requirements.
+site_name: AI-SDLC Framework - Enhanced
+site_description: AI-powered test generation and automated QA for Laravel + React + TypeScript projects
 repo_url: https://github.com/nydamon/ai-sdlc-docs
 site_author: Damon DeCrescenzo
 
@@ -7,73 +7,68 @@ theme:
   name: material
   palette:
     - scheme: default
-      primary: custom
-      accent: custom
-  logo: https://thecreditpros.com/wp-content/uploads/2025/04/logo-1.svg
-  favicon: https://thecreditpros.com/wp-content/uploads/2025/04/logo-1.svg
+      primary: blue
+      accent: orange
+    - scheme: slate
+      primary: blue
+      accent: orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
     - navigation.instant
+    - navigation.tracking
     - navigation.tabs
     - navigation.sections
     - navigation.expand
-    - navigation.indexes
-    - toc.integrate
+    - navigation.top
     - search.suggest
     - search.highlight
-    - content.tabs.link
-    - content.code.annotate
+    - search.share
     - content.code.copy
-  custom_dir: overrides
-
-extra_css:
-  - assets/stylesheets/custom.css
+    - content.code.annotate
 
 extra:
+  version:
+    provider: mike
   social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/nydamon/ai-sdlc-docs
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/thecreditpros
     - icon: fontawesome/solid/globe
       link: https://thecreditpros.com
-  
+  analytics:
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/thumb-up-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/thumb-down-outline
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback! Help us improve by creating an issue on GitHub.
+
 copyright: |
   &copy; 2025 The Credit Pros. All rights reserved.<br>
-  <strong>Framework designed and developed by Damon DeCrescenzo</strong><br>
-  <em>Chief Technology Officer, The Credit Pros</em>
+  <strong>Enhanced AI-SDLC by Damon DeCrescenzo, CTO</strong><br>
+  <em>AI test generation • Qase integration • Enterprise QA automation</em>
 
 nav:
   - Home: README.md
-  - Getting Started:
-      - Quick Start Guide: quick-start.md
-      - Team Size Quick Starts: team-size-quickstarts.md
-      - Implementation Roadmap: implementation-roadmap.md
-      - Success Metrics: success-metrics.md
-      - Migration Guide: migration-guide.md
-      - Team Onboarding: team-onboarding-checklist.md
-      - Cost Analysis: cost-analysis.md
-  - Architecture:
-      - AI-SDLC Architecture: sdlc-architecture-diagram.md
-      - Tool Integration Matrix: tool-integration-matrix.md
-      - AI Dev Stack Blueprint: ai_dev_stack_blueprint.md
-      - Frontend Decision Tree: frontend-decision-tree.md
-  - Strategy & Planning:
-      - AI-First Playbook: ai-first-playbook.md
-      - AI Integration Phases: ai-integration-phases.md
-      - Governance & Safety: ai-governance-safety.md
-      - Project Specification: project_specification.md
-      - Readiness Checklist: rollout_readiness_checklist.md
-      - Rollout Gantt & Kanban: rollout_gantt_kanban.md
-  - Development Workflow:
-      - Config Management: enhanced-config-management.md
+  - Quick Start Guide: quick-start-simple.md
+  - 📋 Manager Implementation Guide: implementation-guide-managers.md
+  - 🧪 Testing & Validation: TESTING-README.md
+  - Troubleshooting: troubleshooting-simple.md
+  - Technical Guides:
       - Git Hooks Automation: git-hooks-automation.md
-      - Semantic Release Setup: semantic-release-setup.md
       - React Best Practices: react-best-practices-updated.md
-      - Enhanced Cursor Guidelines: enhanced-cursor-guidelines.md
-  - QA & Monitoring:
-      - Smart Testing Strategy: smart-testing.md
-      - QA Strategy: testing-qa-strategy-revised.md
-      - Monitoring & Observability: monitoring-observability.md
-  - Support & Resources:
-      - Troubleshooting Guide: troubleshooting-guide.md
+      - Configuration Management: enhanced-config-management.md
+      - Cursor IDE Guidelines: enhanced-cursor-guidelines.md
 
 markdown_extensions:
   - admonition
@@ -83,11 +78,7 @@ markdown_extensions:
       alternate_style: true
   - toc:
       permalink: true
-  - meta
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.caret
-  - pymdownx.mark
-  - pymdownx.tilde
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets

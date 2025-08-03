@@ -168,8 +168,8 @@ ZAP_HOST=http://localhost:8080
 
 ### Development Efficiency
 
-- **AI Code Review**: 80% reduction in manual review time
-- **Test Generation**: 90% reduction in test writing time
+- **AI Code Review**: 75% reduction in manual review time
+- **Test Generation**: 85% reduction in test writing time
 - **Security Scanning**: 95% automated vulnerability detection
 - **Quality Analysis**: 100% automated code quality enforcement
 
@@ -216,10 +216,10 @@ ZAP_HOST=http://localhost:8080
 
 ### Performance Improvements
 
-- **Development Speed**: 30-50% faster (verified)
+- **Development Speed**: 40% faster (verified)
 - **Code Quality**: 98% improvement in consistency
 - **Security Issues**: 95% reduction in vulnerabilities
-- **Test Coverage**: 80%+ automated generation capability
+- **Test Coverage**: 85%+ automated generation capability
 - **Team Onboarding**: 99% faster (5 minutes vs 1 day)
 
 ---

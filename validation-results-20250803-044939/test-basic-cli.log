@@ -1,0 +1,24 @@
+[0;34m
+╔══════════════════════════════════════════════╗
+║           AI-SDLC Simple CLI v2.0.0-simple         ║
+╚══════════════════════════════════════════════╝
+[0m
+
+Usage: ai-sdlc <command>
+
+Commands:
+  setup        Set up AI-SDLC in current project (one-time)
+  status       Show current setup status
+  validate     Run validation checks
+  test-init    Initialize AI test generation
+  test-gen     Generate tests for files (usage: test-gen <file|all>)
+  help         Show this help message
+
+Examples:
+  ai-sdlc setup           # Initial setup
+  ai-sdlc status          # Check if working
+  ai-sdlc validate        # Run quality checks
+  ai-sdlc test-init       # Setup test generation
+  ai-sdlc test-gen all    # Generate tests for all files
+
+Documentation: https://nydamon.github.io/ai-sdlc-docs/
