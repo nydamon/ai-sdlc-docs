@@ -75,7 +75,7 @@
       "prettier --write"
     ],
     "*.php": [
-      "./vendor/bin/pint"
+      "bash -c 'if [ -f ./vendor/bin/pint ] && [[ \"$0\" != *\".template.php\" ]]; then ./vendor/bin/pint \"$0\"; fi'"
     ],
     "*.{json,md,yml,yaml}": [
       "prettier --write"
