@@ -38,9 +38,9 @@ _Based on 8-person development team, $85K average salary_
 - ✅ **Zero maintenance** - Self-healing configuration
 - ✅ **No learning curve** - Transparent to daily workflow
 
-<div style="background: linear-gradient(135deg, #0f314b 0%, #ff902a 100%); padding: 20px; border-radius: 10px; color: white; margin: 20px 0;">
-<h3 style="color: white; margin: 0;">🏢 The Credit Pros Technology Excellence Initiative</h3>
-<p style="margin: 10px 0 0 0; opacity: 0.9;">Designed specifically for our Laravel + React + TypeScript technology stack serving millions of credit repair customers nationwide.</p>
+<div class="tcp-gradient-header">
+<h3>🏢 The Credit Pros Technology Excellence Initiative</h3>
+<p>Enterprise AI-powered development automation designed specifically for our Laravel + React + TypeScript technology stack serving millions of credit repair customers nationwide.</p>
 </div>
 
 ---

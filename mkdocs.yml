@@ -1,20 +1,28 @@
-site_name: AI-SDLC Framework - Simplified
-site_description: Eliminate 80% of Code Review Overhead While Accelerating Development 40% - Laravel + React + TypeScript
+site_name: The Credit Pros - AI-SDLC Framework
+site_description: Enterprise AI-Powered Development Automation | Eliminate 80% of Code Review Overhead | $2.43M Annual ROI Validated
 repo_url: https://github.com/nydamon/ai-sdlc
-site_author: Damon DeCrescenzo
+site_author: Damon DeCrescenzo, CTO - The Credit Pros
 
 theme:
   name: material
   palette:
-    - scheme: default
-      primary: blue
-      accent: orange
     - scheme: slate
-      primary: blue
-      accent: orange
+      primary: custom
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+    - scheme: default
+      primary: custom
+      accent: deep orange
       toggle:
         icon: material/brightness-4
-        name: Switch to light mode
+        name: Switch to dark mode
+  font:
+    text: Poppins
+    code: Roboto Mono
+  logo: https://thecreditpros.com/wp-content/uploads/2025/04/logo-1.svg
+  favicon: https://thecreditpros.com/wp-content/uploads/2025/04/logo-1.svg
   features:
     - navigation.instant
     - navigation.tracking
@@ -27,6 +35,7 @@ theme:
     - search.share
     - content.code.copy
     - content.code.annotate
+    - header.autohide
 
 extra:
   version:
@@ -53,14 +62,17 @@ extra:
           note: >-
             Thanks for your feedback! Help us improve by creating an issue on GitHub.
 
+extra_css:
+  - stylesheets/extra.css
+
 extra_javascript:
   - https://unpkg.com/mermaid@10.6.1/dist/mermaid.min.js
 
 copyright: |
-  &copy; 2025 The Credit Pros. All rights reserved.<br>
-  <strong>Simplified AI-SDLC by Damon DeCrescenzo, CTO</strong><br>
-  <em>5-minute setup • $529K+ annual ROI • Progressive 3-level architecture</em><br>
-  <strong>Version: v2.1.0 | Updated: August 3, 2025</strong>
+  &copy; 2025 <a href="https://thecreditpros.com" style="color: #ff902a; text-decoration: none;">The Credit Pros</a>. All rights reserved.<br>
+  <strong style="color: #ff902a;">Enterprise AI-SDLC Framework by Damon DeCrescenzo, CTO</strong><br>
+  <em style="color: #fffffe;">AI-Powered Development • $2.43M Validated ROI • Production Ready</em><br>
+  <strong style="color: #ff902a;">Version: v2.2.0 | Updated: August 3, 2025</strong>
 
 nav:
   - Home: README.md
