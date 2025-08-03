@@ -43,6 +43,10 @@ show_help() {
     echo "  teams       Manage MS Teams webhook notifications"
     echo "  performance Monitor and optimize performance"
     echo "  dev         Development utilities and tools"
+    echo "  security    Run security scans and analysis"
+    echo "  ai-review   AI-powered code review and PR analysis"
+    echo "  ai-test     AI-powered test generation"
+    echo "  sonar       SonarQube code quality analysis"
     echo "  --help      Show this help message"
     echo "  --version   Show version information"
     echo
@@ -55,6 +59,10 @@ show_help() {
     echo "  ai-sdlc docker up     # Start Docker development environment"
     echo "  ai-sdlc teams test    # Test MS Teams webhook"
     echo "  ai-sdlc perf monitor  # Monitor performance metrics"
+    echo "  ai-sdlc security scan # Run comprehensive security scan"
+    echo "  ai-review init        # Initialize AI code review"
+    echo "  ai-test generate all  # Generate tests for entire project"
+    echo "  sonar analyze         # Run SonarQube analysis"
     echo
     echo "For more information, visit: https://nydamon.github.io/ai-sdlc-docs/"
 }
@@ -510,6 +518,42 @@ main() {
                 node docker/dashboard-server.js
             else
                 echo "❌ Dashboard server not found. Run './ai-sdlc init' first."
+                exit 1
+            fi
+            ;;
+        "security")
+            log_info "Running security analysis..."
+            if [[ -f "./scripts/security-scanner.js" ]]; then
+                node ./scripts/security-scanner.js "${2:-scan}"
+            else
+                log_error "Security scanner not found. Please ensure Phase 2 is installed."
+                exit 1
+            fi
+            ;;
+        "ai-review")
+            log_info "Running AI code review..."
+            if [[ -f "./scripts/qodo-pr-agent.js" ]]; then
+                node ./scripts/qodo-pr-agent.js "$2" "$3"
+            else
+                log_error "Qodo PR Agent not found. Please ensure Phase 2 is installed."
+                exit 1
+            fi
+            ;;
+        "ai-test")
+            log_info "Running AI test generation..."
+            if [[ -f "./scripts/ai-test-generator.js" ]]; then
+                node ./scripts/ai-test-generator.js "$2" "$3"
+            else
+                log_error "AI Test Generator not found. Please ensure Phase 2 is installed."
+                exit 1
+            fi
+            ;;
+        "sonar")
+            log_info "Running SonarQube analysis..."
+            if [[ -f "./scripts/sonarqube-integration.js" ]]; then
+                node ./scripts/sonarqube-integration.js "$2" "$3"
+            else
+                log_error "SonarQube integration not found. Please ensure Phase 2 is installed."
                 exit 1
             fi
             ;;
