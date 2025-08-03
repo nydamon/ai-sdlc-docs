@@ -1,6 +1,6 @@
-site_name: AI-SDLC Framework - Enhanced
-site_description: AI-powered test generation and automated QA for Laravel + React + TypeScript projects
-repo_url: https://github.com/nydamon/ai-sdlc-docs
+site_name: AI-SDLC Framework - Simplified
+site_description: Eliminate 80% of Code Review Overhead While Accelerating Development 40% - Laravel + React + TypeScript
+repo_url: https://github.com/nydamon/ai-sdlc
 site_author: Damon DeCrescenzo
 
 theme:
@@ -55,11 +55,12 @@ extra:
 
 copyright: |
   &copy; 2025 The Credit Pros. All rights reserved.<br>
-  <strong>Enhanced AI-SDLC by Damon DeCrescenzo, CTO</strong><br>
-  <em>AI test generation • Qase integration • Enterprise QA automation</em>
+  <strong>Simplified AI-SDLC by Damon DeCrescenzo, CTO</strong><br>
+  <em>5-minute setup • $529K+ annual ROI • Progressive 3-level architecture</em>
 
 nav:
   - Home: README.md
+  - 🏗️ Architecture Overview: architecture-simplified.md
   - Quick Start Guide: quick-start-simple.md
   - 📋 Manager Implementation Guide: implementation-guide-managers.md
   - 🧪 Testing & Validation: TESTING-README.md
