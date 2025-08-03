@@ -191,6 +191,25 @@ git commit -m "sync: update scripts in documentation"
 
 **Usage**: Run `./validate-documentation-deployment.sh` before any documentation deployment to prevent script accessibility issues.
 
+### **Documentation Versioning Requirements:**
+
+- ✅ **ALWAYS update version in mkdocs.yml footer** before deployment
+- ✅ **Use semantic versioning** (v2.1.0, v2.2.0, etc.)
+- ✅ **Include current date** in footer
+- ✅ **Increment version** for any significant documentation updates
+
+**Footer Format**:
+
+```
+Version: v2.1.0 | Updated: August 3, 2025
+```
+
+**Version Guidelines**:
+
+- **Major (v3.0.0)**: Significant framework changes, new architecture
+- **Minor (v2.1.0)**: New features, script additions, major documentation updates
+- **Patch (v2.0.1)**: Bug fixes, minor documentation corrections
+
 ## Production Deployment Status
 
 **Status**: ✅ PRODUCTION READY  

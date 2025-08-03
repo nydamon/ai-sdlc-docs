@@ -101,6 +101,14 @@ if [[ -f "mkdocs.yml" ]]; then
     else
         echo_warning "auto-setup.sh not directly linked in navigation"
     fi
+    
+    if grep -q "Version:" mkdocs.yml; then
+        VERSION_LINE=$(grep "Version:" mkdocs.yml)
+        echo_success "Version information found: $VERSION_LINE"
+    else
+        echo_error "Version information missing from footer - add 'Version: vX.X.X | Updated: Date'"
+        ((ERRORS++))
+    fi
 else
     echo_error "mkdocs.yml configuration missing"
     ((ERRORS++))

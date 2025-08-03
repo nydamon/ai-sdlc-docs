@@ -32,6 +32,16 @@
 
 ### **2. Documentation Site Validation**
 
+- [ ] **Update version in mkdocs.yml footer**
+
+  ```yaml
+  copyright: |
+    &copy; 2025 The Credit Pros. All rights reserved.<br>
+    <strong>Simplified AI-SDLC by Damon DeCrescenzo, CTO</strong><br>
+    <em>5-minute setup • $529K+ annual ROI • Progressive 3-level architecture</em><br>
+    <strong>Version: v2.1.0 | Updated: August 3, 2025</strong>
+  ```
+
 - [ ] **Test all script download links**
 
   ```bash
@@ -102,6 +112,7 @@
 - Forgetting to update MkDocs navigation after adding scripts
 - Having different script versions in main vs docs repositories
 - Creating documentation without testing actual implementation
+- **Forgetting to update version number in footer before deployment**
 
 ## ✅ **Validation Commands**
 
