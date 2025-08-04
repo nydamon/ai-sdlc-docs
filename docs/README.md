@@ -40,7 +40,7 @@ _Based on 8-person development team, $85K average salary_
 
 <div class="tcp-gradient-header">
 <h3>🏢 The Credit Pros Technology Excellence Initiative</h3>
-<p>Enterprise AI-powered development automation designed specifically for our Laravel + React + TypeScript technology stack serving millions of credit repair customers nationwide.</p>
+<p>Enterprise AI-powered development automation designed specifically for our Laravel backend + React JavaScript (Admin) + React TypeScript (Customer) technology stack serving millions of credit repair customers nationwide.</p>
 </div>
 
 ---
@@ -107,7 +107,7 @@ node scripts-complex/ai-e2e-generator.js    # Direct E2E test generation
 
 ## 💡 **How It Works**
 
-1. **Detects your project** (Laravel/React/TypeScript/Node.js)
+1. **Detects your project** (Laravel/React JavaScript/React TypeScript/Node.js)
 2. **Installs essential tools** (ESLint, Prettier, Husky)
 3. **Sets up git hooks** to run automatically
 4. **Creates working configs** - no editing required

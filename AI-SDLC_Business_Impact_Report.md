@@ -17,7 +17,7 @@ Based on comprehensive analysis of three critical repositories (Admin Portal, Ba
 
 ### **1. Admin Portal Frontend (portal2-admin-refactor)**
 
-**Team Size:** 8 developers | **Monthly PRs:** 120 | **Tech Stack:** React + TypeScript
+**Team Size:** 8 developers | **Monthly PRs:** 120 | **Tech Stack:** React + JavaScript
 
 #### **Current Pain Points:**
 
@@ -67,7 +67,7 @@ PR #425 (Workflow Feature - 180 additions):
 
 ### **3. Customer Portal (customer-frontend-portal)**
 
-**Team Size:** 5 developers | **Monthly PRs:** 65 | **Tech Stack:** React + Redux
+**Team Size:** 5 developers | **Monthly PRs:** 65 | **Tech Stack:** React + TypeScript + Redux
 
 #### **Current Pain Points:**
 

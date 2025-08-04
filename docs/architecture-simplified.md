@@ -133,7 +133,7 @@ flowchart LR
 
 ### Supported Frameworks
 
-- **Frontend**: React + TypeScript
+- **Frontend**: React + JavaScript (Admin Portal), React + TypeScript (Customer Portal)
 - **Backend**: Laravel (PHP)
 - **Testing**: Jest (VALIDATED), Playwright (WORKING), Cypress (supported)
 - **AI Platforms**: OpenAI GPT-4, Qase, Codium AI, GitHub API (ALL INTEGRATED)
