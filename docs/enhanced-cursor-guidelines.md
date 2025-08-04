@@ -205,3 +205,9 @@ npm run ai:code-review 123
 ```
 
 This configuration integrates seamlessly with the AI-SDLC framework for comprehensive development automation.
+
+**🔗 Related Guides:**
+
+- [🗺️ Existing Database Setup](existing-database-setup.md) - PostgreSQL integration with your current database
+- [🐘 PostgreSQL Database Automation](postgresql-automation.md) - FCRA compliance testing on existing data
+- [Git Hooks Automation](git-hooks-automation.md) - Automated quality checks

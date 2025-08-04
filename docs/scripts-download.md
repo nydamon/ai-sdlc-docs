@@ -105,6 +105,54 @@ For full system validation:
 # 🎉 AI-SDLC installation is READY FOR USE
 ```
 
+## 🐘 **PostgreSQL Database Automation Scripts**
+
+### [`scripts-complex/postgres-automation.sh`](scripts-complex/postgres-automation.sh) - **Works with YOUR Existing Database**
+
+- **Function**: FCRA-compliant database automation that maps to your existing PostgreSQL tables
+- **⚠️ Important**: Does NOT create new tables - integrates with your current Credit Pros database
+- **Features**:
+  - Maps to your existing audit, dispute, and client tables
+  - FCRA Section 604 & 611 compliance testing on your data
+  - Performance analysis of your existing queries
+  - Automated compliance reporting from your current database
+
+**Download**: [postgres-automation.sh](scripts-complex/postgres-automation.sh) | **Setup Guide**: [Existing Database Setup](existing-database-setup.md)
+
+#### **Quick Start with Your Database:**
+
+```bash
+# Map to your existing tables
+export EXISTING_AUDIT_TABLE=your_audit_table_name
+export EXISTING_DISPUTE_TABLE=your_disputes_table_name
+export DB_NAME=your_existing_database
+
+# Test with your existing data
+./scripts-complex/postgres-automation.sh test
+```
+
+### [`scripts-complex/existing-database-mapping.json`](scripts-complex/existing-database-mapping.json) - Table Mapping Configuration
+
+- **Function**: Configuration file for mapping AI-SDLC to your existing PostgreSQL schema
+- **Features**:
+  - Step-by-step instructions for identifying your existing tables
+  - Environment variable mapping examples
+  - Common Credit Pros database schema patterns
+  - Validation queries for testing your setup
+
+**Download**: [existing-database-mapping.json](scripts-complex/existing-database-mapping.json)
+
+### [`scripts-complex/laravel-postgres-testing.php`](scripts-complex/laravel-postgres-testing.php) - Laravel Integration Tests
+
+- **Function**: PHPUnit test classes for FCRA compliance testing with your existing Laravel database
+- **Features**:
+  - Tests your existing data for FCRA Section 604 & 611 compliance
+  - Credit score validation on your current data
+  - PII protection testing with your existing consumer records
+  - Performance benchmarks for your database queries
+
+**Download**: [laravel-postgres-testing.php](scripts-complex/laravel-postgres-testing.php)
+
 ## 🤖 **AI Automation Scripts**
 
 ### [`scripts-complex/ai-test-generator.js`](scripts-complex/ai-test-generator.js)

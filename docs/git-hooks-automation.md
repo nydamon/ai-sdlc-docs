@@ -264,3 +264,9 @@ git commit --no-verify -m "emergency: critical hotfix"
 ---
 
 **🎯 Summary**: Git hooks are now fully automated with the AI-SDLC framework. No manual configuration required - just run `./ai-sdlc init` and start developing with automatic quality checks on every commit.
+
+**🔗 Related Guides:**
+
+- [🗺️ Existing Database Setup](existing-database-setup.md) - PostgreSQL integration with your current database
+- [🐘 PostgreSQL Database Automation](postgresql-automation.md) - FCRA compliance testing on existing data
+- [💻 Cursor IDE Guidelines](enhanced-cursor-guidelines.md) - AI-powered development tips

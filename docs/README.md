@@ -108,9 +108,16 @@ npm run ai:generate-tests <file>            # AI-powered unit test generation
 npm run ai:generate-e2e <file>              # AI-powered E2E test generation
 npm run ai:code-review <pr-number>          # AI code review analysis
 
+# NEW: PostgreSQL Database Automation (Works with YOUR existing database)
+npm run db:setup                            # Map to your existing database tables
+npm run db:test                             # Test FCRA compliance on your existing data
+npm run db:backup                           # Backup your existing database
+npm run db:report                           # Generate compliance report from your data
+
 # Direct script access (for advanced users)
 node scripts-complex/ai-test-generator.js   # Direct AI test generation
 node scripts-complex/ai-e2e-generator.js    # Direct E2E test generation
+./scripts-complex/postgres-automation.sh    # Direct PostgreSQL automation
 
 # Help
 ./ai-sdlc help       # Show all commands
@@ -127,11 +134,23 @@ node scripts-complex/ai-e2e-generator.js    # Direct E2E test generation
 - **Bug detection proven** - found actual credit calculation errors
 - **4-platform integration** - OpenAI, Qase, Codium, GitHub APIs working
 
+## 🐘 **NEW: PostgreSQL Database Automation (Works with Your Existing Database)**
+
+**⚠️ IMPORTANT: Integrates with your existing Credit Pros PostgreSQL database - no new tables created**
+
+- **FCRA Compliance Testing** - Tests your existing data for Section 604 & 611 compliance
+- **Performance Analysis** - Optimizes your current database queries and indexes
+- **Audit Trail Validation** - Analyzes your existing audit logs for regulatory compliance
+- **Read-Only Integration** - No schema changes, works with your current table structure
+
+**🔗 Setup Guide:** [Existing Database Integration →](existing-database-setup.md) | **Technical Details:** [PostgreSQL Automation →](postgresql-automation.md)
+
 **🎯 Credit Repair Domain Expertise:**
 
 - FCRA compliance patterns built into AI test generation
 - Industry-specific error handling validation
 - Regulatory requirement testing automated
+- Database compliance testing for your existing PostgreSQL tables
 - See [Cursor IDE Guidelines](enhanced-cursor-guidelines.md) for domain-specific prompts
 
 **🔗 Ready to implement?** [View all scripts and step-by-step setup →](scripts-download.md)
@@ -269,11 +288,13 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 
 - [Quick Start Guide](quick-start-simple.md) - Step-by-step setup for all levels
 - [Architecture Overview](architecture-simplified.md) - 3-level framework architecture
+- [🗺️ Existing Database Setup](existing-database-setup.md) - **PostgreSQL integration with YOUR existing database**
 - [Troubleshooting Guide](troubleshooting-simple.md) - Common issues and fixes
 
 **For Managers:**
 
 - [Implementation Guide for Managers](implementation-guide-managers.md) - Complete rollout plan
+- [🐘 PostgreSQL Database Automation](postgresql-automation.md) - **FCRA compliance testing on existing data**
 - [Git Hooks Automation](git-hooks-automation.md) - Technical details
 - [React Best Practices](react-best-practices-updated.md) - Code quality standards
 

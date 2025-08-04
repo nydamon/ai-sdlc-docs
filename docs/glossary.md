@@ -14,6 +14,8 @@
 
 **Prettier** - Code formatter that automatically applies consistent formatting rules across your codebase.
 
+**PostgreSQL Integration** - AI-SDLC capability to work with existing PostgreSQL databases without creating new tables. See [Existing Database Setup](existing-database-setup.md).
+
 **Husky** - Git hooks manager that runs automated checks before commits and pushes.
 
 **lint-staged** - Tool that runs linters only on staged files for faster performance.
@@ -82,6 +84,8 @@
 
 - [Architecture Overview](architecture-simplified.md) - Framework structure and levels
 - [Quick Start Guide](quick-start-simple.md) - Implementation steps
+- [🗺️ Existing Database Setup](existing-database-setup.md) - **PostgreSQL integration with your current database**
+- [🐘 PostgreSQL Database Automation](postgresql-automation.md) - **FCRA compliance testing on existing data**
 - [Manager Implementation Guide](implementation-guide-managers.md) - Team rollout strategy
 - [Git Hooks Automation](git-hooks-automation.md) - Technical automation details
 - [Cursor IDE Guidelines](enhanced-cursor-guidelines.md) - AI-powered development tips
