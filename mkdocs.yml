@@ -21,8 +21,8 @@ theme:
   font:
     text: Poppins
     code: Roboto Mono
-  logo: https://creditrepaircash.com/wp-content/uploads/2023/09/TheCreditPros-Orange-Navy-20-2048x651.jpg
-  favicon: https://creditrepaircash.com/wp-content/uploads/2023/09/TheCreditPros-Orange-Navy-20-2048x651.jpg
+  logo: https://creditrepaircash.com/wp-content/uploads/2023/09/TheCreditPros-Full-White-2048x651.png
+  favicon: https://creditrepaircash.com/wp-content/uploads/2023/09/TheCreditPros-Full-White-2048x651.png
   features:
     - navigation.instant
     - navigation.tracking
