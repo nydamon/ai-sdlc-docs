@@ -54,6 +54,41 @@
   color: var(--tcp-white);
 }
 
+/* Logo sizing */
+.md-header__button img {
+  height: 2.4rem !important;
+  width: auto !important;
+  max-width: none !important;
+}
+
+/* Navigation scroll indicator */
+.md-tabs__list {
+  position: relative;
+}
+
+.md-tabs__list::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(to left, rgba(74, 144, 194, 0.8), transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Ensure tabs can scroll */
+.md-tabs {
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.md-tabs::-webkit-scrollbar {
+  display: none;
+}
+
 /* Navigation styling */
 .md-nav__title {
   font-family: 'Poppins', sans-serif;
