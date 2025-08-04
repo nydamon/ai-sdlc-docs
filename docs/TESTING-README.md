@@ -143,8 +143,8 @@ cat tests/e2e/test-sample/demo.e2e.spec.js
 ### For Implementation Manager:
 
 1. **Documentation Ready:**
-   - ✅ [Quick Start Guide](docs/quick-start-simple.md) - 3 implementation levels
-   - ✅ [Manager Implementation Guide](docs/implementation-guide-managers.md) - Complete rollout plan
+   - ✅ [Quick Start Guide](quick-start-simple.md) - 3 implementation levels
+   - ✅ [Manager Implementation Guide](implementation-guide-managers.md) - Complete rollout plan
    - ✅ [Enhanced Documentation Site](https://nydamon.github.io/ai-sdlc-docs/) - Professional deployment
 
 2. **Success Metrics Defined:**
@@ -171,7 +171,7 @@ cat tests/e2e/test-sample/demo.e2e.spec.js
 ## 📞 Support
 
 **Technical Issues:** Review logs in `validation-results-*/` directory  
-**Implementation Questions:** See [Manager Implementation Guide](docs/implementation-guide-managers.md)  
+**Implementation Questions:** See [Manager Implementation Guide](implementation-guide-managers.md)  
 **API Setup:** Run `./secure-test-setup.sh` for step-by-step guide
 
 ---

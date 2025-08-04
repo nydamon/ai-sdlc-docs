@@ -146,6 +146,38 @@ Create secure API endpoints for credit score transmission
 Generate privacy-compliant error handling for consumer credit data
 ```
 
+## 📝 **Real-World Prompt Examples**
+
+### Laravel Backend Prompts:
+
+```
+Create a Laravel migration for credit_disputes table with FCRA-compliant audit fields, proper indexing for performance, and soft deletes for regulatory retention.
+
+Generate a PHP service class for credit score calculations that validates input ranges (300-850), handles edge cases for thin files, and includes comprehensive unit tests with FCRA compliance scenarios.
+
+Add FCRA Section 611 dispute processing logic to this Laravel controller with proper validation, audit logging, and consumer notification requirements.
+```
+
+### React Frontend Prompts:
+
+```
+Create a React component for credit report display that masks sensitive PII data, includes proper ARIA labels for accessibility, and handles loading states with skeleton UI.
+
+Generate TypeScript interfaces for credit bureau API responses with proper null handling, validation schemas using Zod, and comprehensive JSDoc comments.
+
+Add form validation for credit dispute submission that enforces FCRA consumer rights, validates required fields, and provides clear error messaging.
+```
+
+### Testing & QA Prompts:
+
+```
+Generate comprehensive Jest tests for this credit calculation function including edge cases for: thin credit files, recent bankruptcies, mixed file scenarios, and FCRA accuracy requirements.
+
+Create Playwright E2E tests for the complete credit dispute workflow: form submission, validation, backend processing, consumer notifications, and audit trail verification.
+
+Add security tests for PII data handling in this component ensuring proper encryption, access controls, and FCRA compliance logging.
+```
+
 ## 📌 **Developer Checklist for AI-Assisted Development**
 
 - [ ] ✅ Prompt is specific and includes domain context (credit repair)

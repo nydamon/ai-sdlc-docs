@@ -103,6 +103,7 @@ node scripts-complex/ai-e2e-generator.js    # Direct E2E test generation
 - FCRA compliance patterns built into AI test generation
 - Industry-specific error handling validation
 - Regulatory requirement testing automated
+- See [Cursor IDE Guidelines](enhanced-cursor-guidelines.md) for domain-specific prompts
 
 ## 💡 **How It Works**
 
@@ -120,6 +121,8 @@ Every `git commit` automatically:
 - Runs ESLint to catch issues
 - Validates commit message format
 - Prevents bad code from being committed
+
+See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 
 ## 🎯 **Strategic Value Proposition**
 

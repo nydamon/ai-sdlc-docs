@@ -81,11 +81,12 @@ nav:
   - 📋 Manager Implementation Guide: implementation-guide-managers.md
   - 🧪 Testing & Validation: TESTING-README.md
   - Troubleshooting: troubleshooting-simple.md
+  - 📚 Glossary: glossary.md
   - Technical Guides:
       - Git Hooks Automation: git-hooks-automation.md
       - React Best Practices: react-best-practices-updated.md
       - Configuration Management: enhanced-config-management.md
-      - Cursor IDE Guidelines: enhanced-cursor-guidelines.md
+      - 💻 Cursor IDE Guidelines: enhanced-cursor-guidelines.md
       - 📄 Scripts & Configuration Reference: scripts-reference.md
   - 📦 Download Scripts:
       - 📋 Scripts Download & Implementation: scripts-download.md
