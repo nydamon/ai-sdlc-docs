@@ -5,7 +5,7 @@
 
 /* Custom Color Palette - The Credit Pros */
 :root {
-  --tcp-primary: #0f314b;      /* Dark Blue - Primary */
+  --tcp-primary: #4a90c2;      /* Light Blue - Primary (better visibility) */
   --tcp-secondary: #575756;    /* Dark Gray - Secondary */  
   --tcp-accent: #ff902a;       /* Orange - Accent */
   --tcp-white: #fffffe;        /* White - Contrast */
@@ -16,8 +16,8 @@
 /* Dark mode primary colors */
 [data-md-color-scheme="slate"] {
   --md-primary-fg-color: var(--tcp-primary);
-  --md-primary-fg-color--light: #1a4461;
-  --md-primary-fg-color--dark: #0a2436;
+  --md-primary-fg-color--light: #6ba4d0;
+  --md-primary-fg-color--dark: #3578a8;
   --md-accent-fg-color: var(--tcp-accent);
   --md-accent-fg-color--transparent: rgba(255, 144, 42, 0.1);
   
@@ -36,16 +36,16 @@
 /* Light mode colors (fallback) */
 [data-md-color-scheme="default"] {
   --md-primary-fg-color: var(--tcp-primary);
-  --md-primary-fg-color--light: #1a4461;
-  --md-primary-fg-color--dark: #0a2436;
+  --md-primary-fg-color--light: #6ba4d0;
+  --md-primary-fg-color--dark: #3578a8;
   --md-accent-fg-color: var(--tcp-accent);
   --md-accent-fg-color--transparent: rgba(255, 144, 42, 0.1);
 }
 
 /* Header customization */
 .md-header {
-  background: linear-gradient(135deg, var(--tcp-primary) 0%, #1a4461 100%);
-  box-shadow: 0 2px 10px rgba(15, 49, 75, 0.3);
+  background: linear-gradient(135deg, var(--tcp-primary) 0%, #6ba4d0 100%);
+  box-shadow: 0 2px 10px rgba(74, 144, 194, 0.3);
 }
 
 .md-header__title {
@@ -143,7 +143,7 @@
 
 /* Footer styling */
 .md-footer {
-  background: linear-gradient(135deg, var(--tcp-primary) 0%, #1a4461 100%);
+  background: linear-gradient(135deg, var(--tcp-primary) 0%, #6ba4d0 100%);
   color: var(--tcp-white);
 }
 
