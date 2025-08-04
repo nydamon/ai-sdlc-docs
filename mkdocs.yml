@@ -84,6 +84,7 @@ nav:
   - 📚 Glossary: glossary.md
   - Technical Guides:
       - Git Hooks Automation: git-hooks-automation.md
+      - 🐘 PostgreSQL Database Automation: postgresql-automation.md
       - React Best Practices: react-best-practices-updated.md
       - Configuration Management: enhanced-config-management.md
       - 💻 Cursor IDE Guidelines: enhanced-cursor-guidelines.md

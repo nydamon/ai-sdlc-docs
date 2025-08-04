@@ -102,6 +102,71 @@ detect_and_setup_project() {
   fi
 }
 
+### POSTGRESQL DATABASE SETUP
+setup_postgresql_automation() {
+  echo_color $YELLOW "🐘 Setting up PostgreSQL database automation..."
+  
+  # Check if PostgreSQL is available
+  if command -v psql >/dev/null 2>&1; then
+    echo_color $GREEN "✔️ PostgreSQL client detected"
+    
+    # Copy PostgreSQL automation scripts if they don't exist locally
+    if [[ ! -f "./postgres-automation.sh" ]]; then
+      if [[ -f "./scripts-complex/postgres-automation.sh" ]]; then
+        cp ./scripts-complex/postgres-automation.sh ./postgres-automation.sh
+        chmod +x ./postgres-automation.sh
+        echo_color $GREEN "✔️ PostgreSQL automation script installed"
+      fi
+    fi
+    
+    # Add database testing to package.json scripts
+    if [[ -f "package.json" ]]; then
+      # Check if db:test script already exists
+      if ! grep -q '"db:test"' package.json; then
+        # Add database testing scripts
+        npx json -I -f package.json -e 'this.scripts=this.scripts||{}'
+        npx json -I -f package.json -e 'this.scripts["db:test"]="./postgres-automation.sh test"'
+        npx json -I -f package.json -e 'this.scripts["db:setup"]="./postgres-automation.sh setup"'
+        npx json -I -f package.json -e 'this.scripts["db:backup"]="./postgres-automation.sh backup"'
+        npx json -I -f package.json -e 'this.scripts["db:report"]="./postgres-automation.sh report"'
+        echo_color $GREEN "✔️ Database testing scripts added to package.json"
+      fi
+    fi
+    
+    # Laravel-specific database setup
+    if [[ -f "artisan" ]] || [[ -d "backend" ]]; then
+      echo_color $BLUE "📋 Setting up Laravel PostgreSQL configuration..."
+      
+      # Add PostgreSQL testing database configuration
+      if [[ -f "config/database.php" ]] || [[ -f "backend/config/database.php" ]]; then
+        echo_color $GREEN "✔️ Laravel database configuration detected"
+        echo_color $YELLOW "💡 Add 'pgsql_test' connection to config/database.php for testing"
+      fi
+      
+      # Copy Laravel test file if it doesn't exist
+      TEST_DIR="tests/Feature/Database"
+      if [[ -d "backend" ]]; then
+        TEST_DIR="backend/tests/Feature/Database"
+      fi
+      
+      if [[ ! -d "$TEST_DIR" ]]; then
+        mkdir -p "$TEST_DIR"
+      fi
+      
+      if [[ ! -f "$TEST_DIR/PostgresFCRAComplianceTest.php" ]]; then
+        if [[ -f "./scripts-complex/laravel-postgres-testing.php" ]]; then
+          cp ./scripts-complex/laravel-postgres-testing.php "$TEST_DIR/PostgresFCRAComplianceTest.php"
+          echo_color $GREEN "✔️ FCRA-compliant database tests installed"
+        fi
+      fi
+    fi
+    
+  else
+    echo_color $YELLOW "⚠️ PostgreSQL not detected - database automation skipped"
+    echo_color $YELLOW "💡 Install PostgreSQL to enable database testing features"
+  fi
+}
+
 ### SETUP BASIC CONFIGURATION
 setup_basic_configuration() {
   echo_color $YELLOW "⚙️ Setting up basic configuration files..."
@@ -246,6 +311,7 @@ main() {
   check_prerequisites
   install_common_dependencies
   detect_and_setup_project
+  setup_postgresql_automation
   setup_basic_configuration
   create_validation_script
   validate_configuration
