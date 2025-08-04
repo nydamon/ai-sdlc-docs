@@ -19,6 +19,35 @@ This page provides direct access to all working scripts for review and implement
 
 **Download**: [auto-setup.sh](auto-setup.sh) | **Usage**: `./auto-setup.sh`
 
+#### **Script Preview:**
+
+```bash
+#!/bin/bash
+# Enhanced AI-Powered SDLC Setup Script
+# Supports Laravel + TypeScript React projects
+
+### INTELLIGENT PROJECT DETECTION
+detect_and_setup_project() {
+  # Laravel Backend Detection
+  if [[ -f "artisan" ]] || [[ -d "backend" ]]; then
+    echo_color $GREEN "📦 Laravel project detected"
+    composer require --dev pestphp/pest laravel/pulse laravel/pennant
+  fi
+
+  # TypeScript Client Frontend Detection
+  if [[ -f "client-frontend/package.json" ]]; then
+    echo_color $GREEN "📦 TypeScript client detected"
+    npm install --save-dev vitest @testing-library/react
+  fi
+
+  # JavaScript Admin Frontend Detection
+  if [[ -f "admin-frontend/package.json" ]]; then
+    echo_color $GREEN "📦 JavaScript admin detected"
+    npm install --save-dev jest @testing-library/react
+  fi
+}
+```
+
 ### [`ai-sdlc`](ai-sdlc) - CLI Interface
 
 - **Size**: 229 lines of bash code
@@ -30,6 +59,51 @@ This page provides direct access to all working scripts for review and implement
   - Professional colored output
 
 **Download**: [ai-sdlc](ai-sdlc) | **Usage**: `./ai-sdlc help`
+
+## ✅ **Installation Verification**
+
+### **Quick Test (30 seconds)**
+
+After running `./auto-setup.sh`, verify everything works:
+
+```bash
+# 1. Check system status
+./ai-sdlc status
+
+# Expected output:
+# ✅ Git repository detected
+# ✅ Node.js 18+ detected
+# ✅ Husky hooks configured
+# ✅ ESLint configuration found
+# ✅ Prettier configuration found
+# ✅ All systems operational
+
+# 2. Test git hooks work
+echo "console.log('test');" > test-verification.js
+git add test-verification.js
+git commit -m "test: verify ai-sdlc installation"
+
+# Expected: Code gets formatted, commit succeeds
+# Clean up: git reset --soft HEAD~1 && rm test-verification.js
+```
+
+### **Comprehensive Validation**
+
+For full system validation:
+
+```bash
+./ai-sdlc validate
+
+# Expected output:
+# 🔍 Validating AI-SDLC Installation...
+# ✅ Prerequisites: Node.js, Git, npm detected
+# ✅ Git Hooks: Husky v8+ configured correctly
+# ✅ Code Quality: ESLint + Prettier working
+# ✅ Project Detection: [Your project type] detected
+# ✅ Configuration: All files generated successfully
+#
+# 🎉 AI-SDLC installation is READY FOR USE
+```
 
 ## 🤖 **AI Automation Scripts**
 
@@ -43,6 +117,42 @@ This page provides direct access to all working scripts for review and implement
   - Template fallback without API keys
 
 **Usage**: `node scripts-complex/ai-test-generator.js`
+
+#### **Script Preview:**
+
+```javascript
+// AI-Powered Test Generator with Credit Repair Domain Expertise
+class AITestGenerator {
+  generatePrompt(filePath, componentName) {
+    return `Generate comprehensive Jest tests for ${componentName} with:
+
+CREDIT REPAIR DOMAIN REQUIREMENTS:
+- FCRA compliance validation (Fair Credit Reporting Act)
+- PII data handling security tests
+- Credit score range validation (300-850)
+- Consumer dispute workflow testing
+- Audit logging for regulatory compliance
+
+TECHNICAL REQUIREMENTS:
+- React Testing Library best practices
+- Edge cases and error handling
+- 90%+ code coverage
+- TypeScript type safety validation
+- Integration with existing test patterns`;
+  }
+
+  async generateAITest(prompt) {
+    // OpenAI GPT-4 integration for intelligent test generation
+    const response = await this.openai.chat.completions.create({
+      model: 'gpt-4',
+      messages: [{ role: 'user', content: prompt }],
+      max_tokens: 2000,
+      temperature: 0.1,
+    });
+    return response.choices[0].message.content;
+  }
+}
+```
 
 ### [`scripts-complex/ai-e2e-generator.js`](scripts-complex/ai-e2e-generator.js)
 
