@@ -69,11 +69,47 @@ run_fcra_compliant_migrations() {
   fi
 }
 
+validate_existing_tables() {
+  echo_color $YELLOW "🔍 Validating existing database tables..."
+  
+  # Check if we're working with existing tables or need to create test tables
+  EXISTING_AUDIT_TABLE="${EXISTING_AUDIT_TABLE:-fcra_audit_log}"
+  EXISTING_ACCESS_TABLE="${EXISTING_ACCESS_TABLE:-credit_report_access_log}"
+  EXISTING_DISPUTE_TABLE="${EXISTING_DISPUTE_TABLE:-dispute_processing_log}"
+  
+  echo_color $BLUE "📋 Checking for existing tables:"
+  echo_color $BLUE "   - Audit table: $EXISTING_AUDIT_TABLE"
+  echo_color $BLUE "   - Access table: $EXISTING_ACCESS_TABLE" 
+  echo_color $BLUE "   - Dispute table: $EXISTING_DISPUTE_TABLE"
+  
+  # Check if tables exist
+  AUDIT_EXISTS=$(psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -d "$TEST_DB_NAME" -t -c "SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_schema = 'public' AND table_name = '$EXISTING_AUDIT_TABLE');" 2>/dev/null || echo "f")
+  
+  if [[ "$AUDIT_EXISTS" == *"t"* ]]; then
+    echo_color $GREEN "✅ Found existing audit table: $EXISTING_AUDIT_TABLE"
+    USE_EXISTING_TABLES=true
+  else
+    echo_color $YELLOW "⚠️  Audit table '$EXISTING_AUDIT_TABLE' not found - will create test tables"
+    USE_EXISTING_TABLES=false
+  fi
+}
+
 create_fcra_audit_tables() {
-  echo_color $YELLOW "🔒 Creating FCRA audit tables..."
+  echo_color $YELLOW "🔒 Setting up FCRA audit tables..."
+  
+  if [[ "$USE_EXISTING_TABLES" == "true" ]]; then
+    echo_color $GREEN "✅ Using existing tables - no table creation needed"
+    echo_color $BLUE "📝 To map to your existing tables, update these environment variables:"
+    echo_color $BLUE "   export EXISTING_AUDIT_TABLE=your_audit_table_name"
+    echo_color $BLUE "   export EXISTING_ACCESS_TABLE=your_credit_access_table_name"
+    echo_color $BLUE "   export EXISTING_DISPUTE_TABLE=your_disputes_table_name"
+    return 0
+  fi
+  
+  echo_color $YELLOW "📋 Creating test tables (for development/testing only)..."
   
   cat << 'EOF' | psql -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -d "$TEST_DB_NAME"
--- FCRA Audit Trail Table
+-- FCRA Audit Trail Table (TEST/DEVELOPMENT ONLY) 
 CREATE TABLE IF NOT EXISTS fcra_audit_log (
     id BIGSERIAL PRIMARY KEY,
     consumer_id BIGINT,
@@ -291,6 +327,7 @@ main() {
     "setup")
       check_postgres_connection
       create_test_database
+      validate_existing_tables
       run_fcra_compliant_migrations
       create_fcra_audit_tables
       ;;
@@ -305,6 +342,7 @@ main() {
     "all"|*)
       check_postgres_connection
       create_test_database
+      validate_existing_tables
       run_fcra_compliant_migrations
       create_fcra_audit_tables
       seed_test_data

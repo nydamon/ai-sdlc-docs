@@ -2,38 +2,82 @@
 
 ## 🐘 **Overview**
 
-The AI-SDLC framework now includes comprehensive PostgreSQL database automation specifically designed for **credit repair systems** with **FCRA (Fair Credit Reporting Act) compliance** built-in.
+The AI-SDLC framework includes comprehensive PostgreSQL database automation that **integrates with your existing Credit Pros database** and provides **FCRA (Fair Credit Reporting Act) compliance** testing and automation.
 
-## 🚀 **Quick Start**
+## ⚠️ **IMPORTANT: Works with Your Existing Database**
 
-### **Automatic Setup (Recommended)**
+**This framework does NOT create new tables.** It integrates with your existing PostgreSQL database by:
+
+- ✅ **Mapping to your existing tables** - No schema changes required
+- ✅ **Adding automation and testing** - Works with your current data structure
+- ✅ **FCRA compliance validation** - Tests your existing data for regulatory compliance
+- ✅ **Performance optimization** - Analyzes your existing queries and indexes
+
+## 🚀 **Quick Start with Your Existing Database**
+
+### **Step 1: Configure Database Connection**
 
 ```bash
-# PostgreSQL automation is included in the main setup
-./auto-setup.sh    # Includes database automation if PostgreSQL detected
+# Set your existing database connection details
+export DB_HOST=your-postgres-host
+export DB_PORT=5432
+export DB_NAME=your_existing_credit_repair_database
+export DB_USER=your_database_user
+export DB_PASSWORD=your_database_password
 ```
 
-### **Manual Database Setup**
+### **Step 2: Map to Your Existing Tables**
 
 ```bash
-# Run PostgreSQL automation directly
-./scripts-complex/postgres-automation.sh all
-
-# Or run specific components
-./scripts-complex/postgres-automation.sh setup    # Initialize database
-./scripts-complex/postgres-automation.sh test     # Run compliance tests
-./scripts-complex/postgres-automation.sh backup   # Create backup
-./scripts-complex/postgres-automation.sh report   # Generate compliance report
+# Map framework to your existing table names
+export EXISTING_AUDIT_TABLE=your_audit_table_name
+export EXISTING_ACCESS_TABLE=your_credit_access_table_name
+export EXISTING_DISPUTE_TABLE=your_disputes_table_name
+export EXISTING_CONSUMER_TABLE=your_clients_table_name
 ```
 
-## 📋 **What Gets Automated**
+### **Step 3: Run Integration**
 
-### ✅ **FCRA-Compliant Database Structure**
+```bash
+# Automatic setup (detects your existing tables)
+./auto-setup.sh    # Includes database automation mapping
 
-- **Audit Trail Tables** - Complete transaction logging for regulatory compliance
-- **Credit Report Access Logs** - FCRA Section 604 permissible purpose tracking
-- **Dispute Processing Logs** - FCRA Section 611 30-day timeline compliance
-- **Data Retention Policies** - Automated 7-year retention for credit repair industry
+# Or run PostgreSQL automation directly
+./scripts-complex/postgres-automation.sh setup    # Maps to existing tables
+./scripts-complex/postgres-automation.sh test     # Tests your existing data
+./scripts-complex/postgres-automation.sh report   # Compliance report on existing data
+```
+
+## 🔍 **Discover Your Existing Tables**
+
+Before configuring, identify your existing PostgreSQL tables:
+
+```bash
+# Connect to your database and list tables
+psql -h your-host -U your-user -d your-database -c "\dt"
+
+# Look for tables that handle:
+psql -d your-database -c "\dt" | grep -E "(audit|log|activity|credit|dispute|client|consumer|user)"
+
+# Get column details for a specific table
+psql -d your-database -c "\d your_table_name"
+```
+
+**Common table names to look for:**
+
+- **Audit/Logging**: `audit_logs`, `activity_log`, `user_activities`, `system_logs`
+- **Credit Access**: `credit_reports`, `bureau_requests`, `api_calls`, `credit_access`
+- **Disputes**: `disputes`, `dispute_workflows`, `cases`, `client_disputes`
+- **Consumers**: `clients`, `consumers`, `users`, `customers`
+
+## 📋 **What Gets Automated with Your Existing Tables**
+
+### ✅ **FCRA Compliance Testing on Your Data**
+
+- **Existing Audit Analysis** - Tests your current audit logging for FCRA compliance
+- **Credit Access Validation** - Analyzes your credit bureau API calls for Section 604 compliance
+- **Dispute Timeline Checking** - Validates your dispute processing meets 30-day FCRA requirement
+- **Data Quality Assessment** - Checks your existing data for compliance gaps
 
 ### ✅ **Laravel Integration**
 
@@ -222,18 +266,36 @@ Within 30-Day Timeline: 3,654 (99.3%)
 - **30-day dispute timeline monitoring**
 - **Audit trail completeness validation**
 
-## 🛠️ **Configuration**
+## 🛠️ **Configuration for Your Existing Database**
 
-### **Environment Variables**
+### **Required Environment Variables**
 
 ```bash
-# Database Connection
-export DB_HOST=localhost
+# Your existing database connection
+export DB_HOST=your-production-db-host
 export DB_PORT=5432
-export DB_NAME=credit_repair_db
-export DB_USER=credit_repair_user
-export DB_PASSWORD=your_password
-export TEST_DB_NAME=credit_repair_test_db
+export DB_NAME=your_existing_database_name
+export DB_USER=your_existing_db_user
+export DB_PASSWORD=your_existing_db_password
+
+# Map to your existing tables
+export EXISTING_AUDIT_TABLE=your_audit_table_name
+export EXISTING_ACCESS_TABLE=your_credit_access_table
+export EXISTING_DISPUTE_TABLE=your_disputes_table
+export EXISTING_CONSUMER_TABLE=your_clients_table
+```
+
+### **Example: If Your Tables Are Named Differently**
+
+```bash
+# Example: Your tables have these names
+export EXISTING_AUDIT_TABLE=activity_logs
+export EXISTING_ACCESS_TABLE=credit_bureau_requests
+export EXISTING_DISPUTE_TABLE=client_disputes
+export EXISTING_CONSUMER_TABLE=clients
+
+# Framework will now work with YOUR table names
+./postgres-automation.sh test  # Tests YOUR activity_logs, credit_bureau_requests, etc.
 ```
 
 ### **Laravel Database Configuration**
