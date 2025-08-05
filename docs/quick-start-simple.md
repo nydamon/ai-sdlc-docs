@@ -95,10 +95,13 @@ This creates:
 
 ```bash
 # Generate tests for all files (NEW METHOD - VALIDATED)
-npm run ai:generate-tests test-sample/demo.js
+./ai-sdlc test-gen test-sample/demo.js
 
 # Generate E2E tests (WORKING)
-npm run ai:generate-e2e test-sample/demo.js
+node scripts-complex/ai-e2e-generator.js test-sample/demo.js
+
+# NEW: Qase AIDEN Integration
+./ai-sdlc generate-from-requirements "Test demo functionality"
 
 # Direct script access for advanced users
 node scripts-complex/ai-test-generator.js
@@ -150,7 +153,7 @@ npm install -D @playwright/test
 npx playwright install
 
 # Generate E2E tests for critical flows (VALIDATED METHODS)
-npm run ai:generate-e2e test-sample/workflow-instances-modal.js
+./ai-sdlc generate-from-requirements "Test workflow instances modal functionality"
 node scripts-complex/ai-e2e-generator.js
 
 # Legacy method (still works)
@@ -193,7 +196,7 @@ npm run format     # Format code manually
 ## Next Steps
 
 - Start developing - everything's automated
-- Add team members by having them run `./setup.sh`
+- Add team members by having them run `./auto-setup.sh`
 - Check `ai-sdlc status` if you have issues
 
 ## Troubleshooting

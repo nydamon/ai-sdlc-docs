@@ -14,6 +14,7 @@ This page provides direct access to all working scripts for review and implement
   - Prerequisites validation
   - Multi-project detection
   - Modern Husky v8+ integration
+  - **NEW: Qase AIDEN integration** with @playwright/test and @qase/playwright dependencies
   - Automatic configuration generation
   - Built-in validation
 
@@ -212,6 +213,46 @@ TECHNICAL REQUIREMENTS:
 
 **Usage**: `node scripts-complex/ai-e2e-generator.js`
 
+### [`scripts-complex/qase-aiden-integration.js`](scripts-complex/qase-aiden-integration.js) - **NEW: AI Test Generation**
+
+- **Function**: Qase AIDEN integration with auto-healing Playwright test generation
+- **Features**:
+  - Generate tests from natural language requirements using AI
+  - Convert manual Qase test cases to automated Playwright scripts
+  - Auto-healing wrapper for all generated tests
+  - Credit repair domain-specific test patterns
+  - FCRA/FACTA compliance testing integration
+
+**Usage**: `node scripts-complex/qase-aiden-integration.js generate "Test FCRA compliance flow"`
+
+#### **Simple Integration Workflow:**
+
+```bash
+# Generate test from requirement
+./ai-sdlc generate-from-requirements "Test credit score calculation with FICO 8 algorithm"
+
+# Convert manual test case to automated
+./ai-sdlc convert-manual-to-auto 123
+
+# Auto-heal existing tests + generate new ones
+./ai-sdlc heal-and-generate
+
+# Complete automated testing setup
+./ai-sdlc auto-complete-testing
+```
+
+### [`scripts-complex/playwright-auto-healing.js`](scripts-complex/playwright-auto-healing.js) - **NEW: Self-Healing Tests**
+
+- **Function**: Standalone auto-healing utilities for Playwright tests
+- **Features**:
+  - Smart selector fallback system with learning capabilities
+  - Auto-retry with intelligent waiting for flaky tests
+  - Credit repair domain-specific utilities (SSN, credit scores, FCRA validation)
+  - Statistics export and learning from failed selectors
+  - Self-healing test maintenance
+
+**Usage**: `node scripts-complex/playwright-auto-healing.js demo`
+
 ### [`scripts-complex/qodo-pr-agent.js`](scripts-complex/qodo-pr-agent.js)
 
 - **Function**: GitHub PR automation and AI code review
@@ -224,13 +265,15 @@ TECHNICAL REQUIREMENTS:
 
 ## 🔧 **Additional Automation Scripts**
 
-| Script                                                                 | Function                        | Status     |
-| ---------------------------------------------------------------------- | ------------------------------- | ---------- |
-| [`security-scanner.js`](scripts-complex/security-scanner.js)           | Security vulnerability scanning | ✅ Working |
-| [`performance-monitor.js`](scripts-complex/performance-monitor.js)     | Performance metrics tracking    | ✅ Working |
-| [`dev-utils.js`](scripts-complex/dev-utils.js)                         | Development utilities           | ✅ Working |
-| [`webhook-manager.js`](scripts-complex/webhook-manager.js)             | Webhook automation              | ✅ Working |
-| [`sonarqube-integration.js`](scripts-complex/sonarqube-integration.js) | SonarQube integration           | ✅ Working |
+| Script                                                                     | Function                               | Status     |
+| -------------------------------------------------------------------------- | -------------------------------------- | ---------- |
+| [`qase-aiden-integration.js`](scripts-complex/qase-aiden-integration.js)   | **NEW: AI test generation with AIDEN** | ✅ Working |
+| [`playwright-auto-healing.js`](scripts-complex/playwright-auto-healing.js) | **NEW: Self-healing test utilities**   | ✅ Working |
+| [`security-scanner.js`](scripts-complex/security-scanner.js)               | Security vulnerability scanning        | ✅ Working |
+| [`performance-monitor.js`](scripts-complex/performance-monitor.js)         | Performance metrics tracking           | ✅ Working |
+| [`dev-utils.js`](scripts-complex/dev-utils.js)                             | Development utilities                  | ✅ Working |
+| [`webhook-manager.js`](scripts-complex/webhook-manager.js)                 | Webhook automation                     | ✅ Working |
+| [`sonarqube-integration.js`](scripts-complex/sonarqube-integration.js)     | SonarQube integration                  | ✅ Working |
 
 ## 📋 **Quick Implementation Guide**
 
@@ -256,9 +299,31 @@ TECHNICAL REQUIREMENTS:
    # Configure .env file
    cp .env.example .env
 
-   # Generate tests
-   npm run ai:generate-tests your-file.js
-   npm run ai:generate-e2e your-component.jsx
+   # Generate tests with existing AI tools
+   ./ai-sdlc test-gen your-file.js
+   node scripts-complex/ai-e2e-generator.js your-component.jsx
+
+   # NEW: Qase AIDEN Integration
+   ./ai-sdlc generate-from-requirements "Test FCRA compliance flow"
+   ./ai-sdlc convert-manual-to-auto 123
+   ./ai-sdlc heal-and-generate
+   ```
+
+3. **NEW: Qase AIDEN Quick Start**:
+
+   ```bash
+   # Set environment variable (optional - works in demo mode without)
+   export QASE_API_TOKEN="your-qase-token"
+   export QASE_PROJECT_CODE="TCP"
+
+   # Generate test from natural language
+   ./ai-sdlc generate-from-requirements "Validate credit score calculation accuracy"
+
+   # Convert existing manual Qase test case
+   ./ai-sdlc convert-manual-to-auto 456
+
+   # Complete automated testing setup
+   ./ai-sdlc auto-complete-testing
    ```
 
 ## 🔐 **Security & Validation**

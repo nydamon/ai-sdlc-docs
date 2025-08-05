@@ -156,10 +156,10 @@ The framework automatically runs comprehensive database tests:
 
 ```bash
 # Run all database tests
-npm run db:test
+./scripts-complex/postgres-automation.sh test
 
-# Individual test categories
-./postgres-automation.sh test
+# Individual test categories (same command)
+./scripts-complex/postgres-automation.sh test
 ```
 
 #### **Test Categories:**
@@ -225,8 +225,7 @@ CREATE INDEX dispute_id_processing_stage_idx ON dispute_processing_log (dispute_
 
 ```bash
 # Generate compliance report
-npm run db:report
-./postgres-automation.sh report
+./scripts-complex/postgres-automation.sh report
 ```
 
 **Sample Report Output:**
@@ -389,8 +388,8 @@ Credit repair domain patterns built into AI test generation:
 
 1. **Run Setup**: `./auto-setup.sh` (includes PostgreSQL automation)
 2. **Configure Database**: Set environment variables
-3. **Test Integration**: `npm run db:test`
-4. **Generate Report**: `npm run db:report`
+3. **Test Integration**: `./scripts-complex/postgres-automation.sh test`
+4. **Generate Report**: `./scripts-complex/postgres-automation.sh report`
 5. **Schedule Backups**: Set up automated backup scripts
 
 ---

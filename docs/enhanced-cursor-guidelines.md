@@ -195,13 +195,13 @@ Add security tests for PII data handling in this component ensuring proper encry
 
 ```bash
 # Generate domain-specific tests
-npm run ai:generate-tests src/credit-calculator.js
+./ai-sdlc test-gen src/credit-calculator.js
 
 # Create E2E tests with FCRA compliance
-npm run ai:generate-e2e components/CreditReportModal.jsx
+./ai-sdlc generate-from-requirements "Test CreditReportModal with FCRA compliance"
 
 # AI code review with compliance checking
-npm run ai:code-review 123
+node scripts-complex/qodo-pr-agent.js 123
 ```
 
 This configuration integrates seamlessly with the AI-SDLC framework for comprehensive development automation.

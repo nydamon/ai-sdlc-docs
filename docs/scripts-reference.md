@@ -6,12 +6,12 @@ This page provides the actual script content for implementation managers to revi
 
 ## 🚀 **Setup Scripts**
 
-### `setup.sh` (Main Setup Script)
+### `auto-setup.sh` (Main Setup Script)
 
 ```bash
 #!/bin/bash
 # AI-SDLC Framework Setup - Auto-detects project type and configures appropriately
-# Run with: ./setup.sh
+# Run with: ./auto-setup.sh
 
 set -e
 
@@ -369,11 +369,15 @@ CREDIT_SCORE_CAP=850
 
 ```bash
 # Basic setup
-./setup.sh
+./auto-setup.sh
 
 # AI test generation
-npm run ai:generate-tests src/credit-calculator.js
-npm run ai:generate-e2e components/CreditModal.jsx
+./ai-sdlc test-gen src/credit-calculator.js
+node scripts-complex/ai-e2e-generator.js components/CreditModal.jsx
+
+# NEW: Qase AIDEN Integration
+./ai-sdlc generate-from-requirements "Test credit score calculation"
+./ai-sdlc convert-manual-to-auto 123
 
 # Run all tests
 npm test

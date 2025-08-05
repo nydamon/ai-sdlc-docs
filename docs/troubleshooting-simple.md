@@ -127,12 +127,53 @@ rm -rf .husky .eslintrc* .prettierrc commitlint.config.js
 ./auto-setup.sh
 ```
 
+## NEW: Qase AIDEN Integration Issues
+
+### AIDEN Commands Not Working
+
+**Error: "QASE_API_TOKEN not found"**
+
+This is normal! AIDEN works in demo mode without API tokens.
+
+```bash
+# Test AIDEN in demo mode (works without tokens)
+./ai-sdlc generate-from-requirements "Test basic functionality"
+
+# For full AIDEN integration, set environment variable
+export QASE_API_TOKEN="your-qase-token"
+```
+
+**Error: "Qase AIDEN integration script not found"**
+
+```bash
+# Check if scripts exist
+ls -la scripts-complex/qase-aiden-integration.js
+ls -la scripts-complex/playwright-auto-healing.js
+
+# If missing, ensure you're in the AI-SDLC root directory
+pwd  # Should show ai_sdlc directory
+```
+
+### Auto-Healing Tests Issues
+
+**Tests failing after UI changes**
+
+Auto-healing should adapt automatically, but if not:
+
+```bash
+# Regenerate tests with updated selectors
+./ai-sdlc heal-and-generate
+
+# Check auto-healing statistics
+node scripts-complex/playwright-auto-healing.js demo
+```
+
 ## Getting Help
 
 1. **Check status**: `ai-sdlc status`
 2. **Run validation**: `ai-sdlc validate`
 3. **Check logs**: Look at error messages in terminal
-4. **Reset and retry**: Remove `.husky` folder and run `./setup.sh` again
+4. **Reset and retry**: Remove `.husky` folder and run `./auto-setup.sh` again
 
 ## Manual Fixes
 

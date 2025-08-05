@@ -57,6 +57,7 @@
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
     "@vitejs/plugin-react": "^4.7.0",
+    "commitlint": "^19.8.1",
     "eslint": "^9.32.0",
     "husky": "^9.1.7",
     "jsdom": "^26.1.0",

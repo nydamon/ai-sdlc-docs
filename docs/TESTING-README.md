@@ -32,10 +32,13 @@ All critical tests are passing. The framework is ready for immediate deployment.
 
 ```bash
 # AI Test Generation (VALIDATED)
-npm run ai:generate-tests test-sample/demo.js
+./ai-sdlc test-gen test-sample/demo.js
 
 # AI E2E Test Generation (WORKING)
-npm run ai:generate-e2e test-sample/demo.js
+node scripts-complex/ai-e2e-generator.js test-sample/demo.js
+
+# NEW: Qase AIDEN Integration (WORKING)
+./ai-sdlc generate-from-requirements "Test demo functionality with validation"
 
 # Run Generated Tests
 npm test
@@ -49,6 +52,32 @@ cat tests/e2e/test-sample/demo.e2e.spec.js
 - 100% test coverage achieved automatically
 - E2E tests generated with credit repair compliance patterns
 - 4-platform AI integration working (OpenAI, Qase, Codium, GitHub)
+- **NEW: Qase AIDEN natural language test generation working**
+- **NEW: Auto-healing tests successfully adapt to UI changes**
+
+### 5. Test NEW Qase AIDEN Integration ✨ NEW
+
+```bash
+# Test AIDEN natural language test generation
+./ai-sdlc generate-from-requirements "Test credit score validation with FCRA compliance"
+
+# Test manual test case conversion
+./ai-sdlc convert-manual-to-auto 123
+
+# Test auto-healing functionality
+./ai-sdlc heal-and-generate
+
+# Verify generated tests are self-healing
+node scripts-complex/playwright-auto-healing.js demo
+```
+
+**✅ AIDEN Integration Results:**
+
+- ✅ Natural language to Playwright test conversion working
+- ✅ Auto-healing selectors automatically generated
+- ✅ Credit repair domain patterns built-in
+- ✅ Demo mode works without API keys
+- ✅ Full integration with existing AI-SDLC workflow
 
 ## 📊 Test Results Summary
 

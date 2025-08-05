@@ -42,6 +42,18 @@ install_common_dependencies() {
   echo_color $YELLOW "📦 Installing shared developer dependencies..."
   npm install --save-dev eslint prettier husky lint-staged commitlint @commitlint/config-conventional
   
+  # NEW: Qase AIDEN Integration Dependencies
+  echo_color $YELLOW "🤖 Installing Qase AIDEN integration..."
+  npm install --save-dev @playwright/test @qase/playwright
+  
+  # Check if QASE_API_TOKEN is set
+  if [[ -z "$QASE_API_TOKEN" ]]; then
+    echo_color $YELLOW "⚠️  QASE_API_TOKEN not found - AIDEN will run in demo mode"
+    echo_color $YELLOW "💡 Set QASE_API_TOKEN environment variable for full AI test generation"
+  else
+    echo_color $GREEN "✅ Qase AIDEN configured with API token"
+  fi
+  
   # Modern Husky v8+ initialization
   echo_color $YELLOW "🪝 Setting up Git hooks with Husky..."
   npx husky init

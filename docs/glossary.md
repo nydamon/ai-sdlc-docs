@@ -20,6 +20,14 @@
 
 **lint-staged** - Tool that runs linters only on staged files for faster performance.
 
+**Laravel Eloquent** - Object-Relational Mapping (ORM) used for database interactions in Laravel PHP applications, providing elegant database query syntax.
+
+**React Hook Form** - Performant form state management library for React applications with minimal re-renders and built-in validation.
+
+**TypeScript Strict Mode** - Enhanced type checking configuration that enforces stricter type safety rules for better code quality and error prevention.
+
+**Semantic Versioning** - Version numbering system (MAJOR.MINOR.PATCH) for release management that communicates backward compatibility and change impact.
+
 ## AI Testing Platforms
 
 **OpenAI GPT-4** - AI model used for intelligent test generation and code analysis in Level 2+ implementations.
@@ -30,6 +38,10 @@
 
 **Qodo (formerly CodiumAI)** - AI code review agent that provides automated PR analysis and suggestions.
 
+**Qase AIDEN** - AI-powered test generation system that converts natural language requirements into automated Playwright tests. Integrated with AI-SDLC for intelligent test creation.
+
+**Auto-Healing Tests** - Self-maintaining test framework that automatically adapts when UI selectors change, reducing test maintenance overhead through smart fallback systems.
+
 ## Credit Repair Domain
 
 **FCRA** - Fair Credit Reporting Act, federal law governing credit reporting and consumer rights.
@@ -39,6 +51,16 @@
 **PII** - Personally Identifiable Information, sensitive consumer data requiring special handling in credit systems.
 
 **PCI-DSS** - Payment Card Industry Data Security Standard for secure payment processing.
+
+## Database & Performance
+
+**Connection Pooling** - Database connection management technique that maintains a pool of reusable connections for optimal PostgreSQL performance and resource utilization.
+
+**Query Optimization** - Process of improving database query performance through indexing, query restructuring, and execution plan analysis for large credit datasets.
+
+**Index Management** - Strategic creation and maintenance of database indexes to accelerate credit data searches, report generation, and regulatory queries.
+
+**Data Encryption at Rest** - PostgreSQL encryption implementation for securing sensitive credit information stored in database files and backups.
 
 ## Git & Deployment
 
@@ -94,4 +116,4 @@
 ---
 
 _Created by Damon DeCrescenzo, CTO - The Credit Pros_  
-_Last Updated: August 4, 2025_
+_Last Updated: August 5, 2025_
