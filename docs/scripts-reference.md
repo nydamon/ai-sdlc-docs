@@ -379,6 +379,11 @@ node scripts-complex/ai-e2e-generator.js components/CreditModal.jsx
 ./ai-sdlc generate-from-requirements "Test credit score calculation"
 ./ai-sdlc convert-manual-to-auto 123
 
+# NEW: SonarCloud Validation (TheCreditPros)
+export SONAR_TOKEN=your_token
+./ai-sdlc sonar-validate          # Validate all repository configurations
+./ai-sdlc sonar-templates         # Generate standardized templates
+
 # Run all tests
 npm test
 npm run test:e2e
@@ -390,6 +395,60 @@ npm run format
 # Status checking
 ./ai-sdlc status
 ./ai-sdlc validate
+```
+
+## 🔍 **NEW: SonarCloud Configuration Validator**
+
+### `scripts-complex/sonarcloud-config-validator.js`
+
+**Purpose**: Validates SonarCloud configurations across all TheCreditPros repositories for consistency and best practices.
+
+**Key Features**:
+
+- Repository-specific validation for customer-frontend-portal, portal2-refactor, portal2-admin-refactor
+- AI Code Fix integration verification
+- Quality gate compliance checking (80%+ coverage, <3% duplication)
+- FCRA/FACTA compliance rule validation
+- 0-100% scoring with actionable recommendations
+
+**Usage**:
+
+```bash
+# Set environment variables
+export SONAR_TOKEN=your_sonarcloud_api_token
+export GITHUB_TOKEN=your_github_token  # Optional, for AI Code Fix validation
+
+# Validate all repositories
+./ai-sdlc sonar-validate
+
+# Generate configuration templates
+./ai-sdlc sonar-templates
+```
+
+**Generated Templates**:
+
+- `sonarcloud-templates/sonar-project.properties` - Project configuration
+- `sonarcloud-templates/sonarcloud-workflow.yml` - GitHub Actions workflow
+- `sonarcloud-templates/package-scripts-template.json` - Jest coverage scripts
+
+**Compliance Scoring**:
+
+- **Quality Gate (20%)**: "Sonar way" standard enforcement
+- **Metrics (30%)**: Coverage, duplication, maintainability ratings
+- **Security Rules (25%)**: Vulnerability and credential detection
+- **AI Code Fix (15%)**: GitHub Actions integration status
+- **Credit Repair Compliance (10%)**: FCRA/FACTA specific rules
+
+**Sample Output**:
+
+```
+📊 customer-frontend-portal Results:
+├─ Status: ✅ compliant
+├─ Compliance Score: 🌟 92%
+├─ Quality Gate: ✅ Sonar way
+├─ Coverage: ✅ 87%
+├─ AI Code Fix: ✅ Enabled
+└─ Issues Found: 0
 ```
 
 All scripts include error handling, logging, and follow enterprise security best practices for credit repair domain compliance.

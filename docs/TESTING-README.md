@@ -14,14 +14,29 @@ All critical tests are passing. The framework is ready for immediate deployment.
 
 **Expected Result:** All 14 tests pass ✅
 
-### 2. Configure API Keys for Full Testing (Optional)
+### 2. Validate SonarCloud Configurations (NEW)
+
+```bash
+# Set your SonarCloud token
+export SONAR_TOKEN=your_sonarcloud_token
+
+# Validate TheCreditPros repository configurations
+./ai-sdlc sonar-validate
+
+# Generate standardized templates
+./ai-sdlc sonar-templates
+```
+
+**Expected Result:** All repositories achieve 80%+ compliance score
+
+### 3. Configure API Keys for Full Testing (Optional)
 
 ```bash
 ./secure-test-setup.sh
 # Follow the guide to add API keys to .env
 ```
 
-### 3. Test AI Features with Real APIs
+### 4. Test AI Features with Real APIs
 
 ```bash
 # After configuring .env
@@ -95,15 +110,18 @@ node scripts-complex/playwright-auto-healing.js demo
 - OpenAI integration (requires API key)
 - Qase integration (requires existing account)
 - GitHub integration (requires token)
+- SonarCloud integration (requires API token) **(NEW)**
 
 ## 🔧 Available Scripts
 
-| Script                   | Purpose                     | Requirements |
-| ------------------------ | --------------------------- | ------------ |
-| `./validate-ai-sdlc.sh`  | Full framework validation   | None         |
-| `./secure-test-setup.sh` | API credentials setup guide | None         |
-| `./test-env-setup.sh`    | Test API integrations       | .env file    |
-| `./ai-sdlc help`         | Show all CLI commands       | None         |
+| Script                      | Purpose                      | Requirements |
+| --------------------------- | ---------------------------- | ------------ |
+| `./validate-ai-sdlc.sh`     | Full framework validation    | None         |
+| `./ai-sdlc sonar-validate`  | SonarCloud config validation | SONAR_TOKEN  |
+| `./ai-sdlc sonar-templates` | Generate config templates    | None         |
+| `./secure-test-setup.sh`    | API credentials setup guide  | None         |
+| `./test-env-setup.sh`       | Test API integrations        | .env file    |
+| `./ai-sdlc help`            | Show all CLI commands        | None         |
 
 ## 💰 Cost Analysis for API Testing
 

@@ -117,6 +117,146 @@ cat .env | grep OPENAI_API_KEY
 # This fix is already included in the latest version
 ```
 
+## 🔍 SonarCloud Validation Issues (NEW)
+
+### SonarCloud Token Not Found
+
+**Error: "SONAR_TOKEN not found in environment"**
+
+```bash
+# Get token from SonarCloud My Account → Security
+export SONAR_TOKEN=your_sonarcloud_api_token
+
+# Or add to .env file permanently
+echo "SONAR_TOKEN=your_token_here" >> .env
+```
+
+### Repository Not Found in SonarCloud
+
+**Error: "Project not found in SonarCloud"**
+
+**Solution**: Repository needs to be configured in SonarCloud first:
+
+1. Log into [SonarCloud.io](https://sonarcloud.io)
+2. Import your TheCreditPros repository
+3. Copy the generated project key
+4. Run validation again
+
+### Quality Gate Failures
+
+**Warning: "Quality gate not passing"**
+
+**Common fixes**:
+
+```bash
+# 1. Increase test coverage
+npm run test:coverage
+
+# 2. Fix code duplication
+./ai-sdlc sonar-templates  # Use standardized configs
+
+# 3. Apply security rule fixes
+# Review SonarCloud project → Issues tab
+# Apply suggested fixes or use AI Code Fix
+```
+
+### AI Code Fix Not Working
+
+**Issue: "AI Code Fix shows as disabled"**
+
+**Solution**: Enable in GitHub repository settings:
+
+1. Go to repository Settings → Code security and analysis
+2. Enable "Code scanning" if disabled
+3. Ensure SonarCloud GitHub Actions workflow is present:
+   ```bash
+   # Copy workflow template
+   ./ai-sdlc sonar-templates
+   cp sonarcloud-templates/sonarcloud-workflow.yml .github/workflows/
+   ```
+
+### Low Compliance Score
+
+**Issue: "Repository compliance below 80%"**
+
+**Systematic approach**:
+
+1. **Run validation with details**:
+
+   ```bash
+   ./ai-sdlc sonar-validate
+   # Review generated report: sonarcloud-validation-report.json
+   ```
+
+2. **Apply recommended fixes**:
+   - **Quality Gate**: Configure "Sonar way" in SonarCloud project settings
+   - **Coverage**: Add tests to reach minimum threshold
+   - **Security**: Enable JavaScript/TypeScript security rules
+   - **Duplication**: Refactor repeated code blocks
+
+3. **Use configuration templates**:
+   ```bash
+   ./ai-sdlc sonar-templates
+   # Apply templates to each repository
+   ```
+
+### Repository-Specific Issues
+
+**customer-frontend-portal**:
+
+- **Expected Threshold**: 85% coverage (customer-facing)
+- **Common Issues**: React component testing gaps
+- **Fix**: `./ai-sdlc test-gen src/components/`
+
+**portal2-refactor**:
+
+- **Expected Threshold**: 80% coverage (backend)
+- **Common Issues**: Database integration testing
+- **Fix**: Add integration tests for API endpoints
+
+**portal2-admin-refactor**:
+
+- **Expected Threshold**: 75% coverage (internal)
+- **Common Issues**: Admin workflow testing
+- **Fix**: Add admin permission tests
+
+### GitHub Actions Workflow Issues
+
+**Error: "SonarCloud GitHub Action fails"**
+
+**Checklist**:
+
+1. **Verify secrets are set**:
+   - Repository Settings → Secrets → `SONAR_TOKEN`
+   - `GITHUB_TOKEN` should be automatic
+
+2. **Check workflow file**:
+
+   ```yaml
+   # .github/workflows/sonarcloud.yml should include:
+   - name: SonarCloud Scan
+     uses: SonarSource/sonarcloud-github-action@master
+     env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+   ```
+
+3. **Verify sonar-project.properties**:
+   ```properties
+   sonar.organization=thecreditpros
+   sonar.projectKey=thecreditpros_REPOSITORY_NAME
+   ```
+
+### API Rate Limits
+
+**Warning: "SonarCloud API rate limit exceeded"**
+
+**Solution**:
+
+- SonarCloud has generous free tier limits
+- Wait 1 hour and retry validation
+- For frequent validation, consider upgrading SonarCloud plan
+
 **Reset everything:**
 
 ```bash

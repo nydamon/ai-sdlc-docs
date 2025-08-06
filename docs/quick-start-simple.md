@@ -5,13 +5,15 @@
 **For TheCreditPros Development Team:**
 
 ### Customer Frontend Portal
+
 ```bash
 cd customer-frontend-portal
 git clone https://github.com/nydamon/ai-sdlc.git .ai-sdlc
 .ai-sdlc/auto-setup.sh
 ```
 
-### Portal 2 Refactor  
+### Portal 2 Refactor
+
 ```bash
 cd portal2-refactor
 git clone https://github.com/nydamon/ai-sdlc.git .ai-sdlc
@@ -19,8 +21,9 @@ git clone https://github.com/nydamon/ai-sdlc.git .ai-sdlc
 ```
 
 ### Portal 2 Admin Refactor
+
 ```bash
-cd portal2-admin-refactor  
+cd portal2-admin-refactor
 git clone https://github.com/nydamon/ai-sdlc.git .ai-sdlc
 .ai-sdlc/auto-setup.sh
 ```
@@ -43,6 +46,7 @@ Make sure you have:
 
 - Node.js 18+ installed
 - A Git repository (`git init` if needed)
+- SonarCloud account access (for TheCreditPros repositories)
 
 ```bash
 node --version  # Should be 18+
@@ -98,10 +102,12 @@ cp .env.example .env
 - `OPENAI_API_KEY` - Get from [OpenAI](https://platform.openai.com/api-keys) ($20-50/month)
 - `QASE_API_KEY` - Get from your [Qase account](https://app.qase.io/user/api/token) (existing)
 - `QASE_PROJECT_CODE` - Your Qase project code
+- `SONAR_TOKEN` - Get from [SonarCloud My Account → Security](https://sonarcloud.io/account/security) (free)
 
 **Optional premium:**
 
 - `CODIUM_API_KEY` - Get from [Codium AI](https://www.codium.ai/pricing/) ($19-49/month)
+- `GITHUB_TOKEN` - Get from [GitHub Settings → Developer settings](https://github.com/settings/tokens) (free, for AI Code Fix validation)
 
 ### Step 2: Initialize AI Test Generation (3 minutes)
 
@@ -155,7 +161,31 @@ ls -la __tests__/
 
 ## Level 3: Enterprise QA Automation (30 minutes)
 
-### Step 1: GitHub PR Automation (10 minutes)
+### Step 1: SonarCloud Validation (10 minutes)
+
+**Validate existing SonarCloud configurations:**
+
+```bash
+# Set your SonarCloud token
+export SONAR_TOKEN=your_sonarcloud_token
+
+# Validate all TheCreditPros repositories
+./ai-sdlc sonar-validate
+```
+
+**Generate standardized templates:**
+
+```bash
+# Generate configuration templates
+./ai-sdlc sonar-templates
+
+# Templates created in ./sonarcloud-templates/:
+# - sonar-project.properties
+# - sonarcloud-workflow.yml
+# - package-scripts-template.json
+```
+
+### Step 2: GitHub PR Automation (10 minutes)
 
 Add GitHub token to `.env`:
 
