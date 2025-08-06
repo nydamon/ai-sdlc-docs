@@ -4,6 +4,28 @@
 
 This guide provides step-by-step implementation instructions for development and implementation managers to deploy AI-powered software development lifecycle automation at The Credit Pros.
 
+## 🎯 Target Implementation Repositories
+
+**Priority Order for Deployment:**
+
+1. **[Customer Frontend Portal](https://github.com/TheCreditPros/customer-frontend-portal)** 
+   - **Priority**: HIGH - Customer-facing impact
+   - **Framework**: React/Node.js application
+   - **Expected Impact**: Immediate customer experience improvements
+   - **Timeline**: Deploy first (Week 1-2)
+
+2. **[Portal 2 Refactor](https://github.com/TheCreditPros/portal2-refactor)**
+   - **Priority**: MEDIUM - Backend stability
+   - **Framework**: Backend refactoring project  
+   - **Expected Impact**: Code quality standardization
+   - **Timeline**: Deploy second (Week 3-4)
+
+3. **[Portal 2 Admin Refactor](https://github.com/TheCreditPros/portal2-admin-refactor)**
+   - **Priority**: MEDIUM - Internal tooling
+   - **Framework**: Admin portal refactoring
+   - **Expected Impact**: Internal efficiency gains
+   - **Timeline**: Deploy third (Week 5-6)
+
 **Key Benefits:**
 
 - 🕐 **80% reduction in manual QA time** (15-20 hours/week saved per developer) - VALIDATED

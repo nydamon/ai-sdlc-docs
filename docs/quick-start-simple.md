@@ -1,5 +1,30 @@
 # Quick Start Guide - Enhanced AI-SDLC
 
+## 🎯 Repository-Specific Implementation
+
+**For TheCreditPros Development Team:**
+
+### Customer Frontend Portal
+```bash
+cd customer-frontend-portal
+git clone https://github.com/nydamon/ai-sdlc.git .ai-sdlc
+.ai-sdlc/auto-setup.sh
+```
+
+### Portal 2 Refactor  
+```bash
+cd portal2-refactor
+git clone https://github.com/nydamon/ai-sdlc.git .ai-sdlc
+.ai-sdlc/auto-setup.sh
+```
+
+### Portal 2 Admin Refactor
+```bash
+cd portal2-admin-refactor  
+git clone https://github.com/nydamon/ai-sdlc.git .ai-sdlc
+.ai-sdlc/auto-setup.sh
+```
+
 ## Implementation Levels
 
 **Choose your implementation level:**

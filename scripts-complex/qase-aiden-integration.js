@@ -26,6 +26,12 @@ class QaseAIDENIntegration {
       testDir: './tests/e2e',
       autoHealingRetries: 3,
       domain: 'credit-repair',
+      // Target repositories for TheCreditPros implementation
+      targetRepos: [
+        'https://github.com/TheCreditPros/customer-frontend-portal',
+        'https://github.com/TheCreditPros/portal2-refactor', 
+        'https://github.com/TheCreditPros/portal2-admin-refactor'
+      ],
     };
 
     this.validateConfig();

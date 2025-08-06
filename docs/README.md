@@ -22,6 +22,16 @@ This framework **eliminates manual code quality overhead** that costs your team 
 
 _Based on 8-person development team, $85K average salary_
 
+## 🎯 **Target Repositories**
+
+This AI-SDLC framework is designed for implementation across TheCreditPros development repositories:
+
+- **[Customer Frontend Portal](https://github.com/TheCreditPros/customer-frontend-portal)** - Main customer-facing React application
+- **[Portal 2 Refactor](https://github.com/TheCreditPros/portal2-refactor)** - Backend portal refactoring project  
+- **[Portal 2 Admin Refactor](https://github.com/TheCreditPros/portal2-admin-refactor)** - Admin portal refactoring project
+
+**Implementation Priority**: Deploy to customer-frontend-portal first for immediate impact, then roll out to refactor projects for consistency.
+
 ## 🚀 **5-Minute Setup That Actually Works**
 
 **Stop wasting time on configuration.** One command gets your entire team professional development standards:
