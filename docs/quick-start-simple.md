@@ -125,7 +125,7 @@ cp .env.example .env
 
 This creates:
 
-- Jest configuration for unit tests (VALIDATED)
+- Vitest configuration for unit tests (VALIDATED)
 - Playwright configuration for E2E tests (WORKING)
 - Test directories and sample files
 - API integration validation
@@ -233,7 +233,7 @@ Add to your `package.json`:
 ```json
 {
   "scripts": {
-    "test:unit": "jest",
+    "test:unit": "vitest run",
     "test:e2e": "playwright test",
     "test:full": "npm run test:unit && npm run test:e2e",
     "test:ci": "npm run test:full -- --reporter=json"

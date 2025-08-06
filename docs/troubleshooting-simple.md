@@ -76,14 +76,14 @@ npm run format
 
 ## AI Testing Issues (Level 2+)
 
-### Jest Environment Error
+### Vitest Environment Error
 
-**Error: "jest-environment-jsdom cannot be found"**
+**Error: "jsdom environment not found"**
 
 ```bash
-# Install the missing Jest environment
-npm install --save-dev jest-environment-jsdom
-# Update jest.config.js to use 'node' environment
+# Install the missing jsdom package (should already be installed)
+npm install --save-dev jsdom
+# Verify vitest.config.js has environment: 'jsdom' configured
 ```
 
 ### API Key Issues

@@ -248,7 +248,7 @@ This guide provides step-by-step implementation instructions for development and
 
    ```bash
    ./ai-sdlc test-init
-   # Creates Jest, Playwright, PHPUnit configurations
+   # Creates Vitest, Playwright, PHPUnit configurations
    ```
 
 2. **Generate initial test suite** (30 minutes)

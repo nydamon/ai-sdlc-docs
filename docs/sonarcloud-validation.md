@@ -20,7 +20,7 @@ This guide provides comprehensive SonarCloud configuration validation and standa
 
 # This creates:
 # - sonarcloud-templates/sonar-project.properties
-# - sonarcloud-templates/sonarcloud-workflow.yml  
+# - sonarcloud-templates/sonarcloud-workflow.yml
 # - sonarcloud-templates/package-scripts-template.json
 ```
 
@@ -40,6 +40,7 @@ export GITHUB_TOKEN=your_github_token  # Optional, for AI Code Fix validation
 ## 📊 Validation Criteria
 
 ### Quality Gate Standards
+
 - **Required**: "Sonar way" quality gate
 - **Coverage Threshold**: 80%+ code coverage
 - **Duplicate Code**: ≤3% duplicated lines
@@ -48,12 +49,14 @@ export GITHUB_TOKEN=your_github_token  # Optional, for AI Code Fix validation
 - **Security Rating**: A or B
 
 ### Credit Repair Industry Compliance
+
 - **PII Detection**: Credential and password scanning enabled
 - **Data Encryption**: Secure handling rules activated
 - **Audit Logging**: Comprehensive logging compliance
 - **FCRA/FACTA Rules**: Specific credit industry regulations
 
 ### AI Code Fix Integration
+
 - **GitHub Actions**: SonarCloud workflow configured
 - **Auto-Fix**: AI Code Fix enabled in repository settings
 - **Pull Request Integration**: Automatic code analysis
@@ -91,40 +94,40 @@ name: SonarCloud Analysis
 
 on:
   push:
-    branches: [ main, master, develop ]
+    branches: [main, master, develop]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
   sonarcloud:
     name: SonarCloud Analysis
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'npm'
-    
-    - name: Install dependencies
-      run: npm ci
-    
-    - name: Run tests with coverage
-      run: npm run test:coverage
-      env:
-        CI: true
-    
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests with coverage
+        run: npm run test:coverage
+        env:
+          CI: true
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 ```
 
 ### Package.json Test Configuration
@@ -132,21 +135,22 @@ jobs:
 ```json
 {
   "scripts": {
-    "test:coverage": "jest --coverage --watchAll=false",
+    "test:coverage": "vitest --coverage",
     "sonar": "sonar-scanner"
   },
-  "jest": {
-    "coverageDirectory": "coverage",
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.test.{js,jsx,ts,tsx}",
-      "!src/**/*.spec.{js,jsx,ts,tsx}"
-    ],
-    "coverageReporters": ["text", "lcov", "html"],
-    "coverageThreshold": {
-      "global": {
-        "branches": 80,
-        "functions": 80,
+  "vitest": {
+    "coverage": {
+      "provider": "v8",
+      "reporter": ["text", "lcov", "html"],
+      "exclude": [
+        "node_modules/",
+        "**/*.test.{js,jsx,ts,tsx}",
+        "**/*.spec.{js,jsx,ts,tsx}"
+      ],
+      "thresholds": {
+        "global": {
+          "branches": 80,
+          "functions": 80,
         "lines": 80,
         "statements": 80
       }
@@ -175,43 +179,52 @@ The validation script provides a comprehensive compliance score (0-100%) based o
 ## 🔍 Repository-Specific Recommendations
 
 ### Customer Frontend Portal
+
 **Priority**: HIGH - Customer-facing impact
 
 **Expected Configuration**:
+
 - React/TypeScript rules enabled
 - 85%+ coverage threshold (customer-facing)
 - Enhanced security scanning (PII handling)
 - AI Code Fix for rapid iteration
 
 **Key Metrics to Monitor**:
+
 - Security hotspots (customer data)
 - Performance issues (user experience)
 - Accessibility compliance
 
 ### Portal 2 Refactor
+
 **Priority**: MEDIUM - Backend stability
 
 **Expected Configuration**:
+
 - Node.js/JavaScript rules
 - 80%+ coverage threshold
 - Database security rules
 - API vulnerability scanning
 
 **Key Metrics to Monitor**:
+
 - SQL injection vulnerabilities
 - Authentication/authorization issues
 - Data validation compliance
 
 ### Portal 2 Admin Refactor
+
 **Priority**: MEDIUM - Internal tooling
 
 **Expected Configuration**:
+
 - Admin portal security rules
 - 75%+ coverage threshold (internal tool)
 - Role-based access scanning
 - Admin-specific compliance rules
 
 **Key Metrics to Monitor**:
+
 - Privilege escalation vulnerabilities
 - Admin audit trail compliance
 - Internal API security
@@ -219,8 +232,10 @@ The validation script provides a comprehensive compliance score (0-100%) based o
 ## 🚨 Common Issues & Fixes
 
 ### Quality Gate Not Configured
+
 **Issue**: Default quality gate or none configured
-**Fix**: 
+**Fix**:
+
 ```bash
 # Apply "Sonar way" quality gate in SonarCloud UI
 # or configure in sonar-project.properties:
@@ -228,8 +243,10 @@ sonar.qualitygate.wait=true
 ```
 
 ### Low Code Coverage
+
 **Issue**: Coverage below 80% threshold
 **Fix**:
+
 ```bash
 # Add test scripts to package.json
 npm run test:coverage
@@ -239,15 +256,19 @@ sonar.coverage.exclusions=**/*.min.js,**/vendor/**
 ```
 
 ### AI Code Fix Not Enabled
+
 **Issue**: No GitHub Actions workflow found
 **Fix**:
+
 1. Copy `sonarcloud-templates/sonarcloud-workflow.yml` to `.github/workflows/`
 2. Add `SONAR_TOKEN` to repository secrets
 3. Enable AI Code Fix in SonarCloud project settings
 
 ### Missing Security Rules
+
 **Issue**: Credit repair compliance rules not active
 **Fix**:
+
 1. Enable JavaScript/TypeScript security rules in SonarCloud
 2. Activate vulnerability detection
 3. Enable credential scanning rules
@@ -296,11 +317,13 @@ export SONAR_ORGANIZATION=thecreditpros
 ### Getting Your Tokens
 
 **SonarCloud Token**:
+
 1. Go to SonarCloud → My Account → Security
 2. Generate new token with `Execute Analysis` permission
 3. Copy token to `SONAR_TOKEN` environment variable
 
 **GitHub Token**:
+
 1. Go to GitHub → Settings → Developer settings → Personal access tokens
 2. Generate token with `repo` and `workflow` permissions
 3. Copy token to `GITHUB_TOKEN` environment variable
@@ -308,11 +331,13 @@ export SONAR_ORGANIZATION=thecreditpros
 ## 📋 Implementation Checklist
 
 ### Pre-Implementation
+
 - [ ] Obtain SonarCloud API token
 - [ ] Verify repository access permissions
 - [ ] Review current SonarCloud configurations
 
 ### Implementation Steps
+
 - [ ] Generate configuration templates: `./ai-sdlc sonar-templates`
 - [ ] Run validation: `./ai-sdlc sonar-validate`
 - [ ] Review validation report
@@ -320,6 +345,7 @@ export SONAR_ORGANIZATION=thecreditpros
 - [ ] Re-run validation to confirm compliance
 
 ### Post-Implementation
+
 - [ ] Set up monitoring for quality gate failures
 - [ ] Configure automated reporting
 - [ ] Train team on new quality standards
@@ -328,12 +354,14 @@ export SONAR_ORGANIZATION=thecreditpros
 ## 🎯 Success Metrics
 
 ### Technical Metrics
+
 - **100% Repository Compliance**: All repos scoring 80%+
 - **Quality Gate Pass Rate**: >95% of builds passing
 - **Security Issue Detection**: 0 high/critical vulnerabilities
 - **Code Coverage**: Maintained above thresholds
 
 ### Business Metrics
+
 - **Faster Code Reviews**: AI Code Fix reducing manual review time
 - **Reduced Bug Escape**: Fewer production issues
 - **Compliance Confidence**: FCRA/FACTA requirements met

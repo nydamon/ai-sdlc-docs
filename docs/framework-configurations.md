@@ -232,7 +232,7 @@ export default defineConfig({
 ### AI-SDLC Vitest Integration
 
 ```bash
-# Setup Vitest instead of Jest
+# Setup Vitest (default testing framework)
 ./ai-sdlc setup-testing --framework=vitest
 
 # Generate Vitest-optimized test files
@@ -334,7 +334,7 @@ const detectFramework = () => {
 
   // Testing Framework Detection
   if (dependencies['vitest']) return 'vitest';
-  if (dependencies['jest']) return 'jest';
+  if (dependencies['jest']) return 'jest-legacy';
 
   // State Management Detection
   if (dependencies['zustand']) return 'zustand';
@@ -408,7 +408,7 @@ interface CreditData {
 - ✅ Vue 3 + Composition API
 - ✅ TypeScript 5+ strict mode
 - ✅ Vite, esbuild, SWC bundlers
-- ✅ Vitest, Jest 29+ testing
+- ✅ Vitest (primary), Jest legacy support
 - ✅ TanStack Query, Zustand state management
 - ✅ Laravel 10+ with Pest
 - ✅ Node.js with modern frameworks

@@ -268,8 +268,8 @@ npx --no-install commitlint --edit "$1"
 ```json
 {
   "scripts": {
-    "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
     "test:e2e": "playwright test",
     "ai:generate-tests": "node scripts-complex/ai-test-generator.js generate",
     "ai:generate-e2e": "node scripts-complex/ai-e2e-generator.js generate",
@@ -288,7 +288,7 @@ npx --no-install commitlint --edit "$1"
 }
 ```
 
-### `jest.config.js`
+### `vitest.config.js`
 
 ```javascript
 module.exports = {
@@ -429,7 +429,7 @@ export GITHUB_TOKEN=your_github_token  # Optional, for AI Code Fix validation
 
 - `sonarcloud-templates/sonar-project.properties` - Project configuration
 - `sonarcloud-templates/sonarcloud-workflow.yml` - GitHub Actions workflow
-- `sonarcloud-templates/package-scripts-template.json` - Jest coverage scripts
+- `sonarcloud-templates/package-scripts-template.json` - Vitest coverage scripts
 
 **Compliance Scoring**:
 

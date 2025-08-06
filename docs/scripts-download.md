@@ -44,7 +44,7 @@ detect_and_setup_project() {
   # JavaScript Admin Frontend Detection
   if [[ -f "admin-frontend/package.json" ]]; then
     echo_color $GREEN "📦 JavaScript admin detected"
-    npm install --save-dev jest @testing-library/react
+    npm install --save-dev vitest @testing-library/react jsdom
   fi
 }
 ```
@@ -173,7 +173,7 @@ export DB_NAME=your_existing_database
 // AI-Powered Test Generator with Credit Repair Domain Expertise
 class AITestGenerator {
   generatePrompt(filePath, componentName) {
-    return `Generate comprehensive Jest tests for ${componentName} with:
+    return `Generate comprehensive Vitest tests for ${componentName} with:
 
 CREDIT REPAIR DOMAIN REQUIREMENTS:
 - FCRA compliance validation (Fair Credit Reporting Act)

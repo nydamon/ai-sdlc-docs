@@ -74,7 +74,7 @@
 
 ## Testing & QA
 
-**Jest** - JavaScript testing framework for unit and integration tests.
+**Vitest** - Modern JavaScript testing framework, faster alternative to Jest with native TypeScript support and Vite integration.
 
 **Playwright** - End-to-end testing framework for web applications across multiple browsers.
 

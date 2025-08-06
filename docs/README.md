@@ -41,7 +41,7 @@ This AI-SDLC framework is designed for implementation across TheCreditPros devel
 - ✅ **TypeScript 5+** with strict mode and advanced type checking
 - ✅ **Modern Bundlers** - Vite (preferred), esbuild, SWC, Webpack 5
 - ✅ **State Management** - Zustand, TanStack Query, Pinia, Redux Toolkit
-- ✅ **Testing Frameworks** - Vitest (modern), Jest 29+, React Testing Library
+- ✅ **Testing Frameworks** - Vitest (primary), React Testing Library, Vue Test Utils
 - ✅ **Styling Solutions** - Tailwind CSS, Styled Components, CSS Modules
 
 **Backend Technologies:**
