@@ -53,18 +53,26 @@ node --version  # Should be 18+
 git status      # Should show a Git repo
 ```
 
-### Step 2: Run Basic Setup (3 minutes)
+### Step 2: Run Modern Framework Setup (3 minutes)
 
 ```bash
-./auto-setup.sh    # WORKING - Correct script name
+# Auto-detects your tech stack and configures accordingly
+./auto-setup.sh --detect-framework
+
+# Or specify your stack explicitly
+./auto-setup.sh --react --vite --typescript-strict
+./auto-setup.sh --vue3 --composition-api
+./auto-setup.sh --laravel --pest
 ```
 
 The script will:
 
-- Install ESLint, Prettier, Husky
-- Set up git hooks
-- Create basic configuration files
-- Test everything works
+- **Auto-detect** your framework (React, Vue, Laravel, etc.)
+- **Install modern tooling** (Vite, Vitest, TypeScript strict, etc.)
+- **Configure framework-specific** ESLint, Prettier, testing setups
+- **Optimize for your stack** with intelligent defaults
+- **Set up git hooks** with framework-aware validation
+- **Test everything works** with your specific configuration
 
 ### Step 3: Test Basic Setup (1 minute)
 
@@ -125,14 +133,17 @@ This creates:
 ### Step 3: Generate Tests for Your Codebase (5 minutes)
 
 ```bash
-# Generate tests for all files (NEW METHOD - VALIDATED)
-./ai-sdlc test-gen test-sample/demo.js
+# Modern framework-aware test generation
+./ai-sdlc test-gen test-sample/demo.tsx --framework=react-vite
+./ai-sdlc test-gen src/components/ --typescript-strict --vitest
+./ai-sdlc test-gen stores/userStore.ts --state-management=zustand
 
-# Generate E2E tests (WORKING)
-node scripts-complex/ai-e2e-generator.js test-sample/demo.js
+# Generate E2E tests with modern tooling
+./ai-sdlc test-gen-e2e --playwright --typescript src/pages/
+node scripts-complex/ai-e2e-generator.js --modern-patterns
 
-# NEW: Qase AIDEN Integration
-./ai-sdlc generate-from-requirements "Test demo functionality"
+# NEW: Qase AIDEN with framework detection
+./ai-sdlc generate-from-requirements "Test demo functionality" --auto-detect
 
 # Direct script access for advanced users
 node scripts-complex/ai-test-generator.js

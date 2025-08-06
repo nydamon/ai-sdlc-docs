@@ -10,20 +10,23 @@ This guide provides step-by-step implementation instructions for development and
 
 1. **[Customer Frontend Portal](https://github.com/TheCreditPros/customer-frontend-portal)**
    - **Priority**: HIGH - Customer-facing impact
-   - **Framework**: React/Node.js application
-   - **Expected Impact**: Immediate customer experience improvements
+   - **Framework**: React 18+ with TypeScript strict mode, Vite bundling, modern state management
+   - **Modern Stack**: Likely includes Zustand/TanStack Query, Tailwind CSS, Vitest testing
+   - **Expected Impact**: Immediate customer experience improvements with enhanced type safety
    - **Timeline**: Deploy first (Week 1-2)
 
 2. **[Portal 2 Refactor](https://github.com/TheCreditPros/portal2-refactor)**
    - **Priority**: MEDIUM - Backend stability
-   - **Framework**: Backend refactoring project
-   - **Expected Impact**: Code quality standardization
+   - **Framework**: Laravel 10+ with Pest testing, PHP 8.2+ features, modern API patterns
+   - **Modern Stack**: Likely includes advanced Laravel features, API resource optimization
+   - **Expected Impact**: Code quality standardization with enhanced backend performance
    - **Timeline**: Deploy second (Week 3-4)
 
 3. **[Portal 2 Admin Refactor](https://github.com/TheCreditPros/portal2-admin-refactor)**
    - **Priority**: MEDIUM - Internal tooling
-   - **Framework**: Admin portal refactoring
-   - **Expected Impact**: Internal efficiency gains
+   - **Framework**: Modern admin interface with enterprise tooling and compliance automation
+   - **Modern Stack**: Likely includes advanced admin patterns, automated workflows
+   - **Expected Impact**: Internal efficiency gains with automated compliance checks
    - **Timeline**: Deploy third (Week 5-6)
 
 **Key Benefits:**
@@ -79,6 +82,60 @@ This guide provides step-by-step implementation instructions for development and
 - End-to-end testing
 - Compliance automation
 - Full CI/CD integration
+
+## 🔧 Framework-Specific Implementation Considerations
+
+### Customer Frontend Portal (React + Modern Stack)
+
+**Expected Technologies:**
+
+- React 18+ with TypeScript strict mode
+- Vite bundling with optimized build pipeline
+- Modern state management (Zustand/TanStack Query)
+- Vitest for testing (preferred over Jest)
+- Tailwind CSS or modern styling solution
+
+**AI-SDLC Optimizations:**
+
+- TypeScript strict mode configuration with intelligent type checking
+- Vite-optimized test generation and build integration
+- React Concurrent Features and Suspense testing patterns
+- Modern state management test generation (hooks, stores, queries)
+- Component testing with React Testing Library best practices
+
+### Portal 2 Refactor (Laravel + Modern Backend)
+
+**Expected Technologies:**
+
+- Laravel 10+ with PHP 8.2+ features
+- Pest testing framework (preferred over PHPUnit)
+- Modern API patterns (JSON:API, GraphQL)
+- Advanced Laravel features (Jobs, Events, Notifications)
+- Database optimization with Eloquent advanced patterns
+
+**AI-SDLC Optimizations:**
+
+- Pest test generation with modern Laravel patterns
+- FCRA compliance testing built into Laravel service layers
+- API endpoint testing with credit repair domain validation
+- Database integration testing with factory optimization
+- Laravel-specific security and performance testing
+
+### Portal 2 Admin Refactor (Enterprise Admin Interface)
+
+**Expected Technologies:**
+
+- Modern admin framework with automated workflows
+- Enterprise-grade tooling and compliance automation
+- Advanced permission and role management systems
+- Integrated audit logging and compliance reporting
+
+**AI-SDLC Optimizations:**
+
+- Admin workflow testing with complex permission matrices
+- Compliance automation testing for FCRA/FACTA requirements
+- Audit trail validation and regulatory compliance testing
+- Advanced user management and security testing patterns
 
 ---
 
