@@ -44,6 +44,10 @@ show_help() {
     echo "  heal-and-generate                 Auto-heal existing tests + generate new ones"
     echo "  auto-complete-testing             Generate, heal, and validate all tests"
     echo
+    echo "NEW: SonarCloud Validation Commands:"
+    echo "  sonar-validate                    Validate SonarCloud configs for all TheCreditPros repos"
+    echo "  sonar-templates                   Generate standardized SonarCloud configuration templates"
+    echo
     echo "Examples:"
     echo "  ai-sdlc setup                                    # Initial setup"
     echo "  ai-sdlc status                                   # Check if working"
@@ -268,6 +272,32 @@ cmd_auto_complete_testing() {
     success "🎉 Auto-complete testing setup finished!"
 }
 
+# NEW: SonarCloud validation commands
+cmd_sonar_validate() {
+    info "🔍 Validating SonarCloud configurations for TheCreditPros repositories..."
+    
+    if [[ -f "scripts-complex/sonarcloud-config-validator.js" ]]; then
+        node scripts-complex/sonarcloud-config-validator.js validate "$@"
+    else
+        error "SonarCloud validator script not found"
+        info "Make sure you're running from the AI-SDLC framework directory"
+        exit 1
+    fi
+}
+
+cmd_sonar_templates() {
+    info "📋 Generating SonarCloud configuration templates..."
+    
+    if [[ -f "scripts-complex/sonarcloud-config-validator.js" ]]; then
+        node scripts-complex/sonarcloud-config-validator.js templates "$@"
+        success "✅ SonarCloud templates generated in ./sonarcloud-templates/"
+    else
+        error "SonarCloud validator script not found"
+        info "Make sure you're running from the AI-SDLC framework directory"
+        exit 1
+    fi
+}
+
 # Main command router
 main() {
     case "${1:-help}" in
@@ -306,6 +336,14 @@ main() {
         "auto-complete-testing")
             shift
             cmd_auto_complete_testing "$@"
+            ;;
+        "sonar-validate")
+            shift
+            cmd_sonar_validate "$@"
+            ;;
+        "sonar-templates")
+            shift
+            cmd_sonar_templates "$@"
             ;;
         "help"|"--help"|"-h"|"")
             show_help

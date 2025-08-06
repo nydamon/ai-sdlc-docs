@@ -128,6 +128,10 @@ node scripts-complex/qodo-pr-agent.js <pr> # AI code review analysis
 ./ai-sdlc heal-and-generate                         # Auto-heal tests + generate new ones
 ./ai-sdlc auto-complete-testing                     # Complete automated testing setup
 
+# NEW: SonarCloud Configuration Validation (TheCreditPros)
+./ai-sdlc sonar-validate                            # Validate SonarCloud configs across all repos
+./ai-sdlc sonar-templates                           # Generate standardized SonarCloud templates
+
 # NEW: PostgreSQL Database Automation (Works with YOUR existing database)
 ./scripts-complex/postgres-automation.sh setup    # Map to your existing database tables
 ./scripts-complex/postgres-automation.sh test     # Test FCRA compliance on your existing data
