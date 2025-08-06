@@ -45,6 +45,7 @@ cd ai-sdlc
 **What You Get Immediately:**
 
 ### 🟢 Level 1 (FREE) - Instant Professional Standards
+**API Keys Required:** None - Works completely offline
 
 - ✅ **Auto-formatting on every commit** - Prettier + ESLint configured
 - ✅ **Git hooks automation** - Quality checks before code reaches review
@@ -53,6 +54,7 @@ cd ai-sdlc
 - ✅ **Security auditing** - Prevents commits with vulnerabilities
 
 ### 🟡 Level 2 (AI-Powered) - Available Immediately
+**API Keys Required:** OpenAI ($20-50/month), Qase (free tier available)
 
 - ✅ **AI test generation** - 100% coverage with OpenAI integration
 - ✅ **Qase integration** - Professional test management
@@ -60,6 +62,7 @@ cd ai-sdlc
 - ✅ **4-platform integration** - OpenAI, Qase, Codium, GitHub APIs working
 
 ### 🔴 Level 3 (Enterprise) - Production Ready
+**API Keys Required:** All Level 2 + SonarQube, additional AI services ($100-200/month)
 
 - ✅ **E2E test automation** - Playwright integration validated
 - ✅ **Security compliance** - PII/credit data protection
