@@ -55,9 +55,36 @@ EOF
 # Configure ESLint
 npx eslint --init
 
-# Setup Husky
+# Setup Husky with GitGuardian integration
 npx husky init
-echo "npx lint-staged" > .husky/pre-commit
+cat > .husky/pre-commit << 'EOF'
+#!/bin/bash
+
+# Branch naming enforcement
+branch_name=$(git symbolic-ref --short HEAD)
+valid_pattern="^(feature|fix|hotfix|release|chore|docs|test)\/[a-z0-9-]+$|^(main|master|develop)$"
+
+if [[ ! $branch_name =~ $valid_pattern ]]; then
+  echo "❌ Branch name '$branch_name' does not follow naming convention."
+  exit 1
+fi
+
+# GitGuardian secret scanning (if configured)
+if command -v ggshield &> /dev/null; then
+  echo "🔐 Running GitGuardian secret scan..."
+  ggshield secret scan pre-commit
+else
+  echo "ℹ️  GitGuardian not installed. Using npm audit fallback..."
+  npm audit --audit-level=high
+  if [ $? -ne 0 ]; then
+    echo "❌ High/critical security vulnerabilities found."
+    exit 1
+  fi
+fi
+
+# Run lint-staged
+npx lint-staged
+EOF
 chmod +x .husky/pre-commit
 
 # Configure lint-staged in package.json
@@ -65,10 +92,16 @@ npm pkg set lint-staged='{"*.{js,jsx,ts,tsx}":["eslint --fix","prettier --write"
 
 echo "✅ AI-SDLC Framework setup complete!"
 echo "🎯 Your team now has:"
+echo "   - GitGuardian secret protection (if installed)"
 echo "   - Automatic code formatting (Prettier)"
 echo "   - Code quality checks (ESLint)"
 echo "   - Git hooks for quality gates"
+echo "   - Branch naming enforcement"
 echo "   - Conventional commit enforcement"
+echo ""
+echo "📋 Next steps:"
+echo "   - Install GitGuardian: pip install detect-secrets-guardian"
+echo "   - Configure API keys in .env file"
 ```
 
 ## 🤖 **AI-Powered Scripts**

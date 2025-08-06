@@ -265,15 +265,15 @@ TECHNICAL REQUIREMENTS:
 
 ## 🔧 **Additional Automation Scripts**
 
-| Script                                                                     | Function                               | Status     |
-| -------------------------------------------------------------------------- | -------------------------------------- | ---------- |
-| [`qase-aiden-integration.js`](scripts-complex/qase-aiden-integration.js)   | **NEW: AI test generation with AIDEN** | ✅ Working |
-| [`playwright-auto-healing.js`](scripts-complex/playwright-auto-healing.js) | **NEW: Self-healing test utilities**   | ✅ Working |
-| [`security-scanner.js`](scripts-complex/security-scanner.js)               | Security vulnerability scanning        | ✅ Working |
-| [`performance-monitor.js`](scripts-complex/performance-monitor.js)         | Performance metrics tracking           | ✅ Working |
-| [`dev-utils.js`](scripts-complex/dev-utils.js)                             | Development utilities                  | ✅ Working |
-| [`webhook-manager.js`](scripts-complex/webhook-manager.js)                 | Webhook automation                     | ✅ Working |
-| [`sonarqube-integration.js`](scripts-complex/sonarqube-integration.js)     | SonarQube integration                  | ✅ Working |
+| Script                                                                     | Function                                                       | Status     |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------- | ---------- |
+| [`qase-aiden-integration.js`](scripts-complex/qase-aiden-integration.js)   | **NEW: AI test generation with AIDEN**                         | ✅ Working |
+| [`playwright-auto-healing.js`](scripts-complex/playwright-auto-healing.js) | **NEW: Self-healing test utilities**                           | ✅ Working |
+| [`security-scanner.js`](scripts-complex/security-scanner.js)               | Infrastructure & compliance security (complements GitGuardian) | ✅ Working |
+| [`performance-monitor.js`](scripts-complex/performance-monitor.js)         | Performance metrics tracking                                   | ✅ Working |
+| [`dev-utils.js`](scripts-complex/dev-utils.js)                             | Development utilities                                          | ✅ Working |
+| [`webhook-manager.js`](scripts-complex/webhook-manager.js)                 | Webhook automation                                             | ✅ Working |
+| [`sonarqube-integration.js`](scripts-complex/sonarqube-integration.js)     | SonarQube integration                                          | ✅ Working |
 
 ## 📋 **Quick Implementation Guide**
 

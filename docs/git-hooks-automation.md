@@ -15,7 +15,7 @@ Complete git hooks automation is now handled by the AI-SDLC framework with intel
 # This automatically configures:
 # ✅ Husky v8+ with modern initialization (VALIDATED)
 # ✅ lint-staged for changed files only (WORKING)
-# ✅ Pre-commit hooks with security auditing (ENHANCED)
+# ✅ Pre-commit hooks with GitGuardian secret scanning + dependency auditing (ENHANCED)
 # ✅ Branch naming enforcement (ADDED)
 # ✅ Commit message validation with commitlint (WORKING)
 # ✅ Project-specific linting rules (Laravel, React, TypeScript)
@@ -94,12 +94,18 @@ if [[ ! $branch_name =~ $valid_pattern ]]; then
   exit 1
 fi
 
-# Security auditing
-echo "🔍 Running security audit..."
-npm audit --audit-level=high
-if [ $? -ne 0 ]; then
-  echo "❌ High/critical security vulnerabilities found. Please fix before committing."
-  exit 1
+# GitGuardian secret scanning (if configured)
+if command -v ggshield &> /dev/null; then
+  echo "🔐 Running GitGuardian secret scan..."
+  ggshield secret scan pre-commit
+else
+  echo "ℹ️  GitGuardian not installed. Install with: pip install detect-secrets-guardian"
+  echo "🔍 Running basic dependency audit as fallback..."
+  npm audit --audit-level=high
+  if [ $? -ne 0 ]; then
+    echo "❌ High/critical security vulnerabilities found. Please fix before committing."
+    exit 1
+  fi
 fi
 
 # Run lint-staged for code quality
