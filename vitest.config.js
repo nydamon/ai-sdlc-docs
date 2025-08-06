@@ -17,6 +17,11 @@ export default defineConfig({
         '**/*.config.js',
         '**/*.config.ts',
       ],
+      thresholds: {
+        lines: 80,
+        functions: 80,
+        branches: 70,
+      },
     },
   },
   resolve: {

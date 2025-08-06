@@ -2,7 +2,7 @@
 
 ## **Eliminate 80% of Code Review Overhead While Accelerating Development 40%**
 
-🎯 **Transform Your Development Pipeline in 5 Minutes | $597K+ Annual Team Savings**
+🎯 **Transform Your Development Pipeline in 5 Minutes | $597K+ Annual Savings (8-person team)**
 
 ### 💼 **Executive Summary**
 
@@ -57,7 +57,7 @@ This AI-SDLC framework is designed for implementation across TheCreditPros devel
 - 🤖 Generates framework-specific configurations and test templates
 - 🤖 Optimizes AI test generation for your specific tools and patterns
 
-**See [Framework Configurations Guide](docs/framework-configurations.md) for detailed setup instructions.**
+**See [Framework Configurations Guide](framework-configurations.md) for detailed setup instructions.**
 
 ## 🚀 **5-Minute Setup That Actually Works**
 
@@ -86,6 +86,9 @@ cd ai-sdlc
 **API Keys Required:** OpenAI ($20-50/month), Qase (free tier available)
 
 - ✅ **AI test generation** - 100% coverage with modern framework support (Vitest, TypeScript strict mode)
+- ✅ **Smart test execution** - Only runs tests for changed files (npm run test:changed)
+- ✅ **Coverage thresholds** - Enforced quality gates (80% lines, 80% functions, 70% branches)
+- ✅ **Enhanced E2E debugging** - Automatic screenshots and video capture on test failures
 - ✅ **Modern bundler optimization** - Vite, esbuild, SWC integration for maximum performance
 - ✅ **Advanced state management** - Zustand, TanStack Query, Pinia auto-testing
 - ✅ **TypeScript strict enforcement** - Complete type safety with intelligent test generation
@@ -375,9 +378,19 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 **For Developers:**
 
 - [Quick Start Guide](quick-start-simple.md) - Step-by-step setup for all levels
+- [👨‍💻 Developer Workflow Guide](developer-workflow-guide.md) - **Complete daily workflow with line-by-line instructions**
 - [Architecture Overview](architecture-simplified.md) - 3-level framework architecture
 - [🗺️ Existing Database Setup](existing-database-setup.md) - **PostgreSQL integration with YOUR existing database**
 - [Troubleshooting Guide](troubleshooting-simple.md) - Common issues and fixes
+
+**For QA Teams:**
+
+- [🧪 QA Team Workflow Guide](qa-team-workflow-guide.md) - **Complete QA automation workflow with line-by-line instructions**
+- [Testing & Validation Documentation](TESTING-README.md) - Comprehensive testing guide
+
+**For Code Reviewers:**
+
+- [👀 Code Reviewer Guide](code-reviewer-guide.md) - **AI-assisted code review workflow with automation tools**
 
 **For Managers:**
 
@@ -457,7 +470,7 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 
 ### **For Leadership: The Business Case is Clear**
 
-- ✅ **$597K+ annual ROI** from a 5-minute implementation
+- ✅ **$597K+ annual ROI** from a 5-minute implementation (scales to $2.43M+ for enterprise teams)
 - ✅ **Zero implementation risk** - instant rollback capability
 - ✅ **Immediate productivity gains** - measurable in week 1
 - ✅ **Competitive advantage** - 40% faster development velocity

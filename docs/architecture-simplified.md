@@ -239,5 +239,5 @@ ai_sdlc/
 
 **Created by**: Damon DeCrescenzo, CTO - The Credit Pros  
 **Last Updated**: August 6, 2025  
-**Framework Version**: AI-SDLC v2.4.0 (Modern Framework Support & Documentation Consistency)  
+**Framework Version**: AI-SDLC v2.6.0 (Smart Testing & QA Enhancement with Team Workflow Guides)  
 **Status**: ✅ Production-ready with $597K+ annual savings validated (8-person team)

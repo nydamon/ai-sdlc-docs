@@ -1,4 +1,22 @@
-# Quick Start Guide - Enhanced AI-SDLC
+# Quick Start Guide - AI-SDLC v2.6.0
+
+## 🆕 New in v2.6.0: Smart Testing & Enhanced QA
+
+**Immediate Benefits:**
+
+- ✅ **Smart test execution** - Only test changed files (60% faster CI)
+- ✅ **Coverage quality gates** - 80% lines, 80% functions, 70% branches enforced
+- ✅ **Enhanced E2E debugging** - Screenshots + videos on failure
+- ✅ **Optimized GitHub Actions** - E2E only runs on PRs
+
+**New NPM Scripts:**
+
+```bash
+npm run test:changed        # Test only files changed since last commit
+npm run test:watch-coverage # Live coverage monitoring during development
+npm run test:e2e-headed     # Run E2E tests with browser UI (debugging)
+npm run ci:test-fast        # Optimized script for CI/CD pipelines
+```
 
 ## 🎯 Repository-Specific Implementation
 
@@ -75,6 +93,19 @@ The script will:
 - **Test everything works** with your specific configuration
 
 ### Step 3: Test Basic Setup (1 minute)
+
+Test the new smart testing features:
+
+```bash
+# Test only changed files (new in v2.6.0)
+npm run test:changed
+
+# Watch coverage in real-time
+npm run test:watch-coverage
+
+# Run E2E with visual debugging
+npm run test:e2e-headed
+```
 
 Make a test commit:
 

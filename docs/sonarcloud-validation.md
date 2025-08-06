@@ -280,7 +280,7 @@ The validation generates a comprehensive report:
 ```json
 {
   "timestamp": "2025-08-06T...",
-  "framework": "AI-SDLC v2.1.0",
+  "framework": "AI-SDLC v2.6.0",
   "organization": "thecreditpros",
   "repositories": {
     "customer-frontend-portal": {
@@ -369,7 +369,7 @@ export SONAR_ORGANIZATION=thecreditpros
 
 ---
 
-**Framework**: AI-SDLC Framework v2.4.0  
+**Framework**: AI-SDLC Framework v2.6.0  
 **Last Updated**: August 6, 2025  
 **Validation Tool**: `./ai-sdlc sonar-validate`  
 **Template Generator**: `./ai-sdlc sonar-templates`

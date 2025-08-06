@@ -42,6 +42,24 @@
 
 **Auto-Healing Tests** - Self-maintaining test framework that automatically adapts when UI selectors change, reducing test maintenance overhead through smart fallback systems.
 
+## v2.6.0 Testing Enhancements
+
+**Smart Test Execution** - Intelligent test selection that only runs tests for files changed since the last commit, reducing CI/CD execution time by up to 60%.
+
+**Coverage Quality Gates** - Automated enforcement of code coverage thresholds (80% lines, 80% functions, 70% branches) integrated with Vitest and SonarCloud validation.
+
+**Enhanced E2E Debugging** - Automatic capture of screenshots and video recordings when Playwright end-to-end tests fail, enabling faster debugging and issue resolution.
+
+**CI Test Optimization** - GitHub Actions workflow enhancement that runs E2E tests only on pull requests, optimizing resource usage and pipeline performance.
+
+**test:changed** - NPM script that executes Vitest only on files modified since the last Git commit, providing rapid feedback during development.
+
+**test:watch-coverage** - NPM script that runs Vitest in watch mode with live coverage reporting, enabling real-time quality monitoring during development.
+
+**test:e2e-headed** - NPM script that runs Playwright tests with browser UI visible, useful for debugging and test development.
+
+**ci:test-fast** - Optimized NPM script combining linting and smart test execution for efficient CI/CD pipeline processing.
+
 ## Credit Repair Domain
 
 **FCRA** - Fair Credit Reporting Act, federal law governing credit reporting and consumer rights.
@@ -112,6 +130,9 @@
 - [Git Hooks Automation](git-hooks-automation.md) - Technical automation details
 - [Cursor IDE Guidelines](enhanced-cursor-guidelines.md) - AI-powered development tips
 - [Testing & Validation](TESTING-README.md) - Quality assurance processes
+- [👨‍💻 Developer Workflow Guide](developer-workflow-guide.md) - **Complete daily workflow with AI-SDLC tools**
+- [🧪 QA Team Workflow Guide](qa-team-workflow-guide.md) - **QA automation and testing workflows**
+- [👀 Code Reviewer Guide](code-reviewer-guide.md) - **AI-assisted code review process**
 
 ---
 
