@@ -502,5 +502,5 @@ This guide provides step-by-step implementation instructions for development and
 ---
 
 _Last Updated: August 6, 2025_  
-_Version: 2.1.0_  
+_Version: AI-SDLC Framework v2.4.0_  
 _Next Review: September 2025_

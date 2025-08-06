@@ -414,4 +414,4 @@ interface CreditData {
 - ✅ Node.js with modern frameworks
 
 **Updated:** August 6, 2025  
-**AI-SDLC Version:** 2.1.0 (Modern Framework Support)
+**AI-SDLC Version:** AI-SDLC Framework v2.4.0 (Modern Framework Support)
