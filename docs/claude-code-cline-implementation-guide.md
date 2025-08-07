@@ -225,7 +225,7 @@ Always reference relevant memory bank files:
 ### **Cline Project Configuration (`.clineignore`)**
 
 ```gitignore
-# TheCreditPros .clineignore v2.8.1
+# TheCreditPros .clineignore v3.0.0
 
 # Sensitive Files
 .env
@@ -394,14 +394,14 @@ tests/e2e/ai-generated/
 **File:** `cline_memory.md` (Project root)
 
 ```markdown
-# TheCreditPros Project Memory - AI-SDLC v2.8.1
+# TheCreditPros Project Memory - AI-SDLC v3.0.0
 
 ## Project Context
 
 - **Industry**: Credit repair services
 - **Compliance**: FCRA/FACTA regulations required
 - **Tech Stack**: React 18+, TypeScript strict, Laravel 10+, Vitest, Playwright
-- **Framework**: AI-SDLC v2.8.1 with automated testing
+- **Framework**: AI-SDLC v3.0.0 with automated testing
 
 ## Critical Business Rules
 
@@ -649,8 +649,8 @@ cat .clinerules/*.md # Verify markdown format
 **Problem:** "AI-SDLC framework conflicts"
 
 ```bash
-# Solution: Update framework to v2.8.1 compatibility
-./ai-sdlc update --version=2.7.1
+# Solution: Update framework to v3.0.0 compatibility
+./ai-sdlc update --version=3.0.0
 ./ai-sdlc validate --claude-code --cline
 ```
 

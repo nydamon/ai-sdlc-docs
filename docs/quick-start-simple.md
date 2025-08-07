@@ -154,7 +154,7 @@ The script will:
 Test the new smart testing features:
 
 ```bash
-# Test only changed files (new in v2.8.1)
+# Test only changed files (smart testing in v3.0.0)
 npm run test:changed
 
 # Watch coverage in real-time

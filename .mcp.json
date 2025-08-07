@@ -135,7 +135,7 @@
     "examples": "./docs/mcp-examples.md"
   },
   "metadata": {
-    "framework_version": "v2.8.1",
+    "framework_version": "v3.0.0",
     "mcp_protocol_version": "1.0.0",
     "created": "2025-08-07",
     "maintainer": "The Credit Pros - CTO Office",
