@@ -6,7 +6,7 @@ site_author: Damon DeCrescenzo, CTO - The Credit Pros
 # Version Configuration - Update only these values to change across all documentation
 extra:
   version:
-    framework: 'v3.2.0'
+    framework: 'v3.2.1'
     name: 'Claude Code + Cline Enterprise Platform with MCP Integration'
     platform: 'Comprehensive AI Development Suite - 10 MCP Servers'
     updated: 'August 7, 2025'
@@ -97,6 +97,7 @@ copyright: |
 
 nav:
   - Home: README.md
+  - 📂 Browse All Docs: navigation-index.md
   - 🚀 Quick Start Guide: quick-start-simple.md
   - 📋 Manager Implementation Guide: implementation-guide-managers.md
   - 🔧 Troubleshooting: troubleshooting-simple.md
