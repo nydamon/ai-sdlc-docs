@@ -93,13 +93,14 @@ copyright: |
   &copy; 2025 <a href="https://thecreditpros.com" style="color: #ff902a; text-decoration: none;">The Credit Pros</a>. All rights reserved.<br>
   <strong style="color: #ff902a;">Enterprise AI-SDLC Framework by Damon DeCrescenzo, CTO - The Credit Pros</strong><br>
   <em style="color: #fffffe;">AI-Powered Development • $70,200+ Annual Savings • Production Ready</em><br>
-  <strong style="color: #ff902a;">Version: v3.2.0 | Updated: August 7, 2025</strong>
+  <strong style="color: #ff902a;">Version: v3.2.1 | Updated: August 7, 2025</strong>
 
 nav:
   - Home: README.md
   - 📂 Browse All Docs: navigation-index.md
   - 🚀 Quick Start Guide: quick-start-simple.md
   - 📋 Manager Implementation Guide: implementation-guide-managers.md
+  - 🧪 Validation Testing Report: VALIDATION_TESTING_REPORT.md
   - 🔧 Troubleshooting: troubleshooting-simple.md
   - 📦 Scripts & Downloads: scripts-download.md
   - Advanced Configuration:
