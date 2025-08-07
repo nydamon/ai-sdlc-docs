@@ -1,6 +1,38 @@
-# Quick Start Guide - AI-SDLC v2.7.1
+# Quick Start Guide - AI-SDLC v2.8.1
 
-## 🆕 New in v2.7.1: Claude Code + Cline Enterprise Platform
+## 🚀 New in v2.8.0: Open-Source PR-Agent (TCP Optimized)
+
+**MAJOR COST-EFFICIENT AI CODE REVIEW:**
+
+- **$16,200/year savings** vs Qodo Pro ($150/month vs $1,500/month)
+- **TCP Credit Repair Compliance**: FCRA/FACTA specific validation rules
+- **PII Pattern Detection**: Automatic detection and encryption validation
+- **Cost-Optimized Models**: GPT-4o-mini primary, smart fallback routing
+- **Custom TCP Labels**: Credit repair domain-specific categorization
+- **Open-Source Freedom**: Full customization and control
+
+### Open-Source PR-Agent Setup (NEW)
+
+**One-Command Setup:**
+
+```bash
+# Automated TCP-optimized setup
+curl -sSL https://raw.githubusercontent.com/nydamon/ai-sdlc/main/scripts/setup-pr-agent.sh | bash
+
+# Or manual setup
+cp .ai-sdlc/.pr_agent.toml .
+cp .ai-sdlc/.github/workflows/pr-agent-optimized.yml .github/workflows/pr-agent.yml
+```
+
+**Features Enabled:**
+
+- Cost-optimized AI model routing (90% cost reduction)
+- FCRA/FACTA compliance validation with custom rules
+- PII detection for credit repair domain (SSN, credit scores, etc.)
+- TCP-specific labels and automated PR descriptions
+- Smart workflow that adapts to change types
+
+## 🆕 Previous v2.7.1: Claude Code + Cline Enterprise Platform
 
 **MAJOR TOOLING UPDATE:**
 

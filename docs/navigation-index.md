@@ -61,6 +61,7 @@
 | [🚀 Claude Code + Cline Implementation Guide](claude-code-cline-implementation-guide.md) | Complete deployment    | Enterprise       | <span class="status-indicator new"></span> New         |
 | [🏢 Centralized Ruleset Management](centralized-ruleset-management.md)                   | Policy control         | Enterprise       | <span class="status-indicator new"></span> New         |
 | [📄 Scripts & Configuration Reference](scripts-reference.md)                             | Technical reference    | All              | <span class="status-indicator updated"></span> Updated |
+| [🎯 Qase Dual Project Setup Guide](../QASE_DUAL_PROJECT_SETUP.md)                        | TCP/PCU project config | All              | <span class="status-indicator new"></span> New         |
 
 ### 📦 **Scripts & Downloads**
 
@@ -194,7 +195,7 @@
 
 ---
 
-**Framework Version:** v2.7.1 - Claude Code + Cline Enterprise Platform  
+**Framework Version:** v2.8.1 - Documentation Accuracy Update  
 **Last Updated:** August 7, 2025  
 **Total Pages:** 25+ comprehensive guides  
 **Status:** ✅ Production Ready

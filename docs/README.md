@@ -329,7 +329,7 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 - ✅ **Catch bugs earlier** - before they reach review
 - ✅ **Focus on logic, not style** - tools handle formatting
 
-### 🟡 **Level 2: AI Acceleration ($25-50/month) - $425K+ Annual ROI**
+### 🟡 **Level 2: AI Code Review ($150/month) - $70,200+ Annual ROI**
 
 **Competitive advantage through AI-powered testing**
 
@@ -354,7 +354,7 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 - ✅ **Learn testing patterns** from AI-generated examples
 - ✅ **Focus on features** - let AI handle test boilerplate
 
-### 🔴 **Level 3: Enterprise Automation ($50-100/month) - $680K+ Annual ROI**
+### 🔴 **Level 3: Enterprise Automation ($150/month + tooling) - $70,200+ Annual ROI**
 
 **Industry-leading development pipeline**
 

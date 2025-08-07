@@ -1,0 +1,258 @@
+# Open-Source PR-Agent Configuration for TheCreditPros - v2.8.0
+# Optimized for Credit Repair Compliance (FCRA/FACTA) & Cost Efficiency
+
+[config]
+# Model configuration - optimize for cost and quality
+model = "gpt-4o-mini"           # Most cost-effective GPT-4 class model
+fallback_models = ["gpt-3.5-turbo", "gpt-4"]
+temperature = 0.2               # Consistent, focused responses
+max_tokens = 2048              # Reasonable limit for detailed analysis
+verbosity_level = 1            # Concise but comprehensive
+
+[pr_description]
+# Enhanced PR description generation
+publish_description = true
+add_original_user_description = true
+keep_original_user_title = true
+use_description_markers = true
+include_generated_by_tag = false
+enable_pr_type = true
+enable_summary = true 
+enable_walkthrough = true
+enable_labels = true
+
+# TCP Credit Repair specific instructions
+extra_instructions = """
+CREDIT REPAIR DOMAIN FOCUS:
+
+🏦 COMPLIANCE PRIORITY (CRITICAL):
+- FCRA Section 604: Verify permissible purpose for credit data access
+- FCRA Section 607: Ensure accuracy requirements in credit score handling
+- FCRA Section 615: Validate proper adverse action disclosures
+- FACTA compliance: Identity theft prevention measures
+- SOC-2 controls: Data handling and audit trail requirements
+
+🔐 SECURITY REQUIREMENTS (CRITICAL):
+- PII encryption validation (SSN, credit scores, account numbers)
+- Customer data access logging and audit trails
+- Input validation for credit-related data
+- SQL injection prevention in database queries
+- XSS prevention in customer-facing interfaces
+
+💳 PAYMENT PROCESSING (HIGH PRIORITY):
+- PCI-DSS compliance verification
+- Credit card data handling security
+- Payment flow error handling
+- Fraud detection implementation
+
+📊 BUSINESS LOGIC (HIGH PRIORITY):
+- Credit score validation (300-850 range enforcement)
+- Consumer dispute workflow compliance
+- Timeline tracking for regulatory requirements
+- Customer communication automation
+"""
+
+[pr_reviewer]
+# Comprehensive code review with compliance focus
+enable_review = true
+require_focused_review = true
+require_score = true
+require_tests = true
+require_security = true
+num_code_suggestions = 5       # More suggestions for quality
+inline_code_comments = true
+persistent_comment_per_line = true
+enable_help_text = true
+
+# Credit repair specific review priorities
+extra_instructions = """
+TCP CODE REVIEW PRIORITIES:
+
+🚨 CRITICAL SECURITY CHECKS:
+1. PII data patterns: SSN, credit_score, bank_account, routing_number
+   - Must be encrypted at rest and in transit
+   - Require proper access logging
+2. Credit bureau API calls: Validate permissible purpose
+3. Customer authentication: Verify session management
+4. Database queries: Check for SQL injection vulnerabilities
+5. Payment processing: Ensure PCI compliance
+
+⚡ PERFORMANCE REQUIREMENTS:
+1. Credit report processing: Must complete <2 seconds
+2. Database optimization: Large customer datasets
+3. API response times: Customer-facing endpoints <1 second
+4. Memory management: Credit data processing efficiency
+5. Caching: Frequently accessed credit information
+
+🏗️ ARCHITECTURE PATTERNS:
+1. Laravel best practices: Eloquent, Services, Jobs
+2. React optimization: useMemo, useCallback, component structure  
+3. Error handling: User-friendly messaging for consumers
+4. API versioning: Backward compatibility for mobile apps
+5. Event-driven: Dispute workflow state management
+
+🧪 TESTING REQUIREMENTS:
+1. Unit tests: All credit calculation and scoring logic
+2. Integration tests: Credit bureau API interactions
+3. Security tests: PII handling and encryption
+4. E2E tests: Complete customer dispute workflows
+5. Compliance tests: FCRA/FACTA requirement validation
+"""
+
+[pr_code_suggestions]
+# Enhanced code improvement suggestions
+enable_suggestions = true
+num_code_suggestions = 3
+rank_suggestions = true
+enable_help_text = true
+commitable_code_suggestions = false  # Safety: no auto-commits
+
+# Focus areas for TCP development
+extra_instructions = """
+CODE IMPROVEMENT PRIORITIES:
+
+🔐 SECURITY ENHANCEMENTS:
+1. Replace plain text storage with encryption for PII
+2. Add input validation for credit-related fields
+3. Implement proper access controls for customer data
+4. Add audit logging for sensitive operations
+5. Enhance error handling without exposing sensitive info
+
+📈 PERFORMANCE OPTIMIZATIONS:
+1. Optimize database queries for customer/credit data
+2. Implement caching for frequently accessed information
+3. Reduce API call latency for credit bureau requests
+4. Improve memory usage in credit processing algorithms
+5. Add pagination for large dataset operations
+
+💡 CODE QUALITY:
+1. TypeScript strict mode enforcement
+2. Proper error boundaries in React components
+3. Consistent naming conventions across codebase
+4. Documentation for complex business logic
+5. Unit test coverage for critical functions
+"""
+
+[pr_questions]
+# Interactive Q&A for developers
+enable_help_text = true
+extra_instructions = """
+Help developers understand:
+1. Credit repair business logic and regulatory requirements
+2. FCRA/FACTA compliance implementation patterns
+3. Security best practices for PII handling
+4. Testing strategies for compliance validation
+5. Performance optimization techniques for credit data
+"""
+
+[pr_test]
+# Test generation assistance
+enable_test_generation = true
+testing_framework = "auto"      # Auto-detect Jest, Vitest, PHPUnit
+coverage_threshold = 80         # Minimum test coverage
+extra_instructions = """
+GENERATE TESTS FOR:
+
+🏦 COMPLIANCE CRITICAL:
+1. Credit score validation (300-850 range)
+2. Permissible purpose verification
+3. Consumer consent tracking
+4. Adverse action disclosure timing
+5. Identity verification workflows
+
+🔐 SECURITY CRITICAL:
+1. PII encryption/decryption functions
+2. Access control and authorization
+3. Input validation and sanitization
+4. Session management and timeout
+5. Audit logging completeness
+
+💳 BUSINESS LOGIC:
+1. Payment processing flows
+2. Dispute workflow state machines
+3. Credit bureau API integration
+4. Customer notification systems
+5. Report generation and delivery
+"""
+
+[pr_update_changelog]
+# Automated changelog management
+enable_changelog = true
+changelog_path = "CHANGELOG.md"
+changelog_format = "semantic"
+include_breaking_changes = true
+include_security_fixes = true
+
+[github]
+# GitHub integration settings
+publish_review_comment = true
+publish_inline_comments = true
+add_line_comments_single_suggestions = true
+enable_pr_labels = true
+persistent_comment_header = "## 🤖 TCP AI Code Review"
+enable_auto_approval = false   # Always require human approval
+
+# TCP-specific custom labels
+custom_labels = [
+    "🏦 fcra-compliance",      # FCRA regulation compliance
+    "🔐 facta-compliance",     # FACTA regulation compliance  
+    "👤 pii-handling",         # Personal information handling
+    "💳 payment-processing",   # Payment and billing
+    "🔒 security-critical",    # Security vulnerabilities
+    "⚡ performance-impact",   # Performance implications
+    "🗄️ database-changes",     # Database schema/query changes
+    "📊 business-logic",       # Core business rule changes
+    "🧪 testing-required",     # Needs comprehensive testing
+    "🚨 breaking-change",      # Breaking API or interface changes
+    "👥 customer-facing",      # Customer-visible changes
+    "📱 mobile-impact",        # Affects mobile app functionality
+    "🔍 audit-trail",          # Audit logging and compliance
+    "🏗️ architecture",         # Architectural changes
+    "📚 documentation"         # Documentation updates
+]
+
+# Cost optimization settings
+[cost_optimization]
+# Use faster models for simple tasks
+simple_tasks_model = "gpt-3.5-turbo"     # For labels, basic descriptions
+complex_tasks_model = "gpt-4o-mini"      # For reviews, suggestions
+max_files_for_review = 20                # Limit review scope
+enable_smart_review = true               # Only review changed sections
+
+# TCP-specific compliance patterns
+[tcp_patterns]
+# PII patterns to flag for special handling
+pii_indicators = [
+    "ssn", "social_security_number", "social_security",
+    "credit_score", "fico_score", "vantage_score",
+    "bank_account", "routing_number", "account_number",
+    "credit_card", "cc_number", "card_number",
+    "customer_id", "consumer_id", "client_id",
+    "date_of_birth", "dob", "birth_date",
+    "phone_number", "telephone", "mobile_number",
+    "address", "street_address", "home_address",
+    "email_address", "email", "personal_email",
+    "driver_license", "dl_number", "license_number",
+    "passport", "passport_number"
+]
+
+# Compliance-sensitive file patterns
+compliance_files = [
+    "**/models/Customer*",
+    "**/models/Credit*", 
+    "**/models/Consumer*",
+    "**/controllers/Credit*",
+    "**/controllers/Payment*",
+    "**/services/Credit*",
+    "**/services/Bureau*",
+    "**/api/credit/**",
+    "**/api/payment/**",
+    "**/components/Credit*",
+    "**/components/Customer*"
+]
+
+# Business-critical paths requiring extra scrutiny
+critical_paths = [
+    "auth/", "payment/", "credit/", "dispute/",
+    "bureau/", "compliance/", "security/", "admin/"
+]

@@ -52,8 +52,11 @@ export SONAR_TOKEN=your_sonarcloud_token
 # AI E2E Test Generation (WORKING)
 node scripts-complex/ai-e2e-generator.js test-sample/demo.js
 
-# NEW: Qase AIDEN Integration (WORKING)
-./ai-sdlc generate-from-requirements "Test demo functionality with validation"
+# NEW: Qase AIDEN Integration (WORKING) - Dual Project Support
+./ai-sdlc generate-from-requirements "Test demo functionality with validation" --project=TCP
+
+# For admin features, use PCU project
+./ai-sdlc generate-from-requirements "Test admin user management" --project=PCU
 
 # Run Generated Tests
 npm test
@@ -73,8 +76,9 @@ cat tests/e2e/test-sample/demo.e2e.spec.js
 ### 5. Test NEW Qase AIDEN Integration ✨ NEW
 
 ```bash
-# Test AIDEN natural language test generation
-./ai-sdlc generate-from-requirements "Test credit score validation with FCRA compliance"
+# Test AIDEN natural language test generation with dual projects
+./ai-sdlc generate-from-requirements "Test credit score validation with FCRA compliance" --project=TCP
+./ai-sdlc generate-from-requirements "Test admin analytics dashboard" --project=PCU
 
 # Test manual test case conversion
 ./ai-sdlc convert-manual-to-auto 123
@@ -134,15 +138,14 @@ node scripts-complex/playwright-auto-healing.js demo
 
 **Production Monthly Costs:**
 
-- OpenAI: $20-50/month for heavy usage
-- Codium AI: $19-49/month (optional premium)
-- **Total: $50-100/month for full AI features**
+- OpenAI: $150/month for open-source PR-Agent (cost-optimized)
+- **Total: $150/month for full AI features**
 
 **ROI Analysis:**
 
 - **Time Saved:** 15-20 hours/week per developer
-- **Value:** $6,000-8,000/month (at $100/hour rate)
-- **Net Benefit:** $5,900-7,900/month after API costs
+- **Value:** $6,000/month (at $100/hour rate)
+- **Net Benefit:** $5,850/month after API costs ($70,200/year savings)\*\*
 
 ## 🎯 Implementation Levels
 
@@ -154,21 +157,21 @@ node scripts-complex/playwright-auto-healing.js demo
 - Git hooks for quality control
 - Conventional commits
 
-### Level 2: AI Test Generation ($50-100/month)
+### Level 2: AI Code Review ($150/month)
 
-✅ **Ready for Testing** - Requires API keys
+✅ **Ready for Testing** - Requires OpenAI API key
 
-- AI-powered test generation
-- Qase integration
-- Credit repair compliance testing
+- Open-source PR-Agent with TCP compliance
+- FCRA/FACTA validation rules
+- PII pattern detection and alerts
 
-### Level 3: Enterprise QA ($100-200/month)
+### Level 3: Enterprise QA ($150/month + tooling)
 
-✅ **Ready for Implementation** - Full API setup
+✅ **Ready for Implementation** - Full automation setup
 
-- Automated PR reviews
+- Comprehensive AI code review
 - E2E testing with Playwright
-- Complete QA automation
+- Complete QA automation with compliance tracking
 
 ## 📋 Next Steps for Production Deployment
 

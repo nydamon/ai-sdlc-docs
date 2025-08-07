@@ -1,0 +1,233 @@
+# Open-Source PR-Agent Workflow - TCP Optimized
+# Cost-efficient AI code review with credit repair compliance focus
+
+name: 🤖 TCP PR Agent (Open Source)
+
+on:
+  pull_request:
+    types: [opened, reopened, ready_for_review, synchronize]
+  issue_comment:
+    types: [created, edited]
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  checks: write
+
+jobs:
+  pr-agent-analysis:
+    name: 🤖 AI Code Analysis
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.draft == false }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0 # Get full history for better analysis
+
+      # Smart analysis: Only run description on new PRs
+      - name: Generate PR Description
+        if: github.event.action == 'opened' || github.event.action == 'reopened'
+        uses: Codium-ai/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          command: /describe
+          args: >
+            --pr_description.add_original_user_description=true
+            --pr_description.keep_original_user_title=true
+            --pr_description.enable_pr_type=true
+            --pr_description.enable_labels=true
+
+      # Comprehensive review on substantial changes
+      - name: AI Code Review
+        if: |
+          (github.event.action == 'opened' && github.event.pull_request.commits > 2) ||
+          (github.event.action == 'synchronize' && github.event.pull_request.changed_files < 20)
+        uses: Codium-ai/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          command: /review
+          args: >
+            --pr_reviewer.num_code_suggestions=5
+            --pr_reviewer.inline_code_comments=true
+            --pr_reviewer.require_security=true
+            --pr_reviewer.require_tests=true
+            --pr_reviewer.require_score=true
+
+      # Code improvements for performance-sensitive areas
+      - name: Code Improvement Suggestions
+        if: |
+          github.event.action == 'synchronize' &&
+          (contains(github.event.pull_request.title, 'performance') ||
+           contains(github.event.pull_request.title, 'optimization') ||
+           contains(github.event.pull_request.body, 'credit') ||
+           contains(github.event.pull_request.body, 'payment'))
+        uses: Codium-ai/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          command: /improve
+          args: --pr_code_suggestions.num_code_suggestions=3
+
+      # Security scan for compliance-critical changes
+      - name: Security & Compliance Review
+        if: |
+          contains(github.event.pull_request.body, 'security') ||
+          contains(github.event.pull_request.body, 'pii') ||
+          contains(github.event.pull_request.body, 'fcra') ||
+          contains(github.event.pull_request.body, 'facta') ||
+          contains(github.event.pull_request.body, 'compliance') ||
+          contains(github.event.pull_request.body, 'credit') ||
+          contains(github.event.pull_request.body, 'customer')
+        uses: Codium-ai/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          command: /review
+          args: >
+            --pr_reviewer.extra_instructions="Focus on TCP compliance:
+            FCRA/FACTA requirements, PII handling, encryption validation,
+            audit logging, security vulnerabilities, payment processing"
+
+  pr-agent-chat:
+    name: 💬 Interactive Chat
+    runs-on: ubuntu-latest
+    if: |
+      github.event.issue.pull_request && 
+      contains(github.event.comment.body, '/ask')
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Process Chat Request
+        uses: Codium-ai/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          command: /ask
+          args: ${{ github.event.comment.body }}
+
+  pr-agent-commands:
+    name: 📝 Manual Commands
+    runs-on: ubuntu-latest
+    if: |
+      github.event.issue.pull_request && 
+      (contains(github.event.comment.body, '/review') || 
+       contains(github.event.comment.body, '/describe') || 
+       contains(github.event.comment.body, '/improve') ||
+       contains(github.event.comment.body, '/test') ||
+       contains(github.event.comment.body, '/security') ||
+       contains(github.event.comment.body, '/compliance') ||
+       contains(github.event.comment.body, '/help'))
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Extract and Validate Command
+        id: extract
+        run: |
+          comment="${{ github.event.comment.body }}"
+          echo "Processing comment: $comment"
+
+          if [[ "$comment" == *"/review"* ]]; then
+            echo "command=/review" >> $GITHUB_OUTPUT
+            echo "args=--pr_reviewer.num_code_suggestions=5 --pr_reviewer.inline_code_comments=true --pr_reviewer.require_security=true" >> $GITHUB_OUTPUT
+          elif [[ "$comment" == *"/describe"* ]]; then
+            echo "command=/describe" >> $GITHUB_OUTPUT
+            echo "args=--pr_description.add_original_user_description=true --pr_description.enable_labels=true" >> $GITHUB_OUTPUT
+          elif [[ "$comment" == *"/improve"* ]]; then
+            echo "command=/improve" >> $GITHUB_OUTPUT
+            echo "args=--pr_code_suggestions.num_code_suggestions=3 --pr_code_suggestions.rank_suggestions=true" >> $GITHUB_OUTPUT
+          elif [[ "$comment" == *"/test"* ]]; then
+            echo "command=/test" >> $GITHUB_OUTPUT
+            echo "args=--pr_test.testing_framework=auto --pr_test.coverage_threshold=80" >> $GITHUB_OUTPUT
+          elif [[ "$comment" == *"/security"* ]]; then
+            echo "command=/review" >> $GITHUB_OUTPUT
+            echo "args=--pr_reviewer.extra_instructions='Focus exclusively on security vulnerabilities, PII handling, encryption, and TCP compliance requirements'" >> $GITHUB_OUTPUT
+          elif [[ "$comment" == *"/compliance"* ]]; then
+            echo "command=/review" >> $GITHUB_OUTPUT
+            echo "args=--pr_reviewer.extra_instructions='Focus on FCRA/FACTA compliance, audit trails, consumer consent, and regulatory requirements'" >> $GITHUB_OUTPUT
+          elif [[ "$comment" == *"/help"* ]]; then
+            echo "command=/help" >> $GITHUB_OUTPUT
+            echo "args=" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Execute PR Agent Command
+        if: steps.extract.outputs.command != ''
+        uses: Codium-ai/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          command: ${{ steps.extract.outputs.command }}
+          args: ${{ steps.extract.outputs.args }}
+
+      - name: Add Reaction
+        if: steps.extract.outputs.command != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.reactions.createForIssueComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: ${{ github.event.comment.id }},
+              content: '+1'
+            })
+
+  # Cost monitoring job
+  pr-agent-usage:
+    name: 📊 Usage Tracking
+    runs-on: ubuntu-latest
+    if: always()
+    needs: [pr-agent-analysis, pr-agent-chat, pr-agent-commands]
+
+    steps:
+      - name: Track API Usage
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const usage = {
+              repository: context.repo.repo,
+              pr_number: context.payload.pull_request?.number || 'comment',
+              timestamp: new Date().toISOString(),
+              actions_run: [
+                '${{ needs.pr-agent-analysis.result }}',
+                '${{ needs.pr-agent-chat.result }}',
+                '${{ needs.pr-agent-commands.result }}'
+              ].filter(r => r === 'success').length
+            };
+            console.log('PR Agent Usage:', JSON.stringify(usage, null, 2));
+
+  # Weekly cost summary (runs on schedule)
+  cost-summary:
+    name: 💰 Weekly Cost Summary
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule'
+
+    steps:
+      - name: Generate Cost Report
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // This would integrate with OpenAI usage API or internal tracking
+            console.log('Weekly PR Agent cost summary would be generated here');
+            console.log('Estimated monthly cost based on usage patterns');
+            console.log('Cost per PR analysis, suggestions, and reviews');
+
+# Optional: Schedule for weekly cost reporting
+# Uncomment and configure as needed
+# on:
+#   schedule:
+#     - cron: '0 9 * * 1'  # Monday 9 AM UTC

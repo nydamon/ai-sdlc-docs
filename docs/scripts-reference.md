@@ -1,4 +1,105 @@
-# Scripts & Configuration Reference - v2.7.1
+# Scripts & Configuration Reference - v2.8.1
+
+## 🚀 v2.8.0 Open-Source PR-Agent (TCP Optimized)
+
+### TCP-Optimized PR-Agent Setup
+
+**New Open-Source PR-Agent Scripts:**
+
+```bash
+# Automated TCP-optimized setup
+./scripts/setup-pr-agent.sh
+
+# Manual configuration files
+.pr_agent.toml                                    # TCP credit repair optimized config
+.github/workflows/pr-agent-optimized.yml         # Cost-efficient GitHub workflow
+```
+
+### Open-Source PR-Agent Commands
+
+#### **Automatic Features** (Zero Configuration)
+
+- ✅ **Auto-generated PR descriptions** on new PRs
+- ✅ **Smart code review** based on file changes
+- ✅ **TCP compliance validation** for credit repair code
+- ✅ **PII detection alerts** for sensitive data patterns
+- ✅ **Cost-optimized analysis** using appropriate AI models
+
+#### **Manual Commands** (Comment in PR)
+
+```bash
+/describe     # Generate/regenerate PR description
+/review       # Comprehensive AI code review
+/improve      # Code improvement suggestions
+/security     # Security-focused analysis only
+/compliance   # FCRA/FACTA compliance review
+/test         # Test generation assistance
+/ask <question>  # Interactive Q&A about code
+/help         # Show all available commands
+```
+
+### TCP-Specific Features
+
+#### **Credit Repair Compliance**
+
+```toml
+# Built-in FCRA/FACTA validation
+🏦 COMPLIANCE PRIORITY:
+- FCRA Section 604: Permissible purpose verification
+- FCRA Section 607: Credit data accuracy requirements
+- FCRA Section 615: Adverse action disclosure validation
+- FACTA compliance: Identity theft prevention measures
+- SOC-2 controls: Data handling and audit trail requirements
+```
+
+#### **PII Pattern Detection**
+
+```toml
+# Automatic detection of sensitive patterns
+pii_indicators = [
+    "ssn", "social_security_number", "credit_score",
+    "bank_account", "routing_number", "customer_id",
+    "credit_card", "date_of_birth", "phone_number"
+]
+```
+
+#### **TCP Custom Labels**
+
+```toml
+# Domain-specific PR categorization
+custom_labels = [
+    "🏦 fcra-compliance",      # FCRA regulation compliance
+    "🔐 facta-compliance",     # FACTA regulation compliance
+    "👤 pii-handling",         # Personal information handling
+    "💳 payment-processing",   # Payment and billing changes
+    "🔒 security-critical",    # Security vulnerabilities
+    "📊 business-logic",       # Core business rule changes
+]
+```
+
+### Cost Optimization Features
+
+#### **Smart Model Routing**
+
+- **GPT-4o-mini**: Primary model (cost-effective GPT-4 class)
+- **GPT-3.5-turbo**: Simple tasks (basic descriptions, labels)
+- **GPT-4**: Fallback for complex compliance analysis
+- **Smart triggering**: Skip analysis for minor changes
+
+#### **Monthly Cost Breakdown**
+
+```bash
+# Estimated costs (50 PRs/month)
+PR Descriptions:     50 × $0.05 = $2.50
+Code Reviews:        30 × $0.25 = $7.50
+Security Analysis:   15 × $0.50 = $7.50
+Code Improvements:   20 × $0.15 = $3.00
+Interactive Q&A:     25 × $0.10 = $2.50
+
+Total Monthly Cost: ~$25 + $125 buffer = $150
+vs Qodo Pro: $1,500/month
+Annual Savings: $16,200
+```
 
 ## 🆕 v2.7.1 Enhanced NPM Scripts
 
