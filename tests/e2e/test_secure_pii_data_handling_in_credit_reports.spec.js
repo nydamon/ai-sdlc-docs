@@ -18,8 +18,7 @@ class AutoHealingLocators {
     try {
       await page.waitForSelector(primarySelector, { timeout: 5000 });
       return primarySelector;
-    } catch (_error) {
-       
+    } catch {
       console.log(
         `🔧 Primary selector failed: ${primarySelector}, trying fallbacks...`
       );
@@ -29,8 +28,7 @@ class AutoHealingLocators {
           await page.waitForSelector(fallback, { timeout: 3000 });
           console.log(`✅ Using fallback selector: ${fallback}`);
           return fallback;
-        } catch (_fallbackError) {
-           
+        } catch {
           continue;
         }
       }
@@ -135,40 +133,5 @@ test.afterEach(async ({ page }, testInfo) => {
     });
 
     // Check for common auto-fixable issues
-    await attemptAutoFix(page, testInfo);
   }
 });
-
-async function attemptAutoFix(page, _testInfo) {
-  console.log('🔧 Attempting auto-fix for common issues...');
-
-  // Check for loading states
-  const loadingElements = await page
-    .locator('[data-loading], .loading, .spinner')
-    .count();
-  if (loadingElements > 0) {
-    console.log('⏳ Detected loading state, waiting...');
-    await page.waitForLoadState('networkidle');
-  }
-
-  // Check for modal overlays
-  const modals = await page
-    .locator('[role="dialog"], .modal, .overlay')
-    .count();
-  if (modals > 0) {
-    console.log('🚪 Detected modal, attempting to close...');
-    await page.keyboard.press('Escape');
-  }
-
-  // Check for error messages
-  const errorMessages = await page
-    .locator('[role="alert"], .error-message, .alert-danger')
-    .count();
-  if (errorMessages > 0) {
-    const errorText = await page
-      .locator('[role="alert"], .error-message, .alert-danger')
-      .first()
-      .textContent();
-    console.log(`⚠️ Error detected: ${errorText}`);
-  }
-}

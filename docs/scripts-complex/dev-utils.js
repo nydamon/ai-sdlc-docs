@@ -135,7 +135,6 @@ class DevUtils {
       testing: {
         hasVitest: fs.existsSync('vitest.config.js'),
         hasPlaywright: fs.existsSync('playwright.config.js'),
-        hasVitest: fs.existsSync('vitest.config.js'),
         hasPHPUnit: fs.existsSync('phpunit.xml'),
       },
       quality: {

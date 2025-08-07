@@ -22,7 +22,7 @@ class PerformanceReporter {
       performanceIssues: [],
       slowTests: [],
       memoryUsage: [],
-      networkRequests: []
+      networkRequests: [],
     };
     this.startTime = Date.now();
     this.outputDir = options.outputDir || 'test-results';
@@ -30,7 +30,7 @@ class PerformanceReporter {
       testDuration: 30000, // 30 seconds max per test
       networkTimeout: 5000, // 5 seconds for network requests
       memoryThreshold: 100 * 1024 * 1024, // 100MB memory threshold
-      pageLoadTime: 3000 // 3 seconds max page load
+      pageLoadTime: 3000, // 3 seconds max page load
     };
   }
 
@@ -46,20 +46,20 @@ class PerformanceReporter {
   onTestBegin(test, result) {
     this.metrics.totalTests++;
     result.startTime = Date.now();
-    
+
     // Initialize test performance tracking
     result.performanceData = {
       networkRequests: [],
       memorySnapshots: [],
       pageLoadTimes: [],
-      errors: []
+      errors: [],
     };
   }
 
   onTestEnd(test, result) {
     const duration = Date.now() - result.startTime;
     result.duration = duration;
-    
+
     // Update metrics based on test result
     switch (result.status) {
       case 'passed':
@@ -79,13 +79,13 @@ class PerformanceReporter {
         title: test.title,
         duration,
         threshold: this.thresholds.testDuration,
-        file: test.location.file
+        file: test.location.file,
       });
     }
 
     // Analyze performance issues
     this.analyzeTestPerformance(test, result);
-    
+
     this.results.push({
       title: test.title,
       status: result.status,
@@ -93,14 +93,15 @@ class PerformanceReporter {
       file: test.location.file,
       line: test.location.line,
       performanceData: result.performanceData,
-      errors: result.errors
+      errors: result.errors,
     });
   }
 
-  onEnd(result) {
+  onEnd(_result) {
     const endTime = Date.now();
     this.metrics.totalDuration = endTime - this.startTime;
-    this.metrics.avgTestDuration = this.metrics.totalDuration / Math.max(this.metrics.totalTests, 1);
+    this.metrics.avgTestDuration =
+      this.metrics.totalDuration / Math.max(this.metrics.totalTests, 1);
 
     this.generatePerformanceReport();
     this.generateMetricsFile();
@@ -108,19 +109,29 @@ class PerformanceReporter {
 
     console.log('📈 Performance Analysis Complete');
     console.log(`   Total Tests: ${this.metrics.totalTests}`);
-    console.log(`   Passed: ${this.metrics.passedTests} | Failed: ${this.metrics.failedTests} | Skipped: ${this.metrics.skippedTests}`);
-    console.log(`   Total Duration: ${(this.metrics.totalDuration / 1000).toFixed(2)}s`);
-    console.log(`   Avg Test Duration: ${(this.metrics.avgTestDuration / 1000).toFixed(2)}s`);
-    
+    console.log(
+      `   Passed: ${this.metrics.passedTests} | Failed: ${this.metrics.failedTests} | Skipped: ${this.metrics.skippedTests}`
+    );
+    console.log(
+      `   Total Duration: ${(this.metrics.totalDuration / 1000).toFixed(2)}s`
+    );
+    console.log(
+      `   Avg Test Duration: ${(this.metrics.avgTestDuration / 1000).toFixed(2)}s`
+    );
+
     if (this.metrics.slowTests.length > 0) {
       console.log(`   ⚠️ Slow Tests: ${this.metrics.slowTests.length}`);
     }
-    
+
     if (this.metrics.performanceIssues.length > 0) {
-      console.log(`   🐌 Performance Issues: ${this.metrics.performanceIssues.length}`);
+      console.log(
+        `   🐌 Performance Issues: ${this.metrics.performanceIssues.length}`
+      );
     }
 
-    console.log(`   📄 Performance report: ${this.outputDir}/performance-report.html`);
+    console.log(
+      `   📄 Performance report: ${this.outputDir}/performance-report.html`
+    );
   }
 
   analyzeTestPerformance(test, result) {
@@ -133,15 +144,16 @@ class PerformanceReporter {
         severity: 'warning',
         message: `Test exceeded ${this.thresholds.testDuration}ms threshold`,
         actual: result.duration,
-        threshold: this.thresholds.testDuration
+        threshold: this.thresholds.testDuration,
       });
     }
 
     // Credit repair specific performance checks
-    if (test.title.toLowerCase().includes('credit') || 
-        test.title.toLowerCase().includes('dispute') ||
-        test.title.toLowerCase().includes('score')) {
-      
+    if (
+      test.title.toLowerCase().includes('credit') ||
+      test.title.toLowerCase().includes('dispute') ||
+      test.title.toLowerCase().includes('score')
+    ) {
       // These are critical user-facing features, apply stricter thresholds
       const strictThreshold = this.thresholds.testDuration * 0.7;
       if (result.duration > strictThreshold) {
@@ -151,7 +163,7 @@ class PerformanceReporter {
           message: 'Critical credit repair feature is running slow',
           actual: result.duration,
           threshold: strictThreshold,
-          impact: 'User experience degradation for credit repair workflows'
+          impact: 'User experience degradation for credit repair workflows',
         });
       }
     }
@@ -161,7 +173,7 @@ class PerformanceReporter {
       this.metrics.performanceIssues.push({
         test: test.title,
         file: test.location.file,
-        issues
+        issues,
       });
     }
   }
@@ -173,7 +185,7 @@ class PerformanceReporter {
 
     const reportPath = path.join(this.outputDir, 'performance-report.html');
     const report = this.createHTMLReport();
-    
+
     fs.writeFileSync(reportPath, report);
   }
 
@@ -185,7 +197,7 @@ class PerformanceReporter {
       domain: 'Credit Repair - The Credit Pros',
       summary: this.metrics,
       tests: this.results,
-      thresholds: this.thresholds
+      thresholds: this.thresholds,
     };
 
     fs.writeFileSync(metricsPath, JSON.stringify(metrics, null, 2));
@@ -196,24 +208,31 @@ class PerformanceReporter {
 
     // Check overall performance
     if (this.metrics.avgTestDuration > this.thresholds.testDuration) {
-      console.warn(`⚠️ Average test duration (${this.metrics.avgTestDuration}ms) exceeds threshold (${this.thresholds.testDuration}ms)`);
+      console.warn(
+        `⚠️ Average test duration (${this.metrics.avgTestDuration}ms) exceeds threshold (${this.thresholds.testDuration}ms)`
+      );
       thresholdViolations++;
     }
 
     // Check for too many slow tests
-    const slowTestPercentage = (this.metrics.slowTests.length / this.metrics.totalTests) * 100;
+    const slowTestPercentage =
+      (this.metrics.slowTests.length / this.metrics.totalTests) * 100;
     if (slowTestPercentage > 20) {
-      console.warn(`⚠️ ${slowTestPercentage.toFixed(1)}% of tests are slow (>20% threshold)`);
+      console.warn(
+        `⚠️ ${slowTestPercentage.toFixed(1)}% of tests are slow (>20% threshold)`
+      );
       thresholdViolations++;
     }
 
     // Check critical credit repair features
-    const criticalIssues = this.metrics.performanceIssues.filter(
-      issue => issue.issues.some(i => i.type === 'critical_feature_slow')
+    const criticalIssues = this.metrics.performanceIssues.filter((issue) =>
+      issue.issues.some((i) => i.type === 'critical_feature_slow')
     );
-    
+
     if (criticalIssues.length > 0) {
-      console.error(`❌ ${criticalIssues.length} critical credit repair features have performance issues`);
+      console.error(
+        `❌ ${criticalIssues.length} critical credit repair features have performance issues`
+      );
       thresholdViolations++;
     }
 
@@ -281,31 +300,47 @@ class PerformanceReporter {
             </div>
         </div>
 
-        ${this.metrics.slowTests.length > 0 ? `
+        ${
+          this.metrics.slowTests.length > 0
+            ? `
         <div class="slow-tests">
             <h2>⚠️ Slow Tests (>${this.thresholds.testDuration}ms)</h2>
-            ${this.metrics.slowTests.map(test => `
+            ${this.metrics.slowTests
+              .map(
+                (test) => `
                 <div class="test-item">
                     <strong>${test.title}</strong><br>
                     Duration: ${test.duration}ms (threshold: ${test.threshold}ms)<br>
                     File: ${test.file}
                 </div>
-            `).join('')}
+            `
+              )
+              .join('')}
         </div>
-        ` : ''}
+        `
+            : ''
+        }
 
-        ${this.metrics.performanceIssues.length > 0 ? `
+        ${
+          this.metrics.performanceIssues.length > 0
+            ? `
         <div class="issues">
             <h2>🐌 Performance Issues</h2>
-            ${this.metrics.performanceIssues.map(item => `
+            ${this.metrics.performanceIssues
+              .map(
+                (item) => `
                 <div class="issue-item">
                     <strong>${item.test}</strong><br>
                     File: ${item.file}<br>
-                    Issues: ${item.issues.map(i => i.message).join(', ')}
+                    Issues: ${item.issues.map((i) => i.message).join(', ')}
                 </div>
-            `).join('')}
+            `
+              )
+              .join('')}
         </div>
-        ` : ''}
+        `
+            : ''
+        }
 
         <div class="timestamp">
             Generated: ${new Date().toLocaleString()}<br>

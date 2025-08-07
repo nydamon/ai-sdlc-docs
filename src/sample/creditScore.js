@@ -23,27 +23,27 @@ function calculateCreditScore(creditData) {
     creditUtilization = 0,
     creditHistory = 0,
     creditMix = 0,
-    newCredit = 0
+    newCredit = 0,
   } = creditData;
 
   // FICO 8 algorithm weights
   const paymentWeight = 0.35; // 35%
-  const utilizationWeight = 0.30; // 30%
+  const utilizationWeight = 0.3; // 30%
   const historyWeight = 0.15; // 15%
-  const mixWeight = 0.10; // 10%
-  const newCreditWeight = 0.10; // 10%
+  const mixWeight = 0.1; // 10%
+  const newCreditWeight = 0.1; // 10%
 
   // Calculate weighted score
-  let score = 
-    (paymentHistory * paymentWeight) +
-    ((100 - creditUtilization) * utilizationWeight) +
-    (Math.min(creditHistory / 120, 1) * 100 * historyWeight) +
-    (creditMix * 10 * mixWeight) +
-    (Math.max(0, 10 - newCredit) * 10 * newCreditWeight);
+  const score =
+    paymentHistory * paymentWeight +
+    (100 - creditUtilization) * utilizationWeight +
+    Math.min(creditHistory / 120, 1) * 100 * historyWeight +
+    creditMix * 10 * mixWeight +
+    Math.max(0, 10 - newCredit) * 10 * newCreditWeight;
 
   // Convert to FICO range (300-850)
-  const ficoScore = Math.round(300 + (score * 5.5));
-  
+  const ficoScore = Math.round(300 + score * 5.5);
+
   // Ensure within valid range
   return Math.max(300, Math.min(850, ficoScore));
 }
@@ -77,5 +77,5 @@ function getCreditScoreRange(score) {
 module.exports = {
   calculateCreditScore,
   isValidCreditScore,
-  getCreditScoreRange
+  getCreditScoreRange,
 };

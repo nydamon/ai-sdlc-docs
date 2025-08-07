@@ -1,26 +1,3 @@
-// Auto-healing utilities added by AI-SDLC
-class AutoHealingLocators {
-   
-  static async findElement(page, primarySelector, fallbackSelectors = []) {
-    try {
-      await page.waitForSelector(primarySelector, { timeout: 5000 });
-      return primarySelector;
-    } catch (_error) {
-       
-      for (const fallback of fallbackSelectors) {
-        try {
-          await page.waitForSelector(fallback, { timeout: 3000 });
-          return fallback;
-        } catch (_fallbackError) {
-           
-          continue;
-        }
-      }
-      throw new Error(`All selectors failed for: ${primarySelector}`);
-    }
-  }
-}
-
 import { test, expect } from '@playwright/test';
 import { execSync } from 'child_process';
 import fs from 'fs';
@@ -74,8 +51,7 @@ test.describe('AI-SDLC Setup Workflow', () => {
 
     try {
       execSync('git commit -m "test: add test file"', { encoding: 'utf8' });
-    } catch (_error) {
-       
+    } catch {
       // Expected to fail on master branch due to branch naming enforcement
     }
 

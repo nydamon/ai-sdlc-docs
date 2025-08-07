@@ -16,7 +16,7 @@ class RealAITestGenerator {
   constructor() {
     this.openaiApiKey = process.env.OPENAI_API_KEY;
     this.projectRoot = process.cwd();
-    
+
     if (!this.openaiApiKey || this.openaiApiKey.length < 20) {
       console.warn('⚠️  WARNING: No valid OpenAI API key found');
       console.warn('   Set OPENAI_API_KEY in .env file');
@@ -39,7 +39,7 @@ class RealAITestGenerator {
     try {
       const prompt = this.buildAIPrompt(sourceCode, filePath, testType);
       const response = await this.callOpenAI(prompt);
-      
+
       return this.processAIResponse(response, filePath, testType);
     } catch (error) {
       console.error('❌ OpenAI API failed:', error.message);
@@ -52,9 +52,8 @@ class RealAITestGenerator {
    * Build AI prompt for test generation
    */
   buildAIPrompt(sourceCode, filePath, testType) {
-    const fileExtension = path.extname(filePath);
     const framework = this.detectFramework(sourceCode);
-    
+
     return `You are an expert test generator for ${framework} applications. Generate comprehensive ${testType} tests for the following code.
 
 REQUIREMENTS:
@@ -86,12 +85,14 @@ Generate only the test code, no explanations:`;
     return new Promise((resolve, reject) => {
       const data = JSON.stringify({
         model: 'gpt-4',
-        messages: [{
-          role: 'user',
-          content: prompt
-        }],
+        messages: [
+          {
+            role: 'user',
+            content: prompt,
+          },
+        ],
         max_tokens: 2000,
-        temperature: 0.3
+        temperature: 0.3,
       });
 
       const options = {
@@ -100,22 +101,22 @@ Generate only the test code, no explanations:`;
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${this.openaiApiKey}`,
-          'Content-Length': data.length
-        }
+          Authorization: `Bearer ${this.openaiApiKey}`,
+          'Content-Length': data.length,
+        },
       };
 
       const req = https.request(options, (res) => {
         let responseData = '';
-        
+
         res.on('data', (chunk) => {
           responseData += chunk;
         });
-        
+
         res.on('end', () => {
           try {
             const parsed = JSON.parse(responseData);
-            
+
             if (parsed.error) {
               reject(new Error(parsed.error.message));
             } else if (parsed.choices && parsed.choices[0]) {
@@ -164,20 +165,37 @@ Generate only the test code, no explanations:`;
    */
   detectFramework(sourceCode) {
     if (sourceCode.includes('<?php')) return 'PHP/Laravel';
-    if (sourceCode.includes('import React') || sourceCode.includes('from "react"')) return 'React';
-    if (sourceCode.includes('import { Component }') || sourceCode.includes('extends Component')) return 'React';
-    if (sourceCode.includes('export default') && sourceCode.includes('function')) return 'JavaScript/Node.js';
-    if (sourceCode.includes('interface ') || sourceCode.includes(': string') || sourceCode.includes(': number')) return 'TypeScript';
+    if (
+      sourceCode.includes('import React') ||
+      sourceCode.includes('from "react"')
+    )
+      return 'React';
+    if (
+      sourceCode.includes('import { Component }') ||
+      sourceCode.includes('extends Component')
+    )
+      return 'React';
+    if (
+      sourceCode.includes('export default') &&
+      sourceCode.includes('function')
+    )
+      return 'JavaScript/Node.js';
+    if (
+      sourceCode.includes('interface ') ||
+      sourceCode.includes(': string') ||
+      sourceCode.includes(': number')
+    )
+      return 'TypeScript';
     return 'JavaScript/Node.js';
   }
 
   /**
    * Template fallback generation
    */
-  generateTemplateTests(sourceCode, filePath, testType) {
+  generateTemplateTests(sourceCode, filePath, _testType) {
     const fileName = path.basename(filePath, path.extname(filePath));
     const fileExtension = path.extname(filePath);
-    
+
     if (fileExtension === '.php') {
       return this.generatePHPTemplate(fileName, sourceCode);
     } else if (sourceCode.includes('React') || sourceCode.includes('jsx')) {
@@ -190,7 +208,7 @@ Generate only the test code, no explanations:`;
   /**
    * Generate React test template
    */
-  generateReactTemplate(componentName, sourceCode) {
+  generateReactTemplate(componentName, _sourceCode) {
     return `// Template-generated React tests for ${componentName}
 // Generated on: ${new Date().toISOString()}
 
@@ -255,7 +273,7 @@ describe('${componentName}', () => {
   generateJavaScriptTemplate(moduleName, sourceCode) {
     // Extract function names from source
     const functions = this.extractFunctions(sourceCode);
-    
+
     return `// Template-generated JavaScript tests for ${moduleName}
 // Generated on: ${new Date().toISOString()}
 
@@ -270,7 +288,9 @@ describe('${moduleName}', () => {
     // Cleanup after each test
   });
 
-${functions.map(func => `
+${functions
+  .map(
+    (func) => `
   describe('${func}', () => {
     it('should work with valid input', () => {
       // Test ${func} with valid parameters
@@ -284,11 +304,13 @@ ${functions.map(func => `
     it('should handle errors gracefully', () => {
       // Test ${func} error handling
     });
-  });`).join('')}
+  });`
+  )
+  .join('')}
 
   it('should export expected functions', () => {
     // Verify module exports
-    ${functions.map(func => `expect(typeof ${func}).toBe('function');`).join('\n    ')}
+    ${functions.map((func) => `expect(typeof ${func}).toBe('function');`).join('\n    ')}
   });
 });`;
   }
@@ -296,7 +318,7 @@ ${functions.map(func => `
   /**
    * Generate PHP test template
    */
-  generatePHPTemplate(className, sourceCode) {
+  generatePHPTemplate(className, _sourceCode) {
     return `<?php
 
 // Template-generated PHP tests for ${className}
@@ -360,29 +382,43 @@ class ${className}Test extends TestCase
    */
   extractFunctions(sourceCode) {
     const functions = [];
-    
+
     // Match function declarations
     const functionMatches = sourceCode.match(/function\s+(\w+)/g);
     if (functionMatches) {
-      functions.push(...functionMatches.map(match => match.replace('function ', '')));
+      functions.push(
+        ...functionMatches.map((match) => match.replace('function ', ''))
+      );
     }
-    
+
     // Match const/let function assignments
-    const constMatches = sourceCode.match(/(?:const|let|var)\s+(\w+)\s*=\s*(?:async\s+)?\(/g);
+    const constMatches = sourceCode.match(
+      /(?:const|let|var)\s+(\w+)\s*=\s*(?:async\s+)?\(/g
+    );
     if (constMatches) {
-      functions.push(...constMatches.map(match => 
-        match.replace(/(?:const|let|var)\s+/, '').replace(/\s*=\s*(?:async\s+)?\(/, '')
-      ));
+      functions.push(
+        ...constMatches.map((match) =>
+          match
+            .replace(/(?:const|let|var)\s+/, '')
+            .replace(/\s*=\s*(?:async\s+)?\(/, '')
+        )
+      );
     }
-    
+
     // Match arrow functions
-    const arrowMatches = sourceCode.match(/(?:const|let|var)\s+(\w+)\s*=\s*(?:async\s+)?\(.*?\)\s*=>/g);
+    const arrowMatches = sourceCode.match(
+      /(?:const|let|var)\s+(\w+)\s*=\s*(?:async\s+)?\(.*?\)\s*=>/g
+    );
     if (arrowMatches) {
-      functions.push(...arrowMatches.map(match => 
-        match.replace(/(?:const|let|var)\s+/, '').replace(/\s*=\s*(?:async\s+)?\(.*?\)\s*=>/, '')
-      ));
+      functions.push(
+        ...arrowMatches.map((match) =>
+          match
+            .replace(/(?:const|let|var)\s+/, '')
+            .replace(/\s*=\s*(?:async\s+)?\(.*?\)\s*=>/, '')
+        )
+      );
     }
-    
+
     return [...new Set(functions)]; // Remove duplicates
   }
 
@@ -397,37 +433,45 @@ class ${className}Test extends TestCase
 
       const sourceCode = fs.readFileSync(filePath, 'utf8');
       console.log(`🤖 Generating ${testType} tests for ${filePath}...`);
-      
-      const testCode = await this.generateRealAITests(sourceCode, filePath, testType);
-      
+
+      const testCode = await this.generateRealAITests(
+        sourceCode,
+        filePath,
+        testType
+      );
+
       // Generate test file path
       const testFilePath = this.getTestFilePath(filePath, testType);
-      
+
       // Ensure test directory exists
       const testDir = path.dirname(testFilePath);
       if (!fs.existsSync(testDir)) {
         fs.mkdirSync(testDir, { recursive: true });
       }
-      
+
       // Write test file
       fs.writeFileSync(testFilePath, testCode);
-      
-      console.log(`✅ Generated ${this.useTemplateMode ? 'template' : 'AI'} tests: ${testFilePath}`);
-      
+
+      console.log(
+        `✅ Generated ${this.useTemplateMode ? 'template' : 'AI'} tests: ${testFilePath}`
+      );
+
       return {
         status: 'success',
         sourceFile: filePath,
         testFile: testFilePath,
         testType,
-        aiGenerated: !this.useTemplateMode
+        aiGenerated: !this.useTemplateMode,
       };
-      
     } catch (error) {
-      console.error(`❌ Failed to generate tests for ${filePath}:`, error.message);
-      return { 
-        status: 'failed', 
+      console.error(
+        `❌ Failed to generate tests for ${filePath}:`,
+        error.message
+      );
+      return {
+        status: 'failed',
         error: error.message,
-        sourceFile: filePath
+        sourceFile: filePath,
       };
     }
   }
@@ -438,11 +482,11 @@ class ${className}Test extends TestCase
   getTestFilePath(sourceFilePath, testType) {
     const relativePath = path.relative(this.projectRoot, sourceFilePath);
     const parsedPath = path.parse(relativePath);
-    
+
     let testDir = '__tests__';
     if (testType === 'integration') testDir = 'tests/integration';
     else if (testType === 'e2e') testDir = 'tests/e2e';
-    
+
     const testFileName = `${parsedPath.name}.test${parsedPath.ext}`;
     return path.join(this.projectRoot, testDir, parsedPath.dir, testFileName);
   }
@@ -456,38 +500,49 @@ async function main() {
   const testType = process.argv[4] || 'unit';
 
   switch (command) {
-    case 'generate':
+    case 'generate': {
       if (!filePath) {
         console.error('❌ Please specify a file path');
         process.exit(1);
       }
-      
+
       const result = await generator.generateTestsForFile(filePath, testType);
-      
+
       if (result.status === 'success') {
         console.log('');
         console.log('🎉 Test generation completed successfully!');
         console.log(`📁 Test file: ${result.testFile}`);
-        console.log(`🤖 AI Generated: ${result.aiGenerated ? 'Yes' : 'No (Template)'}`);
+        console.log(
+          `🤖 AI Generated: ${result.aiGenerated ? 'Yes' : 'No (Template)'}`
+        );
       } else {
         console.error('💥 Test generation failed');
         process.exit(1);
       }
       break;
+    }
 
     default:
       console.log('Real AI Test Generator for AI-SDLC Framework');
       console.log('');
       console.log('Usage:');
-      console.log('  real-ai-test-generator.js generate <file-path> [test-type]');
+      console.log(
+        '  real-ai-test-generator.js generate <file-path> [test-type]'
+      );
       console.log('');
       console.log('Arguments:');
       console.log('  file-path   Path to source file to generate tests for');
-      console.log('  test-type   Type of tests: unit, integration, e2e (default: unit)');
+      console.log(
+        '  test-type   Type of tests: unit, integration, e2e (default: unit)'
+      );
       console.log('');
       console.log('Examples:');
-      console.log('  node real-ai-test-generator.js generate src/utils/creditScore.js unit');
-      console.log('  node real-ai-test-generator.js generate src/components/CreditReport.jsx integration');
+      console.log(
+        '  node real-ai-test-generator.js generate src/utils/creditScore.js unit'
+      );
+      console.log(
+        '  node real-ai-test-generator.js generate src/components/CreditReport.jsx integration'
+      );
       console.log('');
       console.log('Environment Variables:');
       console.log('  OPENAI_API_KEY - Required for AI-powered generation');

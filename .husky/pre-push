@@ -17,7 +17,7 @@ if [ $protected_branch = $current_branch ]; then
 fi
 
 # Check for merge conflicts
-if git diff --check --cached; then
+if ! git diff --check --cached >/dev/null 2>&1; then
     echo "❌ Merge conflict markers found"
     echo "💡 Resolve conflicts before pushing"
     exit 1
