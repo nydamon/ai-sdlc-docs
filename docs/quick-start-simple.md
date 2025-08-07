@@ -1,10 +1,10 @@
-# Quick Start Guide - AI-SDLC v2.8.1
+# Quick Start Guide - AI-SDLC {{ extra.version.framework }}
 
-## 🚀 New in v2.8.0: Open-Source PR-Agent (TCP Optimized)
+## 🚀 New in {{ extra.version.framework }}: {{ extra.version.platform }} (TCP Optimized)
 
 **MAJOR COST-EFFICIENT AI CODE REVIEW:**
 
-- **$16,200/year savings** vs Qodo Pro ($150/month vs $1,500/month)
+- **{{ extra.version.savings }}/year savings** vs Qodo Pro ({{ extra.version.cost }}/month vs $1,500/month)
 - **TCP Credit Repair Compliance**: FCRA/FACTA specific validation rules
 - **PII Pattern Detection**: Automatic detection and encryption validation
 - **Cost-Optimized Models**: GPT-4o-mini primary, smart fallback routing
@@ -32,7 +32,7 @@ cp .ai-sdlc/.github/workflows/pr-agent-optimized.yml .github/workflows/pr-agent.
 - TCP-specific labels and automated PR descriptions
 - Smart workflow that adapts to change types
 
-## 🆕 Previous v2.7.1: Claude Code + Cline Enterprise Platform
+## 🆕 Previous Version: Claude Code + Cline Enterprise Platform
 
 **MAJOR TOOLING UPDATE:**
 
@@ -40,7 +40,7 @@ cp .ai-sdlc/.github/workflows/pr-agent-optimized.yml .github/workflows/pr-agent.
 - **Cline Teams**: IDE-integrated AI with team coordination (200 seats)
 - **Combined Benefits**: Complete development lifecycle coverage + centralized control
 
-### Previous v2.6.0 Features (Retained):
+### Previous Version Features (Retained):
 
 **Smart Testing & Enhanced QA:**
 
@@ -139,7 +139,7 @@ The script will:
 Test the new smart testing features:
 
 ```bash
-# Test only changed files (new in v2.6.0)
+# Test only changed files (new in v2.8.1)
 npm run test:changed
 
 # Watch coverage in real-time

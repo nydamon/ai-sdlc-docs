@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# Pre-push hook for AI-SDLC Framework
+# Prevents pushing problematic code to remote repository
+
+echo "🔍 Running pre-push validations..."
+
+# Get current branch
+protected_branch='main'
+current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+
+# Prevent direct push to main branch
+if [ $protected_branch = $current_branch ]; then
+    echo "❌ Direct push to main branch is not allowed"
+    echo "💡 Create a pull request instead"
+    exit 1
+fi
+
+# Check for merge conflicts
+if git diff --check --cached; then
+    echo "❌ Merge conflict markers found"
+    echo "💡 Resolve conflicts before pushing"
+    exit 1
+fi
+
+# Run fast tests
+echo "🧪 Running fast test suite..."
+npm run ci:test-fast
+if [ $? -ne 0 ]; then
+    echo "❌ Tests failed"
+    echo "💡 Fix failing tests before pushing"
+    exit 1
+fi
+
+# FCRA Compliance Check
+echo "🏦 Checking FCRA compliance patterns..."
+if [ -f "scripts-complex/security-scanner.js" ]; then
+    node scripts-complex/security-scanner.js quick
+    if [ $? -ne 0 ]; then
+        echo "❌ FCRA compliance issues found"
+        echo "💡 Review security scanner output"
+        exit 1
+    fi
+fi
+
+# Check for sensitive data
+echo "🔐 Scanning for sensitive data..."
+if command -v git-secrets >/dev/null 2>&1; then
+    git secrets --scan
+    if [ $? -ne 0 ]; then
+        echo "❌ Sensitive data detected"
+        echo "💡 Remove secrets before pushing"
+        exit 1
+    fi
+fi
+
+echo "✅ All pre-push validations passed"
+exit 0

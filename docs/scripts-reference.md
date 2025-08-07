@@ -1,6 +1,6 @@
-# Scripts & Configuration Reference - v2.8.1
+# Scripts & Configuration Reference - {{ extra.version.framework }}
 
-## 🚀 v2.8.0 Open-Source PR-Agent (TCP Optimized)
+## 🚀 {{ extra.version.framework }} {{ extra.version.platform }} (TCP Optimized)
 
 ### TCP-Optimized PR-Agent Setup
 
@@ -96,12 +96,12 @@ Security Analysis:   15 × $0.50 = $7.50
 Code Improvements:   20 × $0.15 = $3.00
 Interactive Q&A:     25 × $0.10 = $2.50
 
-Total Monthly Cost: ~$25 + $125 buffer = $150
+Total Monthly Cost: ~$25 + $125 buffer = {{ extra.version.cost }}
 vs Qodo Pro: $1,500/month
-Annual Savings: $16,200
+Annual Savings: {{ extra.version.savings }}
 ```
 
-## 🆕 v2.7.1 Enhanced NPM Scripts
+## 🆕 v2.8.1 Enhanced NPM Scripts
 
 **New Intelligent Testing Scripts Added to package.json:**
 
@@ -146,7 +146,7 @@ Annual Savings: $16,200
 **Expected Impact**: Faster pull request validation  
 **When to Use**: Automated CI/CD pipelines
 
-## 🔧 v2.7.1 Configuration Changes
+## 🔧 v2.8.1 Configuration Changes
 
 ### Enhanced Vitest Configuration
 
@@ -249,7 +249,7 @@ jobs:
 
 This page provides the actual script content for implementation managers to review and understand exactly what the AI-SDLC framework implements.
 
-### Implementation Manager Checklist for v2.7.1
+### Implementation Manager Checklist for v2.8.1
 
 **✅ Immediate Benefits Available:**
 

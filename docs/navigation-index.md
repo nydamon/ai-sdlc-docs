@@ -1,4 +1,4 @@
-# 🗂️ Complete Documentation Index - AI-SDLC v2.7.1
+# 🗂️ Complete Documentation Index - AI-SDLC {{ extra.version.framework }}
 
 ## 📋 **Quick Navigation**
 
@@ -10,7 +10,7 @@
     📋 Manager Implementation
   </a>
   <a href="claude-code-cline-implementation-guide/" class="quick-nav-item">
-    🏢 Enterprise Platform <span class="enterprise-badge">v2.7.1</span>
+    🏢 Enterprise Platform <span class="enterprise-badge">{{ extra.version.framework }}</span>
   </a>
   <a href="centralized-ruleset-management/" class="quick-nav-item">
     ⚙️ Ruleset Management <span class="enterprise-badge">new</span>
@@ -46,14 +46,14 @@
 
 | Page                                                           | Purpose                | Complexity   | Version |
 | -------------------------------------------------------------- | ---------------------- | ------------ | ------- |
-| [Git Hooks Automation](git-hooks-automation.md)                | Core automation setup  | Basic        | v2.7.1  |
-| [🐘 PostgreSQL Database Automation](postgresql-automation.md)  | Database integration   | Advanced     | v2.7.1  |
-| [🗺️ Existing Database Setup Guide](existing-database-setup.md) | Database configuration | Intermediate | v2.7.1  |
-| [React Best Practices](react-best-practices-updated.md)        | Frontend standards     | Intermediate | v2.7.1  |
-| [Configuration Management](enhanced-config-management.md)      | Config standardization | Basic        | v2.7.1  |
-| [📋 Version Management Guide](../VERSION_MANAGEMENT_GUIDE.md)  | Automated versioning   | Basic        | v2.7.1  |
+| [Git Hooks Automation](git-hooks-automation.md)                | Core automation setup  | Basic        | {{ extra.version.framework }}  |
+| [🐘 PostgreSQL Database Automation](postgresql-automation.md)  | Database integration   | Advanced     | {{ extra.version.framework }}  |
+| [🗺️ Existing Database Setup Guide](existing-database-setup.md) | Database configuration | Intermediate | {{ extra.version.framework }}  |
+| [React Best Practices](react-best-practices-updated.md)        | Frontend standards     | Intermediate | {{ extra.version.framework }}  |
+| [Configuration Management](enhanced-config-management.md)      | Config standardization | Basic        | {{ extra.version.framework }}  |
+| [📋 Version Management Guide](../VERSION_MANAGEMENT_GUIDE.md)  | Automated versioning   | Basic        | {{ extra.version.framework }}  |
 
-### 🏢 **Enterprise AI Platform (v2.7.1)**
+### 🏢 **Enterprise AI Platform ({{ extra.version.framework }})**
 
 | Page                                                                                     | Purpose                | Enterprise Level | New                                                    |
 | ---------------------------------------------------------------------------------------- | ---------------------- | ---------------- | ------------------------------------------------------ |
@@ -158,7 +158,7 @@
 
 ---
 
-## 🆕 **What's New in v2.7.1**
+## 🆕 **What's New in {{ extra.version.framework }}**
 
 ### **New Pages Added:**
 
@@ -168,7 +168,7 @@
 ### **Major Updates:**
 
 - 🔄 [Claude Code + Cline Guidelines](enhanced-cursor-guidelines.md) - Updated for enterprise platform
-- 🔄 [Scripts & Configuration Reference](scripts-reference.md) - Enhanced with v2.7.1 features
+- 🔄 [Scripts & Configuration Reference](scripts-reference.md) - Enhanced with {{ extra.version.framework }} features
 - 🔄 All workflow guides - Updated for new platform integration
 
 ### **Enhanced Navigation:**
@@ -195,7 +195,7 @@
 
 ---
 
-**Framework Version:** v2.8.1 - Documentation Accuracy Update  
+**Framework Version:** {{ extra.version.framework }} - {{ extra.version.name }}  
 **Last Updated:** August 7, 2025  
 **Total Pages:** 25+ comprehensive guides  
 **Status:** ✅ Production Ready

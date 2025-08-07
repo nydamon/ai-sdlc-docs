@@ -32,7 +32,7 @@ This tracker provides a clear status of which documented features have been impl
 ### CI/CD Pipeline
 
 - ⚠️ **GitHub Actions** - Workflows defined, needs repository-specific setup
-- ⚠️ **Coverage Reporting** - Jest/Vitest config ready, needs integration
+- ⚠️ **Coverage Reporting** - Vitest config ready, needs integration
 - ⚠️ **Automated E2E** - Framework exists, needs project-specific implementation
 
 ## 🔴 Documentation Only
@@ -142,5 +142,5 @@ For each feature marked as "Documentation Only":
 - Step-by-step guides provided in documentation
 - Support available via GitHub issues
 
-**Last Updated:** August 7, 2025  
-**Framework Version:** v2.7.1
+**Last Updated:** {{ extra.version.updated }}  
+**Framework Version:** {{ extra.version.framework }}

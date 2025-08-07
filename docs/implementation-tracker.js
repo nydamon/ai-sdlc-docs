@@ -181,9 +181,9 @@ class ImplementationTracker {
 
     const testChecks = [
       {
-        name: 'Jest Configuration',
+        name: 'Vitest Configuration',
         check: () =>
-          fs.existsSync('jest.config.js') || this.hasPackageScript('test'),
+          fs.existsSync('vitest.config.js') || this.hasPackageScript('test'),
       },
       {
         name: 'Playwright E2E',
@@ -199,7 +199,7 @@ class ImplementationTracker {
         name: 'Coverage Reporting',
         check: () =>
           this.hasPackageScript('coverage') ||
-          this.hasPackageDependency('jest'),
+          this.hasPackageDependency('vitest'),
       },
       {
         name: 'Linting',

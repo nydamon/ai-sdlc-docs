@@ -8,11 +8,12 @@
     "prepare": "husky",
     "lint": "eslint . --cache --cache-location .eslintcache/",
     "format": "prettier --write .",
-    "test:ui": "vitest --ui",
+    "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
     "test:e2e": "playwright test",
     "test:unit": "vitest run tests/unit/",
-    "test:changed": "vitest --changed HEAD~1",
+    "test:changed": "vitest run --changed HEAD~1 --reporter=verbose",
+    "test:smart": "node scripts-complex/smart-test-selector.js",
     "test:watch-coverage": "vitest --coverage --watch",
     "test:e2e-headed": "playwright test --headed",
     "ci:test-fast": "npm run lint && npm run test:changed",
@@ -38,7 +39,13 @@
     "ai-sdlc:init": "./ai-sdlc init",
     "ai-sdlc:status": "./ai-sdlc status",
     "ai-sdlc:doctor": "./ai-sdlc doctor",
-    "ai-sdlc:serve": "./ai-sdlc serve"
+    "ai-sdlc:serve": "./ai-sdlc serve",
+    "ai:generate-tests": "node scripts-complex/real-ai-test-generator.js generate",
+    "ai:generate-e2e": "node scripts-complex/ai-e2e-generator.js generate",
+    "ai:test-init": "./ai-sdlc test-init",
+    "ai:validate": "node implementation-tracker.js",
+    "coverage": "vitest --coverage",
+    "test:ci": "vitest --run --coverage"
   },
   "keywords": [
     "ai",
@@ -51,6 +58,9 @@
   "author": "Damon DeCrescenzo <damon@thecreditpros.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/preset-env": "^7.28.0",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@eslint/js": "^9.32.0",
@@ -60,9 +70,14 @@
     "@testing-library/jest-dom": "^6.6.4",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
     "@vitejs/plugin-react": "^4.7.0",
     "commitlint": "^19.8.1",
+    "dotenv": "^17.2.1",
     "eslint": "^9.32.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "husky": "^9.1.7",
     "jsdom": "^26.1.0",
     "lint-staged": "^16.1.2",
@@ -87,6 +102,8 @@
     ]
   },
   "dependencies": {
+    "@esbuild/darwin-arm64": "^0.25.8",
+    "@rollup/rollup-darwin-arm64": "^4.46.2",
     "express": "^4.18.2",
     "posthog-js": "^1.258.5"
   }

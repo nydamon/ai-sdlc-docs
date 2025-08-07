@@ -1,0 +1,170 @@
+name: Open-Source PR-Agent Platform - v2.8.1
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main, master, develop, staging]
+  issue_comment:
+    types: [created, edited]
+  
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+  checks: write
+
+jobs:
+  qodo_enhanced_review:
+    if: ${{ github.event.sender.type != 'Bot' }}
+    runs-on: ubuntu-latest
+    name: 🤖 Open-Source PR-Agent Review
+    
+    strategy:
+      matrix:
+        environment: [development, production]
+    
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0  # Full history for better context
+      
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: 📦 Install Dependencies
+        run: npm ci
+      
+      - name: 🔍 Environment Detection
+        id: env
+        run: |
+          if [[ "${{ matrix.environment }}" == "production" && "${{ github.base_ref }}" == "main" ]]; then
+            echo "config_file=.pr_agent.prod.toml" >> $GITHUB_OUTPUT
+            echo "review_mode=strict" >> $GITHUB_OUTPUT
+          else
+            echo "config_file=.pr_agent.dev.toml" >> $GITHUB_OUTPUT  
+            echo "review_mode=standard" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: 🚀 Open-Source PR-Agent Analysis
+        id: qodo_review
+        uses: qodo-ai/pr-agent@main
+        env:
+          OPENAI_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          QODO_AI_API_KEY: ${{ secrets.QODO_AI_API_KEY }}
+          CONFIG_FILE: ${{ steps.env.outputs.config_file }}
+        with:
+          # Enable all 2025 advanced tools
+          tools: "review,describe,improve,test,scan_repo_discussions,impact"
+          
+          # Multi-model configuration
+          config_file: ${{ steps.env.outputs.config_file }}
+          
+          # Advanced review settings
+          pr_reviewer.enable_review: true
+          pr_reviewer.require_score_review: true
+          pr_reviewer.require_tests_review: true
+          pr_reviewer.require_security_review: true
+          pr_reviewer.enable_static_analysis: true
+          pr_reviewer.enable_incremental_review: true
+          
+          # Enhanced code suggestions with 2025 features
+          pr_code_suggestions.enable_suggestions: true
+          pr_code_suggestions.enable_chat: true
+          pr_code_suggestions.num_code_suggestions: 10
+          pr_code_suggestions.enable_architecture_suggestions: true
+          
+          # Test coverage enhancement
+          pr_test.enable_test_generation: true
+          pr_test.coverage_threshold: 80
+          pr_test.test_frameworks: "vitest,playwright,pest"
+          
+          # Repository scanning (2025 feature)
+          scan_repo_discussions.enable: true
+          scan_repo_discussions.scope: "issues,prs,discussions"
+          
+          # Impact analysis (2025 feature)  
+          impact.enable_impact_analysis: true
+          impact.analyze_performance: true
+          impact.analyze_security: true
+          impact.analyze_breaking_changes: true
+          
+          # Credit repair domain-specific instructions
+          pr_reviewer.extra_instructions: |
+            CREDIT REPAIR DOMAIN ANALYSIS:
+            
+            🏦 COMPLIANCE REQUIREMENTS:
+            - FCRA Sections 604, 607, 615 compliance
+            - FACTA identity theft prevention  
+            - SOC-2 Type II data handling
+            - PCI-DSS payment processing
+            
+            🔐 SECURITY PATTERNS:
+            - PII encryption validation (SSN, credit scores, account numbers)
+            - Audit trail implementation for data access
+            - Secure API authentication patterns
+            - Input validation for customer data
+            
+            ⚡ PERFORMANCE CONSIDERATIONS:
+            - Credit report processing efficiency
+            - Database query optimization for large datasets
+            - API response time requirements (<2 seconds)
+            - Memory management for credit data
+            
+            🧪 TESTING REQUIREMENTS:
+            - Unit tests for credit calculations
+            - Integration tests for credit bureau APIs
+            - E2E tests for dispute workflows
+            - Security tests for PII handling
+      
+      - name: 📊 Custom Compliance Analysis
+        if: matrix.environment == 'production'
+        run: |
+          # Run custom credit repair compliance checks
+          node scripts-complex/qodo-agents/credit-compliance-agent.js
+          node scripts-complex/qodo-agents/pii-security-agent.js
+      
+      - name: 🔔 Notify MS Teams
+        if: always()
+        env:
+          MS_TEAMS_WEBHOOK_URI: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+        run: |
+          if [[ -n "$MS_TEAMS_WEBHOOK_URI" ]]; then
+            curl -H "Content-Type: application/json" -d '{
+              "@type": "MessageCard",
+              "@context": "http://schema.org/extensions",
+              "themeColor": "'${{ job.status == 'success' && '28a745' || 'dc3545' }}'",
+              "summary": "🤖 Enhanced AI Code Review Complete",
+              "sections": [{
+                "activityTitle": "Open-Source PR-Agent Analysis - ${{ matrix.environment }}",
+                "activitySubtitle": "PR #${{ github.event.pull_request.number }}",
+                "facts": [
+                  {"name": "Repository", "value": "${{ github.repository }}"},
+                  {"name": "PR Title", "value": "${{ github.event.pull_request.title }}"},
+                  {"name": "Author", "value": "${{ github.event.pull_request.user.login }}"},
+                  {"name": "Environment", "value": "${{ matrix.environment }}"},
+                  {"name": "Review Mode", "value": "${{ steps.env.outputs.review_mode }}"},
+                  {"name": "Status", "value": "${{ job.status }}"}
+                ]
+              }],
+              "potentialAction": [{
+                "@type": "OpenUri",
+                "name": "View PR",
+                "targets": [{"os": "default", "uri": "${{ github.event.pull_request.html_url }}"}]
+              }]
+            }' "$MS_TEAMS_WEBHOOK_URI"
+          fi
+      
+      - name: 📈 Upload Analysis Results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: qodo-analysis-${{ matrix.environment }}-${{ github.event.pull_request.number }}
+          path: |
+            .qodo-analysis-results.json
+            .compliance-check-results.json

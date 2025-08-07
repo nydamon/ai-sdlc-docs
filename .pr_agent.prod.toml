@@ -1,0 +1,27 @@
+# Production Environment - Maximum Security & Compliance
+[config]
+model = "gpt-4"
+model_turbo = "claude-3-5-sonnet"
+verbosity_level = 1
+
+[pr_reviewer]
+enable_review = true
+enable_auto_approval = false
+require_score_review = true
+require_tests_review = true
+require_security_review = true
+require_compliance_review = true
+minimum_score_threshold = 8.5
+security_threshold = "high"
+
+extra_instructions = """
+PRODUCTION CRITICAL REVIEW:
+1. FCRA/FACTA compliance - MANDATORY VERIFICATION
+2. PII data handling - ENCRYPTED ONLY, NO EXCEPTIONS
+3. Security vulnerabilities - ZERO TOLERANCE POLICY
+4. Performance impact - THOROUGH ANALYSIS REQUIRED
+5. Database changes - REQUIRE DBA APPROVAL
+6. Breaking changes - EXTENSIVE DOCUMENTATION REQUIRED
+7. Customer-facing changes - UX REVIEW MANDATORY
+8. Payment processing - PCI COMPLIANCE VERIFICATION
+"""

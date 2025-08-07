@@ -47,13 +47,13 @@
 
 **Auto-Healing Tests** - Self-maintaining test framework that automatically adapts when UI selectors change, reducing test maintenance overhead through smart fallback systems.
 
-## v2.7.1 Enterprise AI Platform
+## {{ extra.version.framework }} {{ extra.version.platform }}
 
-**Claude Code Enterprise Platform** - Terminal-native AI assistant with hierarchical policy management, centralized configuration deployment, and comprehensive audit trails for enterprise compliance.
+**Open-Source PR-Agent** - Cost-efficient AI-powered code review automation with TCP credit repair compliance optimization, delivering 90% cost reduction vs commercial alternatives.
 
-**Cline Teams** - IDE-integrated AI development platform supporting up to 200 seats with organization-level administration, pooled credit management, and team workspace coordination.
+**TCP Compliance Configuration** - FCRA/FACTA specific validation rules with PII pattern detection, regulatory requirement checking, and credit repair domain expertise built into AI analysis.
 
-**Managed Settings** - Enterprise policy configuration system for Claude Code that enables centralized control of permissions, model selection, compliance rules, and security policies across all development workstations.
+**Cost-Optimized AI Routing** - Smart model selection using GPT-4o-mini primary with strategic fallbacks to GPT-3.5-turbo and GPT-4 based on analysis complexity and cost efficiency.
 
 **Cline Rules (.clinerules)** - Project and global rule files that define AI behavior, coding standards, compliance requirements, and domain-specific guidelines for consistent development practices.
 
@@ -61,7 +61,7 @@
 
 **Multi-Model AI Support** - Cline's capability to work with various AI models (Claude, Gemini, Qwen, DeepSeek) with intelligent model selection based on task complexity and cost optimization.
 
-## Previous v2.6.0 Testing Enhancements (Retained)
+## Previous Version Testing Enhancements (Retained)
 
 **Smart Test Execution** - Intelligent test selection that only runs tests for files changed since the last commit, reducing CI/CD execution time by up to 60%.
 
@@ -183,5 +183,5 @@
 ---
 
 _Created by Damon DeCrescenzo, CTO - The Credit Pros_  
-_Framework Version: v2.7.1 - Claude Code + Cline Enterprise Platform_  
-_Last Updated: August 7, 2025_
+_Framework Version: {{ extra.version.framework }} - {{ extra.version.platform }}_  
+_Last Updated: {{ extra.version.updated }}_

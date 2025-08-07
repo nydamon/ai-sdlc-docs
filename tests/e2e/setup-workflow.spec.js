@@ -1,18 +1,18 @@
 // Auto-healing utilities added by AI-SDLC
 class AutoHealingLocators {
-  // eslint-disable-line no-unused-vars
+   
   static async findElement(page, primarySelector, fallbackSelectors = []) {
     try {
       await page.waitForSelector(primarySelector, { timeout: 5000 });
       return primarySelector;
     } catch (_error) {
-      // eslint-disable-line no-unused-vars
+       
       for (const fallback of fallbackSelectors) {
         try {
           await page.waitForSelector(fallback, { timeout: 3000 });
           return fallback;
         } catch (_fallbackError) {
-          // eslint-disable-line no-unused-vars
+           
           continue;
         }
       }
@@ -75,7 +75,7 @@ test.describe('AI-SDLC Setup Workflow', () => {
     try {
       execSync('git commit -m "test: add test file"', { encoding: 'utf8' });
     } catch (_error) {
-      // eslint-disable-line no-unused-vars
+       
       // Expected to fail on master branch due to branch naming enforcement
     }
 

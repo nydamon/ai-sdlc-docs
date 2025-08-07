@@ -142,7 +142,7 @@ Refactor payment processing to meet SOC-2 audit requirements
 ### AI Test Generation Prompts:
 
 ```
-Generate comprehensive Jest tests for this credit calculator with edge cases
+Generate comprehensive Vitest tests for this credit calculator with edge cases
 Create Playwright E2E tests for credit report import workflow with error handling
 Add FCRA compliance validation tests for consumer data handling
 Generate security tests for PII data encryption in credit processing
@@ -151,7 +151,7 @@ Generate security tests for PII data encryption in credit processing
 ## ❌ **Anti-Patterns - What NOT to Do**
 
 - ❌ "Make this code better" → ✅ "Refactor this function to reduce cyclomatic complexity and improve readability"
-- ❌ "Add tests" → ✅ "Generate Jest unit tests with 90% coverage including edge cases for invalid credit scores"
+- ❌ "Add tests" → ✅ "Generate Vitest unit tests with 90% coverage including edge cases for invalid credit scores"
 - ❌ "Fix the bug" → ✅ "Debug and fix the credit calculation error where scores above 850 are not being capped correctly"
 
 ## 🎯 **Credit Repair Domain Guidelines**
@@ -199,7 +199,7 @@ Add form validation for credit dispute submission that enforces FCRA consumer ri
 ### Testing & QA Prompts:
 
 ```
-Generate comprehensive Jest tests for this credit calculation function including edge cases for: thin credit files, recent bankruptcies, mixed file scenarios, and FCRA accuracy requirements.
+Generate comprehensive Vitest tests for this credit calculation function including edge cases for: thin credit files, recent bankruptcies, mixed file scenarios, and FCRA accuracy requirements.
 
 Create Playwright E2E tests for the complete credit dispute workflow: form submission, validation, backend processing, consumer notifications, and audit trail verification.
 

@@ -1,6 +1,6 @@
-# AI-SDLC v2.7.1 Implementation Guide for Managers
+# AI-SDLC {{ extra.version.framework }} Implementation Guide for Managers
 
-## 🆕 What's New in v2.7.1: Claude Code + Cline Enterprise Integration
+## 🆕 What's New in {{ extra.version.framework }}: {{ extra.version.platform }} with TCP Compliance
 
 **MAJOR TOOLING UPDATE - CURSOR REPLACEMENT:**
 
@@ -11,7 +11,7 @@
 - **Unified Workflow**: Complete development lifecycle coverage
 - **Enterprise Compliance**: Built-in FCRA/FACTA compliance controls
 
-### Previous v2.6.0 Features (Retained):
+### Previous Version Features (Retained):
 
 **Smart Testing & QA Enhancement:**
 
@@ -72,7 +72,7 @@ This guide provides step-by-step implementation instructions for development and
 - 🕐 **80% reduction in manual QA time** (15-20 hours/week saved per developer) - VALIDATED
 - 🛡️ **Automated compliance checking** for FCRA/FACTA requirements - WORKING
 - 🚀 **40-60% faster development velocity** through automated testing - VALIDATED
-- 💰 **ROI: $70,200+ annual savings** through cost-optimized AI code review automation
+- 💰 **ROI: {{ extra.version.savings }} annual savings** through cost-optimized AI code review automation
 
 ---
 
@@ -131,7 +131,7 @@ This guide provides step-by-step implementation instructions for development and
 - React 18+ with TypeScript strict mode
 - Vite bundling with optimized build pipeline
 - Modern state management (Zustand/TanStack Query)
-- Vitest for testing (preferred over Jest)
+- Vitest for testing (modern and fast)
 - Tailwind CSS or modern styling solution
 
 **AI-SDLC Optimizations:**
@@ -547,5 +547,5 @@ This guide provides step-by-step implementation instructions for development and
 ---
 
 _Last Updated: August 7, 2025_  
-_Version: AI-SDLC Framework v2.7.1_  
+_Version: AI-SDLC Framework v2.8.1_  
 _Next Review: September 2025_

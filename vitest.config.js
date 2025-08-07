@@ -21,6 +21,9 @@ export default defineConfig({
         lines: 80,
         functions: 80,
         branches: 70,
+        statements: 80,
+        // Enforce thresholds (fail build if not met)
+        enforceThresholds: true,
       },
     },
   },

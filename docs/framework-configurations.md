@@ -408,10 +408,10 @@ interface CreditData {
 - ✅ Vue 3 + Composition API
 - ✅ TypeScript 5+ strict mode
 - ✅ Vite, esbuild, SWC bundlers
-- ✅ Vitest (primary), Jest legacy support
+- ✅ Vitest (primary), fast and modern
 - ✅ TanStack Query, Zustand state management
 - ✅ Laravel 10+ with Pest
 - ✅ Node.js with modern frameworks
 
 **Updated:** August 7, 2025  
-**AI-SDLC Version:** AI-SDLC Framework v2.7.1 (Claude Code + Cline Enterprise Platform Integration)
+**AI-SDLC Version:** AI-SDLC Framework v2.8.1 (Open-Source PR-Agent Platform Integration)

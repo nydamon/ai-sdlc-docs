@@ -18,7 +18,7 @@ echo_color() { echo -e "${1}${2}${NC}"; }
 echo_header() { echo -e "${PURPLE}╔══════════════════════════════════════════════╗${NC}"; echo -e "${PURPLE}║ ${1}${NC}"; echo -e "${PURPLE}╚══════════════════════════════════════════════╝${NC}"; }
 
 ### CONFIGURATION
-FRAMEWORK_VERSION="v2.7.1"
+FRAMEWORK_VERSION="{{ extra.version.framework }}"
 SETUP_LOG="ai-sdlc-setup.log"
 
 ### LOGGING
@@ -253,9 +253,13 @@ create_env_template() {
 # OpenAI API for test generation
 OPENAI_API_KEY=
 
-# Qase API for test management
-QASE_TOKEN=
-QASE_PROJECT_CODE=
+# Qase API for test management (Dual Project Setup)
+QASE_API_KEY=
+QASE_CLIENT_PROJECT_CODE=TCP
+QASE_ADMIN_PROJECT_CODE=PCU
+QASE_PROJECT_CODE=TCP
+QASE_TARGET_PROJECT=TCP
+QASE_DUAL_PROJECT_MODE=false
 
 # GitHub token for PR automation
 GITHUB_TOKEN=
@@ -264,7 +268,7 @@ GITHUB_TOKEN=
 SONAR_TOKEN=
 CODIUM_API_KEY=
 EOF
-    info "Created .env template"
+    info "Created .env template with dual Qase project configuration"
 }
 
 setup_ai_npm_scripts() {

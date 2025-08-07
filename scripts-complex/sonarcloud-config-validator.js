@@ -361,7 +361,7 @@ class SonarCloudValidator {
       const response = await this.makeAPICall(`/rules/search?activation=true&qprofile=${projectKey}&q=credential OR pii OR encryption OR audit`);
       
       if (response && response.rules) {
-        const ruleKeys = response.rules.map(rule => rule.key);
+        // const ruleKeys = response.rules.map(rule => rule.key); // Unused - removed
         const ruleDescriptions = response.rules.map(rule => rule.name.toLowerCase());
 
         validation.piiDetection = ruleDescriptions.some(desc => 

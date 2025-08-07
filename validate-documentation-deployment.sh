@@ -16,6 +16,8 @@ echo_error() { echo -e "${RED}❌ $1${NC}"; }
 echo_warning() { echo -e "${YELLOW}⚠️  $1${NC}"; }
 
 echo "🔍 Validating AI-SDLC documentation deployment readiness..."
+echo "Framework: v2.8.1 Open-Source PR-Agent Platform"
+echo "Enhanced validation with performance & security checks"
 echo
 
 ERRORS=0

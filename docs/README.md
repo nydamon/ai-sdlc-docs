@@ -8,7 +8,7 @@
     📋 Manager Guide
   </a>
   <a href="claude-code-cline-implementation-guide/" class="quick-nav-item">
-    🏢 Enterprise Platform <span class="enterprise-badge">v2.7.1</span>
+    🏢 Enterprise Platform <span class="enterprise-badge">{{ extra.version.framework }}</span>
   </a>
   <a href="centralized-ruleset-management/" class="quick-nav-item">
     ⚙️ Ruleset Management <span class="enterprise-badge">new</span>
@@ -23,7 +23,7 @@
 
 ## **Eliminate 80% of Code Review Overhead While Accelerating Development 40%**
 
-🎯 **Transform Your Development Pipeline in 5 Minutes | $597K+ Annual Savings (8-person team)**
+🎯 **Transform Your Development Pipeline in 5 Minutes | {{ extra.version.savings }} Annual Savings (8-person team)**
 
 ### 💼 **Executive Summary**
 
@@ -329,7 +329,7 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 - ✅ **Catch bugs earlier** - before they reach review
 - ✅ **Focus on logic, not style** - tools handle formatting
 
-### 🟡 **Level 2: AI Code Review ($150/month) - $70,200+ Annual ROI**
+### 🟡 **Level 2: AI Code Review ({{ extra.version.cost }}/month) - {{ extra.version.savings }} Annual ROI**
 
 **Competitive advantage through AI-powered testing**
 
@@ -354,7 +354,7 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 - ✅ **Learn testing patterns** from AI-generated examples
 - ✅ **Focus on features** - let AI handle test boilerplate
 
-### 🔴 **Level 3: Enterprise Automation ($150/month + tooling) - $70,200+ Annual ROI**
+### 🔴 **Level 3: Enterprise Automation ({{ extra.version.cost }}/month + tooling) - {{ extra.version.savings }} Annual ROI**
 
 **Industry-leading development pipeline**
 
@@ -507,7 +507,7 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 
 ### **For Leadership: The Business Case is Clear**
 
-- ✅ **$597K+ annual ROI** from a 5-minute implementation (scales to $2.43M+ for enterprise teams)
+- ✅ **$70,200+ annual ROI** from a 15-minute implementation (4,680% return on $150/month investment)
 - ✅ **Zero implementation risk** - instant rollback capability
 - ✅ **Immediate productivity gains** - measurable in week 1
 - ✅ **Competitive advantage** - 40% faster development velocity

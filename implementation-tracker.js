@@ -137,7 +137,7 @@ class ImplementationTracker {
       },
       {
         name: 'Qase',
-        envVar: 'QASE_TOKEN',
+        envVar: 'QASE_API_KEY',
         testCommand: 'node scripts-complex/qase-aiden-integration.js --help',
       },
       {

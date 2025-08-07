@@ -295,12 +295,12 @@ class AITestGenerator {
    * Create test configuration files
    */
   async createTestConfigurations(analysis) {
-    // Jest configuration for JavaScript/TypeScript
+    // Vitest configuration for JavaScript/TypeScript
     if (
       analysis.languages.includes('javascript') ||
       analysis.languages.includes('typescript')
     ) {
-      await this.createJestConfig(analysis);
+      await this.createVitestConfig(analysis);
     }
 
     // Playwright configuration for E2E tests
@@ -318,10 +318,10 @@ class AITestGenerator {
   }
 
   /**
-   * Create Jest configuration
+   * Create Vitest configuration
    */
-  async createJestConfig(analysis) {
-    const jestConfig = {
+  async createVitestConfig(analysis) {
+    const vitestConfig = {
       testEnvironment: analysis.frameworks.includes('react') ? 'jsdom' : 'node',
       roots: ['<rootDir>/src', '<rootDir>/tests', '<rootDir>/__tests__'],
       testMatch: [
@@ -329,7 +329,7 @@ class AITestGenerator {
         '**/?(*.)+(spec|test).(js|jsx|ts|tsx)',
       ],
       transform: {
-        '\\.[jt]sx?$': 'babel-jest',
+        '\\.[jt]sx?$': 'babel-vitest',
       },
       collectCoverageFrom: [
         'src/**/*.(js|jsx|ts|tsx)',
@@ -352,15 +352,15 @@ class AITestGenerator {
 
     // Add React-specific configuration
     if (analysis.frameworks.includes('react')) {
-      jestConfig.setupFilesAfterEnv = ['<rootDir>/tests/setup-react.js'];
-      jestConfig.testEnvironment = 'jsdom';
+      vitestConfig.setupFiles = ['<rootDir>/tests/setup-react.js'];
+      vitestConfig.environment = 'jsdom';
     }
 
     fs.writeFileSync(
-      path.join(this.projectRoot, 'jest.config.js'),
-      `module.exports = ${JSON.stringify(jestConfig, null, 2)};`
+      path.join(this.projectRoot, 'vitest.config.js'),
+      `import { defineConfig } from 'vitest/config';\n\nexport default defineConfig({\n  test: ${JSON.stringify(vitestConfig, null, 4).replace(/^/gm, '    ').trim()}\n});`
     );
-    console.log('✅ Created Jest configuration');
+    console.log('✅ Created Vitest configuration');
   }
 
   /**
@@ -466,7 +466,7 @@ export default defineConfig({
    * Create React Testing Library setup
    */
   async createTestingLibrarySetup() {
-    const setupContent = `import '@testing-library/jest-dom';
+    const setupContent = `import '@testing-library/vitest-dom';
 import { configure } from '@testing-library/react';
 
 // Configure testing library
@@ -673,12 +673,12 @@ class {{CLASS_NAME}}Test extends TestCase
     // Add test scripts
     packageJson.scripts = {
       ...packageJson.scripts,
-      test: 'jest',
-      'test:watch': 'jest --watch',
-      'test:coverage': 'jest --coverage',
-      'test:ci': 'jest --ci --coverage --watchAll=false',
-      'test:unit': 'jest tests/unit',
-      'test:integration': 'jest tests/integration',
+      test: 'vitest',
+      'test:watch': 'vitest --watch',
+      'test:coverage': 'vitest --coverage',
+      'test:ci': 'vitest --run --coverage',
+      'test:unit': 'vitest tests/unit',
+      'test:integration': 'vitest tests/integration',
       'test:e2e': 'playwright test',
       'test:e2e:ui': 'playwright test --ui',
       'test:ai-generate': 'node scripts/ai-test-generator.js generate',

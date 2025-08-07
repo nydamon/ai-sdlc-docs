@@ -467,11 +467,12 @@ describe('FeatureCard', () => {
 });
 ```
 
-### Admin Frontend Testing (Jest + JavaScript)
+### Admin Frontend Testing (Vitest + JavaScript)
 ```javascript
 // src/components/__tests__/MetricsTable.test.jsx
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { vi } from 'vitest';
 import MetricsTable from '../MetricsTable';
 
 const mockMetrics = [
@@ -482,12 +483,12 @@ const mockMetrics = [
 describe('MetricsTable', () => {
   const defaultProps = {
     metrics: mockMetrics,
-    onSort: jest.fn(),
-    onFilter: jest.fn()
+    onSort: vi.fn(),
+    onFilter: vi.fn()
   };
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   it('renders metrics correctly', () => {
@@ -498,7 +499,7 @@ describe('MetricsTable', () => {
   });
 
   it('calls onSort when column header is clicked', () => {
-    const mockOnSort = jest.fn();
+    const mockOnSort = vi.fn();
     render(<MetricsTable {...defaultProps} onSort={mockOnSort} />);
     
     fireEvent.click(screen.getByText('Metric Name'));
@@ -507,7 +508,7 @@ describe('MetricsTable', () => {
   });
 
   it('filters metrics when filter input changes', () => {
-    const mockOnFilter = jest.fn();
+    const mockOnFilter = vi.fn();
     render(<MetricsTable {...defaultProps} onFilter={mockOnFilter} />);
     
     const filterInput = screen.getByPlaceholderText('Filter metrics...');
@@ -599,7 +600,7 @@ export default defineConfig({
 - [ ] Set up build tooling (Vite/Webpack)
 - [ ] Configure Context API for state management
 - [ ] Set up PropTypes for runtime validation
-- [ ] Implement component testing with Jest
+- [ ] Implement component testing with Vitest
 - [ ] Configure internal monitoring only
 - [ ] Set up admin-specific routing
 

@@ -43,11 +43,14 @@ echo "   • Cost: ~$0.03 per 1K tokens (very cheap for testing)"
 echo "   • Add to .env: OPENAI_API_KEY=sk-your-key-here"
 echo
 
-echo -e "${BLUE}2. Qase API Token${NC}"
+echo -e "${BLUE}2. Qase API Token (Dual Project Setup)${NC}"
 echo "   • Go to: https://app.qase.io/user/api/token"
 echo "   • Generate new token"
 echo "   • Add to .env: QASE_API_KEY=your-token-here"
-echo "   • Also add: QASE_PROJECT_CODE=your-project-code"
+echo "   • Dual Qase Project Setup:"
+echo "     QASE_CLIENT_PROJECT_CODE=TCP    # Client Frontend"
+echo "     QASE_ADMIN_PROJECT_CODE=PCU     # Admin Frontend"
+echo "     QASE_TARGET_PROJECT=TCP         # Default project"
 echo
 
 echo -e "${BLUE}3. GitHub Token${NC}"

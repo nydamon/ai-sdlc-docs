@@ -90,7 +90,7 @@ flowchart LR
 ### 🟡 Level 2: AI Code Review (PREMIUM)
 
 **Time to Setup**: 15 minutes additional
-**Cost**: $150/month (OpenAI API for PR-Agent)
+**Cost**: {{ extra.version.cost }}/month (OpenAI API for PR-Agent)
 
 **Components:**
 
@@ -104,7 +104,7 @@ flowchart LR
 **Benefits:**
 
 - ✅ Automated code review with credit repair compliance
-- ✅ 90% cost reduction vs commercial alternatives ($150 vs $1,500/month)
+- ✅ 90% cost reduction vs commercial alternatives ({{ extra.version.cost }} vs $1,500/month)
 - ✅ PII detection and encryption validation
 - ✅ 60% reduction in manual code review time
 - ✅ FCRA/FACTA regulatory compliance built-in
@@ -113,7 +113,7 @@ flowchart LR
 ### 🔴 Level 3: Enterprise QA (ENTERPRISE)
 
 **Time to Setup**: 30 minutes additional
-**Cost**: $150/month total (same as Level 2 + additional tooling)
+**Cost**: {{ extra.version.cost }}/month total (same as Level 2 + additional tooling)
 
 **Components:**
 
@@ -137,7 +137,7 @@ flowchart LR
 - ✅ FCRA/FACTA compliance automation built-in
 - ✅ Production-ready quality gates with pre-commit hooks
 - ✅ Automated E2E test generation (NO MANUAL QA NEEDED)
-- ✅ $70,200+ annual savings through cost-optimized AI code review ($150/month vs $1,500+ alternatives)
+- ✅ {{ extra.version.savings }} annual savings through cost-optimized AI code review ({{ extra.version.cost }}/month vs $1,500+ alternatives)
 
 ## Technology Stack Integration
 
@@ -236,5 +236,5 @@ ai_sdlc/
 
 **Created by**: Damon DeCrescenzo, CTO - The Credit Pros  
 **Last Updated**: August 7, 2025  
-**Framework Version**: AI-SDLC v2.8.1 (Documentation Accuracy Update)  
-**Status**: ✅ Production-ready with $70,200+ annual savings validated (cost-optimized AI)
+**Framework Version**: AI-SDLC {{ extra.version.framework }} ({{ extra.version.name }})  
+**Status**: ✅ Production-ready with {{ extra.version.savings }} annual savings validated (cost-optimized AI)

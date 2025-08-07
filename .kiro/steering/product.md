@@ -7,7 +7,7 @@ An enterprise AI-powered development automation framework designed specifically 
 ### Core Value Proposition
 
 - **Eliminate 80% of code review overhead** while accelerating development by 40%
-- **$529K+ annual ROI** from automated quality gates and AI-powered testing
+- **$70,200+ annual ROI** from automated quality gates and AI-powered testing
 - **5-minute setup** with immediate productivity gains
 - **Zero workflow disruption** - completely transparent to developers
 

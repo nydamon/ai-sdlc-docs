@@ -1,0 +1,22 @@
+# Development Environment - Optimized for Speed
+[config]
+model = "gpt-3.5-turbo"
+model_turbo = "claude-3-haiku"
+verbosity_level = 2
+
+[pr_reviewer]
+enable_review = true
+enable_auto_approval = false
+require_tests_review = true
+require_security_review = false  # Relaxed for dev
+require_compliance_review = false  # Relaxed for dev
+max_review_comments = 15
+
+extra_instructions = """
+Development Focus:
+1. Code style and formatting
+2. Basic security patterns
+3. Test coverage validation
+4. Documentation completeness
+5. Performance considerations
+"""

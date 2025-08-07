@@ -89,9 +89,9 @@ detect_and_setup_project() {
     elif [[ -f "admin/package.json" ]]; then
       cd admin
     fi
-    npm install --save-dev jest @testing-library/react @testing-library/jest-dom
+    npm install --save-dev vitest @testing-library/react @testing-library/jest-dom jsdom
     cd ..
-    echo_color $GREEN "✔️ Installed Jest and React testing libraries."
+    echo_color $GREEN "✔️ Installed Vitest and React testing libraries."
   fi
 
   # React App Detection (root level)

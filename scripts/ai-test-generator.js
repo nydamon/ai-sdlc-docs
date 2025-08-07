@@ -39,10 +39,18 @@ loadEnvFile();
 class AITestGenerator {
   constructor() {
     this.openaiApiKey = process.env.OPENAI_API_KEY;
-    this.qaseApiKey = process.env.QASE_API_KEY;
-    this.qaseProjectCode = process.env.QASE_PROJECT_CODE;
     this.codiumApiKey = process.env.CODIUM_API_KEY;
     this.projectRoot = process.cwd();
+    
+    // Qase dual project configuration
+    this.qase = {
+      apiKey: process.env.QASE_API_KEY,
+      clientProject: process.env.QASE_CLIENT_PROJECT_CODE || 'TCP',
+      adminProject: process.env.QASE_ADMIN_PROJECT_CODE || 'PCU',
+      defaultProject: process.env.QASE_PROJECT_CODE || 'TCP',
+      targetProject: process.env.QASE_TARGET_PROJECT || 'TCP',
+      dualProjectMode: process.env.QASE_DUAL_PROJECT_MODE === 'true'
+    };
     this.testPatterns = {
       javascript: {
         unit: ['*.test.js', '*.spec.js'],

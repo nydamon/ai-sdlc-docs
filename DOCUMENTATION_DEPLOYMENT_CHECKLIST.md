@@ -38,7 +38,7 @@
   copyright: |
     &copy; 2025 The Credit Pros. All rights reserved.<br>
     <strong>Simplified AI-SDLC by Damon DeCrescenzo, CTO</strong><br>
-    <em>5-minute setup • $529K+ annual ROI • Progressive 3-level architecture</em><br>
+    <em>15-minute setup • $70,200+ annual ROI • Progressive 3-level architecture</em><br>
     <strong>Version: v2.1.0 | Updated: August 3, 2025</strong>
   ```
 

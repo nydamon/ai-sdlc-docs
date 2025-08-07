@@ -4,7 +4,7 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-<!-- AI-SDLC v2.7.0 - Claude Code + Cline Enterprise Platform -->
+<!-- AI-SDLC v2.8.1 - Open-Source PR-Agent Platform -->
 <!-- Generated: August 6, 2025 -->
 
 <!-- Main Navigation -->
@@ -123,7 +123,7 @@
   <priority>0.7</priority>
 </url>
 
-<!-- Enterprise AI Platform Guides (v2.7.0 NEW) -->
+<!-- Enterprise AI Platform Guides (v2.8.1 NEW) -->
 <url>
   <loc>https://nydamon.github.io/ai-sdlc-docs/enhanced-cursor-guidelines/</loc>
   <lastmod>2025-08-06</lastmod>

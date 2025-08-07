@@ -309,21 +309,26 @@ TECHNICAL REQUIREMENTS:
    ./ai-sdlc heal-and-generate
    ```
 
-3. **NEW: Qase AIDEN Quick Start**:
+3. **NEW: Qase AIDEN Quick Start (Dual Project Setup)**:
 
    ```bash
-   # Set environment variable (optional - works in demo mode without)
-   export QASE_API_TOKEN="your-qase-token"
-   export QASE_PROJECT_CODE="TCP"
+   # Set environment variables for dual project support
+   export QASE_API_KEY="your-qase-token"
+   export QASE_CLIENT_PROJECT_CODE="TCP"    # Client Frontend
+   export QASE_ADMIN_PROJECT_CODE="PCU"     # Admin Frontend
+   export QASE_TARGET_PROJECT="TCP"         # Default project
 
-   # Generate test from natural language
-   ./ai-sdlc generate-from-requirements "Validate credit score calculation accuracy"
+   # Generate tests for client frontend (customer-facing)
+   ./ai-sdlc generate-from-requirements "Validate credit score calculation accuracy" --project=TCP
 
-   # Convert existing manual Qase test case
-   ./ai-sdlc convert-manual-to-auto 456
+   # Generate tests for admin frontend (internal)
+   ./ai-sdlc generate-from-requirements "Test admin user management dashboard" --project=PCU
 
-   # Complete automated testing setup
-   ./ai-sdlc auto-complete-testing
+   # Convert existing manual test cases
+   ./ai-sdlc convert-manual-to-auto 456 --project=TCP
+
+   # Complete automated testing setup for both projects
+   ./ai-sdlc auto-complete-testing --dual-project
    ```
 
 ## 🔐 **Security & Validation**

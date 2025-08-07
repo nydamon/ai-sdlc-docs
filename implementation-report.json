@@ -1,5 +1,5 @@
 {
-  "timestamp": "2025-08-07T00:47:05.459Z",
+  "timestamp": "2025-08-07T01:36:15.255Z",
   "version": "2.7.1",
   "implementationStatus": {
     "core": {
@@ -72,9 +72,9 @@
         "envVar": "OPENAI_API_KEY"
       },
       "Qase": {
-        "configured": false,
-        "working": false,
-        "envVar": "QASE_TOKEN"
+        "configured": true,
+        "working": true,
+        "envVar": "QASE_API_KEY"
       },
       "GitHub": {
         "configured": true,
@@ -82,22 +82,26 @@
         "envVar": "GITHUB_TOKEN"
       },
       "SonarQube": {
-        "configured": false,
-        "working": false,
+        "configured": true,
+        "working": true,
         "envVar": "SONAR_TOKEN"
       }
     },
     "testing": {
       "Jest Configuration": {
-        "implemented": "vitest"
+        "implemented": true
       },
       "Playwright E2E": {
         "implemented": "^1.54.2"
       },
-      "AI Test Generation": {},
-      "Coverage Reporting": {},
+      "AI Test Generation": {
+        "implemented": "node scripts-complex/real-ai-test-generator.js generate"
+      },
+      "Coverage Reporting": {
+        "implemented": "jest --coverage"
+      },
       "Linting": {
-        "implemented": false
+        "implemented": true
       }
     }
   },
@@ -114,13 +118,13 @@
     },
     "integrations": {
       "total": 4,
-      "implemented": 2,
-      "percentage": 50
+      "implemented": 4,
+      "percentage": 100
     },
     "testing": {
       "total": 5,
-      "implemented": 2,
-      "percentage": 40
+      "implemented": 5,
+      "percentage": 100
     }
   }
 }

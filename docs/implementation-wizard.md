@@ -103,7 +103,7 @@ npm run test:e2e
 ./auto-setup.sh
 
 # 2. React-specific configuration
-npm install @testing-library/react @testing-library/jest-dom
+npm install @testing-library/react @testing-library/jest-dom vitest jsdom
 ./ai-sdlc generate-config --type=react
 
 # 3. Generate component tests
@@ -269,4 +269,4 @@ Create a dashboard to track your implementation progress:
 **Remember:** This is a progressive enhancement framework. Each level builds on the previous one, so you can implement at your own pace while getting immediate value.
 
 **Last Updated:** August 7, 2025  
-**Framework Version:** v2.7.1
+**Framework Version:** v2.8.1

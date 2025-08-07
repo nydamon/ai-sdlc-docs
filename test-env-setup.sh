@@ -26,7 +26,9 @@ if [[ ! -f ".env" ]]; then
     echo -e "${BLUE}Required API keys:${NC}"
     echo "   • OPENAI_API_KEY (OpenAI account)"
     echo "   • QASE_API_KEY (Your existing Qase account)"
-    echo "   • QASE_PROJECT_CODE (Your Qase project)"
+    echo "   • QASE_CLIENT_PROJECT_CODE=TCP (Client Frontend Project)"
+    echo "   • QASE_ADMIN_PROJECT_CODE=PCU (Admin Frontend Project)"
+    echo "   • QASE_TARGET_PROJECT=TCP (Default project)"
     echo "   • GITHUB_TOKEN (GitHub personal access token)"
     echo
     exit 1
@@ -50,6 +52,19 @@ fi
 if [[ -n "$QASE_API_KEY" && "$QASE_API_KEY" != "your-qase-api-token-here" ]]; then
     echo -e "${GREEN}✅ Qase API key configured${NC}"
     QASE_CONFIGURED=true
+    
+    # Check dual project setup
+    if [[ -n "$QASE_CLIENT_PROJECT_CODE" && "$QASE_CLIENT_PROJECT_CODE" = "TCP" ]]; then
+        echo -e "${GREEN}   ✓ TCP (Client) project configured${NC}"
+    else
+        echo -e "${YELLOW}   ⚠️  TCP project not configured (set QASE_CLIENT_PROJECT_CODE=TCP)${NC}"
+    fi
+    
+    if [[ -n "$QASE_ADMIN_PROJECT_CODE" && "$QASE_ADMIN_PROJECT_CODE" = "PCU" ]]; then
+        echo -e "${GREEN}   ✓ PCU (Admin) project configured${NC}"
+    else
+        echo -e "${YELLOW}   ⚠️  PCU project not configured (set QASE_ADMIN_PROJECT_CODE=PCU)${NC}"
+    fi
 else
     echo -e "${YELLOW}⚠️  Qase API key not configured${NC}"
     QASE_CONFIGURED=false

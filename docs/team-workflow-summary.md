@@ -1,4 +1,4 @@
-# Team Workflow Summary - AI-SDLC v2.7.1
+# Team Workflow Summary - AI-SDLC {{ extra.version.framework }}
 
 ## 📋 Quick Reference for Team Leads
 

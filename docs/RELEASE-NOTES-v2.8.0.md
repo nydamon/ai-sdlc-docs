@@ -56,7 +56,7 @@ All new scripts tested locally:
 
 ### Version Updates
 
-- **Framework Version**: v2.7.1 → v2.8.0
+- **Framework Version**: v2.8.0 → v2.8.1
 - **Documentation Site**: Updated navigation and implementation tracking
 - **CLAUDE.md**: Updated production status and version references
 

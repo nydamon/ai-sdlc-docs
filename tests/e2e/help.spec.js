@@ -19,7 +19,7 @@ class AutoHealingLocators {
       await page.waitForSelector(primarySelector, { timeout: 5000 });
       return primarySelector;
     } catch (_error) {
-      // eslint-disable-line no-unused-vars
+       
       console.log(
         `🔧 Primary selector failed: ${primarySelector}, trying fallbacks...`
       );
@@ -30,7 +30,7 @@ class AutoHealingLocators {
           console.log(`✅ Using fallback selector: ${fallback}`);
           return fallback;
         } catch (_fallbackError) {
-          // eslint-disable-line no-unused-vars
+           
           continue;
         }
       }
@@ -140,7 +140,7 @@ test.afterEach(async ({ page }, testInfo) => {
 });
 
 async function attemptAutoFix(page, _testInfo) {
-  // eslint-disable-line no-unused-vars
+   
   console.log('🔧 Attempting auto-fix for common issues...');
 
   // Check for loading states
