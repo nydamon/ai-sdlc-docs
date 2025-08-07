@@ -145,7 +145,7 @@ npm run ai:generate-e2e tests/api/
 
 ## Implementation Validation
 
-### Verify Each Level
+### Verify Each Component
 
 **Basic Setup Validation:**
 
@@ -266,7 +266,7 @@ Create a dashboard to track your implementation progress:
 - 🔧 **Script Support:** All scripts available in `scripts-complex/`
 - 💬 **Community:** TCP internal Slack for framework discussions
 
-**Remember:** This is a progressive enhancement framework. Each level builds on the previous one, so you can implement at your own pace while getting immediate value.
+**Remember:** This is a progressive enhancement framework. Each component builds on the previous one, so you can implement at your own pace while getting immediate value.
 
 **Last Updated:** August 7, 2025  
 **Framework Version:** v2.8.1

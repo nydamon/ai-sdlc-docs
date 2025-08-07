@@ -196,7 +196,7 @@ The AI-SDLC framework is available as a **public GitHub repository**:
 # Basic management commands
 ./ai-sdlc setup      # Same as ./auto-setup.sh
 
-# AI test generation (Level 2+) - VALIDATED
+# AI test generation (with API keys) - VALIDATED
 ./ai-sdlc test-init                         # Initialize AI test generation
 ./ai-sdlc test-gen all                      # Generate tests for all files
 
@@ -386,9 +386,9 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 
 - [🚀 Quick Start Guide](quick-start-simple.md) - **SINGLE COMMAND SETUP** - Start here!
 - [⚙️ Developer Workflow](developer-workflow-guide.md) - **Complete daily workflow with line-by-line instructions**
-- [Quick Start Guide](quick-start-simple.md) - Step-by-step setup for all levels
+- [Quick Start Guide](quick-start-simple.md) - Step-by-step setup guide
 - [👨‍💻 Developer Workflow Guide](developer-workflow-guide.md) - **Complete daily workflow with line-by-line instructions**
-- [Architecture Overview](architecture-simplified.md) - 3-level framework architecture
+- [Architecture Overview](architecture-simplified.md) - Framework architecture overview
 - [🗺️ Existing Database Setup](existing-database-setup.md) - **PostgreSQL integration with YOUR existing database**
 - [Troubleshooting Guide](troubleshooting-simple.md) - Common issues and fixes
 

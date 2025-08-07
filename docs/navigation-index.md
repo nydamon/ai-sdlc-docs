@@ -55,7 +55,7 @@
 
 ### 🏢 **Claude Code + Cline Enterprise Platform with MCP Integration**
 
-| Page                                                                                     | Purpose                | Enterprise Level | New                                                    |
+| Page                                                                                     | Purpose                | Features         | New                                                    |
 | ---------------------------------------------------------------------------------------- | ---------------------- | ---------------- | ------------------------------------------------------ |
 | [💻 Claude Code + Cline Guidelines](enhanced-claude-code-guidelines.md)                  | Platform configuration | All              | <span class="status-indicator updated"></span> Updated |
 | [🚀 Claude Code + Cline Implementation Guide](claude-code-cline-implementation-guide.md) | Complete deployment    | Enterprise       | <span class="status-indicator new"></span> New         |

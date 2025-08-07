@@ -46,40 +46,31 @@ show_welcome() {
     read -p "Press Enter to continue or Ctrl+C to exit..."
 }
 
-### SETUP LEVEL SELECTION
-select_setup_level() {
-    echo_header "Choose Your Setup Level"
+### SETUP CONFIGURATION
+configure_setup() {
+    echo_header "Setup Configuration"
     echo
-    echo_color $GREEN "1️⃣  Basic Setup (5 minutes)"
+    echo_color $GREEN "🔧 Core Framework (Installs Automatically)"
     echo "   • Enhanced git hooks"
-    echo "   • Code formatting & linting"
+    echo "   • Code formatting & linting"  
     echo "   • Security scanning"
+    echo "   • 42 automation components"
     echo "   • No API keys required"
     echo
-    echo_color $YELLOW "2️⃣  AI-Powered Setup (15 minutes)"
-    echo "   • Everything in Basic"
-    echo "   • AI test generation"
-    echo "   • Requires OpenAI API key"
+    echo_color $YELLOW "🤖 AI Features (Configure After Setup)"
+    echo "   • Add API keys to .env file"
+    echo "   • AI test generation activates automatically"
     echo "   • 100% test coverage capability"
-    echo
-    echo_color $PURPLE "3️⃣  Enterprise Setup (30 minutes)"
-    echo "   • Everything in AI-Powered"
     echo "   • E2E automation"
-    echo "   • CI/CD pipelines"
-    echo "   • Performance monitoring"
-    echo "   • Requires multiple API keys"
     echo
-    while true; do
-        read -p "Select level (1-3): " level
-        case $level in
-            1) SETUP_LEVEL="basic"; break;;
-            2) SETUP_LEVEL="ai-powered"; break;;
-            3) SETUP_LEVEL="enterprise"; break;;
-            *) echo_color $RED "Please select 1, 2, or 3";;
-        esac
-    done
+    read -p "Continue with unified setup? (y/n): " continue_setup
+    if [[ ! "$continue_setup" =~ ^[Yy]$ ]]; then
+        echo_color $YELLOW "Setup cancelled by user"
+        exit 0
+    fi
     
-    info "Selected: $SETUP_LEVEL setup level"
+    SETUP_LEVEL="unified"
+    info "Starting unified setup process"
 }
 
 ### PROJECT DETECTION
@@ -399,22 +390,15 @@ main() {
     log "Starting enhanced setup wizard"
     
     show_welcome
-    select_setup_level
+    configure_setup
     detect_project_type
     
-    echo_header "Running Setup: $SETUP_LEVEL"
+    echo_header "Running Unified Setup"
     
-    case $SETUP_LEVEL in
-        "basic")
-            run_basic_setup
-            ;;
-        "ai-powered")
-            run_ai_setup
-            ;;
-        "enterprise")
-            run_enterprise_setup
-            ;;
-    esac
+    # Run unified setup (combines all functionality)
+    run_basic_setup
+    setup_ai_configuration
+    setup_e2e_templates
     
     run_validation
     
