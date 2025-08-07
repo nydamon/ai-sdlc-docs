@@ -386,7 +386,7 @@ npm run subagents:orchestrate -- --analysis
 
 - [MCP Server Setup Guide](mcp-server-setup.md) - **Required** for sub-agents
 - [Agent Orchestration Guide](agent-orchestration-guide.md) - Detailed routing logic
-- [Enhanced Cline Guidelines](enhanced-cursor-guidelines.md) - Primary platform setup
+- [Enhanced Cline Guidelines](enhanced-claude-code-guidelines.md) - Primary platform setup
 - [Cost Optimization Guide](enhanced-config-management.md) - Budget management
 
 ### **Getting Help**

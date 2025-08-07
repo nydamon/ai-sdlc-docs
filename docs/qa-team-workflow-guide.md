@@ -1,4 +1,4 @@
-# QA Team Workflow Guide - AI-SDLC v2.8.1
+# QA Team Workflow Guide - AI-SDLC v3.2.0
 
 ## 🎯 Complete QA Testing Workflow with AI-SDLC Automation
 

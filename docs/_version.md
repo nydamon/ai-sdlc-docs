@@ -4,7 +4,7 @@
 
 <!-- Main Version -->
 
-{%- set framework_version = "v3.0.0" -%}
+{%- set framework_version = "v3.2.0" -%}
 {%- set version_name = "Documentation Accuracy Update" -%}
 {%- set platform_name = "Open-Source PR-Agent Platform" -%}
 
@@ -36,7 +36,7 @@
 
 <!-- Export variables for use in other documents -->
 
-{{ framework_version }} <!-- v3.0.0 -->
+{{ framework_version }} <!-- v3.2.0 -->
 {{ version_name }} <!-- Documentation Accuracy Update -->
 {{ platform_name }} <!-- Open-Source PR-Agent Platform -->
 {{ release_date }} <!-- August 7, 2025 -->

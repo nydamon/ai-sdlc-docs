@@ -361,7 +361,7 @@ function calculateFICOScore(
 # Use conventional commit format
 feat(credit-calc): add FICO 8 score calculation with boundary validation
 fix(api): resolve PII encryption issue in credit report endpoint
-docs(readme): update installation instructions for v2.8.1
+docs(readme): update installation instructions for v3.2.0
 test(e2e): add comprehensive credit dispute workflow tests
 chore(deps): update TypeScript to v5.3.0
 ```

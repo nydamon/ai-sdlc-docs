@@ -78,7 +78,7 @@ The AI-SDLC Framework is a comprehensive development automation platform designe
 
 ## Current Status
 
-**Framework Version**: v2.8.1 - Documentation Accuracy Update
+**Framework Version**: v3.2.0 - Claude Code + Cline Enterprise Platform with MCP Integration
 **Deployment Status**: Production ready with centralized version management
 **Platform**: Open-Source PR-Agent Platform with cost-optimized AI integration
 **Last Updated**: August 7, 2025

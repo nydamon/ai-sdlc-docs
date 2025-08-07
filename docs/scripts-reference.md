@@ -1,6 +1,6 @@
-# Scripts & Configuration Reference - v3.1.0
+# Scripts & Configuration Reference
 
-## 🤖 v3.1.0 Claude Code + Cline Enterprise Platform
+## 🤖 Claude Code + Cline Enterprise Platform with MCP Integration
 
 ### **New Agent Orchestration Scripts**
 

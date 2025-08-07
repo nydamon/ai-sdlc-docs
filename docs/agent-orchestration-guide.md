@@ -394,7 +394,7 @@ The orchestrator learns from task outcomes:
 
 - **[Claude Code Sub-Agents Setup](claude-code-sub-agents-setup.md)**: Sub-agent configuration
 - **[MCP Server Setup Guide](mcp-server-setup.md)**: MCP server configuration
-- **[Enhanced Cline Guidelines](enhanced-cursor-guidelines.md)**: Primary platform setup
+- **[Enhanced Cline Guidelines](enhanced-claude-code-guidelines.md)**: Primary platform setup
 - **[Cost Optimization Guide](enhanced-config-management.md)**: Budget management
 - **[Scripts Reference](scripts-reference.md)**: Technical implementation details
 

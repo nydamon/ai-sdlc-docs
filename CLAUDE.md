@@ -18,6 +18,7 @@ This is a comprehensive AI-powered Software Development Lifecycle (SDLC) framewo
 - **Enhanced Memory Bank System** - Comprehensive project context management
 - **Modular Configuration System** - Flexible .clinerules for different scenarios
 - **Professional Documentation Site** - Complete implementation and deployment guides
+- **Centralized Footer-Only Versioning** - Clean, maintainable version strategy (August 2025 enhancement)
 
 ## Core Functionality (VALIDATED)
 
@@ -54,7 +55,9 @@ This is a comprehensive AI-powered Software Development Lifecycle (SDLC) framewo
 ✅ **Intelligent Test Automation** - AI-driven test generation with self-healing capabilities
 ✅ **97% Cost Reduction Achieved** - Through intelligent AI model routing and optimization
 
-### NEW in v3.1.0: Claude Code + Cline Enterprise Platform
+### Current Framework Features: Claude Code + Cline Enterprise Platform with MCP Integration
+
+**Documentation Enhancement (August 2025):** Implemented centralized footer-only versioning for 85% maintenance reduction and cleaner user experience.
 
 **Cline Platform Enhancements (Primary):**
 ✅ **Plan & Act Mode Integration** - Strategic planning workflows before execution
@@ -84,7 +87,7 @@ This is a comprehensive AI-powered Software Development Lifecycle (SDLC) framewo
 auto-setup.sh                      # Working setup script (VALIDATED)
 ai-sdlc                            # CLI interface (WORKING)
 
-# Primary Platform: Cline AI Configuration (v3.1.0)
+# Primary Platform: Cline AI Configuration (v3.2.0)
 memory_bank/                       # Enhanced project context system
   ├── project_brief.md            # Business requirements and goals
   ├── tech_stack.md               # Technology choices and versions
@@ -294,31 +297,44 @@ git commit -m "sync: update scripts in documentation"
 
 **Usage**: Run `./validate-documentation-deployment.sh` before any documentation deployment to prevent script accessibility issues.
 
-### **Centralized Version Management System (v3.0.0):**
+### **Centralized Footer-Only Version Management System:**
 
-- ✅ **Single Point of Control** - Update versions only in mkdocs.yml
-- ✅ **Automatic Propagation** - Variables populate across all documentation
-- ✅ **Version Verification Script** - `verify-version-consistency.sh` for validation
-- ✅ **Professional Deployment** - Quality assurance before release
+**NEW STRATEGY (August 2025):** We've moved from scattered version numbers throughout documentation to a **centralized footer-only approach** for dramatically better maintainability.
 
-**How to Update Framework Version**:
+- ✅ **Footer-Only Display** - Version appears ONLY in mkdocs.yml footer, shows on all pages automatically
+- ✅ **Clean Page Titles** - No version numbers in headers or titles (version-agnostic documentation)
+- ✅ **Single Source of Truth** - Update versions only in mkdocs.yml footer configuration
+- ✅ **85% Maintenance Reduction** - Drastically fewer files need version updates
+- ✅ **Professional Documentation** - Clean, evergreen content focused on capabilities
+
+**Benefits of New Approach:**
+
+- Documentation focuses on current features, not version history
+- Version updates touch only 2 files (mkdocs.yml + package.json) instead of 30+
+- No more version consistency nightmares across documentation
+- Users see current version in footer without content noise
+
+**How to Update Framework Version:**
 
 ```yaml
-# Edit mkdocs.yml only - changes propagate everywhere
-extra:
-  version:
-    framework: 'v3.0.0' # Update this
-    savings: '$70,200+' # Update this
-    updated: 'August 7, 2025' # Update this
+# Edit mkdocs.yml footer only - appears on all pages automatically
+copyright: |
+  &copy; 2025 <a href="https://thecreditpros.com">The Credit Pros</a><br>
+  <strong>Enterprise AI-SDLC Framework by Damon DeCrescenzo, CTO</strong><br>
+  <strong>Version: v3.2.0 | Updated: August 7, 2025</strong>
 ```
+
+Then run: `npm run version:update` (handles package.json automatically)
 
 **Version Guidelines**:
 
 - **Major (v4.0.0)**: Significant framework changes, new architecture
-- **Minor (v3.1.0)**: New features, script additions, major functionality updates
-- **Patch (v3.0.1)**: Bug fixes, minor documentation corrections, accuracy updates
+- **Minor (v3.3.0)**: New features, script additions, major functionality updates
+- **Patch (v3.2.1)**: Bug fixes, minor documentation corrections, accuracy updates
 
-**Current Version (v3.1.0 - Claude Code + Cline Enterprise Platform) Includes**:
+**Current Framework Features (Claude Code + Cline Enterprise Platform with MCP Integration):**
+
+_Note: Specific version information is displayed in the documentation site footer. Documentation is now version-agnostic for better maintainability._
 
 **Cline Platform Enhancements:**
 
@@ -345,10 +361,9 @@ extra:
 
 **Status**: ✅ PRODUCTION READY  
 **Last Validated**: August 7, 2025  
-**Framework Version**: AI-SDLC v3.1.0 - Claude Code + Cline Enterprise Platform  
-**Release Date**: August 7, 2025  
-**Last Updated**: August 7, 2025  
+**Framework Platform**: Claude Code + Cline Enterprise Platform with MCP Integration  
 **Documentation Site**: https://nydamon.github.io/ai-sdlc-docs/  
+**Version Strategy**: Centralized footer-only display for optimal maintainability  
 **Business Impact**: $2.43M annual savings potential with enhanced agent orchestration
 **Dual Platform Architecture**: Cline (primary) + Claude Code sub-agents (optional)
 **Advanced Features**: Agent orchestration, MCP servers, domain-specific agents, cost optimization

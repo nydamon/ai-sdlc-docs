@@ -10,7 +10,7 @@
 
 **Claude Code** - Terminal-native AI assistant with enterprise policy management, centralized configuration capabilities, and optional sub-agents integration. In the AI-SDLC framework, Claude Code serves as a **secondary enhancement platform** with specialized domain agents for complex credit repair tasks. See [Claude Code Sub-Agents Setup](claude-code-sub-agents-setup.md).
 
-**Cline** - IDE-integrated AI development assistant serving as the **primary AI platform** in the AI-SDLC framework. Features team coordination, multi-model support, and comprehensive MCP server integration. See [Claude Code + Cline Guidelines](enhanced-cursor-guidelines.md).
+**Cline** - IDE-integrated AI development assistant serving as the **primary AI platform** in the AI-SDLC framework. Features team coordination, multi-model support, and comprehensive MCP server integration. See [Claude Code + Cline Guidelines](enhanced-claude-code-guidelines.md).
 
 **ESLint** - JavaScript/TypeScript linting tool that catches code quality issues and enforces consistent style.
 
@@ -47,7 +47,7 @@
 
 **Auto-Healing Tests** - Self-maintaining test framework that automatically adapts when UI selectors change, reducing test maintenance overhead through smart fallback systems.
 
-## v3.1.0 Claude Code + Cline Enterprise Platform
+## Claude Code + Cline Enterprise Platform with MCP Integration
 
 **Agent Orchestration System** - Intelligent routing system that automatically determines whether to use Cline MCP servers or Claude Code sub-agents based on task complexity, domain requirements, and cost optimization. See [Agent Orchestration Guide](agent-orchestration-guide.md).
 
@@ -131,7 +131,7 @@
 
 **Cost-Optimized Routing** - Intelligent agent selection based on budget constraints: Budget ($0.05), Standard ($0.10), Premium ($0.25), with automatic fallback chains for high availability.
 
-## v2.8.1 Open-Source PR-Agent Platform (Previous)
+## Open-Source PR-Agent Platform (Previous Version)
 
 **Open-Source PR-Agent** - Cost-efficient AI-powered code review automation with TCP credit repair compliance optimization, delivering 90% cost reduction vs commercial alternatives.
 
@@ -256,7 +256,7 @@
 - [🐘 PostgreSQL Database Automation](postgresql-automation.md) - **FCRA compliance testing on existing data**
 - [Manager Implementation Guide](implementation-guide-managers.md) - Team rollout strategy
 - [Git Hooks Automation](git-hooks-automation.md) - Technical automation details
-- [Claude Code + Cline Guidelines](enhanced-cursor-guidelines.md) - Enterprise AI development platform configuration
+- [Claude Code + Cline Guidelines](enhanced-claude-code-guidelines.md) - Enterprise AI development platform configuration
 - [Claude Code Sub-Agents Setup](claude-code-sub-agents-setup.md) - **Optional Claude Code sub-agents integration with cost optimization**
 - [Agent Orchestration Guide](agent-orchestration-guide.md) - **Intelligent routing between Cline MCP and Claude Code sub-agents**
 - [MCP Server Setup Guide](mcp-server-setup.md) - **Model Context Protocol server configuration for infrastructure operations**
@@ -270,5 +270,4 @@
 ---
 
 _Created by Damon DeCrescenzo, CTO - The Credit Pros_  
-_Framework Version: v3.1.0 - Claude Code + Cline Enterprise Platform_  
-_Last Updated: August 7, 2025_
+_Created by Damon DeCrescenzo, CTO - The Credit Pros_

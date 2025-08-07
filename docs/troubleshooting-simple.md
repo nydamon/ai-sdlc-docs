@@ -1,4 +1,4 @@
-# Troubleshooting Guide - AI-SDLC v3.0.0
+# Troubleshooting Guide
 
 ## Common Issues
 

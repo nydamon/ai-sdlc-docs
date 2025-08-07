@@ -1,0 +1,163 @@
+{
+  "timestamp": "2025-08-07T08:35:46.588Z",
+  "targetVersion": "v3.2.0",
+  "summary": {
+    "totalFiles": 30,
+    "updated": 0,
+    "noChanges": 30,
+    "errors": 0,
+    "totalChanges": 0
+  },
+  "details": [
+    {
+      "file": "docs/centralized-ruleset-management.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/RELEASE-NOTES-v2.8.1.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/mcp-server-reference.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/team-workflow-summary.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/RELEASE-NOTES-v2.8.0.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/RELEASE-NOTES-v3.0.0.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/implementation-status.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/postgresql-automation.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/implementation-wizard.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/navigation-index.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/glossary.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/API_KEYS_CONSOLIDATED.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/developer-workflow-guide.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/sonarcloud-validation.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/scripts-reference.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/README.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/ROI_CLAIMS_STANDARDIZED.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/qa-team-workflow-guide.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/_version.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/framework-configurations.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/claude-code-cline-implementation-guide.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/QODO_IMPLEMENTATION_GUIDE.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/TESTING-README.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/SCRIPT-ACCURACY-REPORT.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/quick-start-simple.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/code-reviewer-guide.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/troubleshooting-simple.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/architecture-simplified.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "docs/implementation-guide-managers.md",
+      "changes": 0,
+      "status": "no_changes"
+    },
+    {
+      "file": "CLAUDE.md",
+      "changes": 0,
+      "status": "no_changes"
+    }
+  ]
+}

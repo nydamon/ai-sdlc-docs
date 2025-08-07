@@ -86,12 +86,12 @@ graph TB
   },
 
   "models": {
-    "allowed": ["claude-3-5-sonnet", "claude-3-haiku"],
-    "default": "claude-3-5-sonnet",
+    "allowed": ["claude-4-0-sonnet", "claude-3-haiku"],
+    "default": "claude-4-0-sonnet",
     "fallback": "claude-3-haiku",
     "costOptimization": {
       "simpleOperations": "claude-3-haiku",
-      "complexOperations": "claude-3-5-sonnet"
+      "complexOperations": "claude-4-0-sonnet"
     }
   },
 

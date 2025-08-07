@@ -1,4 +1,4 @@
-# Code Reviewer Guide - AI-SDLC v2.8.1
+# Code Reviewer Guide
 
 ## 🎯 Complete Code Review Workflow with AI-SDLC Tools
 

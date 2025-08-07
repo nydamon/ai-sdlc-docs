@@ -296,7 +296,7 @@ interface ExternalAIIntegration {
 
   claude: {
     endpoint: 'https://api.anthropic.com/v1';
-    model: 'claude-3-5-sonnet-20241022';
+    model: 'claude-4-0-sonnet-20250514';
     maxTokens: 8000;
     temperature: 0.2;
   };

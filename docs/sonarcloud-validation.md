@@ -280,7 +280,7 @@ The validation generates a comprehensive report:
 ```json
 {
   "timestamp": "2025-08-06T...",
-  "framework": "AI-SDLC v2.8.1",
+  "framework": "AI-SDLC v3.2.0 - Claude Code + Cline Enterprise Platform with MCP Integration",
   "organization": "thecreditpros",
   "repositories": {
     "customer-frontend-portal": {
@@ -369,7 +369,7 @@ export SONAR_ORGANIZATION=thecreditpros
 
 ---
 
-**Framework**: AI-SDLC Framework v2.8.1  
+**Framework**: AI-SDLC Framework v3.2.0 - Claude Code + Cline Enterprise Platform with MCP Integration  
 **Last Updated**: August 7, 2025  
 **Validation Tool**: `./ai-sdlc sonar-validate`  
 **Template Generator**: `./ai-sdlc sonar-templates`

@@ -275,4 +275,4 @@ git commit --no-verify -m "emergency: critical hotfix"
 
 - [🗺️ Existing Database Setup](existing-database-setup.md) - PostgreSQL integration with your current database
 - [🐘 PostgreSQL Database Automation](postgresql-automation.md) - FCRA compliance testing on existing data
-- [💻 Claude Code + Cline Guidelines](enhanced-cursor-guidelines.md) - Enterprise AI development platform
+- [💻 Claude Code + Cline Guidelines](enhanced-claude-code-guidelines.md) - Enterprise AI development platform

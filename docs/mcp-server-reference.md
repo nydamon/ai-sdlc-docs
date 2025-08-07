@@ -1,4 +1,4 @@
-# MCP Server Reference Guide - AI-SDLC v3.0.0
+# MCP Server Reference Guide
 
 ## 🔌 Complete MCP Server Documentation
 
@@ -463,6 +463,6 @@ npm run mcp:status
 
 ---
 
-**Framework Version**: AI-SDLC v3.0.0  
+**Framework Version**: AI-SDLC v3.2.0  
 **Last Updated**: August 2025  
 **MCP Protocol Version**: 1.0.0

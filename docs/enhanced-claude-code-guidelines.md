@@ -14,8 +14,8 @@
     "git": "allow"
   },
   "models": {
-    "allowed": ["claude-3-5-sonnet", "claude-3-haiku"],
-    "default": "claude-3-5-sonnet"
+    "allowed": ["claude-4-0-sonnet", "claude-3-haiku"],
+    "default": "claude-4-0-sonnet"
   },
   "creditRepairCompliance": {
     "enabled": true,
