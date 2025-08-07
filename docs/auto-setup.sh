@@ -44,9 +44,16 @@ install_common_dependencies() {
   echo_color $YELLOW "📦 Installing shared developer dependencies..."
   npm install --save-dev eslint prettier husky lint-staged commitlint @commitlint/config-conventional
   
-  # NEW: Qase AIDEN Integration Dependencies
+  # NEW: Qase AIDEN Integration Dependencies  
   echo_color $YELLOW "🤖 Installing Qase AIDEN integration..."
-  npm install --save-dev @playwright/test @qase/playwright
+  # Install Playwright and Qase integration
+  npm install --save-dev @playwright/test playwright-qase-reporter
+  
+  # Install TypeScript ESLint support if TypeScript is detected
+  if [[ -f "tsconfig.json" ]] || find . -name "*.ts" -o -name "*.tsx" | head -1 | grep -q .; then
+    echo_color $YELLOW "📝 TypeScript detected - installing ESLint TypeScript support..."
+    npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin
+  fi
   
   # Check if QASE_API_TOKEN is set
   if [[ -z "$QASE_API_TOKEN" ]]; then

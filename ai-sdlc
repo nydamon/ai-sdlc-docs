@@ -67,10 +67,10 @@ show_help() {
 cmd_setup() {
     info "Running AI-SDLC setup..."
     
-    if [[ -f "./setup.sh" ]]; then
-        ./setup.sh "$@"
+    if [[ -f "./auto-setup.sh" ]]; then
+        ./auto-setup.sh "$@"
     else
-        error "setup.sh not found in current directory"
+        error "auto-setup.sh not found in current directory"
         info "Please ensure you're in the AI-SDLC framework directory"
         exit 1
     fi
@@ -103,8 +103,8 @@ cmd_status() {
     fi
     status_checks=$((status_checks + 1))
     
-    # Check ESLint
-    if [[ -f ".eslintrc.js" ]] || [[ -f ".eslintrc.json" ]]; then
+    # Check ESLint (support both legacy and modern formats)
+    if [[ -f ".eslintrc.js" ]] || [[ -f ".eslintrc.json" ]] || [[ -f "eslint.config.js" ]] || [[ -f "eslint.config.mjs" ]]; then
         success "ESLint configured"
         status_passed=$((status_passed + 1))
     else
@@ -185,11 +185,13 @@ cmd_validate() {
 cmd_test_init() {
     info "Initializing AI test generation..."
     
-    if [[ -f "./scripts/ai-test-generator.js" ]]; then
+    if [[ -f "./scripts-complex/ai-test-generator.js" ]]; then
+        node ./scripts-complex/ai-test-generator.js init "$@"
+    elif [[ -f "./scripts/ai-test-generator.js" ]]; then
         node ./scripts/ai-test-generator.js init "$@"
     else
         error "AI test generator not found"
-        info "Please ensure you're in the AI-SDLC framework directory"
+        info "Make sure you have the scripts-complex directory or run from the AI-SDLC framework directory"
         exit 1
     fi
 }
@@ -198,11 +200,13 @@ cmd_test_init() {
 cmd_test_gen() {
     info "Generating tests..."
     
-    if [[ -f "./scripts/ai-test-generator.js" ]]; then
+    if [[ -f "./scripts-complex/ai-test-generator.js" ]]; then
+        node ./scripts-complex/ai-test-generator.js generate "$@"
+    elif [[ -f "./scripts/ai-test-generator.js" ]]; then
         node ./scripts/ai-test-generator.js generate "$@"
     else
         error "AI test generator not found"
-        info "Please ensure you're in the AI-SDLC framework directory"
+        info "Make sure you have the scripts-complex directory or run from the AI-SDLC framework directory"
         exit 1
     fi
 }

@@ -46,7 +46,14 @@ install_common_dependencies() {
   
   # NEW: Qase AIDEN Integration Dependencies
   echo_color $YELLOW "🤖 Installing Qase AIDEN integration..."
-  npm install --save-dev @playwright/test @qase/playwright
+  # Install Playwright and Qase integration  
+  npm install --save-dev @playwright/test playwright-qase-reporter
+  
+  # Install TypeScript ESLint support if TypeScript is detected
+  if [[ -f "tsconfig.json" ]] || find . -name "*.ts" -o -name "*.tsx" | head -1 | grep -q .; then
+    echo_color $YELLOW "📝 TypeScript detected - installing ESLint TypeScript support..."
+    npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin
+  fi
   
   # Check if QASE_API_TOKEN is set
   if [[ -z "$QASE_API_TOKEN" ]]; then
@@ -60,8 +67,10 @@ install_common_dependencies() {
   echo_color $YELLOW "🪝 Setting up Git hooks with Husky..."
   npx husky init
   
-  # Create pre-commit hook
-  echo "npx lint-staged" > .husky/pre-commit
+  # Create pre-commit hook (modern Husky format)
+  cat > .husky/pre-commit << 'EOF'
+npx lint-staged
+EOF
   chmod +x .husky/pre-commit
   
   echo_color $GREEN "✔️ Git hooks configured successfully."
@@ -185,24 +194,66 @@ setup_postgresql_automation() {
 setup_basic_configuration() {
   echo_color $YELLOW "⚙️ Setting up basic configuration files..."
 
-  # Create basic ESLint config if none exists
-  if [[ ! -f ".eslintrc.js" ]] && [[ ! -f ".eslintrc.json" ]]; then
-    cat > .eslintrc.js << 'EOF'
-module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-    node: true,
+  # Create ESLint config based on project type
+  if [[ ! -f ".eslintrc.js" ]] && [[ ! -f ".eslintrc.json" ]] && [[ ! -f "eslint.config.js" ]]; then
+    # Check if TypeScript is present
+    if [[ -f "tsconfig.json" ]] || find . -name "*.ts" -o -name "*.tsx" | head -1 | grep -q .; then
+      echo_color $YELLOW "📝 Creating TypeScript ESLint configuration..."
+      cat > eslint.config.js << 'EOF'
+const typescriptEslint = require('@typescript-eslint/eslint-plugin');
+const typescriptParser = require('@typescript-eslint/parser');
+
+module.exports = [
+  {
+    files: ['**/*.js', '**/*.jsx'],
+    rules: {
+      'no-console': 'warn',
+      'no-unused-vars': 'warn',
+      semi: ['error', 'always'],
+      quotes: ['error', 'single'],
+    },
   },
-  extends: ['eslint:recommended'],
-  parserOptions: {
-    ecmaVersion: 12,
-    sourceType: 'module',
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parser: typescriptParser,
+      parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    plugins: {
+      '@typescript-eslint': typescriptEslint,
+    },
+    rules: {
+      'no-console': 'warn',
+      semi: ['error', 'always'],
+      quotes: ['error', 'single'],
+      '@typescript-eslint/no-unused-vars': 'warn',
+    },
   },
-  rules: {},
-};
+];
 EOF
-    echo_color $GREEN "✔️ Created basic ESLint configuration."
+    else
+      echo_color $YELLOW "📝 Creating JavaScript ESLint configuration..."
+      cat > eslint.config.js << 'EOF'
+module.exports = [
+  {
+    files: ['**/*.js', '**/*.jsx'],
+    rules: {
+      'no-console': 'warn',
+      'no-unused-vars': 'warn',  
+      semi: ['error', 'always'],
+      quotes: ['error', 'single'],
+    },
+  },
+];
+EOF
+    fi
+    echo_color $GREEN "✔️ Created ESLint configuration."
   fi
 
   # Create basic Prettier config if none exists
@@ -227,7 +278,7 @@ validate_configuration() {
   local issues=0
 
   # Check essential files
-  [[ -f .eslintrc.js ]] || [[ -f .eslintrc.json ]] || { echo_color $RED "⚠️ ESLint config missing"; ((issues++)); }
+  [[ -f .eslintrc.js ]] || [[ -f .eslintrc.json ]] || [[ -f eslint.config.js ]] || { echo_color $RED "⚠️ ESLint config missing"; ((issues++)); }
   [[ -f .prettierrc ]] || { echo_color $RED "⚠️ Prettier config missing"; ((issues++)); }
 
   # Check Cline configuration
