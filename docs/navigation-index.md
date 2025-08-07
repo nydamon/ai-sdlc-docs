@@ -1,206 +1,90 @@
-# 🗂️ Complete Documentation Index - AI-SDLC
+# 📂 Browse All Documentation
 
-## 📋 **Quick Navigation**
-
-<div class="quick-nav">
-  <a href="quick-start-simple/" class="quick-nav-item">
-    🚀 Quick Start Guide
-  </a>
-  <a href="implementation-guide-managers/" class="quick-nav-item">
-    📋 Manager Implementation
-  </a>
-  <a href="claude-code-cline-implementation-guide/" class="quick-nav-item">
-    🏢 Enterprise Platform <span class="enterprise-badge">Latest</span>
-  </a>
-  <a href="centralized-ruleset-management/" class="quick-nav-item">
-    ⚙️ Ruleset Management <span class="enterprise-badge">new</span>
-  </a>
-</div>
+**Quick navigation to all guides organized by your role and needs.**
 
 ---
 
-## 📚 **Complete Documentation Map**
+## 🚀 Getting Started
+*New to the framework? Start here*
 
-### 🎯 **Core Framework Pages**
-
-| Page                                                                | Purpose                        | Audience        | Priority |
-| ------------------------------------------------------------------- | ------------------------------ | --------------- | -------- |
-| [Home](README.md)                                                   | Main overview and introduction | All users       | ⭐⭐⭐   |
-| [🏗️ Architecture Overview](architecture-simplified.md)              | AI-powered framework structure | Technical leads | ⭐⭐⭐   |
-| [Quick Start Guide](quick-start-simple.md)                          | Implementation steps           | Developers      | ⭐⭐⭐   |
-| [📋 Manager Implementation Guide](implementation-guide-managers.md) | Team rollout strategy          | Managers        | ⭐⭐⭐   |
-| [🧪 Testing & Validation](TESTING-README.md)                        | Quality assurance processes    | QA teams        | ⭐⭐     |
-| [Troubleshooting](troubleshooting-simple.md)                        | Common issues and fixes        | All users       | ⭐⭐     |
-| [📚 Glossary](glossary.md)                                          | Terms and definitions          | All users       | ⭐⭐     |
-
-### 👥 **Team Workflow Guides**
-
-| Page                                                       | Purpose                    | Audience     | Status                                             |
-| ---------------------------------------------------------- | -------------------------- | ------------ | -------------------------------------------------- |
-| [📋 Team Workflow Summary](team-workflow-summary.md)       | Overview for team leads    | Team leads   | <span class="status-indicator ready"></span> Ready |
-| [👨‍💻 Developer Workflow Guide](developer-workflow-guide.md) | Daily development workflow | Developers   | <span class="status-indicator ready"></span> Ready |
-| [🧪 QA Team Workflow Guide](qa-team-workflow-guide.md)     | QA automation workflows    | QA engineers | <span class="status-indicator ready"></span> Ready |
-| [👀 Code Reviewer Guide](code-reviewer-guide.md)           | AI-assisted code review    | Senior devs  | <span class="status-indicator ready"></span> Ready |
-
-### 🔧 **Technical Implementation Guides**
-
-| Page                                                           | Purpose                | Complexity   | Version |
-| -------------------------------------------------------------- | ---------------------- | ------------ | ------- |
-| [Git Hooks Automation](git-hooks-automation.md)                | Core automation setup  | Basic        | Current |
-| [🐘 PostgreSQL Database Automation](postgresql-automation.md)  | Database integration   | Advanced     | Current |
-| [🗺️ Existing Database Setup Guide](existing-database-setup.md) | Database configuration | Intermediate | Current |
-| [React Best Practices](react-best-practices-updated.md)        | Frontend standards     | Intermediate | Current |
-| [Configuration Management](enhanced-config-management.md)      | Config standardization | Basic        | Current |
-| [📋 Version Management Guide](../VERSION_MANAGEMENT_GUIDE.md)  | Automated versioning   | Basic        | Current |
-
-### 🏢 **Claude Code + Cline Enterprise Platform with MCP Integration**
-
-| Page                                                                                     | Purpose                | Features         | New                                                    |
-| ---------------------------------------------------------------------------------------- | ---------------------- | ---------------- | ------------------------------------------------------ |
-| [💻 Claude Code + Cline Guidelines](enhanced-claude-code-guidelines.md)                  | Platform configuration | All              | <span class="status-indicator updated"></span> Updated |
-| [🚀 Claude Code + Cline Implementation Guide](claude-code-cline-implementation-guide.md) | Complete deployment    | Enterprise       | <span class="status-indicator new"></span> New         |
-| [🏢 Centralized Ruleset Management](centralized-ruleset-management.md)                   | Policy control         | Enterprise       | <span class="status-indicator new"></span> New         |
-| [📄 Scripts & Configuration Reference](scripts-reference.md)                             | Technical reference    | All              | <span class="status-indicator updated"></span> Updated |
-| [🎯 Qase Dual Project Setup Guide](../QASE_DUAL_PROJECT_SETUP.md)                        | TCP/PCU project config | All              | <span class="status-indicator new"></span> New         |
-
-### 📦 **Scripts & Downloads**
-
-| Resource                                                    | Type   | Description             |
-| ----------------------------------------------------------- | ------ | ----------------------- |
-| [📋 Scripts Download & Implementation](scripts-download.md) | Guide  | Script access and setup |
-| [auto-setup.sh](auto-setup.sh)                              | Script | Main setup automation   |
-| [ai-sdlc CLI](ai-sdlc)                                      | Tool   | Command-line interface  |
-
-### 📊 **Additional Resources**
-
-| Page                                                    | Purpose         | Update Frequency |
-| ------------------------------------------------------- | --------------- | ---------------- |
-| [Framework Configurations](framework-configurations.md) | Technical specs | Monthly          |
-| [SonarCloud Validation](sonarcloud-validation.md)       | Quality gates   | Monthly          |
+| Guide | What You Get |
+|-------|-------------|
+| [🏠 **Home Overview**](README.md) | Business case, ROI metrics, and framework introduction |
+| [🚀 **5-Minute Setup**](quick-start-simple.md) | Single command setup - `./auto-setup.sh` and you're done |
+| [🔧 **Fix Issues**](troubleshooting-simple.md) | Common problems and quick solutions |
+| [📚 **Terms & Definitions**](glossary.md) | Framework terminology explained |
 
 ---
 
-## 🔍 **Search & Discovery**
+## 👨‍💼 For Implementation Managers
+*Team rollout planning and business justification*
 
-### **By User Role**
-
-**👨‍💻 Developers:**
-
-- [Quick Start Guide](quick-start-simple.md)
-- [Developer Workflow Guide](developer-workflow-guide.md)
-- [Git Hooks Automation](git-hooks-automation.md)
-- [Troubleshooting](troubleshooting-simple.md)
-
-**📋 Managers:**
-
-- [Manager Implementation Guide](implementation-guide-managers.md)
-- [Team Workflow Summary](team-workflow-summary.md)
-- [Centralized Ruleset Management](centralized-ruleset-management.md)
-- [Claude Code + Cline Implementation Guide](claude-code-cline-implementation-guide.md)
-
-**🧪 QA Engineers:**
-
-- [QA Team Workflow Guide](qa-team-workflow-guide.md)
-- [Testing & Validation](TESTING-README.md)
-- [PostgreSQL Database Automation](postgresql-automation.md)
-
-**👀 Code Reviewers:**
-
-- [Code Reviewer Guide](code-reviewer-guide.md)
-- [React Best Practices](react-best-practices-updated.md)
-- [Configuration Management](enhanced-config-management.md)
-
-### **By Implementation Phase**
-
-**🚀 Getting Started:**
-
-- [Quick Start Guide](quick-start-simple.md)
-- [Developer Workflow Guide](developer-workflow-guide.md)
-- [Troubleshooting](troubleshooting-simple.md)
-
-**🤖 AI-Powered Development:**
-
-- [Scripts & Configuration Reference](scripts-reference.md)
-- [Testing & Validation](TESTING-README.md)
-- [Git Hooks Automation](git-hooks-automation.md)
-
-**🏢 Enterprise Features:**
-
-- [Claude Code + Cline Implementation Guide](claude-code-cline-implementation-guide.md)
-- [Centralized Ruleset Management](centralized-ruleset-management.md)
-- [PostgreSQL Database Automation](postgresql-automation.md)
-
-### **By Topic**
-
-**🤖 AI-Powered Development:**
-
-- [Quick Start Guide](quick-start-simple.md)
-- [Developer Workflow Guide](developer-workflow-guide.md)
-- [Scripts & Configuration Reference](scripts-reference.md)
-- [Testing & Validation](TESTING-README.md)
-
-**🏢 Enterprise Platform:**
-
-- [Claude Code + Cline Guidelines](enhanced-claude-code-guidelines.md)
-- [Claude Code + Cline Implementation Guide](claude-code-cline-implementation-guide.md)
-- [Centralized Ruleset Management](centralized-ruleset-management.md)
-
-**🔧 Technical Setup:**
-
-- [Git Hooks Automation](git-hooks-automation.md)
-- [Configuration Management](enhanced-config-management.md)
-- [Scripts Download & Implementation](scripts-download.md)
-
-**👥 Team Coordination:**
-
-- [Team Workflow Summary](team-workflow-summary.md)
-- [Manager Implementation Guide](implementation-guide-managers.md)
-- All workflow guides
-
-**🗄️ Database & Compliance:**
-
-- [PostgreSQL Database Automation](postgresql-automation.md)
-- [Existing Database Setup Guide](existing-database-setup.md)
-- [SonarCloud Validation](sonarcloud-validation.md)
+| Guide | Purpose |
+|-------|---------|
+| [📋 **Team Rollout Plan**](implementation-guide-managers.md) | 3-week implementation strategy with ROI validation |
+| [🎯 **Current Status**](implementation-status.md) | What's working, what's ready for production |
 
 ---
 
-## 🆕 **Latest Features**
+## 👨‍💻 For Developers  
+*Daily workflow and technical implementation*
 
-### **New Pages Added:**
-
-- ✨ [Claude Code + Cline Implementation Guide](claude-code-cline-implementation-guide.md) - Complete enterprise platform deployment
-- ✨ [Centralized Ruleset Management](centralized-ruleset-management.md) - Implementation manager policy control
-
-### **Major Updates:**
-
-- 🔄 [Claude Code + Cline Guidelines](enhanced-claude-code-guidelines.md) - Updated for enterprise platform
-- 🔄 [Scripts & Configuration Reference](scripts-reference.md) - Enhanced with latest features
-- 🔄 All workflow guides - Updated for new platform integration
-
-### **Enhanced Navigation:**
-
-- 🚀 Quick navigation bars on main pages
-- 📊 Complete documentation index (this page)
-- 🔗 Improved cross-linking between related pages
-- 🗂️ Better categorization and search functionality
+| Guide | What It Covers |
+|-------|---------------|
+| [👨‍💻 **Daily Workflow**](developer-workflow-guide.md) | How development changes with AI automation |
+| [🏗️ **How It Works**](architecture-simplified.md) | Framework architecture and integration points |
+| [⚙️ **Git Automation**](git-hooks-automation.md) | Automatic formatting, linting, and quality gates |
 
 ---
 
-## 📞 **Support & Feedback**
+## 🧪 For QA Teams
+*Testing automation and quality assurance*
 
-**Documentation Issues:**
-
-- Create an issue on [GitHub](https://github.com/nydamon/ai-sdlc-docs/issues)
-- Use the feedback buttons on each page
-
-**Implementation Questions:**
-
-- Technical: CTO - Damon DeCrescenzo
-- Process: Implementation Manager
-- Training: Development Team Leads
+| Guide | Focus Area |
+|-------|-----------|
+| [🧪 **QA Automation**](qa-team-workflow-guide.md) | AI-powered testing workflows and strategies |
+| [🧪 **Testing Guide**](TESTING-README.md) | Comprehensive testing setup and validation |
+| [👀 **Code Reviews**](code-reviewer-guide.md) | AI-assisted review process and standards |
 
 ---
 
-**Total Pages:** 25+ comprehensive guides  
-**Status:** ✅ Production Ready
+## 📦 Setup Tools & Scripts
+*Everything you need to get started*
+
+| Resource | Description |
+|----------|-------------|
+| [📦 **All Scripts**](scripts-download.md) | Download automation scripts and setup tools |
+| [⚙️ **Main Setup**](auto-setup.sh) | Primary installation script - run this first |
+| [🛠️ **CLI Commands**](ai-sdlc) | Daily command-line interface |
+
+---
+
+## 🏢 Advanced Configuration
+*Enterprise features and AI platform integration*
+
+| Feature | Use Case |
+|---------|----------|
+| [💻 **Claude Code + Cline**](enhanced-claude-code-guidelines.md) | AI assistant setup and configuration |
+| [🔌 **MCP Servers**](mcp-server-setup.md) | Enhanced Claude integration with 10 specialized servers |
+| [🏢 **Enterprise Policies**](centralized-ruleset-management.md) | Centralized rule management for large teams |
+
+---
+
+## 🔍 **Need Something Specific?**
+
+**Search by role:**
+- **👨‍💻 Developers:** Start with [5-Minute Setup](quick-start-simple.md) → [Daily Workflow](developer-workflow-guide.md)
+- **👨‍💼 Managers:** Start with [Team Rollout Plan](implementation-guide-managers.md) → [Current Status](implementation-status.md)
+- **🧪 QA Teams:** Start with [QA Automation](qa-team-workflow-guide.md) → [Testing Guide](TESTING-README.md)
+
+**Common tasks:**
+- **First time setup:** [5-Minute Setup](quick-start-simple.md)
+- **Having issues:** [Fix Issues](troubleshooting-simple.md)
+- **Download scripts:** [All Scripts](scripts-download.md)
+- **AI integration:** [Claude Code + Cline](enhanced-claude-code-guidelines.md)
+
+---
+
+**Questions?** Technical issues → CTO • Process questions → Implementation Manager
+
+**Status:** ✅ Production Ready | **Total Guides:** 15+ focused documentation pages
