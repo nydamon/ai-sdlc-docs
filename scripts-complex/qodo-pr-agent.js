@@ -1,39 +1,37 @@
 #!/usr/bin/env node
 
 /**
- * Qodo AI PR Agent Integration for AI-SDLC
+ * Open-Source PR-Agent Setup for AI-SDLC
  * The Credit Pros - Development Team
  *
- * Provides AI-powered code review and PR analysis
+ * Sets up the open-source PR-Agent (no Qodo subscription needed)
+ * Uses GitHub Actions + OpenAI for AI-powered code review
  */
 
-const https = require('https');
 const fs = require('fs');
 const path = require('path');
+const https = require('https');
 const { execSync } = require('child_process');
 
-class QodoPRAgent {
+class OpenSourcePRAgent {
   constructor() {
-    this.apiKey = process.env.QODO_AI_API_KEY;
-    this.githubToken =
-      process.env.QODO_AI_GITHUB_TOKEN || process.env.GITHUB_TOKEN;
+    this.githubToken = process.env.GITHUB_TOKEN;
     this.openaiKey = process.env.OPENAI_API_KEY;
-    this.baseUrl = 'https://api.qodo.ai/v1';
     this.projectRoot = process.cwd();
-    
+
     // Enhanced 2025 configuration
     this.config = {
       enableMultiModel: true,
       enableRAG: true,
       enableAdvancedTools: true,
-      environment: process.env.NODE_ENV || 'development'
+      environment: process.env.NODE_ENV || 'development',
     };
-    
+
     // Qase dual project configuration
     this.qase = {
       clientProject: process.env.QASE_CLIENT_PROJECT_CODE || 'TCP',
       adminProject: process.env.QASE_ADMIN_PROJECT_CODE || 'PCU',
-      targetProject: process.env.QASE_TARGET_PROJECT || 'TCP'
+      targetProject: process.env.QASE_TARGET_PROJECT || 'TCP',
     };
 
     if (!this.apiKey && !this.githubToken && !this.openaiKey) {
@@ -44,10 +42,14 @@ class QodoPRAgent {
   }
 
   /**
-   * Initialize PR Agent for the repository
+   * Initialize Open-Source PR Agent for the repository
    */
   async initializePRAgent() {
-    console.log('🤖 Initializing Qodo AI PR Agent...');
+    console.log('🤖 Initializing Open-Source PR Agent...');
+    console.log(
+      '   No Qodo subscription needed - uses GitHub Actions + OpenAI'
+    );
+    console.log('');
 
     try {
       // Check if GitHub repo is configured
@@ -103,19 +105,27 @@ class QodoPRAgent {
    */
   async createPRAgentConfig() {
     const config = this.generateEnhancedConfig();
-    
+
     fs.writeFileSync(path.join(this.projectRoot, '.pr_agent.toml'), config);
-    
+
     // Also create environment-specific configs
     if (this.config.environment === 'production') {
       const prodConfig = this.generateProductionConfig();
-      fs.writeFileSync(path.join(this.projectRoot, '.pr_agent.prod.toml'), prodConfig);
+      fs.writeFileSync(
+        path.join(this.projectRoot, '.pr_agent.prod.toml'),
+        prodConfig
+      );
     } else {
       const devConfig = this.generateDevelopmentConfig();
-      fs.writeFileSync(path.join(this.projectRoot, '.pr_agent.dev.toml'), devConfig);
+      fs.writeFileSync(
+        path.join(this.projectRoot, '.pr_agent.dev.toml'),
+        devConfig
+      );
     }
-    
-    console.log('✅ Created enhanced .pr_agent.toml configuration with 2025 features');
+
+    console.log(
+      '✅ Created enhanced .pr_agent.toml configuration with 2025 features'
+    );
   }
 
   /**
@@ -301,7 +311,7 @@ PRODUCTION CRITICAL REVIEW:
   }
 
   /**
-   * Generate development-specific configuration  
+   * Generate development-specific configuration
    */
   generateDevelopmentConfig() {
     return `# Development Environment - Fast Feedback
@@ -320,7 +330,6 @@ Development Focus:
 """
 `;
   }
-
 
   /**
    * Create enhanced GitHub Actions workflow with 2025 features
@@ -1065,7 +1074,7 @@ jobs:
 
 // Enhanced CLI interface with 2025 features
 async function main() {
-  const agent = new QodoPRAgent();
+  const agent = new OpenSourcePRAgent();
   const command = process.argv[2];
   const arg = process.argv[3];
 
@@ -1093,27 +1102,33 @@ async function main() {
     case 'check':
       await agent.testConfiguration();
       break;
-      
+
     case 'generate-config':
     case 'config':
       console.log('🔧 Generating enhanced Qodo configuration...');
       await agent.createPRAgentConfig();
       console.log('✅ Enhanced configuration generated with 2025 features!');
       break;
-      
+
     case 'setup-workflow':
     case 'workflow':
       console.log('🚀 Setting up enhanced GitHub Actions workflow...');
       await agent.createGitHubWorkflow();
-      console.log('✅ Enhanced workflow created with multi-environment support!');
+      console.log(
+        '✅ Enhanced workflow created with multi-environment support!'
+      );
       break;
-      
+
     case 'status':
       console.log('📊 Qodo Enhanced PR Agent Status:');
       console.log(`   Environment: ${agent.config.environment}`);
-      console.log(`   Multi-model: ${agent.config.enableMultiModel ? '✅' : '❌'}`);
+      console.log(
+        `   Multi-model: ${agent.config.enableMultiModel ? '✅' : '❌'}`
+      );
       console.log(`   RAG enabled: ${agent.config.enableRAG ? '✅' : '❌'}`);
-      console.log(`   Advanced tools: ${agent.config.enableAdvancedTools ? '✅' : '❌'}`);
+      console.log(
+        `   Advanced tools: ${agent.config.enableAdvancedTools ? '✅' : '❌'}`
+      );
       console.log(`   Qase TCP project: ${agent.qase.clientProject}`);
       console.log(`   Qase PCU project: ${agent.qase.adminProject}`);
       break;
@@ -1123,18 +1138,34 @@ async function main() {
       console.log('Multi-model, RAG-aware, Credit Repair Optimized');
       console.log('');
       console.log('Usage:');
-      console.log('  qodo-pr-agent.js init             - Initialize enhanced PR Agent');
-      console.log('  qodo-pr-agent.js analyze <pr>     - Analyze specific PR number');
+      console.log(
+        '  qodo-pr-agent.js init             - Initialize enhanced PR Agent'
+      );
+      console.log(
+        '  qodo-pr-agent.js analyze <pr>     - Analyze specific PR number'
+      );
       console.log('  qodo-pr-agent.js test             - Test configuration');
-      console.log('  qodo-pr-agent.js generate-config  - Generate enhanced .toml configs');
-      console.log('  qodo-pr-agent.js setup-workflow   - Create enhanced GitHub workflow');
-      console.log('  qodo-pr-agent.js status           - Show current configuration');
+      console.log(
+        '  qodo-pr-agent.js generate-config  - Generate enhanced .toml configs'
+      );
+      console.log(
+        '  qodo-pr-agent.js setup-workflow   - Create enhanced GitHub workflow'
+      );
+      console.log(
+        '  qodo-pr-agent.js status           - Show current configuration'
+      );
       console.log('');
       console.log('Environment Variables:');
-      console.log('  QODO_AI_API_KEY           - Qodo AI API key (premium features)');
+      console.log(
+        '  QODO_AI_API_KEY           - Qodo AI API key (premium features)'
+      );
       console.log('  GITHUB_TOKEN              - GitHub personal access token');
-      console.log('  OPENAI_API_KEY            - OpenAI API key for AI features');
-      console.log('  QASE_CLIENT_PROJECT_CODE  - TCP (Client frontend project)');
+      console.log(
+        '  OPENAI_API_KEY            - OpenAI API key for AI features'
+      );
+      console.log(
+        '  QASE_CLIENT_PROJECT_CODE  - TCP (Client frontend project)'
+      );
       console.log('  QASE_ADMIN_PROJECT_CODE   - PCU (Admin frontend project)');
       console.log('  QASE_TARGET_PROJECT       - Default project (TCP or PCU)');
       console.log('');
@@ -1142,7 +1173,9 @@ async function main() {
       console.log('  ✅ Multi-model AI support (GPT, Claude, Deepseek)');
       console.log('  ✅ RAG repository awareness for context-aware reviews');
       console.log('  ✅ Advanced tools suite (scan_repo_discussions, impact)');
-      console.log('  ✅ Enhanced security patterns for credit repair compliance');
+      console.log(
+        '  ✅ Enhanced security patterns for credit repair compliance'
+      );
       console.log('  ✅ Dual Qase project integration (TCP/PCU)');
       console.log('  ✅ Environment-specific configurations (dev/prod)');
       console.log('  ✅ FCRA/FACTA compliance validation');
@@ -1157,7 +1190,7 @@ async function main() {
 }
 
 // Export for use as module
-module.exports = QodoPRAgent;
+module.exports = OpenSourcePRAgent;
 
 // Run CLI if called directly
 if (require.main === module) {

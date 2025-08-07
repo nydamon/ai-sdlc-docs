@@ -92,6 +92,20 @@ cd ai-sdlc
 ./auto-setup.sh
 ```
 
+## 🚀 **ONE COMMAND SETUP**
+
+```bash
+./auto-setup.sh
+```
+
+**That's it!** This single command handles everything automatically.
+
+**Verify it worked:**
+
+```bash
+./ai-sdlc status
+```
+
 **What You Get Immediately:**
 
 ### 🟢 Level 1 (FREE) - Instant Professional Standards
@@ -106,15 +120,19 @@ cd ai-sdlc
 
 ### 🟡 Level 2 (AI-Powered) - Available Immediately
 
-**API Keys Required:** OpenAI ($20-50/month), Qase (free tier available)
+**API Keys Required:** OpenAI ($20-50/month), GitHub Token (FREE)
+
+**What's Changed:** We now use **open-source PR-Agent** (no Qodo subscription needed)
 
 - ✅ **AI test generation** - 100% coverage with modern framework support (Vitest, TypeScript strict mode)
 - ✅ **Smart test execution** - Only runs tests for changed files (npm run test:changed)
-- ✅ **Coverage thresholds** - Enforced quality gates that automatically fail builds if code coverage drops below:
-  - **80% lines**: Every line of code must be executed by tests
-  - **80% functions**: Every function must be called during testing
-  - **70% branches**: Every if/else condition must be tested
-  - _Prevents regression bugs and ensures consistent code quality_
+- ✅ **Coverage thresholds** - **BUILD-FAILING** quality gates that prevent bad code:
+  - **80% lines**: Every line of code must be executed by tests ⚠️ **BLOCKS BUILD**
+  - **80% functions**: Every function must be called during testing ⚠️ **BLOCKS BUILD**
+  - **70% branches**: Every if/else condition must be tested ⚠️ **BLOCKS BUILD**
+  - **ESLint**: Zero errors allowed (warnings OK) ⚠️ **BLOCKS BUILD**
+  - **TypeScript**: Zero type errors allowed ⚠️ **BLOCKS BUILD**
+  - _When gates fail: Fix tests or use `git commit --no-verify` for emergencies_
 - ✅ **Enhanced E2E debugging** - Automatic screenshots and video capture on test failures
 - ✅ **Modern bundler optimization** - Build speed improvements:
   - **Vite**: 10x faster than traditional bundlers, instant hot reload
@@ -128,9 +146,9 @@ cd ai-sdlc
   - _Eliminates manual store testing, catches state management bugs automatically_
 - ✅ **TypeScript strict enforcement** - Complete type safety with intelligent test generation
 - ✅ **Playwright E2E automation** - AI creates complete user journey tests with visual regression detection
-- ✅ **Qase integration** - Converts requirements to automated test cases, maintains test documentation
+- ✅ **Open-source PR-Agent** - AI code review with credit repair compliance (no subscription needed)
 - ✅ **Credit repair expertise** - FCRA/FACTA compliance patterns built-in
-- ✅ **4-platform integration** - OpenAI, Qase, Codium, GitHub APIs working
+- ✅ **Multi-platform integration** - OpenAI, GitHub, open-source tools working
 
 ### 🔴 Level 3 (Enterprise) - Production Ready
 
@@ -414,6 +432,8 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 
 **For Developers:**
 
+- [🚀 Setup Guide](SETUP_GUIDE.md) - **SINGLE COMMAND SETUP** - Start here!
+- [⚙️ Environment Config](ENVIRONMENT_CONFIG.md) - **API keys and configuration**
 - [Quick Start Guide](quick-start-simple.md) - Step-by-step setup for all levels
 - [👨‍💻 Developer Workflow Guide](developer-workflow-guide.md) - **Complete daily workflow with line-by-line instructions**
 - [Architecture Overview](architecture-simplified.md) - 3-level framework architecture

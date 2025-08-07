@@ -15,7 +15,9 @@ echo_color() {
   echo -e "${1}${2}${NC}"
 }
 
-echo_color $GREEN "🚀 Setting up AI-SDLC stack..."
+echo_color $GREEN "🚀 AI-SDLC Single Command Setup"
+echo_color $GREEN "   This is the ONLY setup command you need!"
+echo ""
 
 ### PREREQUISITES CHECK
 check_prerequisites() {

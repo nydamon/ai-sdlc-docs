@@ -31,19 +31,34 @@ show_help() {
     echo "Usage: ai-sdlc <command>"
     echo
     echo "Commands:"
-    echo "  setup        Set up AI-SDLC in current project (one-time)"
-    echo "  status       Show current setup status"
-    echo "  validate     Run validation checks"
-    echo "  test-init    Initialize AI test generation"
-    echo "  test-gen     Generate tests for files (usage: test-gen <file|all>)"
-    echo "  help         Show this help message"
+    echo "  setup                    Set up AI-SDLC in current project (one-time)"
+    echo "  status                   Show current setup status"
+    echo "  validate                 Run validation checks"
+    echo "  test-init                Initialize AI test generation"
+    echo "  test-gen                 Generate tests for files (usage: test-gen <file|all>)"
+    echo "  help                     Show this help message"
+    echo
+    echo "NEW: Qase AIDEN Integration Commands:"
+    echo "  generate-from-requirements <req>  Generate test from natural language requirement"
+    echo "  convert-manual-to-auto <id>       Convert manual Qase test to automated"
+    echo "  heal-and-generate                 Auto-heal existing tests + generate new ones"
+    echo "  auto-complete-testing             Generate, heal, and validate all tests"
+    echo
+    echo "NEW: SonarCloud Validation Commands:"
+    echo "  sonar-validate                    Validate SonarCloud configs for all TheCreditPros repos"
+    echo "  sonar-templates                   Generate standardized SonarCloud configuration templates"
     echo
     echo "Examples:"
-    echo "  ai-sdlc setup           # Initial setup"
-    echo "  ai-sdlc status          # Check if working"
-    echo "  ai-sdlc validate        # Run quality checks"
-    echo "  ai-sdlc test-init       # Setup test generation"
-    echo "  ai-sdlc test-gen all    # Generate tests for all files"
+    echo "  ai-sdlc setup                                    # Initial setup"
+    echo "  ai-sdlc status                                   # Check if working"
+    echo "  ai-sdlc validate                                 # Run quality checks"
+    echo "  ai-sdlc test-init                                # Setup test generation"
+    echo "  ai-sdlc test-gen all                             # Generate tests for all files"
+    echo
+    echo "AIDEN Examples:"
+    echo '  ai-sdlc generate-from-requirements "Test FCRA compliance flow"'
+    echo "  ai-sdlc convert-manual-to-auto 123              # Convert Qase test case #123"
+    echo "  ai-sdlc heal-and-generate                        # Auto-heal + generate common tests"
     echo
     echo "Documentation: https://nydamon.github.io/ai-sdlc-docs/"
 }
@@ -192,6 +207,97 @@ cmd_test_gen() {
     fi
 }
 
+# NEW: Qase AIDEN Integration Commands
+cmd_generate_from_requirements() {
+    local requirement="$1"
+    if [[ -z "$requirement" ]]; then
+        error "Usage: ai-sdlc generate-from-requirements \"your requirement\""
+        exit 1
+    fi
+    
+    info "🤖 Generating test from requirement using Qase AIDEN..."
+    
+    if [[ -f "scripts-complex/qase-aiden-integration.js" ]]; then
+        node scripts-complex/qase-aiden-integration.js generate "$requirement"
+    else
+        error "Qase AIDEN integration script not found"
+        info "Please ensure you're in the AI-SDLC framework directory"
+        exit 1
+    fi
+}
+
+cmd_convert_manual_to_auto() {
+    local test_case_id="$1"
+    if [[ -z "$test_case_id" ]]; then
+        error "Usage: ai-sdlc convert-manual-to-auto <test-case-id>"
+        exit 1
+    fi
+    
+    info "🔄 Converting manual test case $test_case_id to automated..."
+    
+    if [[ -f "scripts-complex/qase-aiden-integration.js" ]]; then
+        node scripts-complex/qase-aiden-integration.js convert "$test_case_id"
+    else
+        error "Qase AIDEN integration script not found"
+        exit 1
+    fi
+}
+
+cmd_heal_and_generate() {
+    info "🔧 Auto-healing existing tests and generating new ones..."
+    
+    if [[ -f "scripts-complex/qase-aiden-integration.js" ]]; then
+        node scripts-complex/qase-aiden-integration.js heal-and-generate
+    else
+        error "Qase AIDEN integration script not found"
+        exit 1
+    fi
+}
+
+cmd_auto_complete_testing() {
+    info "🚀 Running complete automated testing setup..."
+    
+    # Step 1: Heal existing tests
+    cmd_heal_and_generate
+    
+    # Step 2: Generate common credit repair tests
+    info "📋 Generating common credit repair test scenarios..."
+    cmd_generate_from_requirements "Test credit score calculation with FICO 8 algorithm"
+    cmd_generate_from_requirements "Validate FCRA Section 604 permissible purpose disclosure"
+    cmd_generate_from_requirements "Test secure PII data handling in credit reports"
+    
+    # Step 3: Run validation
+    cmd_validate
+    
+    success "🎉 Auto-complete testing setup finished!"
+}
+
+# NEW: SonarCloud validation commands
+cmd_sonar_validate() {
+    info "🔍 Validating SonarCloud configurations for TheCreditPros repositories..."
+    
+    if [[ -f "scripts-complex/sonarcloud-config-validator.js" ]]; then
+        node scripts-complex/sonarcloud-config-validator.js validate "$@"
+    else
+        error "SonarCloud validator script not found"
+        info "Make sure you're running from the AI-SDLC framework directory"
+        exit 1
+    fi
+}
+
+cmd_sonar_templates() {
+    info "📋 Generating SonarCloud configuration templates..."
+    
+    if [[ -f "scripts-complex/sonarcloud-config-validator.js" ]]; then
+        node scripts-complex/sonarcloud-config-validator.js templates "$@"
+        success "✅ SonarCloud templates generated in ./sonarcloud-templates/"
+    else
+        error "SonarCloud validator script not found"
+        info "Make sure you're running from the AI-SDLC framework directory"
+        exit 1
+    fi
+}
+
 # Main command router
 main() {
     case "${1:-help}" in
@@ -214,6 +320,30 @@ main() {
         "test-gen")
             shift
             cmd_test_gen "$@"
+            ;;
+        "generate-from-requirements")
+            shift
+            cmd_generate_from_requirements "$@"
+            ;;
+        "convert-manual-to-auto")
+            shift
+            cmd_convert_manual_to_auto "$@"
+            ;;
+        "heal-and-generate")
+            shift
+            cmd_heal_and_generate "$@"
+            ;;
+        "auto-complete-testing")
+            shift
+            cmd_auto_complete_testing "$@"
+            ;;
+        "sonar-validate")
+            shift
+            cmd_sonar_validate "$@"
+            ;;
+        "sonar-templates")
+            shift
+            cmd_sonar_templates "$@"
             ;;
         "help"|"--help"|"-h"|"")
             show_help
