@@ -15,11 +15,11 @@ class QodoEnhancedConfigGenerator {
     this.environment = process.env.NODE_ENV || 'development';
     this.qodoFeatures2025 = [
       'multi_model_support',
-      'rag_repository_awareness', 
+      'rag_repository_awareness',
       'advanced_tools_suite',
       'custom_agent_framework',
       'enhanced_security_patterns',
-      'compliance_validation_rules'
+      'compliance_validation_rules',
     ];
   }
 
@@ -28,34 +28,35 @@ class QodoEnhancedConfigGenerator {
    */
   async generateEnhancedConfig() {
     console.log('🚀 Generating Enhanced Qodo Configuration for 2025...');
-    
+
     try {
       // Generate main configuration
       await this.generateMainConfig();
-      
+
       // Generate environment-specific configs
       await this.generateEnvironmentConfigs();
-      
+
       // Generate enhanced GitHub workflow
       await this.generateEnhancedWorkflow();
-      
+
       // Generate custom agent templates
       await this.generateCustomAgentTemplates();
-      
+
       // Generate monitoring configuration
       await this.generateMonitoringConfig();
-      
+
       console.log('✅ Enhanced Qodo configuration generated successfully!');
       console.log('📁 Generated files:');
       console.log('   - .pr_agent.toml (Enhanced main config)');
       console.log('   - .pr_agent.dev.toml (Development config)');
       console.log('   - .pr_agent.prod.toml (Production config)');
-      console.log('   - .github/workflows/qodo-enhanced.yml (Advanced workflow)');
+      console.log(
+        '   - .github/workflows/qodo-enhanced.yml (Advanced workflow)'
+      );
       console.log('   - qodo-agents/ (Custom agent templates)');
       console.log('   - qodo-monitoring.js (Analytics setup)');
-      
+
       return { status: 'success', features: this.qodoFeatures2025 };
-      
     } catch (error) {
       console.error('❌ Configuration generation failed:', error.message);
       return { status: 'failed', error: error.message };
@@ -66,7 +67,7 @@ class QodoEnhancedConfigGenerator {
    * Generate main enhanced configuration
    */
   async generateMainConfig() {
-    const config = `# Qodo AI Enhanced Configuration - AI-SDLC v2.7.1
+    const config = `# Open-Source PR-Agent Configuration - AI-SDLC v2.8.1
 # The Credit Pros - Multi-Model AI-Powered Code Review
 
 [config]
@@ -201,7 +202,7 @@ suggest_performance_optimizations = true
 enable_test_generation = true
 coverage_threshold = 80
 require_new_tests_for_new_code = true
-test_frameworks = ["vitest", "playwright", "pest", "vitest"]
+test_frameworks = ["vitest", "playwright", "pest", "jest"]
 
 # Test generation focus
 generate_unit_tests = true
@@ -374,7 +375,7 @@ Development Focus:
 """
 `;
 
-    // Production configuration  
+    // Production configuration
     const prodConfig = `# Production Environment - Maximum Security & Compliance
 [config]
 model = "gpt-4"
@@ -404,9 +405,15 @@ PRODUCTION CRITICAL REVIEW:
 """
 `;
 
-    fs.writeFileSync(path.join(this.projectRoot, '.pr_agent.dev.toml'), devConfig);
-    fs.writeFileSync(path.join(this.projectRoot, '.pr_agent.prod.toml'), prodConfig);
-    
+    fs.writeFileSync(
+      path.join(this.projectRoot, '.pr_agent.dev.toml'),
+      devConfig
+    );
+    fs.writeFileSync(
+      path.join(this.projectRoot, '.pr_agent.prod.toml'),
+      prodConfig
+    );
+
     console.log('✅ Generated environment-specific configurations');
   }
 
@@ -419,7 +426,7 @@ PRODUCTION CRITICAL REVIEW:
       fs.mkdirSync(workflowDir, { recursive: true });
     }
 
-    const workflow = `name: Qodo Enhanced AI Code Review - v2.7.1
+    const workflow = `name: Open-Source PR-Agent Platform - v2.8.1
 
 on:
   pull_request:
@@ -726,9 +733,12 @@ if (require.main === module) {
 }
 `;
 
-    fs.writeFileSync(path.join(agentsDir, 'credit-compliance-agent.js'), creditComplianceAgent);
+    fs.writeFileSync(
+      path.join(agentsDir, 'credit-compliance-agent.js'),
+      creditComplianceAgent
+    );
     fs.chmodSync(path.join(agentsDir, 'credit-compliance-agent.js'), '755');
-    
+
     console.log('✅ Generated custom agent templates');
   }
 
@@ -802,7 +812,10 @@ class QodoMonitoring {
 module.exports = QodoMonitoring;
 `;
 
-    fs.writeFileSync(path.join(this.projectRoot, 'qodo-monitoring.js'), monitoringConfig);
+    fs.writeFileSync(
+      path.join(this.projectRoot, 'qodo-monitoring.js'),
+      monitoringConfig
+    );
     console.log('✅ Generated monitoring configuration');
   }
 }
@@ -819,16 +832,22 @@ async function main() {
       break;
 
     default:
-      console.log('Open-Source PR-Agent Configuration Generator - AI-SDLC v2.8.1');
+      console.log(
+        'Open-Source PR-Agent Configuration Generator - AI-SDLC v2.8.1'
+      );
       console.log('');
       console.log('Usage:');
-      console.log('  qodo-enhanced-config-generator.js generate  - Generate all enhanced configurations');
+      console.log(
+        '  qodo-enhanced-config-generator.js generate  - Generate all enhanced configurations'
+      );
       console.log('');
       console.log('Generated Files:');
       console.log('  • .pr_agent.toml - Main enhanced configuration');
-      console.log('  • .pr_agent.dev.toml - Development environment');  
+      console.log('  • .pr_agent.dev.toml - Development environment');
       console.log('  • .pr_agent.prod.toml - Production environment');
-      console.log('  • .github/workflows/qodo-enhanced.yml - Advanced workflow');
+      console.log(
+        '  • .github/workflows/qodo-enhanced.yml - Advanced workflow'
+      );
       console.log('  • qodo-agents/ - Custom agent templates');
       console.log('  • qodo-monitoring.js - Analytics and monitoring');
       console.log('');

@@ -2,12 +2,12 @@
 
 /**
  * SonarCloud Configuration Validator for TheCreditPros Repositories
- * 
+ *
  * Validates and ensures consistent SonarCloud configurations across:
  * - customer-frontend-portal
- * - portal2-refactor  
+ * - portal2-refactor
  * - portal2-admin-refactor
- * 
+ *
  * Features:
  * - Configuration consistency validation
  * - Best practices verification
@@ -29,8 +29,8 @@ class SonarCloudValidator {
       organization: 'thecreditpros',
       targetRepos: [
         'customer-frontend-portal',
-        'portal2-refactor', 
-        'portal2-admin-refactor'
+        'portal2-refactor',
+        'portal2-admin-refactor',
       ],
       sonarCloudOrg: process.env.SONAR_ORGANIZATION || 'thecreditpros',
       baseUrl: 'https://sonarcloud.io/api',
@@ -47,7 +47,7 @@ class SonarCloudValidator {
         'sqale_rating',
         'vulnerabilities',
         'bugs',
-        'code_smells'
+        'code_smells',
       ],
       coverageThreshold: 80,
       duplicateThreshold: 3.0,
@@ -63,14 +63,14 @@ class SonarCloudValidator {
         'typescript:S5122',
         'typescript:S4502',
         'typescript:S2245',
-        'typescript:S3330'
-      ]
+        'typescript:S3330',
+      ],
     };
 
     this.validationResults = {
       repositories: {},
       overallCompliance: 0,
-      recommendations: []
+      recommendations: [],
     };
   }
 
@@ -78,11 +78,15 @@ class SonarCloudValidator {
    * Main validation orchestrator
    */
   async validateAllRepositories() {
-    console.log('🔍 Starting SonarCloud Configuration Validation for TheCreditPros...\n');
+    console.log(
+      '🔍 Starting SonarCloud Configuration Validation for TheCreditPros...\n'
+    );
 
     if (!this.config.sonarToken) {
       console.log('⚠️  SONAR_TOKEN not found in environment.');
-      console.log('💡 Running in demo mode with configuration template validation.');
+      console.log(
+        '💡 Running in demo mode with configuration template validation.'
+      );
       await this.generateConfigurationTemplates();
       return;
     }
@@ -102,7 +106,7 @@ class SonarCloudValidator {
         this.validationResults.repositories[repo] = {
           status: 'error',
           error: error.message,
-          compliance: 0
+          compliance: 0,
         };
       }
     }
@@ -124,7 +128,7 @@ class SonarCloudValidator {
       qualityGate: {},
       aiCodeFix: false,
       securityRules: {},
-      creditRepairCompliance: {}
+      creditRepairCompliance: {},
     };
 
     try {
@@ -133,7 +137,9 @@ class SonarCloudValidator {
       if (!projectExists) {
         validation.status = 'not_configured';
         validation.issues.push('Project not found in SonarCloud');
-        validation.recommendations.push('Create SonarCloud project for this repository');
+        validation.recommendations.push(
+          'Create SonarCloud project for this repository'
+        );
         return validation;
       }
 
@@ -150,12 +156,13 @@ class SonarCloudValidator {
       validation.aiCodeFix = await this.validateAICodeFix(projectKey);
 
       // Validate credit repair specific rules
-      validation.creditRepairCompliance = await this.validateCreditRepairRules(projectKey);
+      validation.creditRepairCompliance =
+        await this.validateCreditRepairRules(projectKey);
 
       // Calculate compliance score
       validation.compliance = this.calculateComplianceScore(validation);
-      validation.status = validation.compliance >= 80 ? 'compliant' : 'needs_improvement';
-
+      validation.status =
+        validation.compliance >= 80 ? 'compliant' : 'needs_improvement';
     } catch (error) {
       validation.status = 'error';
       validation.error = error.message;
@@ -169,7 +176,9 @@ class SonarCloudValidator {
    */
   async checkProjectExists(projectKey) {
     try {
-      const response = await this.makeAPICall(`/projects/show?project=${projectKey}`);
+      const response = await this.makeAPICall(
+        `/projects/show?project=${projectKey}`
+      );
       return response && response.component;
     } catch (error) {
       if (error.message.includes('404')) {
@@ -187,12 +196,14 @@ class SonarCloudValidator {
       configured: false,
       name: null,
       conditions: [],
-      compliant: false
+      compliant: false,
     };
 
     try {
-      const response = await this.makeAPICall(`/qualitygates/project_status?projectKey=${projectKey}`);
-      
+      const response = await this.makeAPICall(
+        `/qualitygates/project_status?projectKey=${projectKey}`
+      );
+
       if (response && response.projectStatus) {
         validation.configured = true;
         validation.name = response.projectStatus.qualityGate?.name || 'Unknown';
@@ -219,17 +230,19 @@ class SonarCloudValidator {
       vulnerabilities: 0,
       bugs: 0,
       codeSmells: 0,
-      compliant: false
+      compliant: false,
     };
 
     try {
       const metricsParam = this.bestPractices.requiredMetrics.join(',');
-      const response = await this.makeAPICall(`/measures/component?component=${projectKey}&metricKeys=${metricsParam}`);
-      
+      const response = await this.makeAPICall(
+        `/measures/component?component=${projectKey}&metricKeys=${metricsParam}`
+      );
+
       if (response && response.component && response.component.measures) {
         const measures = response.component.measures;
-        
-        measures.forEach(measure => {
+
+        measures.forEach((measure) => {
           switch (measure.metric) {
             case 'coverage':
               validation.coverage = parseFloat(measure.value) || 0;
@@ -259,7 +272,7 @@ class SonarCloudValidator {
         });
 
         // Check compliance
-        validation.compliant = 
+        validation.compliant =
           validation.coverage >= this.bestPractices.coverageThreshold &&
           validation.duplicatedLines <= this.bestPractices.duplicateThreshold &&
           ['1', 'A'].includes(validation.maintainability) &&
@@ -282,29 +295,33 @@ class SonarCloudValidator {
       vulnerabilityDetection: false,
       credentialDetection: false,
       corsConfiguration: false,
-      compliant: false
+      compliant: false,
     };
 
     try {
       // Check active rules for the project
-      const response = await this.makeAPICall(`/rules/search?activation=true&qprofile=${projectKey}&types=VULNERABILITY,SECURITY_HOTSPOT`);
-      
+      const response = await this.makeAPICall(
+        `/rules/search?activation=true&qprofile=${projectKey}&types=VULNERABILITY,SECURITY_HOTSPOT`
+      );
+
       if (response && response.rules) {
         validation.securityHotspotsEnabled = response.rules.length > 0;
-        validation.vulnerabilityDetection = response.rules.some(rule => rule.type === 'VULNERABILITY');
-        
-        // Check for specific credit repair security rules
-        const activeRuleKeys = response.rules.map(rule => rule.key);
-        validation.credentialDetection = this.bestPractices.creditRepairRules.some(ruleKey => 
-          activeRuleKeys.includes(ruleKey)
+        validation.vulnerabilityDetection = response.rules.some(
+          (rule) => rule.type === 'VULNERABILITY'
         );
+
+        // Check for specific credit repair security rules
+        const activeRuleKeys = response.rules.map((rule) => rule.key);
+        validation.credentialDetection =
+          this.bestPractices.creditRepairRules.some((ruleKey) =>
+            activeRuleKeys.includes(ruleKey)
+          );
       }
 
-      validation.compliant = 
+      validation.compliant =
         validation.securityHotspotsEnabled &&
         validation.vulnerabilityDetection &&
         validation.credentialDetection;
-
     } catch (error) {
       validation.error = error.message;
     }
@@ -323,18 +340,21 @@ class SonarCloudValidator {
       }
 
       // Check if SonarCloud GitHub Actions are configured
-      const response = await this.makeGitHubAPICall(`/repos/${this.config.organization}/${projectKey.split('_')[1]}/actions/workflows`);
-      
+      const response = await this.makeGitHubAPICall(
+        `/repos/${this.config.organization}/${projectKey.split('_')[1]}/actions/workflows`
+      );
+
       if (response && response.workflows) {
-        const sonarWorkflow = response.workflows.find(workflow => 
-          workflow.name.toLowerCase().includes('sonar') || 
-          workflow.path.includes('sonar')
+        const sonarWorkflow = response.workflows.find(
+          (workflow) =>
+            workflow.name.toLowerCase().includes('sonar') ||
+            workflow.path.includes('sonar')
         );
 
         return {
           enabled: !!sonarWorkflow,
           workflow: sonarWorkflow?.name,
-          path: sonarWorkflow?.path
+          path: sonarWorkflow?.path,
         };
       }
 
@@ -353,32 +373,45 @@ class SonarCloudValidator {
       piiDetection: false,
       dataEncryption: false,
       auditLogging: false,
-      compliant: false
+      compliant: false,
     };
 
     try {
       // Check for FCRA/FACTA specific rules
-      const response = await this.makeAPICall(`/rules/search?activation=true&qprofile=${projectKey}&q=credential OR pii OR encryption OR audit`);
-      
+      const response = await this.makeAPICall(
+        `/rules/search?activation=true&qprofile=${projectKey}&q=credential OR pii OR encryption OR audit`
+      );
+
       if (response && response.rules) {
         // const ruleKeys = response.rules.map(rule => rule.key); // Unused - removed
-        const ruleDescriptions = response.rules.map(rule => rule.name.toLowerCase());
-
-        validation.piiDetection = ruleDescriptions.some(desc => 
-          desc.includes('credential') || desc.includes('password') || desc.includes('personal')
+        const ruleDescriptions = response.rules.map((rule) =>
+          rule.name.toLowerCase()
         );
 
-        validation.dataEncryption = ruleDescriptions.some(desc => 
-          desc.includes('encrypt') || desc.includes('hash') || desc.includes('secure')
+        validation.piiDetection = ruleDescriptions.some(
+          (desc) =>
+            desc.includes('credential') ||
+            desc.includes('password') ||
+            desc.includes('personal')
         );
 
-        validation.auditLogging = ruleDescriptions.some(desc => 
-          desc.includes('log') || desc.includes('audit') || desc.includes('trace')
+        validation.dataEncryption = ruleDescriptions.some(
+          (desc) =>
+            desc.includes('encrypt') ||
+            desc.includes('hash') ||
+            desc.includes('secure')
         );
 
-        validation.fcraCompliance = 
-          validation.piiDetection && 
-          validation.dataEncryption && 
+        validation.auditLogging = ruleDescriptions.some(
+          (desc) =>
+            desc.includes('log') ||
+            desc.includes('audit') ||
+            desc.includes('trace')
+        );
+
+        validation.fcraCompliance =
+          validation.piiDetection &&
+          validation.dataEncryption &&
           validation.auditLogging;
 
         validation.compliant = validation.fcraCompliance;
@@ -408,9 +441,12 @@ class SonarCloudValidator {
     else {
       if (validation.metrics.coverage >= 70) score += 8;
       if (validation.metrics.duplicatedLines <= 5) score += 7;
-      if (['1', '2', 'A', 'B'].includes(validation.metrics.maintainability)) score += 5;
-      if (['1', '2', 'A', 'B'].includes(validation.metrics.reliability)) score += 5;
-      if (['1', '2', 'A', 'B'].includes(validation.metrics.security)) score += 5;
+      if (['1', '2', 'A', 'B'].includes(validation.metrics.maintainability))
+        score += 5;
+      if (['1', '2', 'A', 'B'].includes(validation.metrics.reliability))
+        score += 5;
+      if (['1', '2', 'A', 'B'].includes(validation.metrics.security))
+        score += 5;
     }
 
     // Security rules (25 points)
@@ -444,25 +480,37 @@ class SonarCloudValidator {
    */
   displayRepositoryResults(repoName, result) {
     console.log(`\n📈 ${repoName} Results:`);
-    console.log(`├─ Status: ${this.getStatusEmoji(result.status)} ${result.status}`);
-    console.log(`├─ Compliance Score: ${this.getScoreEmoji(result.compliance)} ${result.compliance}%`);
-    
+    console.log(
+      `├─ Status: ${this.getStatusEmoji(result.status)} ${result.status}`
+    );
+    console.log(
+      `├─ Compliance Score: ${this.getScoreEmoji(result.compliance)} ${result.compliance}%`
+    );
+
     if (result.qualityGate && result.qualityGate.configured) {
-      console.log(`├─ Quality Gate: ${result.qualityGate.compliant ? '✅' : '⚠️'} ${result.qualityGate.name}`);
+      console.log(
+        `├─ Quality Gate: ${result.qualityGate.compliant ? '✅' : '⚠️'} ${result.qualityGate.name}`
+      );
     }
 
     if (result.metrics && result.metrics.coverage !== null) {
-      console.log(`├─ Coverage: ${result.metrics.coverage >= 80 ? '✅' : '⚠️'} ${result.metrics.coverage}%`);
-      console.log(`├─ Duplicated Lines: ${result.metrics.duplicatedLines <= 3 ? '✅' : '⚠️'} ${result.metrics.duplicatedLines}%`);
+      console.log(
+        `├─ Coverage: ${result.metrics.coverage >= 80 ? '✅' : '⚠️'} ${result.metrics.coverage}%`
+      );
+      console.log(
+        `├─ Duplicated Lines: ${result.metrics.duplicatedLines <= 3 ? '✅' : '⚠️'} ${result.metrics.duplicatedLines}%`
+      );
     }
 
     if (result.aiCodeFix) {
-      console.log(`├─ AI Code Fix: ${result.aiCodeFix.enabled ? '✅' : '⚠️'} ${result.aiCodeFix.enabled ? 'Enabled' : 'Not configured'}`);
+      console.log(
+        `├─ AI Code Fix: ${result.aiCodeFix.enabled ? '✅' : '⚠️'} ${result.aiCodeFix.enabled ? 'Enabled' : 'Not configured'}`
+      );
     }
 
     if (result.issues && result.issues.length > 0) {
       console.log(`└─ Issues Found: ${result.issues.length}`);
-      result.issues.forEach(issue => {
+      result.issues.forEach((issue) => {
         console.log(`   • ${issue}`);
       });
     }
@@ -476,14 +524,22 @@ class SonarCloudValidator {
     console.log('📊 COMPREHENSIVE SONARCLOUD VALIDATION REPORT');
     console.log('═'.repeat(60));
 
-    const compliantRepos = Object.values(this.validationResults.repositories)
-      .filter(repo => repo.compliance >= 80).length;
-    
-    const overallCompliance = Object.values(this.validationResults.repositories)
-      .reduce((sum, repo) => sum + (repo.compliance || 0), 0) / this.config.targetRepos.length;
+    const compliantRepos = Object.values(
+      this.validationResults.repositories
+    ).filter((repo) => repo.compliance >= 80).length;
 
-    console.log(`\n🎯 Overall Compliance: ${this.getScoreEmoji(overallCompliance)} ${Math.round(overallCompliance)}%`);
-    console.log(`📈 Repositories Meeting Standards: ${compliantRepos}/${this.config.targetRepos.length}`);
+    const overallCompliance =
+      Object.values(this.validationResults.repositories).reduce(
+        (sum, repo) => sum + (repo.compliance || 0),
+        0
+      ) / this.config.targetRepos.length;
+
+    console.log(
+      `\n🎯 Overall Compliance: ${this.getScoreEmoji(overallCompliance)} ${Math.round(overallCompliance)}%`
+    );
+    console.log(
+      `📈 Repositories Meeting Standards: ${compliantRepos}/${this.config.targetRepos.length}`
+    );
 
     // Generate recommendations
     await this.generateRecommendations();
@@ -494,7 +550,9 @@ class SonarCloudValidator {
     // Save detailed report
     await this.saveDetailedReport();
 
-    console.log(`\n📄 Detailed report saved to: sonarcloud-validation-report.json`);
+    console.log(
+      `\n📄 Detailed report saved to: sonarcloud-validation-report.json`
+    );
     console.log(`📋 Configuration templates saved to: sonarcloud-templates/`);
   }
 
@@ -507,32 +565,38 @@ class SonarCloudValidator {
 
     const recommendations = [];
 
-    Object.entries(this.validationResults.repositories).forEach(([repo, result]) => {
-      if (result.compliance < 80) {
-        recommendations.push(`\n📦 ${repo}:`);
-        
-        if (!result.qualityGate?.compliant) {
-          recommendations.push('  • Configure "Sonar way" quality gate');
-        }
-        
-        if (result.metrics && result.metrics.coverage < 80) {
-          recommendations.push(`  • Increase test coverage to 80% (currently ${result.metrics.coverage}%)`);
-        }
-        
-        if (!result.aiCodeFix?.enabled) {
-          recommendations.push('  • Enable AI Code Fix in GitHub repository settings');
-        }
-        
-        if (!result.creditRepairCompliance?.compliant) {
-          recommendations.push('  • Enable FCRA/FACTA compliance rules');
+    Object.entries(this.validationResults.repositories).forEach(
+      ([repo, result]) => {
+        if (result.compliance < 80) {
+          recommendations.push(`\n📦 ${repo}:`);
+
+          if (!result.qualityGate?.compliant) {
+            recommendations.push('  • Configure "Sonar way" quality gate');
+          }
+
+          if (result.metrics && result.metrics.coverage < 80) {
+            recommendations.push(
+              `  • Increase test coverage to 80% (currently ${result.metrics.coverage}%)`
+            );
+          }
+
+          if (!result.aiCodeFix?.enabled) {
+            recommendations.push(
+              '  • Enable AI Code Fix in GitHub repository settings'
+            );
+          }
+
+          if (!result.creditRepairCompliance?.compliant) {
+            recommendations.push('  • Enable FCRA/FACTA compliance rules');
+          }
         }
       }
-    });
+    );
 
     if (recommendations.length === 0) {
       console.log('✅ All repositories meet SonarCloud best practices!');
     } else {
-      recommendations.forEach(rec => console.log(rec));
+      recommendations.forEach((rec) => console.log(rec));
     }
 
     return recommendations;
@@ -575,7 +639,10 @@ sonar.qualitygate.wait=true
 sonar.javascript.globals=document,window,console,process,require,module,exports,global
 `;
 
-    fs.writeFileSync(path.join(templateDir, 'sonar-project.properties'), sonarProperties);
+    fs.writeFileSync(
+      path.join(templateDir, 'sonar-project.properties'),
+      sonarProperties
+    );
 
     // Generate GitHub Actions workflow template
     const githubWorkflow = `# SonarCloud GitHub Actions Workflow for TheCreditPros
@@ -629,37 +696,43 @@ jobs:
           -Dsonar.tests=tests,__tests__,src/**/*.test.js,src/**/*.spec.js
 `;
 
-    fs.writeFileSync(path.join(templateDir, 'sonarcloud-workflow.yml'), githubWorkflow);
+    fs.writeFileSync(
+      path.join(templateDir, 'sonarcloud-workflow.yml'),
+      githubWorkflow
+    );
 
     // Generate package.json scripts template
     const packageScripts = {
-      "scripts": {
-        "test:coverage": "vitest --coverage --watchAll=false",
-        "sonar": "sonar-scanner",
-        "sonar:local": "sonar-scanner -Dsonar.host.url=http://localhost:9000"
+      scripts: {
+        'test:coverage': 'jest --coverage --watchAll=false',
+        sonar: 'sonar-scanner',
+        'sonar:local': 'sonar-scanner -Dsonar.host.url=http://localhost:9000',
       },
-      "vitest": {
-        "coverageDirectory": "coverage",
-        "collectCoverageFrom": [
-          "src/**/*.{js,jsx,ts,tsx}",
-          "!src/**/*.test.{js,jsx,ts,tsx}",
-          "!src/**/*.spec.{js,jsx,ts,tsx}",
-          "!src/index.js",
-          "!src/serviceWorker.js"
+      jest: {
+        coverageDirectory: 'coverage',
+        collectCoverageFrom: [
+          'src/**/*.{js,jsx,ts,tsx}',
+          '!src/**/*.test.{js,jsx,ts,tsx}',
+          '!src/**/*.spec.{js,jsx,ts,tsx}',
+          '!src/index.js',
+          '!src/serviceWorker.js',
         ],
-        "coverageReporters": ["text", "lcov", "html"],
-        "coverageThreshold": {
-          "global": {
-            "branches": 80,
-            "functions": 80,
-            "lines": 80,
-            "statements": 80
-          }
-        }
-      }
+        coverageReporters: ['text', 'lcov', 'html'],
+        coverageThreshold: {
+          global: {
+            branches: 80,
+            functions: 80,
+            lines: 80,
+            statements: 80,
+          },
+        },
+      },
     };
 
-    fs.writeFileSync(path.join(templateDir, 'package-scripts-template.json'), JSON.stringify(packageScripts, null, 2));
+    fs.writeFileSync(
+      path.join(templateDir, 'package-scripts-template.json'),
+      JSON.stringify(packageScripts, null, 2)
+    );
 
     console.log(`\n📋 Configuration templates generated in: ${templateDir}`);
   }
@@ -675,17 +748,23 @@ jobs:
       repositories: this.validationResults.repositories,
       summary: {
         totalRepositories: this.config.targetRepos.length,
-        compliantRepositories: Object.values(this.validationResults.repositories)
-          .filter(repo => repo.compliance >= 80).length,
+        compliantRepositories: Object.values(
+          this.validationResults.repositories
+        ).filter((repo) => repo.compliance >= 80).length,
         averageCompliance: Math.round(
-          Object.values(this.validationResults.repositories)
-            .reduce((sum, repo) => sum + (repo.compliance || 0), 0) / this.config.targetRepos.length
-        )
+          Object.values(this.validationResults.repositories).reduce(
+            (sum, repo) => sum + (repo.compliance || 0),
+            0
+          ) / this.config.targetRepos.length
+        ),
       },
-      recommendations: this.validationResults.recommendations
+      recommendations: this.validationResults.recommendations,
     };
 
-    fs.writeFileSync('sonarcloud-validation-report.json', JSON.stringify(report, null, 2));
+    fs.writeFileSync(
+      'sonarcloud-validation-report.json',
+      JSON.stringify(report, null, 2)
+    );
   }
 
   /**
@@ -693,10 +772,10 @@ jobs:
    */
   getStatusEmoji(status) {
     const emojis = {
-      'compliant': '✅',
-      'needs_improvement': '⚠️',
-      'not_configured': '❌',
-      'error': '🔥'
+      compliant: '✅',
+      needs_improvement: '⚠️',
+      not_configured: '❌',
+      error: '🔥',
     };
     return emojis[status] || '❓';
   }
@@ -719,23 +798,27 @@ jobs:
         path: `/api${endpoint}`,
         method: 'GET',
         headers: {
-          'Authorization': `Basic ${Buffer.from(this.config.sonarToken + ':').toString('base64')}`,
-          'Accept': 'application/json'
-        }
+          Authorization: `Basic ${Buffer.from(this.config.sonarToken + ':').toString('base64')}`,
+          Accept: 'application/json',
+        },
       };
 
       const req = https.request(options, (res) => {
         let data = '';
-        
+
         res.on('data', (chunk) => {
           data += chunk;
         });
-        
+
         res.on('end', () => {
           try {
             const jsonData = JSON.parse(data);
             if (res.statusCode >= 400) {
-              reject(new Error(`API Error ${res.statusCode}: ${jsonData.errors?.[0]?.msg || data}`));
+              reject(
+                new Error(
+                  `API Error ${res.statusCode}: ${jsonData.errors?.[0]?.msg || data}`
+                )
+              );
             } else {
               resolve(jsonData);
             }
@@ -761,24 +844,28 @@ jobs:
         path: endpoint,
         method: 'GET',
         headers: {
-          'Authorization': `token ${this.config.githubToken}`,
-          'Accept': 'application/vnd.github.v3+json',
-          'User-Agent': 'AI-SDLC-SonarCloud-Validator'
-        }
+          Authorization: `token ${this.config.githubToken}`,
+          Accept: 'application/vnd.github.v3+json',
+          'User-Agent': 'AI-SDLC-SonarCloud-Validator',
+        },
       };
 
       const req = https.request(options, (res) => {
         let data = '';
-        
+
         res.on('data', (chunk) => {
           data += chunk;
         });
-        
+
         res.on('end', () => {
           try {
             const jsonData = JSON.parse(data);
             if (res.statusCode >= 400) {
-              reject(new Error(`GitHub API Error ${res.statusCode}: ${jsonData.message || data}`));
+              reject(
+                new Error(
+                  `GitHub API Error ${res.statusCode}: ${jsonData.message || data}`
+                )
+              );
             } else {
               resolve(jsonData);
             }

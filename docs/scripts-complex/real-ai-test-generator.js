@@ -59,7 +59,7 @@ class RealAITestGenerator {
 REQUIREMENTS:
 - Generate complete, runnable tests
 - Include edge cases and error handling
-- Use appropriate testing frameworks (Vitest for JS/TS, PHPUnit for PHP)
+- Use appropriate testing frameworks (Jest for JS/TS, PHPUnit for PHP)
 - Follow testing best practices
 - Include setup and teardown as needed
 - Test all public methods/functions

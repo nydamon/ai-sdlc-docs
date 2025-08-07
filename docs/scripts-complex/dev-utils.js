@@ -135,6 +135,7 @@ class DevUtils {
       testing: {
         hasVitest: fs.existsSync('vitest.config.js'),
         hasPlaywright: fs.existsSync('playwright.config.js'),
+        hasJest: fs.existsSync('jest.config.js'),
         hasPHPUnit: fs.existsSync('phpunit.xml'),
       },
       quality: {
@@ -215,7 +216,7 @@ class DevUtils {
     }
 
     // Testing recommendations
-    if (!toolsInfo.testing.hasVitest) {
+    if (!toolsInfo.testing.hasVitest && !toolsInfo.testing.hasJest) {
       recommendations.push({
         category: 'Testing',
         priority: 'medium',
@@ -322,7 +323,7 @@ class DevUtils {
 ### Testing
 - **Vitest:** ${report.tools.testing.hasVitest ? '✅' : '❌'}
 - **Playwright:** ${report.tools.testing.hasPlaywright ? '✅' : '❌'}
-- **Jest (Legacy):** ${report.tools.testing.hasJest ? '✅' : '❌'}
+- **Jest:** ${report.tools.testing.hasJest ? '✅' : '❌'}
 - **PHPUnit:** ${report.tools.testing.hasPHPUnit ? '✅' : '❌'}
 
 ### Quality Tools

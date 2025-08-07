@@ -103,7 +103,7 @@ suggest_cline_commands() {
                 ;;
             *.jsx | *.tsx)
                 echo_color $BLUE "For $file (React):"
-                echo "  \"Generate comprehensive Vitest tests for $file that:"
+                echo "  \"Generate comprehensive Jest tests for $file that:"
                 echo "  1. Test all user interactions and state changes"
                 echo "  2. Verify accessibility (WCAG 2.1)"
                 echo "  3. Test loading and error states"
@@ -113,7 +113,7 @@ suggest_cline_commands() {
                 ;;
             *.js | *.ts)
                 echo_color $BLUE "For $file (JavaScript/Node.js):"
-                echo "  \"Write Vitest unit tests for $file that:"
+                echo "  \"Write Jest unit tests for $file that:"
                 echo "  1. Test all exported functions thoroughly"
                 echo "  2. Include edge cases and error handling"
                 echo "  3. Test async operations with proper mocking"

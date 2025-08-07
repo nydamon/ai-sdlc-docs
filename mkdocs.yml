@@ -6,20 +6,20 @@ site_author: Damon DeCrescenzo, CTO - The Credit Pros
 # Version Configuration - Update only these values to change across all documentation
 extra:
   version:
-    framework: "v2.8.1"
-    name: "Documentation Accuracy Update"
-    platform: "Open-Source PR-Agent Platform"
-    updated: "August 7, 2025"
-    cost: "$150"
-    savings: "$70,200+"
-    roi: "4,680%"
+    framework: 'v3.2.0'
+    name: 'Claude Code + Cline Enterprise Platform with MCP Integration'
+    platform: 'Comprehensive AI Development Suite - 10 MCP Servers'
+    updated: 'August 7, 2025'
+    cost: '$150'
+    savings: '$70,200+'
+    roi: '4,680%'
     provider: mike
   site:
-    docs_url: "https://nydamon.github.io/ai-sdlc-docs/"
-    github: "https://github.com/nydamon/ai-sdlc"
+    docs_url: 'https://nydamon.github.io/ai-sdlc-docs/'
+    github: 'https://github.com/nydamon/ai-sdlc'
   company:
-    name: "The Credit Pros"
-    author: "Damon DeCrescenzo, CTO - The Credit Pros"
+    name: 'The Credit Pros'
+    author: 'Damon DeCrescenzo, CTO - The Credit Pros'
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/nydamon/ai-sdlc-docs
@@ -93,7 +93,7 @@ copyright: |
   &copy; 2025 <a href="https://thecreditpros.com" style="color: #ff902a; text-decoration: none;">The Credit Pros</a>. All rights reserved.<br>
   <strong style="color: #ff902a;">Enterprise AI-SDLC Framework by Damon DeCrescenzo, CTO - The Credit Pros</strong><br>
   <em style="color: #fffffe;">AI-Powered Development • $70,200+ Annual Savings • Production Ready</em><br>
-  <strong style="color: #ff902a;">Version: v2.8.1 | Updated: August 7, 2025</strong>
+  <strong style="color: #ff902a;">Version: v3.2.0 | Updated: August 7, 2025</strong>
 
 nav:
   - Home: README.md
@@ -117,12 +117,22 @@ nav:
       - Configuration Management: enhanced-config-management.md
       - 💻 Claude Code + Cline Guidelines: enhanced-cursor-guidelines.md
       - 🚀 Claude Code + Cline Implementation Guide: claude-code-cline-implementation-guide.md
+      - 🤖 Claude Code Sub-Agents Configuration: claude-code-sub-agents-setup.md
+      - 🎭 AI Agent Orchestration System: agent-orchestration-guide.md
+      - 🔌 MCP Server Setup Guide: mcp-server-setup.md
+      - 📖 MCP Server Reference Guide: mcp-server-reference.md
       - 🏢 Centralized Ruleset Management: centralized-ruleset-management.md
       - 📄 Scripts & Configuration Reference: scripts-reference.md
   - 📦 Download Scripts:
       - 📋 Scripts Download & Implementation: scripts-download.md
       - 🧙‍♂️ Enhanced Setup Wizard: enhanced-setup-wizard.sh
       - 📊 Implementation Tracker: implementation-tracker.js
+      - 🎭 Agent Orchestrator: scripts-complex/agent-orchestrator.js
+      - 🔌 MCP Server Installer: scripts-complex/mcp-installer.js
+      - 🔍 MCP Server Validator: scripts-complex/mcp-validator.js
+      - 🛠️ MCP Setup Orchestrator: scripts-complex/mcp-setup.js
+      - ⚙️ MCP Configuration: .mcp.json
+      - 🤖 Claude Code Sub-Agents Config: claude-code-sub-agents-config.json
       - auto-setup.sh: auto-setup.sh
       - ai-sdlc CLI: ai-sdlc
   - 📊 Implementation Status:

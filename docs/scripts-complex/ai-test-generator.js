@@ -14,6 +14,16 @@ class AITestGenerator {
   constructor() {
     this.openaiApiKey = process.env.OPENAI_API_KEY;
     this.projectRoot = process.cwd();
+
+    // Qase dual project configuration
+    this.qase = {
+      apiKey: process.env.QASE_API_KEY,
+      clientProject: process.env.QASE_CLIENT_PROJECT_CODE || 'TCP',
+      adminProject: process.env.QASE_ADMIN_PROJECT_CODE || 'PCU',
+      defaultProject: process.env.QASE_PROJECT_CODE || 'TCP',
+      targetProject: process.env.QASE_TARGET_PROJECT || 'TCP',
+      dualProjectMode: process.env.QASE_DUAL_PROJECT_MODE === 'true',
+    };
     this.testPatterns = {
       javascript: {
         unit: ['*.test.js', '*.spec.js'],
@@ -295,12 +305,12 @@ class AITestGenerator {
    * Create test configuration files
    */
   async createTestConfigurations(analysis) {
-    // Vitest configuration for JavaScript/TypeScript
+    // Jest configuration for JavaScript/TypeScript
     if (
       analysis.languages.includes('javascript') ||
       analysis.languages.includes('typescript')
     ) {
-      await this.createVitestConfig(analysis);
+      await this.createJestConfig(analysis);
     }
 
     // Playwright configuration for E2E tests
@@ -318,10 +328,10 @@ class AITestGenerator {
   }
 
   /**
-   * Create Vitest configuration
+   * Create Jest configuration
    */
-  async createVitestConfig(analysis) {
-    const vitestConfig = {
+  async createJestConfig(analysis) {
+    const jestConfig = {
       testEnvironment: analysis.frameworks.includes('react') ? 'jsdom' : 'node',
       roots: ['<rootDir>/src', '<rootDir>/tests', '<rootDir>/__tests__'],
       testMatch: [
@@ -329,7 +339,7 @@ class AITestGenerator {
         '**/?(*.)+(spec|test).(js|jsx|ts|tsx)',
       ],
       transform: {
-        '\\.[jt]sx?$': 'babel-vitest',
+        '\\.[jt]sx?$': 'babel-jest',
       },
       collectCoverageFrom: [
         'src/**/*.(js|jsx|ts|tsx)',
@@ -352,15 +362,15 @@ class AITestGenerator {
 
     // Add React-specific configuration
     if (analysis.frameworks.includes('react')) {
-      vitestConfig.setupFiles = ['<rootDir>/tests/setup-react.js'];
-      vitestConfig.environment = 'jsdom';
+      jestConfig.setupFilesAfterEnv = ['<rootDir>/tests/setup-react.js'];
+      jestConfig.testEnvironment = 'jsdom';
     }
 
     fs.writeFileSync(
-      path.join(this.projectRoot, 'vitest.config.js'),
-      `import { defineConfig } from 'vitest/config';\n\nexport default defineConfig({\n  test: ${JSON.stringify(vitestConfig, null, 4).replace(/^/gm, '    ').trim()}\n});`
+      path.join(this.projectRoot, 'jest.config.js'),
+      `module.exports = ${JSON.stringify(jestConfig, null, 2)};`
     );
-    console.log('✅ Created Vitest configuration');
+    console.log('✅ Created Jest configuration');
   }
 
   /**
@@ -466,7 +476,7 @@ export default defineConfig({
    * Create React Testing Library setup
    */
   async createTestingLibrarySetup() {
-    const setupContent = `import '@testing-library/vitest-dom';
+    const setupContent = `import '@testing-library/jest-dom';
 import { configure } from '@testing-library/react';
 
 // Configure testing library
@@ -673,12 +683,12 @@ class {{CLASS_NAME}}Test extends TestCase
     // Add test scripts
     packageJson.scripts = {
       ...packageJson.scripts,
-      test: 'vitest',
-      'test:watch': 'vitest --watch',
-      'test:coverage': 'vitest --coverage',
-      'test:ci': 'vitest --run --coverage',
-      'test:unit': 'vitest tests/unit',
-      'test:integration': 'vitest tests/integration',
+      test: 'jest',
+      'test:watch': 'jest --watch',
+      'test:coverage': 'jest --coverage',
+      'test:ci': 'jest --ci --coverage --watchAll=false',
+      'test:unit': 'jest tests/unit',
+      'test:integration': 'jest tests/integration',
       'test:e2e': 'playwright test',
       'test:e2e:ui': 'playwright test --ui',
       'test:ai-generate': 'node scripts/ai-test-generator.js generate',
