@@ -88,7 +88,7 @@ npm run format
 ./ai-sdlc validate   # Detailed validation
 ```
 
-## AI Testing Issues (Level 2+)
+## AI Testing Issues (With API Keys)
 
 ### Vitest Environment Error
 

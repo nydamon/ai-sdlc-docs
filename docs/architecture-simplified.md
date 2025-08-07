@@ -139,7 +139,7 @@ flowchart LR
 
 ```
 ai_sdlc/
-├── auto-setup.sh                          # Level 1 setup (WORKING)
+├── auto-setup.sh                          # Main setup script (WORKING)
 ├── ai-sdlc                               # CLI interface (WORKING)
 ├── scripts-complex/
 │   ├── ai-test-generator.js              # AI test generation (VALIDATED)

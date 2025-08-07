@@ -67,7 +67,7 @@ npm run test  # See AI-generated tests work
 **Goal:** Complete CI/CD pipeline with E2E testing
 
 ```bash
-# 1. Complete Level 1 & 2 setup first (35 minutes total)
+# 1. Complete basic setup and AI features first (35 minutes total)
 
 # 2. Setup E2E testing (45 minutes)
 ./ai-sdlc docker up
@@ -147,15 +147,15 @@ npm run ai:generate-e2e tests/api/
 
 ### Verify Each Level
 
-**Level 1 Validation:**
+**Basic Setup Validation:**
 
 ```bash
-./ai-sdlc validate --level=basic
+./ai-sdlc validate
 git commit -m "test: verify hooks" --allow-empty
 # Should trigger formatting and security checks
 ```
 
-**Level 2 Validation:**
+**AI Features Validation:**
 
 ```bash
 npm run ai:test-connection
@@ -163,7 +163,7 @@ npm run ai:generate-tests --dry-run src/sample.js
 npm run test -- --coverage
 ```
 
-**Level 3 Validation:**
+**Full Implementation Validation:**
 
 ```bash
 npm run test:e2e:sample

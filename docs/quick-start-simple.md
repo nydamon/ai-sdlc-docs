@@ -115,54 +115,12 @@ git add .
 git commit -m "feat: add new feature"
 # → Code gets formatted, linted, and E2E tests generated automatically
 ```
-./auto-setup.sh --react --vite --typescript-strict
-./auto-setup.sh --vue3 --composition-api
-./auto-setup.sh --laravel --pest
-```
 
-The script will:
-
-- **Auto-detect** your framework (React, Vue, Laravel, etc.)
-- **Install modern tooling** (Vite, Vitest, TypeScript strict, etc.)
-- **Configure framework-specific** ESLint, Prettier, testing setups
-- **Optimize for your stack** with intelligent defaults
-- **Set up git hooks** with framework-aware validation
-- **Test everything works** with your specific configuration
-
-### Step 3: Test Basic Setup (1 minute)
-
-Test the new smart testing features:
-
-```bash
-# Test only changed files (smart testing in v3.0.0)
-npm run test:changed
-
-# Watch coverage in real-time
-npm run test:watch-coverage
-
-# Run E2E with visual debugging
-npm run test:e2e-headed
-```
-
-Make a test commit:
-
-```bash
-echo "console.log('test')" > test.js
-git add test.js
-git commit -m "test: verify setup works"
-```
-
-You should see:
-
-- Code gets formatted automatically
-- Linting runs and passes
-- Commit message follows convention
-
-**✅ Level 1 Complete!** You now have automated code quality.
+**✅ Setup Complete!** You now have professional development automation.
 
 ---
 
-## Level 2: AI-Powered Test Generation (15 minutes)
+## Optional: AI-Powered Features (15 minutes)
 
 ### Step 1: Configure API Keys (5 minutes)
 
@@ -272,7 +230,7 @@ Add to your `package.json`:
 }
 ```
 
-**✅ Level 3 Complete!** Full enterprise QA automation is now active.
+**✅ AI Features Complete!** Full automated QA is now active.
 
 ## Daily Usage
 
