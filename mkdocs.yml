@@ -41,14 +41,6 @@ plugins:
   - search:
       separator: '[\s\-,:!=\[\]()"\/]+|(?!\b)(?=[A-Z][a-z])|\.(\w+)'
       lang: en
-  - minify:
-      minify_html: true
-  - git-revision-date-localized:
-      enable_creation_date: true
-      type: timeago
-  - git-committers:
-      repository: nydamon/ai-sdlc-docs
-      branch: master
 
 extra:
   version:
