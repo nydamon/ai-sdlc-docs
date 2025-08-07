@@ -1,5 +1,26 @@
 # AI-SDLC Framework - Simplified
 
+<div class="quick-nav">
+  <a href="quick-start-simple/" class="quick-nav-item">
+    🚀 Quick Start
+  </a>
+  <a href="implementation-guide-managers/" class="quick-nav-item">
+    📋 Manager Guide
+  </a>
+  <a href="claude-code-cline-implementation-guide/" class="quick-nav-item">
+    🏢 Enterprise Platform <span class="enterprise-badge">v2.7.0</span>
+  </a>
+  <a href="centralized-ruleset-management/" class="quick-nav-item">
+    ⚙️ Ruleset Management <span class="enterprise-badge">new</span>
+  </a>
+  <a href="developer-workflow-guide/" class="quick-nav-item">
+    👨‍💻 Developer Workflow
+  </a>
+  <a href="troubleshooting-simple/" class="quick-nav-item">
+    🔧 Troubleshooting
+  </a>
+</div>
+
 ## **Eliminate 80% of Code Review Overhead While Accelerating Development 40%**
 
 🎯 **Transform Your Development Pipeline in 5 Minutes | $597K+ Annual Savings (8-person team)**
