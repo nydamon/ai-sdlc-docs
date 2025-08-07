@@ -1,6 +1,211 @@
-# Scripts & Configuration Reference - v2.8.1
+# Scripts & Configuration Reference - v3.1.0
 
-## 🚀 v2.8.1 Open-Source PR-Agent Platform (TCP Optimized)
+## 🤖 v3.1.0 Claude Code + Cline Enterprise Platform
+
+### **New Agent Orchestration Scripts**
+
+**Agent Orchestrator System:**
+
+```bash
+# Core orchestration script
+./scripts-complex/agent-orchestrator.js             # Intelligent task routing
+
+# Usage examples
+node scripts-complex/agent-orchestrator.js          # Test routing logic
+npm run subagents:orchestrate                       # Run orchestration analysis
+npm run subagents:orchestrate -- --metrics          # View usage metrics
+```
+
+**MCP Server Management:**
+
+```bash
+# Core MCP scripts (3 main scripts)
+./scripts-complex/mcp-installer.js                  # Automated MCP server installation
+./scripts-complex/mcp-validator.js                  # Comprehensive server validation
+./scripts-complex/mcp-setup.js                      # Complete setup orchestration
+
+# Custom MCP server implementations
+./scripts-complex/github-mcp-server.js              # GitHub integration server
+./scripts-complex/web-fetch-mcp-server.js           # Safe web content fetching
+./scripts-complex/mcp-server.js                     # AI-SDLC toolkit server
+
+# NPM Scripts for MCP Management
+npm run mcp:setup                                   # Complete MCP setup and installation
+npm run mcp:validate                                # Validate all server configurations
+npm run mcp:status                                  # Check MCP server status
+npm run mcp:install                                 # Install MCP packages only
+
+# Direct script execution
+node scripts-complex/mcp-installer.js               # Direct installation
+node scripts-complex/mcp-validator.js               # Direct validation
+node scripts-complex/mcp-setup.js                   # Direct orchestrated setup
+```
+
+**Claude Code Sub-Agents Configuration:**
+
+```bash
+# Sub-agents configuration file
+./claude-code-sub-agents-config.json                # Domain-specific agent config
+
+# Usage examples
+npm run subagents:setup                             # Configure sub-agents
+npm run subagents:validate                          # Validate agent setup
+```
+
+### **Agent Orchestration Commands**
+
+#### **Intelligent Task Routing**
+
+The orchestrator automatically routes tasks between Cline MCP servers and Claude Code sub-agents:
+
+```bash
+# Automatic routing (behind the scenes)
+Simple task → budget-code-assistant ($0.05)
+Complex FCRA task → credit-compliance-reviewer ($0.25)
+Security audit → security-auditor-enhanced + secure_filesystem MCP
+```
+
+#### **Cost Optimization Features**
+
+```javascript
+// Built-in cost optimization
+budget_thresholds: {
+  "low": 0.05,     // Route to budget agents
+  "medium": 0.15,  // Route to standard agents
+  "high": 0.50     // Allow premium agents
+}
+
+// Automatic fallback chains
+credit-compliance-reviewer → security-auditor-enhanced → budget-code-assistant
+```
+
+#### **MCP Server Integration**
+
+**Complete MCP Server Suite (10 servers):**
+
+```bash
+# Core Infrastructure Servers (Official packages)
+playwright_automation    # @playwright/mcp - E2E testing with browser automation
+secure_filesystem        # @modelcontextprotocol/server-filesystem - PII-safe file ops
+postgresql_enhanced      # @modelcontextprotocol/server-postgres - FCRA audit database
+mcp_everything          # @modelcontextprotocol/server-everything - Development utilities
+
+# Custom Credit Repair Domain Servers (AI-SDLC specific)
+github_integration       # ./scripts-complex/github-mcp-server.js - Repository management
+web_content_fetch        # ./scripts-complex/web-fetch-mcp-server.js - Safe content fetching
+ai_sdlc_toolkit          # ./scripts-complex/mcp-server.js - Framework automation
+credit_compliance        # ./qodo-agents/credit-compliance-agent.js - FCRA validation
+test_automation          # ./scripts-complex/real-ai-test-generator.js - AI test generation
+database_automation      # Server configuration - PostgreSQL management
+```
+
+**MCP Server Capabilities:**
+
+```yaml
+# Infrastructure Servers (4)
+playwright_automation:
+  capabilities: [tools, resources, prompts]
+  purpose: 'E2E test automation with AI generation'
+  domain: 'testing, browser_automation'
+
+secure_filesystem:
+  capabilities: [resources, tools]
+  purpose: 'PII-safe file operations'
+  domain: 'security, data_protection'
+
+postgresql_enhanced:
+  capabilities: [tools, resources]
+  purpose: 'FCRA audit trails and compliance'
+  domain: 'database, compliance'
+
+mcp_everything:
+  capabilities: [resources, tools, prompts]
+  purpose: 'Development utilities and debugging'
+  domain: 'development, testing'
+
+# Domain-Specific Servers (6)
+github_integration:
+  capabilities: [tools, resources]
+  purpose: 'Automated PR reviews and compliance'
+  domain: 'repository_management, compliance'
+
+web_content_fetch:
+  capabilities: [resources]
+  purpose: 'Safe content fetching for regulations'
+  domain: 'research, compliance'
+
+ai_sdlc_toolkit:
+  capabilities: [resources, tools, prompts]
+  purpose: 'Framework automation and workflows'
+  domain: 'framework, automation'
+
+credit_compliance:
+  capabilities: [tools, resources]
+  purpose: 'FCRA/FACTA validation and auditing'
+  domain: 'compliance, regulatory'
+
+test_automation:
+  capabilities: [tools, prompts]
+  purpose: 'AI-powered test generation'
+  domain: 'testing, quality_assurance'
+
+database_automation:
+  capabilities: [tools, resources]
+  purpose: 'Database management and optimization'
+  domain: 'database, performance'
+```
+
+**MCP Configuration File (.mcp.json):**
+
+```json
+{
+  "$schema": "https://schemas.anthropic.com/mcp/server-config",
+  "name": "ai-sdlc-mcp-servers",
+  "version": "1.0.0",
+  "description": "MCP servers for AI-SDLC Framework",
+  "servers": {
+    "playwright_automation": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp"],
+      "env": {
+        "DOMAIN_PATTERNS": "credit_repair,dispute_portal,customer_dashboard",
+        "TCP_E2E_PATTERNS": "true"
+      }
+    },
+    "secure_filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/secure/path"]
+    },
+    "postgresql_enhanced": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "POSTGRES_CONNECTION_STRING": "${DATABASE_URL}"
+      }
+    }
+    // ... additional server configurations
+  }
+}
+```
+
+#### **Claude Code Sub-Agent Types**
+
+```bash
+# Premium agents ($0.25) - Complex domain tasks
+credit-compliance-reviewer    # FCRA/FACTA compliance review
+credit-test-generator        # Domain-specific test generation
+security-auditor-enhanced    # PII protection and security audit
+architecture-planner-fcra    # Compliance-focused architecture
+
+# Standard agents ($0.10) - Medium complexity
+documentation-specialist     # Technical writing and API docs
+performance-optimizer       # Database and query optimization
+
+# Budget agent ($0.05) - Simple tasks
+budget-code-assistant       # Basic fixes and formatting
+```
+
+## 🚀 v2.8.1 Open-Source PR-Agent Platform (Previous)
 
 ### TCP-Optimized PR-Agent Setup
 

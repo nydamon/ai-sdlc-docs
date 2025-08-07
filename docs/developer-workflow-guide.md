@@ -1,8 +1,8 @@
-# Developer Workflow Guide - AI-SDLC v2.8.1
+# Developer Workflow Guide - AI-SDLC v3.0.0
 
 ## 🎯 Complete Developer Workflow with AI-SDLC Tools
 
-This guide provides step-by-step instructions for developers to use the AI-SDLC framework effectively in daily development work.
+This guide provides step-by-step instructions for developers to use the AI-SDLC framework effectively in daily development work, including the new MCP server integration and enhanced AI capabilities.
 
 ## 📋 Daily Development Workflow
 
@@ -83,7 +83,86 @@ npm run test:e2e-headed
 4. Run `npm run test:e2e-headed` to see test execute
 5. If test fails, screenshots/videos saved to `test-results/`
 
-### 4. Pre-Commit Workflow
+### 🔌 4. MCP Server Integration Workflow (NEW in v3.0.0)
+
+**MCP servers are automatically configured during project setup. Here's how to leverage them in daily development:**
+
+**Check MCP Server Status:**
+
+```bash
+# Verify all MCP servers are configured correctly
+npm run mcp:validate
+
+# Quick status check
+npm run mcp:status
+```
+
+**Using MCP Servers with Claude Code:**
+
+```bash
+# Add MCP servers to Claude Code (one-time setup)
+claude mcp add --config ./.mcp.json
+
+# Verify MCP integration
+claude mcp list
+```
+
+**MCP-Enhanced Development Workflows:**
+
+**For Credit Repair Feature Development:**
+
+```bash
+# 1. Use AI-SDLC Toolkit MCP for framework automation
+# (Available automatically in Claude Code conversations)
+
+# 2. Leverage Test Automation MCP for comprehensive testing
+# (Generates tests with credit repair domain patterns)
+
+# 3. Use Credit Compliance MCP for FCRA validation
+# (Automatically validates code for regulatory compliance)
+```
+
+**For Database Operations:**
+
+```bash
+# PostgreSQL Enhanced MCP provides:
+# - FCRA audit trail logging
+# - PII encryption validation
+# - Compliance reporting
+# (Available through Claude Code database queries)
+```
+
+**For E2E Testing Enhancement:**
+
+```bash
+# Playwright Automation MCP provides:
+# - AI-driven test generation with credit repair patterns
+# - Automatic browser management
+# - Domain-specific test patterns for dispute forms, credit reports
+# (Integrated with ./ai-sdlc generate-from-requirements)
+```
+
+**MCP Server Troubleshooting:**
+
+```bash
+# If MCP servers aren't working:
+npm run mcp:validate               # Shows detailed validation report
+cat MCP-VALIDATION-REPORT.md       # Review validation details
+
+# Re-run MCP setup if needed:
+npm run mcp:setup                  # Complete MCP installation
+```
+
+**Environment Variables for Full MCP Functionality:**
+
+```bash
+# Add to .env file for complete MCP server functionality:
+GITHUB_TOKEN=ghp_your_token_here          # GitHub Integration MCP
+OPENAI_API_KEY=sk-your_key_here           # AI-powered features
+DATABASE_URL=postgresql://localhost:5432/db  # PostgreSQL Enhanced MCP
+```
+
+### 5. Pre-Commit Workflow
 
 **Before committing, ensure quality:**
 

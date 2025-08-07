@@ -1,6 +1,52 @@
-# Troubleshooting Guide
+# Troubleshooting Guide - AI-SDLC v3.0.0
 
 ## Common Issues
+
+### 🔌 MCP Server Issues (NEW)
+
+**Error: "MCP servers not working with Claude Code"**
+
+```bash
+# Validate MCP configuration
+npm run mcp:validate
+
+# Check validation report
+cat MCP-VALIDATION-REPORT.md
+
+# Re-add to Claude Code
+claude mcp add --config ./.mcp.json
+```
+
+**Error: "Environment variables missing"**
+
+```bash
+# Add required variables to .env file:
+echo "GITHUB_TOKEN=ghp_your_token_here" >> .env
+echo "OPENAI_API_KEY=sk-your_key_here" >> .env
+echo "DATABASE_URL=postgresql://localhost:5432/database" >> .env
+```
+
+**Error: "MCP package not found in registry"**
+
+This is expected for some packages. The system automatically falls back to custom implementations.
+
+```bash
+# Check MCP setup status
+npm run mcp:status
+
+# Re-run setup if needed
+npm run mcp:setup
+```
+
+**Error: "Playwright browsers not installed"**
+
+```bash
+# Install Playwright browsers manually
+npx playwright install
+
+# Or re-run MCP setup
+npm run mcp:setup
+```
 
 ### Setup Script Fails
 

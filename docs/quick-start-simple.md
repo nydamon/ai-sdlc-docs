@@ -47,6 +47,54 @@ cp cline_templates/advanced-prompts-2025.md ./cline_templates/
 - Advanced testing automation with self-healing capabilities
 - Built-in credit repair domain compliance (FCRA/FACTA/CROA)
 
+### 🔌 MCP Server Integration (Included Automatically)
+
+**10 MCP Servers Now Auto-Installed:**
+
+The `auto-setup.sh` script now automatically configures 10 specialized MCP (Model Context Protocol) servers for enhanced AI capabilities:
+
+```bash
+# MCP servers included with auto-setup:
+✅ Playwright Automation     # E2E testing with browser automation
+✅ GitHub Integration        # Automated PR reviews & compliance
+✅ Secure Filesystem         # PII-safe file operations
+✅ PostgreSQL Enhanced       # FCRA audit trails & compliance
+✅ Web Content Fetch         # Safe regulation research
+✅ Everything Server         # Development utilities & debugging
+✅ AI-SDLC Toolkit          # Framework-specific automation
+✅ Credit Compliance        # FCRA/FACTA validation agent
+✅ Test Automation          # AI-powered test generation
+✅ Database Automation      # PostgreSQL management & optimization
+```
+
+**Post-Setup MCP Configuration:**
+
+After running `auto-setup.sh`, configure MCP servers:
+
+```bash
+# 1. Add environment variables to .env:
+GITHUB_TOKEN=ghp_your_github_token_here
+OPENAI_API_KEY=sk-your_openai_key_here
+DATABASE_URL=postgresql://user:pass@localhost:5432/database
+
+# 2. Add to Claude Code:
+claude mcp add --config ./.mcp.json
+
+# 3. Validate installation:
+npm run mcp:validate
+
+# 4. Check status:
+npm run mcp:status
+```
+
+**MCP Benefits:**
+
+- **AI-Powered E2E Testing**: Generate comprehensive Playwright tests automatically
+- **PII Protection**: Secure file handling with automatic credit data protection
+- **Compliance Automation**: Built-in FCRA/FACTA validation and audit trails
+- **Repository Management**: Automated PR reviews with domain expertise
+- **Database Operations**: FCRA-compliant queries with audit logging
+
 ## 🆕 Previous Version: Claude Code + Cline Enterprise Platform
 
 **MAJOR TOOLING UPDATE:**

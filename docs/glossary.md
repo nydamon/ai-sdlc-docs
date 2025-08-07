@@ -8,9 +8,9 @@
 
 ## Development Tools
 
-**Claude Code** - Terminal-native AI assistant with enterprise policy management and centralized configuration capabilities.
+**Claude Code** - Terminal-native AI assistant with enterprise policy management, centralized configuration capabilities, and optional sub-agents integration. In the AI-SDLC framework, Claude Code serves as a **secondary enhancement platform** with specialized domain agents for complex credit repair tasks. See [Claude Code Sub-Agents Setup](claude-code-sub-agents-setup.md).
 
-**Cline** - IDE-integrated AI development assistant with team coordination features and multi-model support. See [Claude Code + Cline Guidelines](enhanced-cursor-guidelines.md).
+**Cline** - IDE-integrated AI development assistant serving as the **primary AI platform** in the AI-SDLC framework. Features team coordination, multi-model support, and comprehensive MCP server integration. See [Claude Code + Cline Guidelines](enhanced-cursor-guidelines.md).
 
 **ESLint** - JavaScript/TypeScript linting tool that catches code quality issues and enforces consistent style.
 
@@ -47,7 +47,91 @@
 
 **Auto-Healing Tests** - Self-maintaining test framework that automatically adapts when UI selectors change, reducing test maintenance overhead through smart fallback systems.
 
-## v2.8.1 Open-Source PR-Agent Platform
+## v3.1.0 Claude Code + Cline Enterprise Platform
+
+**Agent Orchestration System** - Intelligent routing system that automatically determines whether to use Cline MCP servers or Claude Code sub-agents based on task complexity, domain requirements, and cost optimization. See [Agent Orchestration Guide](agent-orchestration-guide.md).
+
+**MCP Servers** - Model Context Protocol servers providing infrastructure capabilities for AI-powered development. The AI-SDLC framework includes 10 specialized MCP servers optimized for credit repair development. Automatically installed via `auto-setup.sh`. See comprehensive details below.
+
+### Core MCP Servers (10 Total)
+
+**🎭 Playwright Automation MCP** - Browser automation server for E2E testing with AI-driven test generation. Automatically installs browser binaries and provides domain-specific patterns for credit repair workflows.
+
+- **Package**: `@playwright/mcp`
+- **Capabilities**: tools, resources, prompts
+- **Purpose**: Generate and execute E2E tests for dispute forms, credit reports, customer portals
+- **Reference**: https://npmjs.com/package/@playwright/mcp
+
+**🐙 GitHub Integration MCP** - Repository management and CI/CD automation server for compliance and PR reviews.
+
+- **Implementation**: Custom script (`./scripts-complex/github-mcp-server.js`)
+- **Capabilities**: tools, resources
+- **Purpose**: Automated PR reviews, FCRA code scanning, issue tracking, compliance automation
+- **Features**: PII detection, regulatory compliance checking, credit repair domain validation
+
+**📁 Secure Filesystem MCP** - PII-safe file operations server with built-in credit data protection.
+
+- **Package**: `@modelcontextprotocol/server-filesystem`
+- **Capabilities**: resources, tools
+- **Purpose**: Secure file handling with automatic PII filtering and credit data protection
+- **Features**: Prevents accidental PII exposure, secure config management, audit trail logging
+
+**🗄️ PostgreSQL Enhanced MCP** - Database operations server with FCRA audit trails and compliance logging.
+
+- **Package**: `@modelcontextprotocol/server-postgres`
+- **Capabilities**: tools, resources
+- **Purpose**: Compliant database queries with built-in audit trails and PII encryption
+- **Features**: FCRA audit logging, PII encryption, schema validation, compliance reporting
+
+**🌐 Web Content Fetch MCP** - Safe content fetching server for compliance documentation and research.
+
+- **Implementation**: Custom script (`./scripts-complex/web-fetch-mcp-server.js`)
+- **Capabilities**: resources
+- **Purpose**: Fetch CFPB regulations, credit bureau API docs, compliance requirements safely
+- **Features**: Rate limiting, content filtering, trusted source validation
+
+**🔧 Everything Server MCP** - Comprehensive development utilities and testing server.
+
+- **Package**: `@modelcontextprotocol/server-everything`
+- **Capabilities**: resources, tools, prompts
+- **Purpose**: Full MCP feature testing, development debugging, comprehensive tool access
+- **Features**: Multi-capability testing, debugging utilities, development tools integration
+
+**🛠️ AI-SDLC Toolkit MCP** - Framework-specific automation server with credit repair domain expertise.
+
+- **Implementation**: Custom script (`./scripts-complex/mcp-server.js`)
+- **Capabilities**: resources, tools, prompts
+- **Purpose**: AI-SDLC framework automation, credit repair specific utilities
+- **Features**: Framework automation, domain-specific tools, custom workflows
+
+**⚖️ Credit Compliance MCP** - FCRA/FACTA validation agent with regulatory expertise.
+
+- **Implementation**: Custom script (`./qodo-agents/credit-compliance-agent.js`)
+- **Capabilities**: tools, resources
+- **Purpose**: Automated FCRA compliance checking, PII validation, regulatory audit support
+- **Features**: FCRA Section 604 validation, PII pattern detection, compliance reporting
+
+**🧪 Test Automation MCP** - AI-powered test generation server with domain awareness.
+
+- **Implementation**: Custom script (`./scripts-complex/real-ai-test-generator.js`)
+- **Capabilities**: tools, prompts
+- **Purpose**: Generate comprehensive test suites automatically with credit repair patterns
+- **Features**: AI test generation, domain-aware patterns, 100% coverage targeting
+
+**🗃️ Database Automation MCP** - PostgreSQL integration server for automated database operations.
+
+- **Implementation**: Server configuration only (leverages postgresql_enhanced)
+- **Capabilities**: tools, resources
+- **Purpose**: Automated database setup, migration management, performance optimization
+- **Features**: Auto-migrations, performance tuning, backup automation
+
+**Claude Code Sub-Agents** - Specialized AI agents for domain-specific tasks (FCRA compliance, security auditing, architecture planning). Work alongside MCP servers through the orchestration system. Seven agents available from budget ($0.05) to premium ($0.25) tiers.
+
+**Hybrid Workflows** - Advanced task execution combining Cline MCP servers (infrastructure) with Claude Code sub-agents (specialized logic) for optimal performance and cost efficiency.
+
+**Cost-Optimized Routing** - Intelligent agent selection based on budget constraints: Budget ($0.05), Standard ($0.10), Premium ($0.25), with automatic fallback chains for high availability.
+
+## v2.8.1 Open-Source PR-Agent Platform (Previous)
 
 **Open-Source PR-Agent** - Cost-efficient AI-powered code review automation with TCP credit repair compliance optimization, delivering 90% cost reduction vs commercial alternatives.
 
@@ -173,6 +257,9 @@
 - [Manager Implementation Guide](implementation-guide-managers.md) - Team rollout strategy
 - [Git Hooks Automation](git-hooks-automation.md) - Technical automation details
 - [Claude Code + Cline Guidelines](enhanced-cursor-guidelines.md) - Enterprise AI development platform configuration
+- [Claude Code Sub-Agents Setup](claude-code-sub-agents-setup.md) - **Optional Claude Code sub-agents integration with cost optimization**
+- [Agent Orchestration Guide](agent-orchestration-guide.md) - **Intelligent routing between Cline MCP and Claude Code sub-agents**
+- [MCP Server Setup Guide](mcp-server-setup.md) - **Model Context Protocol server configuration for infrastructure operations**
 - [Centralized Ruleset Management](centralized-ruleset-management.md) - Implementation manager guide for enterprise policy control
 - [Claude Code + Cline Implementation Guide](claude-code-cline-implementation-guide.md) - Complete enterprise platform deployment
 - [Testing & Validation](TESTING-README.md) - Quality assurance processes
@@ -183,5 +270,5 @@
 ---
 
 _Created by Damon DeCrescenzo, CTO - The Credit Pros_  
-_Framework Version: v2.8.1 - Open-Source PR-Agent Platform_  
+_Framework Version: v3.1.0 - Claude Code + Cline Enterprise Platform_  
 _Last Updated: August 7, 2025_
