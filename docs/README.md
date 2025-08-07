@@ -8,7 +8,7 @@
     📋 Manager Guide
   </a>
   <a href="claude-code-cline-implementation-guide/" class="quick-nav-item">
-    🏢 Enterprise Platform <span class="enterprise-badge">v2.7.0</span>
+    🏢 Enterprise Platform
   </a>
   <a href="centralized-ruleset-management/" class="quick-nav-item">
     ⚙️ Ruleset Management <span class="enterprise-badge">new</span>
@@ -63,34 +63,14 @@ This AI-SDLC framework is designed for implementation across TheCreditPros devel
 
 **Implementation Priority**: Deploy to customer-frontend-portal first for immediate impact, then roll out to refactor projects for consistency.
 
-## 🔧 **Modern Framework Support**
+## 🔧 **Works With Your Tech Stack**
 
-**Frontend Technologies:**
+**Automatically detects and configures:**
 
-- ✅ **React 18+** with modern patterns (hooks, suspense, concurrent features)
-- ✅ **Vue 3** with Composition API and `<script setup>` syntax
-- ✅ **TypeScript 5+** with strict mode and advanced type checking - _Enforces compile-time error detection, eliminating runtime type errors and improving code reliability by 40%_
-- ✅ **Modern Bundlers** - Vite (preferred), esbuild, SWC, Webpack 5 - _Lightning-fast builds (10x faster than Webpack), hot module replacement, and optimized production bundles reducing load times by 60%_
-- ✅ **State Management** - Zustand, TanStack Query, Pinia, Redux Toolkit - _AI generates comprehensive tests for store actions, reducers, and side effects automatically_
-- ✅ **Testing Frameworks** - Vitest (primary), React Testing Library, Vue Test Utils
-- ✅ **Playwright** - End-to-end testing framework for comprehensive user flow validation across browsers - _AI generates complete E2E test suites for critical user journeys_
-- ✅ **Qase** - Test case management system with AI integration - _Converts natural language requirements into automated test cases and maintains test documentation_
-- ✅ **Styling Solutions** - Tailwind CSS, Styled Components, CSS Modules
-
-**Backend Technologies:**
-
-- ✅ **Laravel 10+** with Pest testing and modern PHP 8.2+ features
-- ✅ **Node.js** with Express, Fastify, NestJS frameworks
-- ✅ **Python** with Django, FastAPI, Flask + pytest integration
-- ✅ **API Standards** - REST, GraphQL (Apollo), tRPC type-safe APIs
-
-**Auto-Detection & Configuration:**
-
-- 🤖 Automatically detects your tech stack from `package.json` and config files
-- 🤖 Generates framework-specific configurations and test templates
-- 🤖 Optimizes AI test generation for your specific tools and patterns
-
-**See [Framework Configurations Guide](framework-configurations.md) for detailed setup instructions.**
+- ✅ **React, Vue, Laravel, Node.js** - Popular frameworks supported
+- ✅ **TypeScript, JavaScript, PHP** - Language-specific optimizations  
+- ✅ **Your existing tools** - Integrates with current setup
+- 🤖 **Auto-detection** - No manual configuration needed
 
 ## 🚀 **5-Minute Setup That Actually Works**
 
@@ -193,112 +173,28 @@ The AI-SDLC framework is available as a **public GitHub repository**:
 ./ai-sdlc status     # ✅ Check if all components working
 ./ai-sdlc validate   # ✅ Run comprehensive validation checks
 
-# Basic management commands
-./ai-sdlc setup      # Same as ./auto-setup.sh
-
-# AI test generation (with API keys) - VALIDATED
-./ai-sdlc test-init                         # Initialize AI test generation
-./ai-sdlc test-gen all                      # Generate tests for all files
-
-# NEW: Advanced AI Capabilities (VALIDATED August 2025)
-./ai-sdlc test-gen <file>                   # AI-powered unit test generation
-./ai-sdlc test-gen-e2e <file>              # AI-powered E2E test generation (if implemented)
-node scripts-complex/qodo-pr-agent.js <pr> # AI code review analysis
-
-# NEW: Qase AIDEN Integration (AI Test Generation)
-./ai-sdlc generate-from-requirements "requirement"  # Generate test from natural language
-./ai-sdlc convert-manual-to-auto <test-id>          # Convert manual Qase test to automated
-./ai-sdlc heal-and-generate                         # Auto-heal tests + generate new ones
-./ai-sdlc auto-complete-testing                     # Complete automated testing setup
-
-# NEW: SonarCloud Configuration Validation (TheCreditPros)
-./ai-sdlc sonar-validate                            # Validate SonarCloud configs across all repos
-./ai-sdlc sonar-templates                           # Generate standardized SonarCloud templates
-
-# NEW: PostgreSQL Database Automation (Works with YOUR existing database)
-./scripts-complex/postgres-automation.sh setup    # Map to your existing database tables
-./scripts-complex/postgres-automation.sh test     # Test FCRA compliance on your existing data
-./scripts-complex/postgres-automation.sh backup   # Backup your existing database
-./scripts-complex/postgres-automation.sh report   # Generate compliance report from your data
-
-# Direct script access (for advanced users)
-node scripts-complex/ai-test-generator.js   # Direct AI test generation
-node scripts-complex/ai-e2e-generator.js    # Direct E2E test generation
-node scripts-complex/qase-aiden-integration.js # Direct Qase AIDEN integration
-node scripts-complex/playwright-auto-healing.js # Direct auto-healing utilities
-./scripts-complex/postgres-automation.sh    # Direct PostgreSQL automation
-
-# Help
-./ai-sdlc help       # Show all commands
+# Essential commands
+./ai-sdlc status     # Check if setup worked
+./ai-sdlc help       # Show all available commands
 ```
 
-## 🤖 **NEW: AI-Powered Automation (Validated August 2025)**
+## 🤖 **What You Get Automatically**
 
-**✅ Production-Ready Results:**
+- **100% test coverage** - AI writes tests for you
+- **Automatic E2E tests** - Generated when you change UI components  
+- **Code formatting** - Professional standards on every commit
+- **Quality gates** - Prevents bad code from being committed
+- **Credit repair compliance** - FCRA/FACTA patterns built-in
 
-- **100% test coverage** achieved automatically with AI generation
-- **10+ E2E scenarios** generated per component in seconds
-- **SonarCloud validation** - 95%+ quality gate pass rates with AI Code Fix
-- **Repository consistency** - Standardized configurations across customer-frontend-portal, portal2-refactor, portal2-admin-refactor
-- **Enterprise-scale automation** with validated real-world savings
-- **Zero manual QA intervention** for E2E test creation
-- **Bug detection proven** - found actual credit calculation errors
-- **5-platform integration** - OpenAI, Qase, Codium, GitHub APIs, SonarCloud working
-
-## 🚀 **NEW: Qase AIDEN Integration (Intelligent Test Generation)**
-
-**✅ What Qase AIDEN Actually Does:**
-
-- **Converts natural language requirements to automated Playwright tests**
-- **Transforms manual test cases into executable code**
-- **No-code automation** - just describe what to test in plain English
-- **Auto-healing wrapper** - tests maintain themselves when selectors change
-
-**🎯 Simple Integration Value:**
-
-> "AI generates your credit repair tests, then automatically maintains them forever."
-
-**Example Usage:**
-
-```bash
-./ai-sdlc generate-from-requirements "Test FCRA Section 604 compliance flow"
-# → Generates complete Playwright test with auto-healing selectors
-
-./ai-sdlc convert-manual-to-auto 123
-# → Converts your existing Qase manual test case to automated script
-
-./ai-sdlc heal-and-generate
-# → Auto-fixes existing flaky tests + generates common credit repair scenarios
-```
-
-## 🐘 **NEW: PostgreSQL Database Automation (Works with Your Existing Database)**
-
-**⚠️ IMPORTANT: Integrates with your existing Credit Pros PostgreSQL database - no new tables created**
-
-- **FCRA Compliance Testing** - Tests your existing data for Section 604 & 611 compliance
-- **Performance Analysis** - Optimizes your current database queries and indexes
-- **Audit Trail Validation** - Analyzes your existing audit logs for regulatory compliance
-- **Read-Only Integration** - No schema changes, works with your current table structure
-
-**🔗 Setup Guide:** [Existing Database Integration →](existing-database-setup.md) | **Technical Details:** [PostgreSQL Automation →](postgresql-automation.md)
-
-**🎯 Credit Repair Domain Expertise:**
-
-- FCRA compliance patterns built into AI test generation
-- Industry-specific error handling validation
-- Regulatory requirement testing automated
-- Database compliance testing for your existing PostgreSQL tables
-- See [Claude Code + Cline Guidelines](enhanced-claude-code-guidelines.md) for enterprise configuration
-
-**🔗 Ready to implement?** [View all scripts and step-by-step setup →](scripts-download.md)
+**Optional: Add API keys for AI features** (see [Quick Start Guide](quick-start-simple.md))
 
 ## 💡 **How It Works**
 
-1. **Detects your project** (Laravel/React JavaScript/React TypeScript/Node.js)
+1. **Detects your project** automatically
 2. **Installs essential tools** (ESLint, Prettier, Husky)
-3. **Sets up git hooks** to run automatically
+3. **Sets up git hooks** to run automatically  
 4. **Creates working configs** - no editing required
-5. **NEW: AI generates comprehensive tests** automatically
+5. **AI generates tests** when you add API keys
 
 ## ✨ **What Happens When You Commit**
 
@@ -380,129 +276,18 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 - Same code quality standards
 - Same commit message format
 
-## 📚 **Documentation**
+## 📚 **Next Steps**
 
-**For Developers:**
-
-- [🚀 Quick Start Guide](quick-start-simple.md) - **SINGLE COMMAND SETUP** - Start here!
-- [⚙️ Developer Workflow](developer-workflow-guide.md) - **Complete daily workflow with line-by-line instructions**
-- [Quick Start Guide](quick-start-simple.md) - Step-by-step setup guide
-- [👨‍💻 Developer Workflow Guide](developer-workflow-guide.md) - **Complete daily workflow with line-by-line instructions**
-- [Architecture Overview](architecture-simplified.md) - Framework architecture overview
-- [🗺️ Existing Database Setup](existing-database-setup.md) - **PostgreSQL integration with YOUR existing database**
+**Get Started:**
+- [🚀 Quick Start Guide](quick-start-simple.md) - 5-minute setup
 - [Troubleshooting Guide](troubleshooting-simple.md) - Common issues and fixes
 
-**For QA Teams:**
-
-- [🧪 QA Team Workflow Guide](qa-team-workflow-guide.md) - **Complete QA automation workflow with line-by-line instructions**
-- [Testing & Validation Documentation](TESTING-README.md) - Comprehensive testing guide
-
-**For Code Reviewers:**
-
-- [👀 Code Reviewer Guide](code-reviewer-guide.md) - **AI-assisted code review workflow with automation tools**
-
-**For Managers:**
-
-- [Implementation Guide for Managers](implementation-guide-managers.md) - Complete rollout plan
-- [🐘 PostgreSQL Database Automation](postgresql-automation.md) - **FCRA compliance testing on existing data**
-- [Git Hooks Automation](git-hooks-automation.md) - Technical details
-- [React Best Practices](react-best-practices-updated.md) - Code quality standards
-
-## ⚡ **Implementation Strategy - Risk-Free Rollout**
-
-### 🎯 **Recommended Approach**
-
-**Week 1: Pilot Project**
-
-- Select 2-3 volunteer developers
-- Implement on customer-frontend-portal (non-critical branch)
-- Configure API keys and test AI generation
-- Document initial results
-
-**Week 2: Team Rollout**
-
-- Roll out to entire development team on pilot project
-- Measure code review time reduction and test coverage
-- Collect developer feedback and success metrics
-
-**Week 3-4: Production Deployment**
-
-- Deploy to customer-frontend-portal main branch
-- Roll out to portal2-refactor and portal2-admin-refactor
-- Monitor automation performance and ROI
-
-**Month 2: Full Optimization**
-
-- Fine-tune AI generation for domain-specific patterns
-- Optimize test execution and coverage thresholds
-- Present measured business impact to stakeholders
-
-### 🛡️ **Risk Mitigation**
-
-- ✅ **5-minute rollback** if any issues
-- ✅ **No workflow disruption** - completely transparent
-- ✅ **Gradual adoption** - start with volunteers
-- ✅ **Measured results** before full commitment
-
-## 🆚 **Why This Beats Complex Alternatives**
-
-### **AI-SDLC Simple:**
-
-- ✅ **One command setup**: `./auto-setup.sh` (actually works)
-- ✅ **No Docker overhead** - native tools only
-- ✅ **No configuration hell** - works out of the box
-- ✅ **Simple API setup** - just OpenAI and GitHub tokens
-- ✅ **5-minute real setup** (tested repeatedly)
-- ✅ **Self-healing** - maintains itself
-
-### **Complex Enterprise Tools:**
-
-- ❌ **Hours/days of setup** - Docker, databases, services
-- ❌ **Constant maintenance** - breaks with updates
-- ❌ **API key management** - security and cost overhead
-- ❌ **Team training required** - weeks of onboarding
-- ❌ **Configuration drift** - different setups per developer
-- ❌ **Vendor lock-in** - expensive to change later
-
-### **The "Do Nothing" Option:**
-
-- ❌ **15-25 hours/week** wasted on manual code review
-- ❌ **$50K+ average** production bug resolution cost
-- ❌ **Inconsistent quality** across team members
-- ❌ **New hire onboarding** takes 2-3 weeks
-- ❌ **Technical debt accumulation** - expensive to fix later
-- ❌ **Competitive disadvantage** - slower than automated teams
+**For Managers:**  
+- [Implementation Guide for Managers](implementation-guide-managers.md) - Team rollout plan
 
 ---
 
-## 🚀 **Ready to Transform Your Development Pipeline?**
-
-### **For Leadership: The Business Case is Clear**
-
-- ✅ **$70,200+ annual ROI** from a 15-minute implementation (4,680% return on $150/month investment)
-- ✅ **Zero implementation risk** - instant rollback capability
-- ✅ **Immediate productivity gains** - measurable in week 1
-- ✅ **Competitive advantage** - 40% faster development velocity
-
-### **For Management: Eliminate Process Overhead**
-
-- ✅ **75% reduction in code review bottlenecks**
-- ✅ **Standardized quality** across all team members
-- ✅ **Predictable delivery** without manual quality gates
-- ✅ **Professional development standards** with zero training
-
-### **For Developers: Focus on What Matters**
-
-- ✅ **No workflow changes** - completely transparent
-- ✅ **Stop manual formatting** - handled automatically
-- ✅ **Catch bugs earlier** - before they reach production
-- ✅ **Professional environment** - industry standard tools
-
----
-
-## 🎯 **Next Steps**
-
-### **Start Today (5 minutes):**
+## 🚀 **Ready to Get Started?**
 
 ```bash
 git clone https://github.com/nydamon/ai-sdlc.git
@@ -510,21 +295,7 @@ cd ai-sdlc
 ./auto-setup.sh
 ```
 
-**📥 [Get All Scripts & Implementation Guide →](scripts-download.md)**
-
-### **Pilot Program (1 week):**
-
-1. Select 2-3 volunteer developers
-2. Implement on customer-frontend-portal (test branch)
-3. Configure AI test generation and measure results
-4. Present automation impact to stakeholders
-
-### **Full Rollout (1 month):**
-
-1. Team-wide implementation across all repositories
-2. Measure productivity and quality improvements
-3. Optimize AI generation for credit repair domain
-4. Calculate precise ROI and business impact
+**That's it!** Your team now has professional development automation.
 
 ---
 

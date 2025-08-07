@@ -120,39 +120,17 @@ git commit -m "feat: add new feature"
 
 ---
 
-## Optional: AI-Powered Features (15 minutes)
+## Optional: AI Features
 
-### Step 1: Configure API Keys (5 minutes)
-
-Copy and configure environment file:
+**Want AI test generation?** Add to `.env` file:
 
 ```bash
 cp .env.example .env
-# Edit .env with your API keys
+# Edit .env and add:
+OPENAI_API_KEY=your-openai-key
 ```
 
-**Required API keys:**
-
-- `OPENAI_API_KEY` - Get from [OpenAI](https://platform.openai.com/api-keys) ($20-50/month)
-- `QASE_API_KEY` - Get from your [Qase account](https://app.qase.io/user/api/token) (existing)
-
-**Dual Qase Project Configuration:**
-
-- `QASE_CLIENT_PROJECT_CODE=TCP` - Client Frontend (Customer Portal)
-- `QASE_ADMIN_PROJECT_CODE=PCU` - Admin Frontend (Internal Dashboard)
-- `QASE_TARGET_PROJECT=TCP` - Default project for test generation (usually client)
-
-- `SONAR_TOKEN` - Get from [SonarCloud My Account → Security](https://sonarcloud.io/account/security) (free)
-
-**New Platform Requirements:**
-
-- **Claude Code**: Install from https://docs.anthropic.com/en/docs/claude-code ($240/user/year)
-- **Cline Teams**: Setup organization at https://cline.bot/teams ($300/user/year)
-
-**Optional premium:**
-
-- `CODIUM_API_KEY` - Get from [Codium AI](https://www.codium.ai/pricing/) ($19-49/month)
-- `GITHUB_TOKEN` - Get from [GitHub Settings → Developer settings](https://github.com/settings/tokens) (free, for AI Code Fix validation)
+**That's it!** AI features activate automatically.
 
 ## 🔍 **Troubleshooting**
 
@@ -205,32 +183,7 @@ chmod +x .husky/pre-commit
 - Automatic compliance validation
 - Self-maintaining test suites
 
-**🎉 You're Done! The framework is now running automatically on every commit.**
-
-# Generate E2E tests for critical flows (VALIDATED METHODS)
-./ai-sdlc generate-from-requirements "Test workflow instances modal functionality"
-node scripts-complex/ai-e2e-generator.js
-
-# Legacy method (still works)
-./ai-sdlc test-gen-e2e src/pages/
-```
-
-### Step 3: Set Up Continuous Testing (5 minutes)
-
-Add to your `package.json`:
-
-```json
-{
-  "scripts": {
-    "test:unit": "vitest run",
-    "test:e2e": "playwright test",
-    "test:full": "npm run test:unit && npm run test:e2e",
-    "test:ci": "npm run test:full -- --reporter=json"
-  }
-}
-```
-
-**✅ AI Features Complete!** Full automated QA is now active.
+**🎉 You're Done!** The framework is now running automatically on every commit.
 
 ## Daily Usage
 
@@ -239,13 +192,11 @@ Just develop normally. The tools run automatically when you:
 - `git commit` - Runs formatting and linting
 - `git push` - Everything's already checked
 
-## Commands
+## Useful Commands
 
 ```bash
-ai-sdlc status     # Check if setup is working
-ai-sdlc validate   # Run validation checks manually
-npm run lint       # Check code quality manually
-npm run format     # Format code manually
+./ai-sdlc status   # Check if setup is working
+./ai-sdlc help     # Show all available commands
 ```
 
 ---
