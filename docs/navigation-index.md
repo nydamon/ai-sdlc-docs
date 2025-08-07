@@ -26,7 +26,7 @@
 | Page                                                                | Purpose                        | Audience        | Priority |
 | ------------------------------------------------------------------- | ------------------------------ | --------------- | -------- |
 | [Home](README.md)                                                   | Main overview and introduction | All users       | ⭐⭐⭐   |
-| [🏗️ Architecture Overview](architecture-simplified.md)              | Framework structure and levels | Technical leads | ⭐⭐⭐   |
+| [🏗️ Architecture Overview](architecture-simplified.md)              | AI-powered framework structure | Technical leads | ⭐⭐⭐   |
 | [Quick Start Guide](quick-start-simple.md)                          | Implementation steps           | Developers      | ⭐⭐⭐   |
 | [📋 Manager Implementation Guide](implementation-guide-managers.md) | Team rollout strategy          | Managers        | ⭐⭐⭐   |
 | [🧪 Testing & Validation](TESTING-README.md)                        | Quality assurance processes    | QA teams        | ⭐⭐     |
@@ -110,21 +110,21 @@
 - [React Best Practices](react-best-practices-updated.md)
 - [Configuration Management](enhanced-config-management.md)
 
-### **By Implementation Level**
+### **By Implementation Phase**
 
-**🟢 Level 1 (Free):**
+**🚀 Getting Started:**
 
 - [Quick Start Guide](quick-start-simple.md)
-- [Git Hooks Automation](git-hooks-automation.md)
+- [Developer Workflow Guide](developer-workflow-guide.md)
 - [Troubleshooting](troubleshooting-simple.md)
 
-**🟡 Level 2 (AI-Powered):**
+**🤖 AI-Powered Development:**
 
-- [Developer Workflow Guide](developer-workflow-guide.md)
 - [Scripts & Configuration Reference](scripts-reference.md)
 - [Testing & Validation](TESTING-README.md)
+- [Git Hooks Automation](git-hooks-automation.md)
 
-**🔴 Level 3 (Enterprise):**
+**🏢 Enterprise Features:**
 
 - [Claude Code + Cline Implementation Guide](claude-code-cline-implementation-guide.md)
 - [Centralized Ruleset Management](centralized-ruleset-management.md)
@@ -132,7 +132,14 @@
 
 ### **By Topic**
 
-**🤖 AI Integration:**
+**🤖 AI-Powered Development:**
+
+- [Quick Start Guide](quick-start-simple.md)
+- [Developer Workflow Guide](developer-workflow-guide.md)
+- [Scripts & Configuration Reference](scripts-reference.md)
+- [Testing & Validation](TESTING-README.md)
+
+**🏢 Enterprise Platform:**
 
 - [Claude Code + Cline Guidelines](enhanced-claude-code-guidelines.md)
 - [Claude Code + Cline Implementation Guide](claude-code-cline-implementation-guide.md)

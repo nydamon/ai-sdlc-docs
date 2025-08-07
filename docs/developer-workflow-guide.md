@@ -34,16 +34,26 @@ _Expected output_: Green checkmarks for setup status
 
 ### 2. Development Phase - Smart Testing
 
+**🔄 Automatic E2E Tests for UI Changes:**
+
+When you modify front-end components, E2E tests generate automatically:
+
+```bash
+# Edit your component
+vi src/components/SubmitButton.tsx
+
+# Commit changes - tests generate automatically
+git add src/components/SubmitButton.tsx
+git commit -m "feat: add loading state to submit button"
+# → E2E tests for button interactions created automatically
+```
+
 **While coding, use smart test execution:**
 
 ```bash
 # Test only files you've changed (60% faster)
 npm run test:changed
-```
 
-**For real-time feedback during development:**
-
-```bash
 # Watch mode with live coverage
 npm run test:watch-coverage
 ```

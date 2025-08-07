@@ -19,6 +19,19 @@ Complete git hooks automation is now handled by the AI-SDLC framework with intel
 # ✅ Branch naming enforcement (ADDED)
 # ✅ Commit message validation with commitlint (WORKING)
 # ✅ Project-specific linting rules (Laravel, React, TypeScript)
+# ✅ Automatic E2E test generation for front-end changes (NEW)
+```
+
+**🎭 Automatic E2E Test Generation:**
+
+When you commit changes to front-end files (`.tsx`, `.jsx`, `.ts`, `.js`), the framework automatically:
+
+```bash
+# Example workflow:
+git add src/components/Button.tsx    # You change a component
+git commit -m "feat: add hover state" # Commit triggers automatic E2E test generation
+# → Playwright tests created for Button component interactions
+# → Tests run in CI/CD pipeline automatically
 ```
 
 ## 🔍 **What Gets Automatically Configured**

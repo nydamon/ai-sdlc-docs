@@ -82,24 +82,6 @@ GITHUB_TOKEN=your-github-token    # For enhanced features
 - Automatic security scanning on every commit
 - Professional development standards enforced consistently
 
-## 🔍 **Validation Commands**
-
-**Quick Health Check:**
-```bash
-./quick-health-check.sh     # 30-second validation
-```
-
-**Detailed Status:**
-```bash
-./ai-sdlc status           # System health check
-./ai-sdlc validate         # Comprehensive validation  
-```
-
-**If Problems:**
-```bash
-./rollback.sh --confirm    # Clean uninstall
-```
-
 ## ✅ **Implementation Status: COMPLETE**
 
 **42 automation components available and working.**

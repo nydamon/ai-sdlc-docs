@@ -8,7 +8,7 @@
     📋 Manager Guide
   </a>
   <a href="claude-code-cline-implementation-guide/" class="quick-nav-item">
-    🏢 Enterprise Platform <span class="enterprise-badge">v2.8.1</span>
+    🏢 Enterprise Platform <span class="enterprise-badge">v2.7.0</span>
   </a>
   <a href="centralized-ruleset-management/" class="quick-nav-item">
     ⚙️ Ruleset Management <span class="enterprise-badge">new</span>
@@ -24,6 +24,16 @@
 ## **Eliminate 80% of Code Review Overhead While Accelerating Development 40%**
 
 🎯 **Transform Your Development Pipeline in 5 Minutes | $70,200+ Annual Savings (8-person team)**
+
+### 🔄 **Automatic E2E Tests for Every Front-End Change**
+
+When developers modify components, buttons, or UI elements, the framework automatically:
+- ✅ **Detects changes** in `.tsx`, `.jsx`, `.ts`, `.js` files  
+- ✅ **Generates Playwright tests** for interactions, clicks, forms
+- ✅ **Runs tests** in CI/CD pipeline automatically
+- ✅ **Self-healing tests** adapt when selectors change
+
+**Zero manual E2E test writing required.**
 
 ### 💼 **Executive Summary**
 
@@ -434,8 +444,8 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 
 **For Developers:**
 
-- [🚀 Setup Guide](SETUP_GUIDE.md) - **SINGLE COMMAND SETUP** - Start here!
-- [⚙️ Environment Config](ENVIRONMENT_CONFIG.md) - **API keys and configuration**
+- [🚀 Quick Start Guide](quick-start-simple.md) - **SINGLE COMMAND SETUP** - Start here!
+- [⚙️ Developer Workflow](developer-workflow-guide.md) - **Complete daily workflow with line-by-line instructions**
 - [Quick Start Guide](quick-start-simple.md) - Step-by-step setup for all levels
 - [👨‍💻 Developer Workflow Guide](developer-workflow-guide.md) - **Complete daily workflow with line-by-line instructions**
 - [Architecture Overview](architecture-simplified.md) - 3-level framework architecture
@@ -460,32 +470,32 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 
 ## ⚡ **Implementation Strategy - Risk-Free Rollout**
 
-### 🎯 **Recommended Approach for Maximum Buy-In**
+### 🎯 **Recommended Approach**
 
-**Week 1: Level 1 Pilot (Zero Risk)**
+**Week 1: Pilot Project**
 
 - Select 2-3 volunteer developers
-- Implement on non-critical projects first
-- Measure code review time reduction
-- Document developer feedback
+- Implement on customer-frontend-portal (non-critical branch)
+- Configure API keys and test AI generation
+- Document initial results
 
-**Week 2: Level 1 Team Rollout**
+**Week 2: Team Rollout**
 
-- Roll out to entire development team
-- Measure productivity improvements
-- Collect success metrics for leadership
+- Roll out to entire development team on pilot project
+- Measure code review time reduction and test coverage
+- Collect developer feedback and success metrics
 
-**Week 3-4: Level 2 Evaluation**
+**Week 3-4: Production Deployment**
 
-- Pilot AI testing on 1 critical project
-- Calculate ROI from reduced test writing time
-- Demonstrate Qase integration value
+- Deploy to customer-frontend-portal main branch
+- Roll out to portal2-refactor and portal2-admin-refactor
+- Monitor automation performance and ROI
 
-**Month 2: Full Implementation**
+**Month 2: Full Optimization**
 
-- Level 2 across high-priority projects
-- Level 3 evaluation for production systems
-- Present business case with measured results
+- Fine-tune AI generation for domain-specific patterns
+- Optimize test execution and coverage thresholds
+- Present measured business impact to stakeholders
 
 ### 🛡️ **Risk Mitigation**
 
@@ -501,7 +511,7 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 - ✅ **One command setup**: `./auto-setup.sh` (actually works)
 - ✅ **No Docker overhead** - native tools only
 - ✅ **No configuration hell** - works out of the box
-- ✅ **No API dependencies** for core functionality
+- ✅ **Simple API setup** - just OpenAI and GitHub tokens
 - ✅ **5-minute real setup** (tested repeatedly)
 - ✅ **Self-healing** - maintains itself
 
@@ -557,7 +567,7 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 ```bash
 git clone https://github.com/nydamon/ai-sdlc.git
 cd ai-sdlc
-./auto-setup.sh    # WORKING - Correct script name
+./auto-setup.sh
 ```
 
 **📥 [Get All Scripts & Implementation Guide →](scripts-download.md)**
@@ -565,16 +575,16 @@ cd ai-sdlc
 ### **Pilot Program (1 week):**
 
 1. Select 2-3 volunteer developers
-2. Implement on one non-critical project
-3. Measure code review time reduction
-4. Present results to stakeholders
+2. Implement on customer-frontend-portal (test branch)
+3. Configure AI test generation and measure results
+4. Present automation impact to stakeholders
 
 ### **Full Rollout (1 month):**
 
-1. Team-wide Level 1 implementation
-2. Measure productivity improvements
-3. Evaluate Level 2 AI features
-4. Calculate precise ROI for your team
+1. Team-wide implementation across all repositories
+2. Measure productivity and quality improvements
+3. Optimize AI generation for credit repair domain
+4. Calculate precise ROI and business impact
 
 ---
 
