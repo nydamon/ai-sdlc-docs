@@ -321,6 +321,8 @@ EOF
   fi
 }
 
+# TEMPORARILY DISABLED - Testing required before auto-integration
+# Use npm run mcp:setup for manual MCP server installation
 setup_mcp_servers() {
   echo_color $BLUE "🔌 Setting up MCP (Model Context Protocol) servers..."
   
@@ -381,7 +383,7 @@ main() {
   detect_and_setup_project
   setup_postgresql_automation
   setup_basic_configuration
-  setup_mcp_servers
+  # setup_mcp_servers  # Disabled until fully tested - use npm run mcp:setup manually
   create_validation_script
   validate_configuration
 }
