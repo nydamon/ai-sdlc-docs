@@ -1,4 +1,4 @@
-# Developer Workflow Guide - AI-SDLC {{ extra.version.framework }}
+# Developer Workflow Guide - AI-SDLC v2.8.1
 
 ## 🎯 Complete Developer Workflow with AI-SDLC Tools
 

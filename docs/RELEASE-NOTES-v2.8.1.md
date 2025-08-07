@@ -1,21 +1,21 @@
-# AI-SDLC Framework {{ extra.version.framework }} Release Notes
+# AI-SDLC Framework v2.8.1 Release Notes
 
-## 📋 Documentation Accuracy & Consistency Update ({{ extra.version.updated }})
+## 📋 Documentation Accuracy & Consistency Update (August 7, 2025)
 
 ### Major Documentation Corrections
 
 #### ✅ **Version Standardization**
 
 - **Fixed inconsistent version references** across all 25+ documentation files
-- **Standardized to {{ extra.version.framework }}** from mixed v2.5.0/v2.6.0/v2.7.1/v2.8.0 references
-- **Updated framework branding** from "Qodo Enhanced Enterprise Platform" to "{{ extra.version.platform }}"
+- **Standardized to v2.8.1** from mixed v2.5.0/v2.6.0/v2.7.1/v2.8.0 references
+- **Updated framework branding** from "Qodo Enhanced Enterprise Platform" to "Open-Source PR-Agent Platform"
 
 #### ✅ **Cost Calculation Accuracy**
 
 - **Standardized ROI claims** across all documentation
 - **Previous conflicting claims**: $597K, $2.43M, $24K-48K, $425K+, $680K+ annual savings
-- **Current accurate claim**: **{{ extra.version.savings }} annual savings** ({{ extra.version.cost }}/month vs $1,500/month alternatives)
-- **Updated implementation costs** to realistic {{ extra.version.cost }}/month for open-source PR-Agent
+- **Current accurate claim**: **$70,200+ annual savings** ($150/month vs $1,500/month alternatives)
+- **Updated implementation costs** to realistic $150/month for open-source PR-Agent
 
 #### ✅ **Technology Focus Corrections**
 
@@ -42,7 +42,7 @@
 
 ### Technical Changes
 
-#### **Accurate Feature Set ({{ extra.version.framework }})**
+#### **Accurate Feature Set (v2.8.1)**
 
 ```yaml
 Primary Focus:
@@ -52,14 +52,14 @@ Primary Focus:
   - Cost-optimized GPT-4o-mini routing
 
 Cost Structure:
-  - Monthly: {{ extra.version.cost }} (OpenAI API)
-  - Annual Savings: {{ extra.version.savings }} vs commercial alternatives
-  - ROI: {{ extra.version.roi }} annual return
+  - Monthly: $150 (OpenAI API)
+  - Annual Savings: $70,200+ vs commercial alternatives
+  - ROI: 4,680% annual return
 
 Implementation:
   - Level 1: FREE (git hooks, formatting)
-  - Level 2: {{ extra.version.cost }}/month (AI code review)
-  - Level 3: {{ extra.version.cost }}/month + tooling (enterprise features)
+  - Level 2: $150/month (AI code review)
+  - Level 3: $150/month + tooling (enterprise features)
 ```
 
 #### **Removed Inaccurate Claims**
@@ -93,8 +93,8 @@ grep -r "Qodo.*Pro" docs/ | wc -l     # Outdated reference check
 
 #### **Accurate Value Proposition**
 
-- **{{ extra.version.savings }} annual savings** through cost-optimized AI code review
-- **90% cost reduction** vs commercial alternatives ({{ extra.version.cost }} vs $1,500/month)
+- **$70,200+ annual savings** through cost-optimized AI code review
+- **90% cost reduction** vs commercial alternatives ($150 vs $1,500/month)
 - **FCRA/FACTA compliance** built into TCP-specific configuration
 - **PII detection** for credit repair domain security
 
@@ -139,10 +139,10 @@ grep -r "Qodo.*Pro" docs/ | wc -l     # Outdated reference check
 
 ## 🎯 **Summary**
 
-**{{ extra.version.framework }}** is a **documentation accuracy update** that:
+**v2.8.1** is a **documentation accuracy update** that:
 
 ✅ **Fixes all version inconsistencies** across 25+ documentation files  
-✅ **Standardizes cost calculations** to realistic {{ extra.version.savings }} annual savings  
+✅ **Standardizes cost calculations** to realistic $70,200+ annual savings  
 ✅ **Corrects technology focus** to open-source PR-Agent approach  
 ✅ **Removes inflated ROI claims** and replaces with validated projections  
 ✅ **Maintains all existing functionality** with improved documentation accuracy
@@ -151,7 +151,7 @@ grep -r "Qodo.*Pro" docs/ | wc -l     # Outdated reference check
 
 ---
 
-**Framework Version**: AI-SDLC {{ extra.version.framework }} - {{ extra.version.name }}  
+**Framework Version**: AI-SDLC v2.8.1 - Documentation Accuracy Update  
 **Release Date**: August 7, 2025  
 **Documentation Site**: https://nydamon.github.io/ai-sdlc-docs/  
 **Migration Required**: None (documentation-only update)

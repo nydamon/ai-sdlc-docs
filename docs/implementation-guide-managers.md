@@ -1,6 +1,6 @@
-# AI-SDLC {{ extra.version.framework }} Implementation Guide for Managers
+# AI-SDLC v2.8.1 Implementation Guide for Managers
 
-## 🆕 What's New in {{ extra.version.framework }}: {{ extra.version.platform }} with TCP Compliance
+## 🆕 What's New in v2.8.1: Open-Source PR-Agent Platform with TCP Compliance
 
 **MAJOR TOOLING UPDATE - CURSOR REPLACEMENT:**
 
@@ -72,7 +72,7 @@ This guide provides step-by-step implementation instructions for development and
 - 🕐 **80% reduction in manual QA time** (15-20 hours/week saved per developer) - VALIDATED
 - 🛡️ **Automated compliance checking** for FCRA/FACTA requirements - WORKING
 - 🚀 **40-60% faster development velocity** through automated testing - VALIDATED
-- 💰 **ROI: {{ extra.version.savings }} annual savings** through cost-optimized AI code review automation
+- 💰 **ROI: $70,200+ annual savings** through cost-optimized AI code review automation
 
 ---
 

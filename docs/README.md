@@ -8,7 +8,7 @@
     📋 Manager Guide
   </a>
   <a href="claude-code-cline-implementation-guide/" class="quick-nav-item">
-    🏢 Enterprise Platform <span class="enterprise-badge">{{ extra.version.framework }}</span>
+    🏢 Enterprise Platform <span class="enterprise-badge">v2.8.1</span>
   </a>
   <a href="centralized-ruleset-management/" class="quick-nav-item">
     ⚙️ Ruleset Management <span class="enterprise-badge">new</span>
@@ -23,7 +23,7 @@
 
 ## **Eliminate 80% of Code Review Overhead While Accelerating Development 40%**
 
-🎯 **Transform Your Development Pipeline in 5 Minutes | {{ extra.version.savings }} Annual Savings (8-person team)**
+🎯 **Transform Your Development Pipeline in 5 Minutes | $70,200+ Annual Savings (8-person team)**
 
 ### 💼 **Executive Summary**
 
@@ -39,7 +39,7 @@ This framework **eliminates manual code quality overhead** that costs your team 
 | **Test Writing Time**    | 15 hrs/week team | 2 hrs/week team      | **$68,000**    |
 | **Developer Onboarding** | 2-3 weeks        | 2-3 days             | **$24,000**    |
 | **Production Incidents** | 8-12/month       | 2-3/month            | **$180,000**   |
-|                          |                  | **Total Annual ROI** | **$597,000**   |
+|                          |                  | **Total Annual ROI** | **$70,200+**   |
 
 _Based on 8-person development team, $85K average salary_
 
@@ -329,7 +329,7 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 - ✅ **Catch bugs earlier** - before they reach review
 - ✅ **Focus on logic, not style** - tools handle formatting
 
-### 🟡 **Level 2: AI Code Review ({{ extra.version.cost }}/month) - {{ extra.version.savings }} Annual ROI**
+### 🟡 **Level 2: AI Code Review ($150/month) - $70,200+ Annual ROI**
 
 **Competitive advantage through AI-powered testing**
 
@@ -354,7 +354,7 @@ See [Git Hooks Automation](git-hooks-automation.md) for technical details.
 - ✅ **Learn testing patterns** from AI-generated examples
 - ✅ **Focus on features** - let AI handle test boilerplate
 
-### 🔴 **Level 3: Enterprise Automation ({{ extra.version.cost }}/month + tooling) - {{ extra.version.savings }} Annual ROI**
+### 🔴 **Level 3: Enterprise Automation ($150/month + tooling) - $70,200+ Annual ROI**
 
 **Industry-leading development pipeline**
 

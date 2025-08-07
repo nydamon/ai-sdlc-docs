@@ -1,10 +1,10 @@
-# Quick Start Guide - AI-SDLC {{ extra.version.framework }}
+# Quick Start Guide - AI-SDLC v2.8.1
 
-## 🚀 New in {{ extra.version.framework }}: {{ extra.version.platform }} (TCP Optimized)
+## 🚀 New in v2.8.1: Open-Source PR-Agent Platform (TCP Optimized)
 
 **MAJOR COST-EFFICIENT AI CODE REVIEW:**
 
-- **{{ extra.version.savings }}/year savings** vs Qodo Pro ({{ extra.version.cost }}/month vs $1,500/month)
+- **$70,200+/year savings** vs Qodo Pro ($150/month vs $1,500/month)
 - **TCP Credit Repair Compliance**: FCRA/FACTA specific validation rules
 - **PII Pattern Detection**: Automatic detection and encryption validation
 - **Cost-Optimized Models**: GPT-4o-mini primary, smart fallback routing

@@ -1,6 +1,6 @@
-# Scripts & Configuration Reference - {{ extra.version.framework }}
+# Scripts & Configuration Reference - v2.8.1
 
-## 🚀 {{ extra.version.framework }} {{ extra.version.platform }} (TCP Optimized)
+## 🚀 v2.8.1 Open-Source PR-Agent Platform (TCP Optimized)
 
 ### TCP-Optimized PR-Agent Setup
 
@@ -96,9 +96,9 @@ Security Analysis:   15 × $0.50 = $7.50
 Code Improvements:   20 × $0.15 = $3.00
 Interactive Q&A:     25 × $0.10 = $2.50
 
-Total Monthly Cost: ~$25 + $125 buffer = {{ extra.version.cost }}
+Total Monthly Cost: ~$25 + $125 buffer = $150
 vs Qodo Pro: $1,500/month
-Annual Savings: {{ extra.version.savings }}
+Annual Savings: $70,200+
 ```
 
 ## 🆕 v2.8.1 Enhanced NPM Scripts

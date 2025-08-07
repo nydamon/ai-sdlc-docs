@@ -3,32 +3,39 @@
 <!-- Version Variables - Update only these values to change versions across all documentation -->
 
 <!-- Main Version -->
-{%- set framework_version = "{{ extra.version.framework }}" -%}
-{%- set version_name = "{{ extra.version.name }}" -%}
-{%- set platform_name = "{{ extra.version.platform }}" -%}
+
+{%- set framework_version = "v2.8.1" -%}
+{%- set version_name = "Documentation Accuracy Update" -%}
+{%- set platform_name = "Open-Source PR-Agent Platform" -%}
 
 <!-- Release Information -->
-{%- set release_date = "{{ extra.version.updated }}" -%}
-{%- set last_updated = "{{ extra.version.updated }}" -%}
+
+{%- set release_date = "August 7, 2025" -%}
+{%- set last_updated = "August 7, 2025" -%}
 
 <!-- Cost and ROI -->
-{%- set monthly_cost = "{{ extra.version.cost }}" -%}
-{%- set annual_savings = "{{ extra.version.savings }}" -%}
-{%- set roi_percentage = "{{ extra.version.roi }}" -%}
+
+{%- set monthly_cost = "$150" -%}
+{%- set annual_savings = "$70,200+" -%}
+{%- set roi_percentage = "4,680%" -%}
 
 <!-- Previous Versions -->
+
 {%- set previous_version = "v2.8.0" -%}
 {%- set previous_platform = "Open-Source PR-Agent Platform" -%}
 
 <!-- Documentation Site -->
+
 {%- set docs_site = "https://nydamon.github.io/ai-sdlc-docs/" -%}
 {%- set github_repo = "https://github.com/nydamon/ai-sdlc" -%}
 
 <!-- Author Information -->
+
 {%- set author = "Damon DeCrescenzo, CTO - The Credit Pros" -%}
 {%- set company = "The Credit Pros" -%}
 
 <!-- Export variables for use in other documents -->
+
 {{ framework_version }} <!-- v2.8.1 -->
 {{ version_name }} <!-- Documentation Accuracy Update -->
 {{ platform_name }} <!-- Open-Source PR-Agent Platform -->

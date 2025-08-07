@@ -47,7 +47,7 @@
 
 **Auto-Healing Tests** - Self-maintaining test framework that automatically adapts when UI selectors change, reducing test maintenance overhead through smart fallback systems.
 
-## {{ extra.version.framework }} {{ extra.version.platform }}
+## v2.8.1 Open-Source PR-Agent Platform
 
 **Open-Source PR-Agent** - Cost-efficient AI-powered code review automation with TCP credit repair compliance optimization, delivering 90% cost reduction vs commercial alternatives.
 
@@ -183,5 +183,5 @@
 ---
 
 _Created by Damon DeCrescenzo, CTO - The Credit Pros_  
-_Framework Version: {{ extra.version.framework }} - {{ extra.version.platform }}_  
-_Last Updated: {{ extra.version.updated }}_
+_Framework Version: v2.8.1 - Open-Source PR-Agent Platform_  
+_Last Updated: August 7, 2025_

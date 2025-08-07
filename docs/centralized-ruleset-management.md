@@ -1,4 +1,4 @@
-# Centralized Ruleset Management - AI-SDLC {{ extra.version.framework }}
+# Centralized Ruleset Management - AI-SDLC v2.8.1
 
 ## 🎯 **Implementation Manager Guide: Claude Code + Cline Enterprise Governance**
 
@@ -218,10 +218,10 @@ echo "✅ Claude Code policy validation complete"
 mkdir -p ~/Documents/Cline/Rules/
 
 # Create master rule file
-cat > ~/Documents/Cline/Rules/thecreditpros-master-{{ extra.version.framework }}.md << 'EOF'
-# TheCreditPros Master Development Rules {{ extra.version.framework }}
+cat > ~/Documents/Cline/Rules/thecreditpros-master-v2.8.1.md << 'EOF'
+# TheCreditPros Master Development Rules v2.8.1
 # Implementation Manager: Damon DeCrescenzo, CTO
-# Last Updated: {{ extra.version.updated }}
+# Last Updated: August 7, 2025
 
 ## MANDATORY: Credit Repair Compliance
 - NEVER allow credit scores above 850 (FCRA Section 607)
@@ -324,7 +324,7 @@ EOF
 ```bash
 # Create project-specific rules
 cat > ~/Documents/Cline/Rules/customer-frontend-portal-rules.md << 'EOF'
-# Customer Frontend Portal Specific Rules {{ extra.version.framework }}
+# Customer Frontend Portal Specific Rules v2.8.1
 
 ## React TypeScript Specific Requirements
 - Use React 18+ features (Suspense, Concurrent Mode)
@@ -364,7 +364,7 @@ EOF
 
 ```bash
 cat > ~/Documents/Cline/Rules/portal2-refactor-rules.md << 'EOF'
-# Portal 2 Refactor (Laravel) Specific Rules {{ extra.version.framework }}
+# Portal 2 Refactor (Laravel) Specific Rules v2.8.1
 
 ## Laravel Best Practices
 - Use Laravel 10+ features (invokable controllers, enum classes)
@@ -430,7 +430,7 @@ for dev in "${DEVELOPERS[@]}"; do
     ssh "$dev@workstation" "mkdir -p ~/Documents/Cline/Rules/"
 
     # Copy master rules
-    scp "$RULES_SOURCE/thecreditpros-master-{{ extra.version.framework }}.md" "$dev@workstation:~/Documents/Cline/Rules/"
+    scp "$RULES_SOURCE/thecreditpros-master-v2.8.1.md" "$dev@workstation:~/Documents/Cline/Rules/"
 
     # Copy project-specific rules
     scp "$RULES_SOURCE/*.md" "$dev@workstation:~/Documents/Cline/Rules/"
@@ -459,10 +459,10 @@ for repo in "${REPOSITORIES[@]}"; do
 
     # Create repository-specific rule file
     cat > "$repo/.clinerules/project-rules.md" << EOF
-# $repo Specific Rules {{ extra.version.framework }}
+# $repo Specific Rules v2.8.1
 
 ## Include Global Rules
-@include ~/Documents/Cline/Rules/thecreditpros-master-{{ extra.version.framework }}.md
+@include ~/Documents/Cline/Rules/thecreditpros-master-v2.8.1.md
 @include ~/Documents/Cline/Rules/$repo-rules.md
 
 ## Repository Context
@@ -480,7 +480,7 @@ EOF
 
     # Create .clineignore file
     cat > "$repo/.clineignore" << EOF
-# $repo .clineignore {{ extra.version.framework }}
+# $repo .clineignore v2.8.1
 
 # Sensitive Files (NEVER share with AI)
 .env
@@ -642,8 +642,8 @@ echo "📊 Compliance report generated: $REPORT_FILE"
 **Semantic versioning for rules:**
 
 - **Major (v3.0.0)**: Breaking changes to development workflow
-- **Minor ({{ extra.version.framework }})**: New rules or significant policy changes
-- **Patch ({{ extra.version.framework }})**: Bug fixes or clarifications
+- **Minor (v2.8.1)**: New rules or significant policy changes
+- **Patch (v2.8.1)**: Bug fixes or clarifications
 
 **Update deployment process:**
 
@@ -743,8 +743,8 @@ echo "📢 Emergency AI development restrictions activated. Check Slack for deta
 ---
 
 **Implementation Manager:** Damon DeCrescenzo, CTO  
-**Document Version:** {{ extra.version.framework }}  
-**Last Updated:** {{ extra.version.updated }}  
+**Document Version:** v2.8.1  
+**Last Updated:** August 7, 2025  
 **Next Review:** September 2025
 
 **Emergency Contact:** cto@thecreditpros.com  

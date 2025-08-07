@@ -138,14 +138,14 @@ node scripts-complex/playwright-auto-healing.js demo
 
 **Production Monthly Costs:**
 
-- OpenAI: {{ extra.version.cost }}/month for open-source PR-Agent (cost-optimized)
-- **Total: {{ extra.version.cost }}/month for full AI features**
+- OpenAI: $150/month for open-source PR-Agent (cost-optimized)
+- **Total: $150/month for full AI features**
 
 **ROI Analysis:**
 
 - **Time Saved:** 15-20 hours/week per developer
 - **Value:** $6,000/month (at $100/hour rate)
-- **Net Benefit:** $5,850/month after API costs ({{ extra.version.savings }}/year savings)\*\*
+- **Net Benefit:** $5,850/month after API costs ($70,200+/year savings)\*\*
 
 ## 🎯 Implementation Levels
 
@@ -157,7 +157,7 @@ node scripts-complex/playwright-auto-healing.js demo
 - Git hooks for quality control
 - Conventional commits
 
-### Level 2: AI Code Review ({{ extra.version.cost }}/month)
+### Level 2: AI Code Review ($150/month)
 
 ✅ **Ready for Testing** - Requires OpenAI API key
 
@@ -165,7 +165,7 @@ node scripts-complex/playwright-auto-healing.js demo
 - FCRA/FACTA validation rules
 - PII pattern detection and alerts
 
-### Level 3: Enterprise QA ({{ extra.version.cost }}/month + tooling)
+### Level 3: Enterprise QA ($150/month + tooling)
 
 ✅ **Ready for Implementation** - Full automation setup
 
@@ -227,6 +227,6 @@ node scripts-complex/playwright-auto-healing.js demo
 ---
 
 **Status:** ✅ PRODUCTION READY  
-**Last Tested:** {{ extra.version.updated }}  
-**Framework Version:** AI-SDLC Framework {{ extra.version.framework }}  
+**Last Tested:** August 7, 2025  
+**Framework Version:** AI-SDLC Framework v2.8.1  
 **Next Review:** After production deployment

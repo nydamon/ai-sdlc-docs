@@ -142,5 +142,5 @@ For each feature marked as "Documentation Only":
 - Step-by-step guides provided in documentation
 - Support available via GitHub issues
 
-**Last Updated:** {{ extra.version.updated }}  
-**Framework Version:** {{ extra.version.framework }}
+**Last Updated:** August 7, 2025  
+**Framework Version:** v2.8.1
