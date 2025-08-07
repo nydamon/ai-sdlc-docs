@@ -369,7 +369,7 @@ export SONAR_ORGANIZATION=thecreditpros
 
 ---
 
-**Framework**: AI-SDLC Framework v2.7.0  
-**Last Updated**: August 6, 2025  
+**Framework**: AI-SDLC Framework v2.7.1  
+**Last Updated**: August 7, 2025  
 **Validation Tool**: `./ai-sdlc sonar-validate`  
 **Template Generator**: `./ai-sdlc sonar-templates`

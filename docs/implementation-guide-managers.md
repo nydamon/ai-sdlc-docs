@@ -1,6 +1,6 @@
-# AI-SDLC v2.7.0 Implementation Guide for Managers
+# AI-SDLC v2.7.1 Implementation Guide for Managers
 
-## 🆕 What's New in v2.7.0: Claude Code + Cline Enterprise Integration
+## 🆕 What's New in v2.7.1: Claude Code + Cline Enterprise Integration
 
 **MAJOR TOOLING UPDATE - CURSOR REPLACEMENT:**
 
@@ -247,7 +247,9 @@ This guide provides step-by-step implementation instructions for development and
 **Development Manager Tasks:**
 
 - [ ] Obtain OpenAI API key ($20-50/month budget approved)
-- [ ] Confirm Qase account access and permissions
+- [ ] Confirm Qase account access and permissions for BOTH projects:
+  - [ ] TCP (Client Frontend) - Customer-facing portal testing
+  - [ ] PCU (Admin Frontend) - Internal admin dashboard testing
 - [ ] Schedule developer training session (2 hours)
 - [ ] Identify test coverage baseline for pilot project
 
@@ -272,7 +274,11 @@ This guide provides step-by-step implementation instructions for development and
    # Edit .env with actual API keys:
    # - OPENAI_API_KEY=sk-your-key-here
    # - QASE_API_KEY=your-qase-token
-   # - QASE_PROJECT_CODE=your-project-code
+   #
+   # DUAL QASE PROJECT SETUP:
+   # - QASE_CLIENT_PROJECT_CODE=TCP    # Client frontend (customer-facing)
+   # - QASE_ADMIN_PROJECT_CODE=PCU     # Admin frontend (internal)
+   # - QASE_TARGET_PROJECT=TCP         # Default project for test generation
    ```
 
 2. **Test environment** (15 minutes)
@@ -540,6 +546,6 @@ This guide provides step-by-step implementation instructions for development and
 
 ---
 
-_Last Updated: August 6, 2025_  
-_Version: AI-SDLC Framework v2.7.0_  
+_Last Updated: August 7, 2025_  
+_Version: AI-SDLC Framework v2.7.1_  
 _Next Review: September 2025_

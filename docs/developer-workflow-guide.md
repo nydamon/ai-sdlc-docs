@@ -1,4 +1,4 @@
-# Developer Workflow Guide - AI-SDLC v2.7.0
+# Developer Workflow Guide - AI-SDLC v2.7.1
 
 ## 🎯 Complete Developer Workflow with AI-SDLC Tools
 
@@ -61,8 +61,11 @@ npm run test:watch-coverage
 **When working on user-facing features:**
 
 ```bash
-# Generate E2E tests automatically
-./ai-sdlc generate-from-requirements "User should be able to submit credit dispute with required documentation"
+# Generate E2E tests for specific project
+./ai-sdlc generate-from-requirements "User should be able to submit credit dispute with required documentation" --project=TCP
+
+# For admin features, use admin project
+./ai-sdlc generate-from-requirements "Admin should view dispute analytics dashboard" --project=PCU
 ```
 
 **For debugging E2E tests:**

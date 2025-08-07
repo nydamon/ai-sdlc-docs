@@ -1,6 +1,6 @@
-# Quick Start Guide - AI-SDLC v2.7.0
+# Quick Start Guide - AI-SDLC v2.7.1
 
-## 🆕 New in v2.7.0: Claude Code + Cline Enterprise Platform
+## 🆕 New in v2.7.1: Claude Code + Cline Enterprise Platform
 
 **MAJOR TOOLING UPDATE:**
 
@@ -150,7 +150,13 @@ cp .env.example .env
 
 - `OPENAI_API_KEY` - Get from [OpenAI](https://platform.openai.com/api-keys) ($20-50/month)
 - `QASE_API_KEY` - Get from your [Qase account](https://app.qase.io/user/api/token) (existing)
-- `QASE_PROJECT_CODE` - Your Qase project code
+
+**Dual Qase Project Configuration:**
+
+- `QASE_CLIENT_PROJECT_CODE=TCP` - Client Frontend (Customer Portal)
+- `QASE_ADMIN_PROJECT_CODE=PCU` - Admin Frontend (Internal Dashboard)
+- `QASE_TARGET_PROJECT=TCP` - Default project for test generation (usually client)
+
 - `SONAR_TOKEN` - Get from [SonarCloud My Account → Security](https://sonarcloud.io/account/security) (free)
 
 **New Platform Requirements:**

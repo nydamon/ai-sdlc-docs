@@ -1,4 +1,4 @@
-# 🗂️ Complete Documentation Index - AI-SDLC v2.7.0
+# 🗂️ Complete Documentation Index - AI-SDLC v2.7.1
 
 ## 📋 **Quick Navigation**
 
@@ -10,7 +10,7 @@
     📋 Manager Implementation
   </a>
   <a href="claude-code-cline-implementation-guide/" class="quick-nav-item">
-    🏢 Enterprise Platform <span class="enterprise-badge">v2.7.0</span>
+    🏢 Enterprise Platform <span class="enterprise-badge">v2.7.1</span>
   </a>
   <a href="centralized-ruleset-management/" class="quick-nav-item">
     ⚙️ Ruleset Management <span class="enterprise-badge">new</span>
@@ -46,13 +46,14 @@
 
 | Page                                                           | Purpose                | Complexity   | Version |
 | -------------------------------------------------------------- | ---------------------- | ------------ | ------- |
-| [Git Hooks Automation](git-hooks-automation.md)                | Core automation setup  | Basic        | v2.7.0  |
-| [🐘 PostgreSQL Database Automation](postgresql-automation.md)  | Database integration   | Advanced     | v2.7.0  |
-| [🗺️ Existing Database Setup Guide](existing-database-setup.md) | Database configuration | Intermediate | v2.7.0  |
-| [React Best Practices](react-best-practices-updated.md)        | Frontend standards     | Intermediate | v2.7.0  |
-| [Configuration Management](enhanced-config-management.md)      | Config standardization | Basic        | v2.7.0  |
+| [Git Hooks Automation](git-hooks-automation.md)                | Core automation setup  | Basic        | v2.7.1  |
+| [🐘 PostgreSQL Database Automation](postgresql-automation.md)  | Database integration   | Advanced     | v2.7.1  |
+| [🗺️ Existing Database Setup Guide](existing-database-setup.md) | Database configuration | Intermediate | v2.7.1  |
+| [React Best Practices](react-best-practices-updated.md)        | Frontend standards     | Intermediate | v2.7.1  |
+| [Configuration Management](enhanced-config-management.md)      | Config standardization | Basic        | v2.7.1  |
+| [📋 Version Management Guide](../VERSION_MANAGEMENT_GUIDE.md)  | Automated versioning   | Basic        | v2.7.1  |
 
-### 🏢 **Enterprise AI Platform (v2.7.0)**
+### 🏢 **Enterprise AI Platform (v2.7.1)**
 
 | Page                                                                                     | Purpose                | Enterprise Level | New                                                    |
 | ---------------------------------------------------------------------------------------- | ---------------------- | ---------------- | ------------------------------------------------------ |
@@ -156,7 +157,7 @@
 
 ---
 
-## 🆕 **What's New in v2.7.0**
+## 🆕 **What's New in v2.7.1**
 
 ### **New Pages Added:**
 
@@ -166,7 +167,7 @@
 ### **Major Updates:**
 
 - 🔄 [Claude Code + Cline Guidelines](enhanced-cursor-guidelines.md) - Updated for enterprise platform
-- 🔄 [Scripts & Configuration Reference](scripts-reference.md) - Enhanced with v2.7.0 features
+- 🔄 [Scripts & Configuration Reference](scripts-reference.md) - Enhanced with v2.7.1 features
 - 🔄 All workflow guides - Updated for new platform integration
 
 ### **Enhanced Navigation:**
@@ -193,7 +194,7 @@
 
 ---
 
-**Framework Version:** v2.7.0 - Claude Code + Cline Enterprise Platform  
-**Last Updated:** August 6, 2025  
+**Framework Version:** v2.7.1 - Claude Code + Cline Enterprise Platform  
+**Last Updated:** August 7, 2025  
 **Total Pages:** 25+ comprehensive guides  
 **Status:** ✅ Production Ready

@@ -34,7 +34,10 @@
 
 **OpenAI GPT-4** - AI model used for intelligent test generation and code analysis in Level 2+ implementations.
 
-**Qase** - Test management platform integrated for professional test case organization and reporting.
+**Qase** - Test management platform integrated for professional test case organization and reporting. AI-SDLC supports dual project configuration:
+
+- **TCP Project (Client Frontend)** - Customer-facing portal testing and user experience validation
+- **PCU Project (Admin Frontend)** - Internal admin dashboard testing and workflow validation
 
 **Codium AI** - AI-powered testing platform that generates comprehensive test suites with edge case coverage.
 
@@ -44,7 +47,7 @@
 
 **Auto-Healing Tests** - Self-maintaining test framework that automatically adapts when UI selectors change, reducing test maintenance overhead through smart fallback systems.
 
-## v2.7.0 Enterprise AI Platform
+## v2.7.1 Enterprise AI Platform
 
 **Claude Code Enterprise Platform** - Terminal-native AI assistant with hierarchical policy management, centralized configuration deployment, and comprehensive audit trails for enterprise compliance.
 
@@ -180,5 +183,5 @@
 ---
 
 _Created by Damon DeCrescenzo, CTO - The Credit Pros_  
-_Framework Version: v2.7.0 - Claude Code + Cline Enterprise Platform_  
-_Last Updated: August 6, 2025_
+_Framework Version: v2.7.1 - Claude Code + Cline Enterprise Platform_  
+_Last Updated: August 7, 2025_

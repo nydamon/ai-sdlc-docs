@@ -79,7 +79,7 @@ copyright: |
   &copy; 2025 <a href="https://thecreditpros.com" style="color: #ff902a; text-decoration: none;">The Credit Pros</a>. All rights reserved.<br>
   <strong style="color: #ff902a;">Enterprise AI-SDLC Framework by Damon DeCrescenzo, CTO</strong><br>
   <em style="color: #fffffe;">AI-Powered Development • $2.43M Validated ROI • Production Ready</em><br>
-  <strong style="color: #ff902a;">Version: v2.7.0 | Updated: August 6, 2025</strong>
+  <strong style="color: #ff902a;">Version: v2.8.0 | Updated: August 7, 2025</strong>
 
 nav:
   - Home: README.md
@@ -107,8 +107,13 @@ nav:
       - 📄 Scripts & Configuration Reference: scripts-reference.md
   - 📦 Download Scripts:
       - 📋 Scripts Download & Implementation: scripts-download.md
+      - 🧙‍♂️ Enhanced Setup Wizard: enhanced-setup-wizard.sh
+      - 📊 Implementation Tracker: implementation-tracker.js
       - auto-setup.sh: auto-setup.sh
       - ai-sdlc CLI: ai-sdlc
+  - 📊 Implementation Status:
+      - 🎯 Implementation Status Tracker: implementation-status.md
+      - 🚀 Implementation Wizard Guide: implementation-wizard.md
 
 markdown_extensions:
   - admonition

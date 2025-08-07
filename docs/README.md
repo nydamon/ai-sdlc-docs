@@ -8,7 +8,7 @@
     📋 Manager Guide
   </a>
   <a href="claude-code-cline-implementation-guide/" class="quick-nav-item">
-    🏢 Enterprise Platform <span class="enterprise-badge">v2.7.0</span>
+    🏢 Enterprise Platform <span class="enterprise-badge">v2.7.1</span>
   </a>
   <a href="centralized-ruleset-management/" class="quick-nav-item">
     ⚙️ Ruleset Management <span class="enterprise-badge">new</span>
