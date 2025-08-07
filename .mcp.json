@@ -1,0 +1,145 @@
+{
+  "$schema": "https://schemas.anthropic.com/mcp/server-config",
+  "name": "ai-sdlc-mcp-servers",
+  "version": "1.0.0",
+  "description": "MCP servers for AI-SDLC Framework - Enhanced development automation and credit repair domain tools",
+  "servers": {
+    "ai_sdlc_toolkit": {
+      "description": "AI-SDLC Framework automation toolkit with credit repair domain expertise",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["./scripts-complex/mcp-server.js"],
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}",
+        "QASE_API_TOKEN": "${QASE_API_TOKEN}",
+        "TCP_DOMAIN": "credit_repair",
+        "FCRA_COMPLIANCE_MODE": "true"
+      },
+      "capabilities": ["resources", "tools", "prompts"]
+    },
+    "credit_compliance": {
+      "description": "FCRA/FACTA compliance validation and credit repair domain rules",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["./qodo-agents/credit-compliance-agent.js", "--mcp-mode"],
+      "env": {
+        "TCP_COMPLIANCE_RULES": "${TCP_COMPLIANCE_RULES:-strict}",
+        "FCRA_VERSION": "2024",
+        "FACTA_VERSION": "2024"
+      },
+      "capabilities": ["tools", "resources"]
+    },
+    "test_automation": {
+      "description": "AI-powered test generation and validation for credit repair applications",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["./scripts-complex/real-ai-test-generator.js", "--mcp-server"],
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "TEST_FRAMEWORK": "vitest",
+        "E2E_FRAMEWORK": "playwright",
+        "DOMAIN_PATTERNS": "credit_repair,fcra,facta"
+      },
+      "capabilities": ["tools", "prompts"]
+    },
+    "database_automation": {
+      "description": "PostgreSQL automation with FCRA compliance testing for existing TCP databases",
+      "transport": "stdio",
+      "command": "bash",
+      "args": ["./scripts-complex/postgres-automation.sh", "mcp-mode"],
+      "env": {
+        "DB_HOST": "${DB_HOST:-localhost}",
+        "DB_NAME": "${DB_NAME}",
+        "DB_USER": "${DB_USER}",
+        "DB_PASS": "${DB_PASS}",
+        "FCRA_AUDIT_MODE": "true",
+        "TCP_SCHEMA_VERSION": "${TCP_SCHEMA_VERSION:-latest}"
+      },
+      "capabilities": ["tools", "resources"]
+    }
+  },
+  "global_settings": {
+    "timeout": 30000,
+    "retry_attempts": 3,
+    "log_level": "info",
+    "context_sharing": {
+      "credit_repair_patterns": true,
+      "fcra_compliance_rules": true,
+      "test_generation_context": true
+    }
+  },
+  "resource_templates": {
+    "credit_score_validation": {
+      "uri": "tcp://credit-score/*",
+      "description": "Credit score calculation and validation resources",
+      "mime_type": "application/json"
+    },
+    "fcra_compliance": {
+      "uri": "tcp://fcra/*",
+      "description": "FCRA compliance rules and validation patterns",
+      "mime_type": "application/json"
+    },
+    "test_templates": {
+      "uri": "tcp://tests/*",
+      "description": "AI-generated test templates and patterns",
+      "mime_type": "application/javascript"
+    }
+  },
+  "prompt_templates": {
+    "credit_repair_testing": {
+      "description": "Generate comprehensive tests for credit repair functionality",
+      "template": "Generate tests for credit repair component with FCRA compliance validation: {component_path}",
+      "variables": ["component_path"]
+    },
+    "fcra_code_review": {
+      "description": "Review code for FCRA Section 604/607/615 compliance",
+      "template": "Review {file_path} for FCRA compliance focusing on: {compliance_sections}",
+      "variables": ["file_path", "compliance_sections"]
+    },
+    "database_schema_audit": {
+      "description": "Audit database schema for PII and compliance requirements",
+      "template": "Audit database schema {schema_name} for PII handling and {compliance_framework} requirements",
+      "variables": ["schema_name", "compliance_framework"]
+    }
+  },
+  "tools": {
+    "validate_credit_score": {
+      "description": "Validate credit score calculations for FICO 8 compliance",
+      "parameters": {
+        "score": { "type": "number", "minimum": 300, "maximum": 850 },
+        "factors": { "type": "object", "required": true }
+      }
+    },
+    "generate_compliance_test": {
+      "description": "Generate FCRA/FACTA compliance test for given code",
+      "parameters": {
+        "file_path": { "type": "string", "required": true },
+        "compliance_type": {
+          "type": "string",
+          "enum": ["fcra", "facta", "both"]
+        }
+      }
+    },
+    "audit_pii_handling": {
+      "description": "Audit code for proper PII data handling and encryption",
+      "parameters": {
+        "directory": { "type": "string", "required": true },
+        "depth": { "type": "number", "default": 3 }
+      }
+    }
+  },
+  "documentation": {
+    "setup_guide": "./docs/mcp-server-setup.md",
+    "api_reference": "./docs/mcp-api-reference.md",
+    "examples": "./docs/mcp-examples.md"
+  },
+  "metadata": {
+    "framework_version": "v2.8.1",
+    "mcp_protocol_version": "1.0.0",
+    "created": "2025-08-07",
+    "maintainer": "The Credit Pros - CTO Office",
+    "domain": "credit_repair",
+    "compliance_frameworks": ["FCRA", "FACTA", "SOX", "PCI-DSS"]
+  }
+}

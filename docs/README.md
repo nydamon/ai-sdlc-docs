@@ -162,6 +162,8 @@ cd ai-sdlc
 
 **📦 [Download All Scripts & Get Started →](scripts-download.md)**
 
+**🔌 [MCP Server Integration Guide →](mcp-server-setup.md)** - Enhanced Claude Code functionality
+
 <div class="tcp-gradient-header">
 <h3>🏢 The Credit Pros Technology Excellence Initiative</h3>
 <p>Enterprise AI-powered development automation designed specifically for our Laravel backend + React JavaScript (Admin) + React TypeScript (Customer) technology stack serving millions of credit repair customers nationwide.</p>

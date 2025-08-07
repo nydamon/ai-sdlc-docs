@@ -45,7 +45,10 @@
     "ai:test-init": "./ai-sdlc test-init",
     "ai:validate": "node implementation-tracker.js",
     "coverage": "vitest --coverage",
-    "test:ci": "vitest --run --coverage"
+    "test:ci": "vitest --run --coverage",
+    "mcp:server": "node scripts-complex/mcp-server.js",
+    "mcp:setup": "echo 'Add MCP servers to Claude Code:' && echo 'claude mcp add --config ./.mcp.json'",
+    "mcp:status": "echo 'Check MCP server status with: claude mcp list'"
   },
   "keywords": [
     "ai",
@@ -75,6 +78,7 @@
     "@vitejs/plugin-react": "^4.7.0",
     "commitlint": "^19.8.1",
     "dotenv": "^17.2.1",
+    "@modelcontextprotocol/sdk": "^1.0.0",
     "eslint": "^9.32.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
