@@ -1,0 +1,222 @@
+{
+  "name": "claude-code-sub-agents-enhanced",
+  "version": "1.0.0",
+  "description": "Enhanced Claude Code sub-agents configuration optimized for credit repair domain and cost efficiency",
+  "framework_integration": {
+    "ai_sdlc_version": "3.0.0",
+    "mcp_compatibility": true,
+    "orchestration_enabled": true,
+    "cost_optimization": true
+  },
+  "sub_agents": {
+    "credit-compliance-reviewer": {
+      "base_agent": "code-reviewer",
+      "domain": "code_quality",
+      "complexity": "high",
+      "cost_tier": "premium",
+      "specializations": ["fcra_compliance", "pii_protection", "credit_repair"],
+      "triggers": ["*.js", "*.ts", "*.jsx", "*.tsx"],
+      "compliance_patterns": [
+        "permissible_purpose",
+        "consumer_consent",
+        "data_accuracy",
+        "disclosure_requirements"
+      ],
+      "integration": {
+        "mcp_server": "ai_sdlc_toolkit",
+        "complementary_tools": [
+          "validate_fcra_compliance",
+          "audit_pii_handling"
+        ]
+      }
+    },
+    "credit-test-generator": {
+      "base_agent": "test-generator",
+      "domain": "testing",
+      "complexity": "high",
+      "cost_tier": "premium",
+      "specializations": ["credit_repair", "e2e_automation", "domain_testing"],
+      "test_frameworks": ["vitest", "playwright", "jest"],
+      "domain_patterns": [
+        "credit_score_validation",
+        "fico_algorithm_testing",
+        "dispute_workflow_testing",
+        "pii_encryption_testing"
+      ],
+      "integration": {
+        "mcp_server": "test_automation",
+        "complementary_tools": ["generate_ai_tests", "run_smart_tests"]
+      }
+    },
+    "security-auditor-enhanced": {
+      "base_agent": "security-auditor",
+      "domain": "security",
+      "complexity": "high",
+      "cost_tier": "premium",
+      "specializations": [
+        "pii_protection",
+        "fcra_audit",
+        "encryption_validation"
+      ],
+      "audit_scopes": [
+        "pii_data_handling",
+        "encryption_implementation",
+        "access_control_validation",
+        "audit_trail_compliance"
+      ],
+      "integration": {
+        "mcp_server": "secure_filesystem",
+        "complementary_tools": ["audit_pii_handling"]
+      }
+    },
+    "documentation-specialist": {
+      "base_agent": "documentation-writer",
+      "domain": "documentation",
+      "complexity": "medium",
+      "cost_tier": "standard",
+      "specializations": ["technical_writing", "api_docs", "compliance_docs"],
+      "document_types": [
+        "api_documentation",
+        "compliance_guides",
+        "technical_specifications",
+        "user_manuals"
+      ],
+      "integration": {
+        "mcp_server": "github_integration",
+        "complementary_tools": ["content_generation"]
+      }
+    },
+    "architecture-planner-fcra": {
+      "base_agent": "architecture-planner",
+      "domain": "planning",
+      "complexity": "high",
+      "cost_tier": "premium",
+      "specializations": [
+        "system_design",
+        "compliance_architecture",
+        "scalability"
+      ],
+      "planning_scopes": [
+        "compliance_architecture",
+        "data_flow_design",
+        "security_architecture",
+        "scalability_planning"
+      ],
+      "integration": {
+        "mcp_server": "ai_sdlc_toolkit",
+        "complementary_tools": ["architectural_analysis"]
+      }
+    },
+    "performance-optimizer": {
+      "base_agent": "performance-optimizer",
+      "domain": "performance",
+      "complexity": "medium",
+      "cost_tier": "standard",
+      "specializations": ["database_optimization", "query_tuning", "caching"],
+      "optimization_targets": [
+        "database_queries",
+        "api_response_times",
+        "memory_usage",
+        "cache_efficiency"
+      ],
+      "integration": {
+        "mcp_server": "postgresql_enhanced",
+        "complementary_tools": ["performance_analysis"]
+      }
+    },
+    "budget-code-assistant": {
+      "base_agent": "code-assistant",
+      "domain": "general",
+      "complexity": "low",
+      "cost_tier": "budget",
+      "specializations": ["simple_tasks", "quick_fixes", "basic_refactoring"],
+      "use_cases": [
+        "simple_bug_fixes",
+        "basic_refactoring",
+        "code_formatting",
+        "simple_feature_additions"
+      ],
+      "integration": {
+        "mcp_server": "mcp_everything",
+        "complementary_tools": ["basic_code_operations"]
+      }
+    }
+  },
+  "routing_strategy": {
+    "cost_optimization": {
+      "enabled": true,
+      "budget_thresholds": {
+        "low": 0.05,
+        "medium": 0.15,
+        "high": 0.5
+      },
+      "fallback_strategy": "cascade_to_budget"
+    },
+    "domain_expertise": {
+      "credit_repair_priority": [
+        "credit-compliance-reviewer",
+        "credit-test-generator",
+        "security-auditor-enhanced"
+      ],
+      "general_development": [
+        "budget-code-assistant",
+        "documentation-specialist",
+        "performance-optimizer"
+      ]
+    },
+    "complexity_routing": {
+      "simple_tasks": ["budget-code-assistant"],
+      "medium_tasks": ["documentation-specialist", "performance-optimizer"],
+      "complex_tasks": [
+        "credit-compliance-reviewer",
+        "architecture-planner-fcra",
+        "security-auditor-enhanced"
+      ]
+    }
+  },
+  "orchestration_settings": {
+    "enable_hybrid_workflows": true,
+    "mcp_first_strategy": true,
+    "cost_tracking": true,
+    "performance_monitoring": true,
+    "fallback_chains": {
+      "credit-compliance-reviewer": [
+        "security-auditor-enhanced",
+        "budget-code-assistant"
+      ],
+      "credit-test-generator": ["budget-code-assistant"],
+      "architecture-planner-fcra": ["documentation-specialist"]
+    }
+  },
+  "installation": {
+    "npm_scripts": {
+      "subagents:install": "node scripts-complex/subagents-installer.js",
+      "subagents:setup": "node scripts-complex/subagents-setup.js",
+      "subagents:validate": "node scripts-complex/subagents-validator.js",
+      "subagents:orchestrate": "node scripts-complex/agent-orchestrator.js"
+    },
+    "auto_install_dependencies": [
+      "claude-code",
+      "@anthropic/claude-code-sub-agents"
+    ]
+  },
+  "monitoring": {
+    "cost_tracking": {
+      "daily_budget_limit": 10.0,
+      "per_task_limit": 1.0,
+      "alert_threshold": 0.8
+    },
+    "performance_tracking": {
+      "response_time_threshold": 30000,
+      "success_rate_threshold": 0.85,
+      "retry_limit": 3
+    }
+  },
+  "compliance_settings": {
+    "fcra_mode": true,
+    "pii_protection": true,
+    "audit_logging": true,
+    "data_retention_days": 2555,
+    "encryption_required": true
+  }
+}

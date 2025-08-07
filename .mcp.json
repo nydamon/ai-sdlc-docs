@@ -4,6 +4,84 @@
   "version": "1.0.0",
   "description": "MCP servers for AI-SDLC Framework - Enhanced development automation and credit repair domain tools",
   "servers": {
+    "playwright_automation": {
+      "description": "Browser automation for E2E testing with AI-driven test generation",
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp"],
+      "env": {
+        "PLAYWRIGHT_BROWSERS_PATH": "${PLAYWRIGHT_BROWSERS_PATH}",
+        "HEADLESS": "${HEADLESS:-true}",
+        "DOMAIN_PATTERNS": "credit_repair,dispute_portal,customer_dashboard",
+        "TCP_E2E_PATTERNS": "true"
+      },
+      "capabilities": ["tools", "resources", "prompts"]
+    },
+    "github_integration": {
+      "description": "GitHub repository management and CI/CD automation",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["./scripts-complex/github-mcp-server.js"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}",
+        "GITHUB_REPOSITORY": "${GITHUB_REPOSITORY}",
+        "GITHUB_ORG": "thecreditpros",
+        "PII_SCANNING": "true",
+        "FCRA_CODE_REVIEW": "true"
+      },
+      "capabilities": ["tools", "resources"]
+    },
+    "secure_filesystem": {
+      "description": "Secure file operations with PII protection controls",
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "env": {
+        "ALLOWED_DIRECTORIES": "./src,./tests,./docs,./scripts-complex,./memory_bank,./cline_config,./cline_templates",
+        "BLOCKED_PATTERNS": "*.key,*.env,**/secrets/**,**/*ssn*,**/*credit-card*,**/node_modules/**",
+        "PII_DETECTION": "true",
+        "SAFE_MODE": "true"
+      },
+      "capabilities": ["resources", "tools"]
+    },
+    "postgresql_enhanced": {
+      "description": "Enhanced PostgreSQL with FCRA audit trails and PII encryption",
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "DATABASE_URL": "${DATABASE_URL}",
+        "FCRA_AUDIT_MODE": "true",
+        "PII_ENCRYPTION": "AES-256",
+        "SCHEMA_VALIDATION": "credit_repair",
+        "AUDIT_RETENTION_DAYS": "2555",
+        "TCP_SCHEMA_PATTERNS": "true"
+      },
+      "capabilities": ["tools", "resources"]
+    },
+    "web_content_fetch": {
+      "description": "Secure web content fetching for credit bureau API documentation",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["./scripts-complex/web-fetch-mcp-server.js"],
+      "env": {
+        "RATE_LIMIT": "10",
+        "CONTENT_FILTERING": "safe_mode",
+        "COMPLIANCE_DOCS": "true"
+      },
+      "capabilities": ["resources"]
+    },
+    "mcp_everything": {
+      "description": "Reference server for testing and development with all MCP features",
+      "transport": "stdio",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-everything"],
+      "env": {
+        "DEVELOPMENT_MODE": "true",
+        "TCP_TESTING_PATTERNS": "true"
+      },
+      "capabilities": ["resources", "tools", "prompts"]
+    },
     "ai_sdlc_toolkit": {
       "description": "AI-SDLC Framework automation toolkit with credit repair domain expertise",
       "transport": "stdio",
@@ -63,10 +141,14 @@
     "timeout": 30000,
     "retry_attempts": 3,
     "log_level": "info",
+    "auto_install": true,
+    "setup_validation": true,
     "context_sharing": {
       "credit_repair_patterns": true,
       "fcra_compliance_rules": true,
-      "test_generation_context": true
+      "test_generation_context": true,
+      "playwright_e2e_patterns": true,
+      "github_compliance_rules": true
     }
   },
   "resource_templates": {

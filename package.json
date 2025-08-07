@@ -47,7 +47,9 @@
     "coverage": "vitest --coverage",
     "test:ci": "vitest --run --coverage",
     "mcp:server": "node scripts-complex/mcp-server.js",
-    "mcp:setup": "echo 'Add MCP servers to Claude Code:' && echo 'claude mcp add --config ./.mcp.json'",
+    "mcp:setup": "node scripts-complex/mcp-setup.js",
+    "mcp:validate": "node scripts-complex/mcp-validator.js",
+    "mcp:install-servers": "node scripts-complex/mcp-installer.js",
     "mcp:status": "echo 'Check MCP server status with: claude mcp list'"
   },
   "keywords": [
@@ -60,6 +62,14 @@
   ],
   "author": "Damon DeCrescenzo <damon@thecreditpros.com>",
   "license": "MIT",
+  "mcpDependencies": {
+    "@playwright/mcp": "latest",
+    "@executeautomation/playwright-mcp-server": "latest",
+    "@modelcontextprotocol/server-filesystem": "latest",
+    "@modelcontextprotocol/server-postgres": "latest",
+    "@modelcontextprotocol/server-everything": "latest",
+    "@modelcontextprotocol/sdk": "^1.17.1"
+  },
   "devDependencies": {
     "@babel/preset-env": "^7.28.0",
     "@babel/preset-react": "^7.27.1",
