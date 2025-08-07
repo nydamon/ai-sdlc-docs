@@ -23,12 +23,13 @@ if ! git diff --check --cached >/dev/null 2>&1; then
     exit 1
 fi
 
-# Run fast tests
+# Run fast tests (unit tests only, skip E2E)
 echo "🧪 Running fast test suite..."
 npm run ci:test-fast
 if [ $? -ne 0 ]; then
     echo "❌ Tests failed"
     echo "💡 Fix failing tests before pushing"
+    echo "ℹ️ E2E tests are run separately with Playwright"
     exit 1
 fi
 
