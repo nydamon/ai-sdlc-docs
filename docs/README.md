@@ -242,7 +242,7 @@ node scripts-complex/playwright-auto-healing.js # Direct auto-healing utilities
 - Industry-specific error handling validation
 - Regulatory requirement testing automated
 - Database compliance testing for your existing PostgreSQL tables
-- See [Cursor IDE Guidelines](enhanced-cursor-guidelines.md) for domain-specific prompts
+- See [Claude Code + Cline Guidelines](enhanced-cursor-guidelines.md) for enterprise configuration
 
 **🔗 Ready to implement?** [View all scripts and step-by-step setup →](scripts-download.md)
 

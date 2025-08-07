@@ -1,21 +1,49 @@
-# Cursor IDE Configuration & Guidelines
+# Claude Code + Cline Configuration & Guidelines
 
 ## 📂 **Complete Configuration Files**
 
-### `.cursorrc.json` (Recommended)
+### Claude Code Enterprise Configuration (`managed-settings.json`)
 
 ```json
 {
-  "promptContext": ["./ai-prompts/", "./docs/"],
-  "codebaseSize": "medium",
-  "extensions": ["eslint", "prettier", "husky"],
-  "contextRetention": true,
-  "aiModel": "gpt-4",
-  "maxTokens": 4000,
-  "temperature": 0.1,
-  "creditRepairDomain": true,
-  "fcraCompliance": true
+  "organizationName": "TheCreditPros",
+  "permissions": {
+    "bash": "allow",
+    "write": "ask",
+    "read": "allow",
+    "git": "allow"
+  },
+  "models": {
+    "allowed": ["claude-3-5-sonnet", "claude-3-haiku"],
+    "default": "claude-3-5-sonnet"
+  },
+  "creditRepairCompliance": {
+    "enabled": true,
+    "fcraValidation": true,
+    "auditLogging": "full"
+  }
 }
+```
+
+### Cline Team Rules (`.clinerules/thecreditpros.md`)
+
+```markdown
+# TheCreditPros Enterprise Development Rules
+
+## Compliance Requirements
+
+- Follow FCRA/FACTA regulations for credit data
+- Implement PII encryption for sensitive information
+- Use consumer-friendly error messaging
+- Cap credit scores at 850 maximum
+- Maintain audit trails for credit operations
+
+## Code Standards
+
+- Use TypeScript strict mode
+- Maintain 80%+ test coverage
+- Follow semantic commit conventions
+- Implement proper error boundaries
 ```
 
 ### `.prettierrc` (Actual Configuration)

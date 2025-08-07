@@ -74,7 +74,7 @@ nav:
       - Git Hooks Automation: git-hooks-automation.md
       - Semantic Release Setup: semantic-release-setup.md
       - React Best Practices: react-best-practices-updated.md
-      - Enhanced Cursor Guidelines: enhanced-cursor-guidelines.md
+      - Claude Code + Cline Guidelines: enhanced-cursor-guidelines.md
   - QA & Monitoring:
       - Smart Testing Strategy: smart-testing.md
       - QA Strategy: testing-qa-strategy-revised.md

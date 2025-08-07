@@ -72,7 +72,7 @@ copyright: |
   &copy; 2025 <a href="https://thecreditpros.com" style="color: #ff902a; text-decoration: none;">The Credit Pros</a>. All rights reserved.<br>
   <strong style="color: #ff902a;">Enterprise AI-SDLC Framework by Damon DeCrescenzo, CTO</strong><br>
   <em style="color: #fffffe;">AI-Powered Development • $2.43M Validated ROI • Production Ready</em><br>
-  <strong style="color: #ff902a;">Version: v2.6.0 | Updated: August 6, 2025</strong>
+  <strong style="color: #ff902a;">Version: v2.7.0 | Updated: August 6, 2025</strong>
 
 nav:
   - Home: README.md
@@ -93,7 +93,9 @@ nav:
       - 🗺️ Existing Database Setup Guide: existing-database-setup.md
       - React Best Practices: react-best-practices-updated.md
       - Configuration Management: enhanced-config-management.md
-      - 💻 Cursor IDE Guidelines: enhanced-cursor-guidelines.md
+      - 💻 Claude Code + Cline Guidelines: enhanced-cursor-guidelines.md
+      - 🚀 Claude Code + Cline Implementation Guide: claude-code-cline-implementation-guide.md
+      - 🏢 Centralized Ruleset Management: centralized-ruleset-management.md
       - 📄 Scripts & Configuration Reference: scripts-reference.md
   - 📦 Download Scripts:
       - 📋 Scripts Download & Implementation: scripts-download.md

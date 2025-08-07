@@ -1,4 +1,4 @@
-# Configuration Management for AI-Powered Development
+# Configuration Management for Claude Code + Cline Development
 
 ## 📦 Directory Structure
 
@@ -6,11 +6,14 @@
 /config
   /eslint
   /prettier
-  /cursor
+  /claude-code
+  /cline
   /ai-prompts
 .editorconfig
 .vscode/
-.cursorrc.json
+managed-settings.json
+.clinerules/
+.clineignore
 .env.example
 ```
 
@@ -39,8 +42,10 @@
 ## 🧠 AI-Aware Configuration
 
 - Prompt rules live in `ai-prompts/`
-- Cursor config stored in `.cursorrc.json`
-- PostHog logs AI usage for audit trail
+- Claude Code policies in `managed-settings.json`
+- Cline rules in `.clinerules/` directory
+- Cline ignore patterns in `.clineignore`
+- Usage analytics tracked via Claude Code + Cline platforms
 
 ## 🛡️ Policy
 

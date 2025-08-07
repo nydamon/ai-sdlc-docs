@@ -1,6 +1,6 @@
-# Scripts & Configuration Reference - v2.6.0
+# Scripts & Configuration Reference - v2.7.0
 
-## 🆕 v2.6.0 Enhanced NPM Scripts
+## 🆕 v2.7.0 Enhanced NPM Scripts
 
 **New Intelligent Testing Scripts Added to package.json:**
 
@@ -45,7 +45,7 @@
 **Expected Impact**: Faster pull request validation  
 **When to Use**: Automated CI/CD pipelines
 
-## 🔧 v2.6.0 Configuration Changes
+## 🔧 v2.7.0 Configuration Changes
 
 ### Enhanced Vitest Configuration
 
@@ -148,7 +148,7 @@ jobs:
 
 This page provides the actual script content for implementation managers to review and understand exactly what the AI-SDLC framework implements.
 
-### Implementation Manager Checklist for v2.6.0
+### Implementation Manager Checklist for v2.7.0
 
 **✅ Immediate Benefits Available:**
 

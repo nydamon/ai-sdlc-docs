@@ -65,7 +65,7 @@
 - `git-hooks-automation.md` - Core git hooks functionality
 - `react-best-practices-updated.md` - Relevant for target projects
 - `enhanced-config-management.md` - Basic config management
-- `enhanced-cursor-guidelines.md` - IDE guidelines
+- `enhanced-cursor-guidelines.md` - Claude Code + Cline enterprise guidelines
 - `sdlc_architecture_diagram.png` - Visual reference
 
 ### 🛠️ Essential Scripts (2 files)

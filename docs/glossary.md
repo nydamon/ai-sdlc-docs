@@ -8,7 +8,9 @@
 
 ## Development Tools
 
-**Cursor IDE** - AI-powered code editor with intelligent autocomplete and code generation capabilities. See [Cursor IDE Guidelines](enhanced-cursor-guidelines.md).
+**Claude Code** - Terminal-native AI assistant with enterprise policy management and centralized configuration capabilities.
+
+**Cline** - IDE-integrated AI development assistant with team coordination features and multi-model support. See [Claude Code + Cline Guidelines](enhanced-cursor-guidelines.md).
 
 **ESLint** - JavaScript/TypeScript linting tool that catches code quality issues and enforces consistent style.
 
@@ -42,7 +44,21 @@
 
 **Auto-Healing Tests** - Self-maintaining test framework that automatically adapts when UI selectors change, reducing test maintenance overhead through smart fallback systems.
 
-## v2.6.0 Testing Enhancements
+## v2.7.0 Enterprise AI Platform
+
+**Claude Code Enterprise Platform** - Terminal-native AI assistant with hierarchical policy management, centralized configuration deployment, and comprehensive audit trails for enterprise compliance.
+
+**Cline Teams** - IDE-integrated AI development platform supporting up to 200 seats with organization-level administration, pooled credit management, and team workspace coordination.
+
+**Managed Settings** - Enterprise policy configuration system for Claude Code that enables centralized control of permissions, model selection, compliance rules, and security policies across all development workstations.
+
+**Cline Rules (.clinerules)** - Project and global rule files that define AI behavior, coding standards, compliance requirements, and domain-specific guidelines for consistent development practices.
+
+**Enterprise Policy Hierarchy** - Claude Code's configuration precedence system: Enterprise Managed Policies → Command Line Arguments → Local Project Settings → User Settings.
+
+**Multi-Model AI Support** - Cline's capability to work with various AI models (Claude, Gemini, Qwen, DeepSeek) with intelligent model selection based on task complexity and cost optimization.
+
+## Previous v2.6.0 Testing Enhancements (Retained)
 
 **Smart Test Execution** - Intelligent test selection that only runs tests for files changed since the last commit, reducing CI/CD execution time by up to 60%.
 
@@ -128,7 +144,9 @@
 - [🐘 PostgreSQL Database Automation](postgresql-automation.md) - **FCRA compliance testing on existing data**
 - [Manager Implementation Guide](implementation-guide-managers.md) - Team rollout strategy
 - [Git Hooks Automation](git-hooks-automation.md) - Technical automation details
-- [Cursor IDE Guidelines](enhanced-cursor-guidelines.md) - AI-powered development tips
+- [Claude Code + Cline Guidelines](enhanced-cursor-guidelines.md) - Enterprise AI development platform configuration
+- [Centralized Ruleset Management](centralized-ruleset-management.md) - Implementation manager guide for enterprise policy control
+- [Claude Code + Cline Implementation Guide](claude-code-cline-implementation-guide.md) - Complete enterprise platform deployment
 - [Testing & Validation](TESTING-README.md) - Quality assurance processes
 - [👨‍💻 Developer Workflow Guide](developer-workflow-guide.md) - **Complete daily workflow with AI-SDLC tools**
 - [🧪 QA Team Workflow Guide](qa-team-workflow-guide.md) - **QA automation and testing workflows**
@@ -137,4 +155,5 @@
 ---
 
 _Created by Damon DeCrescenzo, CTO - The Credit Pros_  
-_Last Updated: August 5, 2025_
+_Framework Version: v2.7.0 - Claude Code + Cline Enterprise Platform_  
+_Last Updated: August 6, 2025_

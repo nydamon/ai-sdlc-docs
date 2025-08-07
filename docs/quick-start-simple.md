@@ -1,6 +1,16 @@
-# Quick Start Guide - AI-SDLC v2.6.0
+# Quick Start Guide - AI-SDLC v2.7.0
 
-## 🆕 New in v2.6.0: Smart Testing & Enhanced QA
+## 🆕 New in v2.7.0: Claude Code + Cline Enterprise Platform
+
+**MAJOR TOOLING UPDATE:**
+
+- **Claude Code**: Terminal-native AI with enterprise policy management
+- **Cline Teams**: IDE-integrated AI with team coordination (200 seats)
+- **Combined Benefits**: Complete development lifecycle coverage + centralized control
+
+### Previous v2.6.0 Features (Retained):
+
+**Smart Testing & Enhanced QA:**
 
 **Immediate Benefits:**
 
@@ -142,6 +152,11 @@ cp .env.example .env
 - `QASE_API_KEY` - Get from your [Qase account](https://app.qase.io/user/api/token) (existing)
 - `QASE_PROJECT_CODE` - Your Qase project code
 - `SONAR_TOKEN` - Get from [SonarCloud My Account → Security](https://sonarcloud.io/account/security) (free)
+
+**New Platform Requirements:**
+
+- **Claude Code**: Install from https://docs.anthropic.com/en/docs/claude-code ($240/user/year)
+- **Cline Teams**: Setup organization at https://cline.bot/teams ($300/user/year)
 
 **Optional premium:**
 
