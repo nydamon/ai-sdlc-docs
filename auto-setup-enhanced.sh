@@ -47,7 +47,7 @@ show_help() {
 
 ### VERSION FUNCTION
 show_version() {
-  echo_color $GREEN "AI-SDLC Framework v3.2.1"
+  echo_color $GREEN "AI-SDLC Framework v3.3.0"
   echo_color $BLUE "Enhanced setup with graduated complexity levels"
 }
 

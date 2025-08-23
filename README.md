@@ -1,8 +1,8 @@
 # AI-SDLC Framework Demo
 
-**Version:** v3.2.1
+**Version:** v3.3.0
 **Framework:** AI-Powered SDLC for The Credit Pros
-**Updated:** August 19, 2025
+**Updated:** August 23, 2025
 
 ## 🚀 Quick Start
 
